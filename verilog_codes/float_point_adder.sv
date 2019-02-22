@@ -18,10 +18,33 @@ module float_point_adder #(
 	input logic [EXP_LEN+MANTISSA_LEN+1-1:0] a,
 	input logic [EXP_LEN+MANTISSA_LEN+1-1:0] b,
 	input logic inp_data_ready,
-
-	output logic [EXP_LEN+MANTISSA_LEN+1-1:0] sum
+	output logic [EXP_LEN+MANTISSA_LEN+1-1:0] sum,
 	output logic sum_ready);
 
+logic [3:0] state;
+logic [EXP_LEN-1:0] in_exponent_a;
+logic [EXP_LEN-1:0] in_exponent_b;
+logic [MANTISSA_LEN-1:0] in_mantissa_a;
+logic [MANTISSA_LEN-1:0] in_mantissa_b;
+logic in_sign_a;
+logic in_sign_b;
+logic in_magnitudes_equal;
+logic operation_subtract;
+logic sign_sum;
+logic [EXP_LEN-1:0] exponent_sum;
+logic [MANTISSA_LEN-1:0] mantissa_sum;
+logic a_zero;
+logic b_zero;
+logic [EXP_LEN:0] exponent_diff;
+logic [MANTISSA_LEN:0] mantissa_diff;
+logic a_greater_b;
+logic [MANTISSA_LEN-1:0] mantissa_a_shifted;
+logic [MANTISSA_LEN-1:0] mantissa_b_shifted;
+logic exponent_diff_zero;
+
+assign a_zero = ~|{in_sign_a,in_exponent_a,in_mantissa_a};
+assign b_zero = ~|{in_sign_b,in_exponent_b,in_mantissa_b};
+assign exponent_diff_zero = ~|exponent_diff;
 
 always @(posedge clk) begin
 
@@ -46,7 +69,7 @@ always @(posedge clk) begin
 			in_sign_a <= a[MANTISSA_LEN+EXP_LEN];
 			in_sign_b <= b[MANTISSA_LEN+EXP_LEN];
 
-			in_magnitudes_equal <= ;
+			in_magnitudes_equal <= ~(a[MANTISSA_LEN+EXP_LEN-1:0]^b[MANTISSA_LEN+EXP_LEN-1:0]);
 			operation_subtract <= a[MANTISSA_LEN+EXP_LEN]^b[MANTISSA_LEN+EXP_LEN];
 			end
 
@@ -88,7 +111,7 @@ always @(posedge clk) begin
 			end
 
 		4'd2 : begin
-			if (exponent_diff[] == 1'b1) begin
+			if (exponent_diff[EXP_LEN+1-1] == 1'b1) begin
 				a_greater_b <= 1'b0;
 				exponent_sum <= in_exponent_b;
 				exponent_diff <= -exponent_diff;
@@ -99,7 +122,7 @@ always @(posedge clk) begin
 				exponent_diff <= exponent_diff;
 				end
 			else begin
-				if (mantissa_diff[] == 1'b1) begin
+				if (mantissa_diff[MANTISSA_LEN+1-1] == 1'b1) begin
 					a_greater_b <= 1'b0;
 					exponent_sum <= in_exponent_a;
 					exponent_diff <= exponent_diff;

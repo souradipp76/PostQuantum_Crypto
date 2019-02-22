@@ -1,6 +1,6 @@
 ///////////////////////
-///  Bit order 
-///
+///  Angle combination detail Bit order 3210 (3->sign,21->variable no,0->multipliedBy2) 
+///  
 /////////////////////
 
 
