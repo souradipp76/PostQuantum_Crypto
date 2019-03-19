@@ -3,7 +3,7 @@ module decoder_type_2 #(
 	
 	parameter DATA_WIDTH = 32,
 	parameter CODE_WIDTH = 8,
-	parameter NUM_KEY_VAL = 12)
+	parameter KEY_VAL_ADDER_WIDTH = 4)
 	
 	(
 	input logic clock,
@@ -12,17 +12,19 @@ module decoder_type_2 #(
 	input logic [DATA_WIDTH-1:0] mem_key_val_data_out,
 	input logic [DATA_WIDTH-1:0] mem_state_var_data_out,
 
-	output logic [$clog(NUM_KEY_VAL)-1:0] mem_key_val_addr,
-	output logic [$clog(NUM_KEY_VAL)-1:0] mem_state_var_addr,
+	output logic [KEY_VAL_ADDER_WIDTH-1:0] mem_key_val_addr,
+	output logic [KEY_VAL_ADDER_WIDTH-1:0] mem_state_var_addr,
 	output logic [DATA_WIDTH-1:0] out_value);
 
 localparam STATE_DEFAULT = 4'd0;
 localparam STATE_MEM_WAIT = 4'd1;
 localparam STATE_DATA_OUT = 4'd2;
+localparam MEM_DELAY = 2;
 
 logic [3:0] state_decoder;
 logic counter;
-
+logic data_ready;
+logic [CODE_WIDTH-1:0] code;
 
 always @(posedge clock) begin
 
@@ -33,8 +35,9 @@ always @(posedge clock) begin
 				1'b1 : state_decoder <= STATE_MEM_WAIT ;
 				1'b0 : state_decoder <= STATE_DEFAULT;
 				endcase
-			mem_key_val_addr <= inp_code[];
-			mem_state_var_addr <= inp_code[];
+			mem_key_val_addr <= inp_code[CODE_WIDTH-1-3:0];
+			mem_state_var_addr <= inp_code[CODE_WIDTH-1-5:0];
+			code <= inp_code[CODE_WIDTH-1:0];
 			data_ready <= 1'b0;
 			end
 

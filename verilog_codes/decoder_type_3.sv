@@ -2,8 +2,8 @@
 module decoder_type_3 #(
 	
 	parameter DATA_WIDTH = 32,
-	parameter CODE_WIDTH = 7,
-	parameter NUM_KEY_VAL = 12)
+	parameter CODE_WIDTH = 8,
+	parameter ANGLE_ADDER_WIDTH = 5)
 	
 	(
 	input logic clock,
@@ -11,8 +11,9 @@ module decoder_type_3 #(
 	input logic [CODE_WIDTH-1:0] inp_code,
 	input logic [DATA_WIDTH-1:0] inp_normalized_angle,
 	input logic [DATA_WIDTH-1:0] inp_sine_cosine_value,
-
-	output logic [$clog(NUM_KEY_VAL)-1:0] mem_angle_normalized_addr,
+    input logic [DATA_WIDTH-1:0] mem_angle_normalized_data_out,
+    
+	output logic [ANGLE_ADDER_WIDTH-1:0] mem_angle_normalized_addr,
 	output logic sin_calc_start,
 	output logic [DATA_WIDTH-1:0] out_angle,
 	output logic out_sine_cosine,
@@ -23,11 +24,13 @@ localparam STATE_MEM_WAIT = 4'd1;
 localparam STATE_DATA_OUT = 4'd2;
 localparam STATE_SIN_VALUE_FETCH = 4'd3;
 localparam STATE_SIN_CALC_WAIT = 4'd4;
+localparam MEM_DELAY = 2;
+localparam SIN_CALC_DELAY = 3;
 
+logic data_ready;
 logic [3:0] state_decoder;
 logic counter_memory;
 logic counter_sin_calc;
-logic sin_calc_start;
 logic [CODE_WIDTH-1:0] code;
 
 always @(posedge clock) begin
@@ -39,7 +42,7 @@ always @(posedge clock) begin
 				1'b1 : state_decoder <= STATE_MEM_WAIT ;
 				1'b0 : state_decoder <= STATE_DEFAULT;
 				endcase
-			mem_angle_normalized_addr <= inp_code[];
+			mem_angle_normalized_addr <= inp_code[CODE_WIDTH-1-3:0];
 			code <= inp_code;
 			data_ready <= 1'b0;
 			end
@@ -59,7 +62,7 @@ always @(posedge clock) begin
 
 		STATE_SIN_VALUE_FETCH : begin
 			out_angle <= mem_angle_normalized_data_out;
-			out_sine_cosine <= code[];
+			out_sine_cosine <= code[CODE_WIDTH-1-2];
 			sin_calc_start <= 1'b1;
 			state_decoder <= STATE_SIN_CALC_WAIT;
 			end
@@ -76,7 +79,7 @@ always @(posedge clock) begin
 					state_decoder <= STATE_SIN_CALC_WAIT;
 					end
 				endcase
-
+            end
 		STATE_DATA_OUT : begin
 			out_value <= inp_sine_cosine_value;
 			state_decoder <= STATE_DEFAULT;
