@@ -102,7 +102,7 @@ always @(posedge clk) begin
 					state_angle_normalization <= 4'd1;
 					end
 				else begin
-					state_angle_normalization <= 4'd6;
+					state_angle_normalization <= 4'd8;		//4'd6 : for nomalization to [0, 2*pi]		//4'd8 : for normalization to [-pi, pi]
 					end
 				end
 			end

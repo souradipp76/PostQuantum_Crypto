@@ -18,33 +18,38 @@ module float_point_adder #(
 	input logic [EXP_LEN+MANTISSA_LEN+1-1:0] a,
 	input logic [EXP_LEN+MANTISSA_LEN+1-1:0] b,
 	input logic inp_data_ready,
+
 	output logic [EXP_LEN+MANTISSA_LEN+1-1:0] sum,
 	output logic sum_ready);
 
 logic [3:0] state;
+
 logic [EXP_LEN-1:0] in_exponent_a;
 logic [EXP_LEN-1:0] in_exponent_b;
-logic [MANTISSA_LEN-1:0] in_mantissa_a;
-logic [MANTISSA_LEN-1:0] in_mantissa_b;
+logic [MANTISSA_LEN+1-1:0] in_mantissa_a;
+logic [MANTISSA_LEN+1-1:0] in_mantissa_b;
 logic in_sign_a;
 logic in_sign_b;
+
 logic in_magnitudes_equal;
 logic operation_subtract;
 logic sign_sum;
+
 logic [EXP_LEN-1:0] exponent_sum;
-logic [MANTISSA_LEN-1:0] mantissa_sum;
+logic [MANTISSA_LEN+1+1-1:0] mantissa_sum;
 logic a_zero;
 logic b_zero;
-logic [EXP_LEN:0] exponent_diff;
-logic [MANTISSA_LEN:0] mantissa_diff;
+logic [EXP_LEN+1-1:0] exponent_diff;
+logic [MANTISSA_LEN+1+1-1:0] mantissa_diff;
 logic a_greater_b;
-logic [MANTISSA_LEN-1:0] mantissa_a_shifted;
-logic [MANTISSA_LEN-1:0] mantissa_b_shifted;
+logic [MANTISSA_LEN+1-1:0] mantissa_a_shifted;
+logic [MANTISSA_LEN+1-1:0] mantissa_b_shifted;
 logic exponent_diff_zero;
 
 assign a_zero = ~|{in_sign_a,in_exponent_a,in_mantissa_a};
 assign b_zero = ~|{in_sign_b,in_exponent_b,in_mantissa_b};
 assign exponent_diff_zero = ~|exponent_diff;
+
 
 always @(posedge clk) begin
 
@@ -79,26 +84,26 @@ always @(posedge clk) begin
 					sign_sum <= 0;
 					exponent_sum <= 0;
 					mantissa_sum <= 0;
-					state <= 4'd;
+					state <= 4'd6;
 				end // if (operation_subtract == 1'b1)
 				else begin
 					sign_sum <= in_sign_a;
 					exponent_sum <= in_exponent_a + 1;
 					mantissa_sum <= in_mantissa_a;
-					state <= 4'd;
+					state <= 4'd6;
 					end
 				end
 			else if (a_zero == 1'b1) begin
 				sign_sum <= in_sign_b;
 				exponent_sum <= in_exponent_b;
 				mantissa_sum <= in_mantissa_b;
-				state <= 4'd;
+				state <= 4'd6;
 				end
 			else if (b_zero == 1'b1) begin
 				sign_sum <= in_sign_a;
 				exponent_sum <= in_exponent_a;
 				mantissa_sum <= in_mantissa_a;
-				state <= 4'd;
+				state <= 4'd6;
 				end
 			else begin
 				sign_sum <= 0;
@@ -173,93 +178,93 @@ always @(posedge clk) begin
 			end
 
 		4'd5 : begin
-			case (mantissa_sum[])
+			case (mantissa_sum[MANTISSA_LEN+1+1-1:MANTISSA_LEN+1+1-1-3])
 
 				4'b0000 : begin
-					mantissa_sum <= mantissa_sum << 4;
-					exponent_sum <= exponent_sum + 4;
+					mantissa_sum <= mantissa_sum << 3;
+					exponent_sum <= exponent_sum - 3;
 					state <= 4'd5;
 					end
 				4'b0001 : begin
-					mantissa_sum <= mantissa_sum << 3;
-					exponent_sum <= exponent_sum + 3;
+					mantissa_sum <= mantissa_sum << 2;
+					exponent_sum <= exponent_sum - 2;
 					state <= 4'd6;
 					end
 				4'b0010 : begin
-					mantissa_sum <= mantissa_sum << 2;
-					exponent_sum <= exponent_sum + 2;
+					mantissa_sum <= mantissa_sum << 1;
+					exponent_sum <= exponent_sum - 1;
 					state <= 4'd6;
 					end
 				4'b0011 : begin
-					mantissa_sum <= mantissa_sum << 2;
-					exponent_sum <= exponent_sum + 2;
+					mantissa_sum <= mantissa_sum << 1;
+					exponent_sum <= exponent_sum - 1;
 					state <= 4'd6;
 					end
 				4'b0100 : begin
-					mantissa_sum <= mantissa_sum << 1;
-					exponent_sum <= exponent_sum + 1;
+					mantissa_sum <= mantissa_sum;
+					exponent_sum <= exponent_sum;
 					state <= 4'd6;
 					end
 				4'b0101 : begin
-					mantissa_sum <= mantissa_sum << 1;
-					exponent_sum <= exponent_sum + 1;
+					mantissa_sum <= mantissa_sum;
+					exponent_sum <= exponent_sum;
 					state <= 4'd6;
 					end
 				4'b0110 : begin
-					mantissa_sum <= mantissa_sum << 1;
-					exponent_sum <= exponent_sum + 1;
+					mantissa_sum <= mantissa_sum;
+					exponent_sum <= exponent_sum;
 					state <= 4'd6;
 					end
 				4'b0111 : begin
-					mantissa_sum <= mantissa_sum << 1;
-					exponent_sum <= exponent_sum + 1;
+					mantissa_sum <= mantissa_sum;
+					exponent_sum <= exponent_sum;
 					state <= 4'd6;
 					end
 				4'b1000 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				4'b1001 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				4'b1010 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				4'b1011 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				4'b1100 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				4'b1101 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				4'b1110 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				4'b1111 : begin
-					mantissa_sum <= mantissa_sum;
-					exponent_sum <= exponent_sum;
+					mantissa_sum <= mantissa_sum >> 1;
+					exponent_sum <= exponent_sum + 1;
 					state <= 4'd6;
 					end
 				endcase
 			end
 
 		4'd6 : begin
-			sum <= {sign_sum, exponent_sum, mantissa_sum};
+			sum <= {sign_sum, exponent_sum, mantissa_sum[MANTISSA_LEN+1+1-1-2:0]};
 			sum_ready <= 1'b1;
 			state <= 4'd0;
 			end
