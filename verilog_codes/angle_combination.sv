@@ -26,8 +26,8 @@ module angle_combination #(
 		output logic [EXP_LEN+MANTISSA_LEN+1-1:0] angle_combination_add_a [1:0],
 		output logic [EXP_LEN+MANTISSA_LEN+1-1:0] angle_combination_add_b [1:0],
 
-		output logic [$clog2(NUM_ANGLE_COMB):0] mem_angle_combination_detail_addr,
-		output logic [$clog2(NUM_ANGLE_COMB):0] mem_angle_combination_value_addr,
+		output logic [$clog2(NUM_ANGLE_COMB)-1:0] mem_angle_combination_detail_addr,
+		output logic [$clog2(NUM_ANGLE_COMB)-1:0] mem_angle_combination_value_addr,
 		output logic mem_angle_combination_value_write,
 		output logic [EXP_LEN+MANTISSA_LEN+1-1:0] mem_angle_combination_value_in);
 
