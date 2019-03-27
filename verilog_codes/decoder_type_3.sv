@@ -3,36 +3,42 @@ module decoder_type_3 #(
 	
 	parameter DATA_WIDTH = 32,
 	parameter CODE_WIDTH = 8,
-	parameter ANGLE_ADDER_WIDTH = 5)
+	parameter ANGLE_ADDR_WIDTH = 5)
 	
 	(
 	input logic clock,
 	input logic decode_start,
 	input logic [CODE_WIDTH-1:0] inp_code,
-	input logic [DATA_WIDTH-1:0] inp_normalized_angle,
 	input logic [DATA_WIDTH-1:0] inp_sine_cosine_value,
     input logic [DATA_WIDTH-1:0] mem_angle_normalized_data_out,
     
-	output logic [ANGLE_ADDER_WIDTH-1:0] mem_angle_normalized_addr,
-	output logic sin_calc_start,
+	output logic [ANGLE_ADDR_WIDTH-1:0] mem_angle_normalized_addr,
 	output logic [DATA_WIDTH-1:0] out_angle,
 	output logic out_sine_cosine,
+	output logic sin_calc_start,
+	
+	output logic data_ready,
 	output logic [DATA_WIDTH-1:0] out_value);
 
+//////////////////////////////////////
 localparam STATE_DEFAULT = 4'd0;
 localparam STATE_MEM_WAIT = 4'd1;
 localparam STATE_DATA_OUT = 4'd2;
 localparam STATE_SIN_VALUE_FETCH = 4'd3;
 localparam STATE_SIN_CALC_WAIT = 4'd4;
+
 localparam MEM_DELAY = 2;
 localparam SIN_CALC_DELAY = 3;
 
-logic data_ready;
+
+/////////////////////////////////////
 logic [3:0] state_decoder;
 logic counter_memory;
 logic counter_sin_calc;
 logic [CODE_WIDTH-1:0] code;
 
+
+////////////////////////////////////
 always @(posedge clock) begin
 
 	case (state_decoder)
