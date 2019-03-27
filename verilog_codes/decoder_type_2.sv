@@ -3,7 +3,7 @@ module decoder_type_2 #(
 	
 	parameter DATA_WIDTH = 32,
 	parameter CODE_WIDTH = 8,
-	parameter KEY_VAL_ADDER_WIDTH = 4)
+	parameter MEM_ADDR_WIDTH = 4)
 	
 	(
 	input logic clock,
@@ -12,20 +12,25 @@ module decoder_type_2 #(
 	input logic [DATA_WIDTH-1:0] mem_key_val_data_out,
 	input logic [DATA_WIDTH-1:0] mem_state_var_data_out,
 
-	output logic [KEY_VAL_ADDER_WIDTH-1:0] mem_key_val_addr,
-	output logic [KEY_VAL_ADDER_WIDTH-1:0] mem_state_var_addr,
-	output logic [DATA_WIDTH-1:0] out_value);
+	output logic [MEM_ADDR_WIDTH-1:0] mem_key_val_addr,
+	output logic [MEM_ADDR_WIDTH-1:0] mem_state_var_addr,
+	output logic [DATA_WIDTH-1:0] out_value,
+	output logic data_ready);
 
+///////////////////////////////////
 localparam STATE_DEFAULT = 4'd0;
 localparam STATE_MEM_WAIT = 4'd1;
 localparam STATE_DATA_OUT = 4'd2;
 localparam MEM_DELAY = 2;
 
+
+///////////////////////////////////
 logic [3:0] state_decoder;
-logic counter;
-logic data_ready;
+logic [3:0] counter;
 logic [CODE_WIDTH-1:0] code;
 
+
+///////////////////////////////////
 always @(posedge clock) begin
 
 	case (state_decoder)
@@ -65,7 +70,7 @@ always @(posedge clock) begin
 
 		default : begin
 			state_decoder <= STATE_DEFAULT;
-			counter <= MEM_DELAY-1;
+			counter <= MEM_DELAY - 1;
 			end
 		endcase
 	end
