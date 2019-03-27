@@ -267,8 +267,8 @@ case (state_term_accumulator)
 		case (term_detail_postfix[CODE_WIDTH-1-5:0])
 			3'b100 : add_start <= 1'b1;
 			3'b011 : add_start <= 1'b1;
-			3'b010 : mult_start <= 1'b1;
-			3'b001 : divide_start <= 1'b1;
+			3'b010 : divide_start <= 1'b1;
+			3'b001 : mult_start <= 1'b1;
 			3'b000 : exponent_start <= 1'b1;
 			endcase
 		end
