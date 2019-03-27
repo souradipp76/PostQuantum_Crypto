@@ -2,7 +2,10 @@
 
 module term_accumulator #(
 	parameter DATA_WIDTH = 32,
-	parameter CODE_WIDTH = 8)
+	parameter CODE_WIDTH = 8,
+	parameter NUM_KEY_VAL = 10,
+	parameter NUM_STATE_VAR = 9,
+	parameter ANGLE_ADDR_WIDTH = 22)
 	
 	(
 	input logic clock,
@@ -13,22 +16,35 @@ module term_accumulator #(
 	input logic [DATA_WIDTH-1:0] add_result,
 	input logic [DATA_WIDTH-1:0] divide_result,
 	input logic [DATA_WIDTH-1:0] exponent_result,
+
 	input logic mult_data_ready,
 	input logic add_data_ready,
 	input logic divide_data_ready,
 	input logic exponent_data_ready,
 
-	output logic term_accumulator_mult_start,
-	output logic term_accumulator_add_start,
-	output logic term_accumulator_exponent_start,
-	output logic term_accumulator_divide_start,
-	output logic [DATA_WIDTH-1:0] term_accumulator_operand_a,
-	output logic [DATA_WIDTH-1:0] term_accumulator_operand_b,
-	output logic term_accumulator_output_ready);
+	input logic [DATA_WIDTH-1:0] mem_angle_normalized_data_out,
+	input logic [DATA_WIDTH-1:0] mem_key_val_data_out,
+	input logic [DATA_WIDTH-1:0] mem_state_var_data_out,
+
+	output logic mult_start,
+	output logic add_start,
+	output logic exponent_start,
+	output logic divide_start,
+
+	output logic [DATA_WIDTH-1:0] operand_a,
+	output logic [DATA_WIDTH-1:0] operand_b,
+
+	output logic [ANGLE_ADDR_WIDTH-1:0] mem_angle_normalized_addr,
+	output logic [$clog2(NUM_KEY_VAL)-1:0] mem_key_val_addr,
+	output logic [$clog2(NUM_STATE_VAR)-1:0] mem_state_var_addr,
+
+	output logic output_value,
+	output logic output_ready);
 
 ///////////////////////////////////////////////
 localparam POSTFIX_DATA_WIDTH = 9;
 localparam POSTFIX_DATA_DEPTH = 1024;
+localparam POSTFIX_DATA_END_CODE = {CODE_WIDTH{1'b1}};
 
 ///////////////////////////////////////////////
 localparam STATE_DEFAULT = 4'd0;
@@ -84,6 +100,76 @@ assign alu_data_ready = mult_data_ready | add_data_ready | divide_data_ready | e
 logic alu_output;
 assign alu_output = mult_result | add_result | divide_result | exponent_result;
 
+
+////////////////////////////////////////////////
+logic [DATA_WIDTH-1:0] sine_calc_sin_value;
+logic sine_calc_done;
+
+logic [DATA_WIDTH-1:0] decoder_trigo_angle;
+logic decoder_trigo_sine_cosine;
+logic decoder_trigo_sine_calc_start;
+
+///////////////////////////////////////////////////
+decoder_type_1 #(
+	.DATA_WIDTH(DATA_WIDTH),
+	.CODE_WIDTH(CODE_WIDTH)
+) decoder_constants (
+	.clock        (clock),
+	.decode_start (decoder_const_start),
+	.inp_code     (term_detail_postfix),
+	.data_ready   (decoder_const_data_ready),
+	.out_value    (decoder_const_data)
+);
+
+
+decoder_type_2 #(
+	.DATA_WIDTH(DATA_WIDTH),
+	.CODE_WIDTH(CODE_WIDTH),
+	.MEM_ADDR_WIDTH($clog2(NUM_KEY_VAL))
+) decoder_key_val_state_var (
+	.clock                  (clock),
+	.decode_start           (decoder_state_var_key_val_start),
+	.inp_code               (term_detail_postfix),
+	.mem_key_val_data_out   (mem_key_val_data_out),
+	.mem_state_var_data_out (mem_state_var_data_out),
+	.mem_key_val_addr       (mem_key_val_addr),
+	.mem_state_var_addr     (mem_state_var_addr),
+	.out_value              (decoder_state_var_key_val_data),
+	.data_ready             (decoder_state_var_key_val_data_ready)
+);
+
+
+decoder_type_3 #(
+	.DATA_WIDTH(DATA_WIDTH),
+	.CODE_WIDTH(CODE_WIDTH),
+	.ANGLE_ADDR_WIDTH(ANGLE_ADDR_WIDTH)
+) decoder_trigo (
+	.clock                         (clock),
+	.decode_start                  (decoder_trigo_start),
+	.inp_code                      (term_detail_postfix),
+	.inp_sine_cosine_value         (sine_calc_sin_value),
+	.mem_angle_normalized_data_out (mem_angle_normalized_data_out),
+	.mem_angle_normalized_addr     (mem_angle_normalized_addr),
+	.sin_calc_start                (decoder_trigo_sine_calc_start),
+	.out_angle                     (decoder_trigo_angle),
+	.out_sine_cosine               (decoder_trigo_sine_cosine),
+	.out_value                     (decoder_trigo_data)
+);
+
+
+sine_calculator #(
+	.EXP_LEN(EXP_LEN),
+	.MANTISSA_LEN(MANTISSA_LEN)
+) inst_sine_calculator (
+	.clk             (clock),
+	.enable          (decoder_trigo_sine_calc_start),
+	.inp_theta       (decoder_trigo_angle),
+	.inp_sine_cosine (decoder_trigo_sine_cosine),
+	.out_value       (sine_calc_sin_value),
+	.out_data_ready  (sine_calc_done)
+);
+
+
 /////////////////////////////////////////////////
 always @(posedge clock) begin
 
@@ -96,17 +182,16 @@ case (state_term_accumulator)
 			1'b0 : state_term_accumulator <= STATE_DEFAULT;
 			endcase
 
-		term_accumulator_output_ready<= 4'd0;
+		output_ready <= 4'd0;
 		stack_extension_read_pointer <= 2'b00;
 		mem_term_detail_postfix_addr <= 0;
 		end
 
 	STATE_POSTFIX_TERM_READ : begin
 		mem_term_detail_postfix_addr <= mem_term_detail_postfix_addr + 1;
-
+		term_detail_postfix <= mem_term_detail_postfix_data_out;
 		//decoder_constant_code <= mem_term_detail_postfix_data_out;
 		//decoder_state_var_key_val_code <= mem_term_detail_postfix_data_out;
-		term_detail_postfix <= mem_term_detail_postfix_data_out;
 
 		stack_push <= 1'b0;
 
@@ -172,27 +257,27 @@ case (state_term_accumulator)
 	STATE_OPN : begin
 		state_term_accumulator <= STATE_WAIT_OPN;
 
-		term_accumulator_operand_a <= stack_extension[0];
+		operand_a <= stack_extension[0];
 
 		case (term_detail_postfix[CODE_WIDTH-1-5:0])
-			3'b100 : term_accumulator_operand_b <= {stack_extension[1][DATA_WIDTH-1], stack_extension[1][DATA_WIDTH-2:0]};
-			default  : term_accumulator_operand_b <= stack_extension[1];
+			3'b100 : operand_b <= {stack_extension[1][DATA_WIDTH-1], stack_extension[1][DATA_WIDTH-2:0]};
+			default  : operand_b <= stack_extension[1];
 			endcase
 
 		case (term_detail_postfix[CODE_WIDTH-1-5:0])
-			3'b100 : term_accumulator_add_start <= 1'b1;
-			3'b011 : term_accumulator_add_start <= 1'b1;
-			3'b010 : term_accumulator_mult_start <= 1'b1;
-			3'b001 : term_accumulator_divide_start <= 1'b1;
-			3'b000 : term_accumulator_exponent_start <= 1'b1;
+			3'b100 : add_start <= 1'b1;
+			3'b011 : add_start <= 1'b1;
+			3'b010 : mult_start <= 1'b1;
+			3'b001 : divide_start <= 1'b1;
+			3'b000 : exponent_start <= 1'b1;
 			endcase
 		end
 
 	STATE_WAIT_OPN : begin
-		term_accumulator_mult_start <= 1'b0;
-		term_accumulator_add_start <= 1'b0;
-		term_accumulator_exponent_start <= 1'b0;
-		term_accumulator_divide_start <= 1'b0;
+		mult_start <= 1'b0;
+		add_start <= 1'b0;
+		exponent_start <= 1'b0;
+		divide_start <= 1'b0;
 
 		case (alu_data_ready)
 			1'b1 : begin
@@ -213,7 +298,16 @@ case (state_term_accumulator)
 
 		stack_pop <= 1'b0;
 
-		state_term_accumulator <= STATE_POSTFIX_TERM_READ;
+		case (term_detail_postfix)
+			POSTFIX_DATA_END_CODE : state_term_accumulator <= STATE_DATA_OUT;
+			default : state_term_accumulator <= STATE_POSTFIX_TERM_READ;
+			endcase
+		end
+
+	STATE_DATA_OUT : begin
+		output_ready <= 1'b1;
+		out_value <= stack_extension[0];
+		state_term_accumulator <= STATE_DEFAULT;
 		end
 
 	default : begin
