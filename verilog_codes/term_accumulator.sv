@@ -169,6 +169,21 @@ sine_calculator #(
 	.out_data_ready  (sine_calc_done)
 );
 
+stack #(
+	.DATA_WIDTH(DATA_WIDTH),
+	.DEPTH(64)
+) inst_stack (
+	.clock       (clock),
+	.reset       (reset),
+	.inp_data    (stack_input),
+	.push        (stack_push),
+	.pop         (stack_pop),
+	.out_data    (stack_output),
+	.stack_empty (stack_empty),
+	.stack_full  (stack_full)
+);
+
+
 
 /////////////////////////////////////////////////
 always @(posedge clock) begin
