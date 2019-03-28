@@ -38,6 +38,6 @@ always @(posedge clock) begin
 			5'b10011: data <= 16'hf2cf;
 			5'b10100: data <= 16'h1b4f;
 			endcase
-		end
+			end
 	end
 endmodule	

@@ -21,3 +21,59 @@ update_compile_order -fileset sources_1
 add_files -norecurse {/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv}
 update_compile_order -fileset sources_1
 reset_run synth_1
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 22:51:22 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 22:54:26 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 22:55:58 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:02:28 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:03:49 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:17:32 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:19:02 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:19:39 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:25:02 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:29:01 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+CRITICAL WARNING: [HDL 9-806] Syntax error near "case". [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv:18]
+CRITICAL WARNING: [HDL 9-806] Syntax error near "end". [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv:42]
+[Thu Mar 28 23:44:59 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:46:03 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Thu Mar 28 23:47:11 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
