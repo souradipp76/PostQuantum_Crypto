@@ -10,7 +10,7 @@ module angle_combination #(
 	parameter NUM_ANGLE_COMB = 8)
 	
 	(
-		input logic clk,
+		input logic clock,
 		input logic reset,
 		input logic angle_combination_start,
 		input logic [EXP_LEN+MANTISSA_LEN+1-1:0] input_initial_value [5:0],
@@ -41,7 +41,7 @@ logic [MANTISSA_LEN-1:0] angle_mantissa [3:0];
 integer j;
 
 
-always @(posedge clk) begin		//angle_combination
+always @(posedge clock) begin		//angle_combination
 
 	case (state_angle_combination)
 
@@ -164,7 +164,6 @@ always @(posedge clk) begin		//angle_combination
 				2'b00 : state_angle_combination <= 4'd4;
 				2'b01 : state_angle_combination <= 4'd4;
 				2'b10 : state_angle_combination <= 4'd4;
-				//default : state_angle_combination <= 4'd4;
 				endcase
 			end
 
@@ -185,7 +184,6 @@ always @(posedge clk) begin		//angle_combination
 				2'b00 : state_angle_combination <= 4'd6;
                 2'b01 : state_angle_combination <= 4'd6;
                 2'b10 : state_angle_combination <= 4'd6;
-//				default : state_angle_combination <= 4'd6;
 				endcase
 			end
 
