@@ -1,0 +1,189 @@
+/*
+
+Xilinx Vivado v2017.4 (64-bit) [Major: 2017, Minor: 4]
+SW Build: 2086221 on Fri Dec 15 20:54:30 MST 2017
+IP Build: 2085800 on Fri Dec 15 22:25:07 MST 2017
+
+Process ID: 7245
+License: Customer
+
+Current time: 	Thu Mar 28 22:36:40 IST 2019
+Time zone: 	India Standard Time (Asia/Kolkata)
+
+OS: Ubuntu
+OS Version: 4.15.0-46-generic
+OS Architecture: amd64
+Available processors (cores): 4
+
+Display: :1
+Screen size: 1920x1080
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 281 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	/opt/Xilinx/Vivado/2017.4/tps/lnx64/jre
+JVM executable location: 	/opt/Xilinx/Vivado/2017.4/tps/lnx64/jre/bin/java
+
+User name: 	exbiks
+User home directory: /home/exbiks
+User working directory: /home/exbiks/BTP/Phase2/BTP/verilog_codes
+User country: 	IN
+User language: 	en
+User locale: 	en_IN
+
+RDI_BASEROOT: /opt/Xilinx/Vivado
+HDI_APPROOT: /opt/Xilinx/Vivado/2017.4
+RDI_DATADIR: /opt/Xilinx/Vivado/2017.4/data
+RDI_BINDIR: /opt/Xilinx/Vivado/2017.4/bin
+
+Vivado preferences file location: /home/exbiks/.Xilinx/Vivado/2017.4/vivado.xml
+Vivado preferences directory: /home/exbiks/.Xilinx/Vivado/2017.4/
+Vivado layouts directory: /home/exbiks/.Xilinx/Vivado/2017.4/layouts
+PlanAhead jar file location: 	/opt/Xilinx/Vivado/2017.4/lib/classes/planAhead.jar
+Vivado log file location: 	/home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.log
+Vivado journal file location: 	/home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-7245-quaser
+
+GUI allocated memory:	124 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 770 MB
+
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// [GUI Memory]: 55 MB (+55565kb) [00:00:13]
+// [Engine Memory]: 768 MB (+654002kb) [00:00:13]
+selectList(PAResourceQtoS.SyntheticaGettingStartedView_RECENT_PROJECTS, "/home/exbiks/ProjectPunisher/ProjectPunisher.xpr", 0); // q (O, cj)
+// Opening Vivado Project: /home/exbiks/ProjectPunisher/ProjectPunisher.xpr. Version: Vivado v2017.4 
+// bs (cj):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project /home/exbiks/ProjectPunisher/ProjectPunisher.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 812 MB (+5439kb) [00:00:17]
+// Tcl Message: open_project /home/exbiks/ProjectPunisher/ProjectPunisher.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// HMemoryUtils.trashcanNow. Engine heap size: 822 MB. GUI used memory: 37 MB. Current time: 3/28/19 10:36:42 PM IST
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 61 MB (+2609kb) [00:00:19]
+// [Engine Memory]: 858 MB (+6036kb) [00:00:21]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2017.4/data/ip'. 
+// Project name: ProjectPunisher; location: /home/exbiks/ProjectPunisher; part: xc7a200tsbg484-1
+// Tcl Message: open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:05 . Memory (MB): peak = 6065.367 ; gain = 66.629 ; free physical = 3560 ; free virtual = 7130 
+dismissDialog("Open Project"); // bs (cj)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// [Engine Memory]: 917 MB (+16950kb) [00:00:27]
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// [GUI Memory]: 65 MB (+1561kb) [00:00:29]
+// Elapsed time: 26 seconds
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // B (D, cj)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // B (D, cj)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, stack (stack.sv)]", 2); // B (D, cj)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, stack (stack.sv)]", 2); // B (D, cj)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1); // B (D, cj)
+// [GUI Memory]: 73 MB (+5004kb) [00:01:08]
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv), inst_angle_normalization_wrapper : xil_defaultlib.angle_normalization_wrapper]", 3, false); // B (D, cj)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv), inst_rams_sp_rom_angle_comb_detail : xil_defaultlib.rams_sp_rom_angle_comb_detail]", 6, false); // B (D, cj)
+// Elapsed time: 10 seconds
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1); // B (D, cj)
+// PAPropertyPanels.initPanels (state_var_evaluator.sv) elapsed time: 0.2s
+// [GUI Memory]: 79 MB (+2239kb) [00:01:24]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Add Sources]", 2, false); // u (O, cj)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// c (cj): Add Sources: addNotify
+selectButton("NEXT", "Next >"); // JButton (h, c)
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a (C, c)
+// HMemoryUtils.trashcanNow. Engine heap size: 948 MB. GUI used memory: 45 MB. Current time: 3/28/19 10:37:57 PM IST
+// Elapsed time: 10 seconds
+String[] filenames31467 = {"/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv", "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv"};
+setFileChooser(filenames31467);
+selectButton("FINISH", "Finish"); // JButton (h, c)
+// 'h' command handler elapsed time: 15 seconds
+// TclEventType: DG_GRAPH_STALE
+dismissDialog("Add Sources"); // c (cj)
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files -norecurse {/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv} 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// [Engine Memory]: 965 MB (+2059kb) [00:01:41]
+// TclEventType: DG_GRAPH_GENERATED
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1); // B (D, cj)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // B (D, cj)
+// [GUI Memory]: 85 MB (+2231kb) [00:01:47]
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, angle_normalization_wrapper.sv]", 2, false); // B (D, cj)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, angle_normalization_wrapper.sv]", 2, false); // B (D, cj)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, angle_normalization_wrapper.sv]", 2, false, false, false, false, false, true); // B (D, cj) - Double Click
+selectCodeEditor("angle_normalization_wrapper.sv", 342, 145); // cd (w, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 137, 426); // cd (w, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 113, 440); // cd (w, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 436, 169); // cd (w, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 503, 240); // cd (w, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 366, 295); // cd (w, cj)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 15 seconds
+selectCodeEditor("angle_normalization_wrapper.sv", 151, 205); // cd (w, cj)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// [Engine Memory]: 1,018 MB (+4604kb) [00:03:11]
+// TclEventType: DG_GRAPH_GENERATED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,018 MB. GUI used memory: 44 MB. Current time: 3/28/19 10:39:38 PM IST
+// Elapsed time: 42 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv), inst_angle_normalization_wrapper : angle_normalization_wrapper (angle_normalization_wrapper.sv)]", 3); // B (D, cj)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv), inst_angle_normalization_wrapper : angle_normalization_wrapper (angle_normalization_wrapper.sv)]", 3); // B (D, cj)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv), inst_term_accumulator : term_accumulator (term_accumulator.sv)]", 4); // B (D, cj)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv), inst_term_accumulator : term_accumulator (term_accumulator.sv)]", 4); // B (D, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 258, 40); // cd (w, cj)
+// [GUI Memory]: 92 MB (+2756kb) [00:03:27]
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1); // B (D, cj)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1); // B (D, cj)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1, true); // B (D, cj) - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // u (O, cj)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// bs (cj):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cj): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (f)
+dismissDialog("Launch Runs"); // f (cj)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, stack (stack.sv)]", 7, true); // B (D, cj) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1, true); // B (D, cj) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1, true); // B (D, cj) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1, true, false, false, false, false, true); // B (D, cj) - Double Click - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv)]", 1); // B (D, cj)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, exp_evaluator (state_var_evaluator.sv), inst_term_accumulator : term_accumulator (term_accumulator.sv)]", 4); // B (D, cj)
+// Elapsed time: 13 seconds
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // B
+// [GUI Memory]: 97 MB (+625kb) [00:04:32]
+// Elapsed time: 80 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, stack (stack.sv)]", 11); // B (D, cj)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, stack (stack.sv), stack_mem : rams_sp_rf_rst (rams_sp_rf_rst.sv)]", 12, false); // B (D, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 385, 189); // cd (w, cj)
+selectCodeEditor("angle_normalization_wrapper.sv", 377, 216); // cd (w, cj)
