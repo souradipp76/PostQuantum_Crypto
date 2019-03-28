@@ -56,4 +56,15 @@ always @(posedge clk) begin
 	/////////////////////////////////////////////////////////////////////
 	end
 
+/* TO BE COMPLETED BY AGRAWAL
+rams_sp_rom_angle_sine_calculator #(
+    .MEM_WIDTH(SIG_MANTISSA_BITS),
+    .MEM_DEPTH()
+) inst_rams_sp_rom_sine_calculator (
+    .clock   (clock),
+    .enable  (1),
+    .address (mem_sine_cosine_lut_addr),
+    .dout    (mem_sine_cosine_lut_data_out)
+);*/
+
 endmodule // sine_calculator
