@@ -5,7 +5,9 @@ module term_accumulator #(
 	parameter CODE_WIDTH = 8,
 	parameter NUM_KEY_VAL = 10,
 	parameter NUM_STATE_VAR = 9,
-	parameter ANGLE_ADDR_WIDTH = 22)
+	parameter ANGLE_ADDR_WIDTH = 22,
+	parameter EXP_LEN = 8,
+	parameter MANTISSA_LEN = 23)
 	
 	(
 	input logic clock,
@@ -54,6 +56,7 @@ localparam STATE_WAIT_OPN = 4'd3;
 localparam STATE_WAIT_DATA_DECODE = 4'd4;
 localparam STATE_PUSH_DATA_ALU = 4'd5;
 localparam STATE_PUSH_DATA_DECODED = 4'd6;
+localparam STATE_DATA_OUT = 4'd7;
 
 ///////////////////////////////////////////////
 logic [3:0] state_term_accumulator;
@@ -321,7 +324,7 @@ case (state_term_accumulator)
 
 	STATE_DATA_OUT : begin
 		output_ready <= 1'b1;
-		out_value <= stack_extension[0];
+		output_value <= stack_extension[0];
 		state_term_accumulator <= STATE_DEFAULT;
 		end
 

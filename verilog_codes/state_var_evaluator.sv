@@ -12,7 +12,11 @@ module exp_evaluator #(
 	parameter DATA_WIDTH = 32,
 	parameter NUM_INIT_VAL = 6,
 	parameter NUM_EVAL_VAL = 3,
-	parameter NUM_KEY_VAL = 23)
+	parameter NUM_KEY_VAL = 23,
+	parameter NUM_ANGLE_COMB = 21,
+	parameter EXP_LEN = 8,
+    parameter MANTISSA_LEN = 23,
+    parameter CODE_WIDTH = 8)
 	
 	(
 		input logic clock,
@@ -60,7 +64,8 @@ module exp_evaluator #(
         output logic [DATA_WIDTH-1:0] div_dividend,
         output logic div_start,
         
-		output logic data_ready);
+        
+		output logic exp_eval_data_ready);
 
 ////////////////////////////////////////////
 localparam STATE_DEFAULT = 4'd0;
@@ -95,8 +100,8 @@ logic [$clog2(NUM_ANGLE_COMB)-1:0] angle_normalization_mem_angle_combination_val
 logic [DATA_WIDTH-1:0] angle_normalization_mem_angle_combination_value_data_in;
 logic angle_normalization_mem_angle_combination_value_write_en;
 
-logic term_accumulation_start;
-logic term_accumulation_done;
+logic term_accumulator_start;
+logic term_accumulator_done;
 logic [$clog2(NUM_EVAL_VAL+NUM_INIT_VAL)-1:0] term_accumulator_mem_state_var_addr;
 logic [DATA_WIDTH-1:0] term_accumulator_output_value;
 
@@ -116,6 +121,20 @@ logic term_accumulator_add_start;
 logic term_accumulator_mult_start;
 logic term_accumulator_div_start;
 logic term_accumulator_exponent_start;
+logic term_accumulator_output_ready;
+
+////////////////////////////////////////
+logic mem_angle_combination_value_write;
+logic [$clog2(NUM_ANGLE_COMB)-1:0] mem_angle_combination_value_write_addr;
+logic [$clog2(NUM_ANGLE_COMB)-1:0] mem_angle_combination_value_read_addr;
+logic [DATA_WIDTH-1:0] mem_angle_combination_value_in;
+logic [DATA_WIDTH-1:0] mem_angle_combination_value_data_out;
+logic [15:0] mem_angle_combination_detail_datao;
+
+logic [DATA_WIDTH-1:0] mem_angle_normalized_data_out;
+logic [$clog2(NUM_ANGLE_COMB)-1:0] term_accumulator_mem_angle_normalized_addr;  
+logic start_angle_normalization;
+logic angle_normalization_done;
 
 
 angle_combination #(
@@ -149,8 +168,8 @@ angle_normalization_wrapper #(
 	.clock                                  (clock),
 	.start_angle_normalization              (start_angle_normalization),
 	.mem_angle_combination_value_data_out   (mem_angle_combination_value_data_out),
-	.angle_normalization_add_sum            (add_result),
-	.angle_normalization_add_ready          (add_result_ready),
+	.angle_normalization_add_sum            (add_result[0]),
+	.angle_normalization_add_ready          (add_result_ready[0]),
 	.mem_angle_combination_value_read_addr  (angle_normalization_mem_angle_combination_value_read_addr),
 	.mem_angle_combination_value_write_addr (angle_normalization_mem_angle_combination_value_write_addr),
 	.mem_angle_combination_value_data_in    (angle_normalization_mem_angle_combination_value_data_in),
@@ -166,26 +185,26 @@ term_accumulator #(
 	.DATA_WIDTH(DATA_WIDTH),
 	.CODE_WIDTH(CODE_WIDTH),
 	.NUM_KEY_VAL(NUM_KEY_VAL),
-	.NUM_STATE_VAR(NUM_STATE_VAR),
-	.ANGLE_ADDR_WIDTH(ANGLE_ADDR_WIDTH)
+	.NUM_STATE_VAR(NUM_INIT_VAL+NUM_EVAL_VAL),
+	.ANGLE_ADDR_WIDTH($clog2(NUM_ANGLE_COMB))
 ) inst_term_accumulator (
 	.clock                         (clock),
 	.reset                         (reset),
 	.term_accumulator_start        (term_accumulator_start),
 	.mult_result                   (mult_result),
 	.add_result                    (add_result[0]),
-	.divide_result                 (divide_result),
+	.divide_result                 (div_result),
 	.exponent_result               (exponent_result),
 	.mult_data_ready               (mult_result_ready),
-	.add_data_ready                (add_result_ready),
-	.divide_data_ready             (divide_result_ready),
+	.add_data_ready                (add_result_ready[0]),
+	.divide_data_ready             (div_result_ready),
 	.exponent_data_ready           (exponent_result_ready),
 	.mem_angle_normalized_data_out (mem_angle_normalized_data_out),
 	.mem_key_val_data_out          (mem_key_val_data_out),
 	.mem_state_var_data_out        (mem_state_var_data_out),
 	.mult_start                    (term_accumulator_mult_start),
-	.add_start                     (add_start),
-	.exponent_start                (exponent_start),
+	.add_start                     (term_accumulator_add_start),
+	.exponent_start                (term_accumulator_exponent_start),
 	.divide_start                  (term_accumulator_div_start),
 	.operand_a                     (term_accumulator_operand_a),
 	.operand_b                     (term_accumulator_operand_b),
@@ -208,13 +227,14 @@ simple_dual_one_clock #(
 	.addr_a     (mem_angle_combination_value_write_addr),
 	.addr_b     (mem_angle_combination_value_read_addr),
 	.data_in_a  (mem_angle_combination_value_in),
-	.data_out_b (data_out_b)
+	.data_out_b (mem_angle_combination_value_data_out)
 );
 
 
+
 rams_sp_rom_angle_comb_detail #(
-	.MEM_WIDTH(),
-	.MEM_DEPTH()
+	.MEM_WIDTH(16),
+	.MEM_DEPTH(21)
 ) inst_rams_sp_rom_angle_comb_detail (
 	.clock   (clock),
 	.enable  (1),
@@ -285,22 +305,22 @@ always @(posedge clock) begin
 			end
 
 		STATE_TERM_ACC_START : begin
-			term_accumulation_start <= 1'b1;
+			term_accumulator_start <= 1'b1;
 			state_exp_eval <= STATE_TERM_ACC_WAIT;
 			end
 
 		STATE_TERM_ACC_WAIT : begin
-			if (term_accumulation_done == 1'b1) begin
+			if (term_accumulator_done == 1'b1) begin
 				state_exp_eval <= STATE_DATA_OUT;
 				end
 			else begin
 				state_exp_eval <= STATE_TERM_ACC_WAIT;
 				end
-			term_accumulation_start <= 1'b0;
+			term_accumulator_start <= 1'b0;
 			end
 
 		STATE_DATA_OUT : begin
-			data_ready <= 1'b1;
+			exp_eval_data_ready <= 1'b1;
 			state_exp_eval <= STATE_DEFAULT;
 			end
 
@@ -309,7 +329,7 @@ always @(posedge clock) begin
 			exp_eval_data_ready <= 1'b1;
 			angle_combination_start <= 1'b0;
 			normalize_angle_start <= 1'b0;
-			term_accumulation_start <= 1'b0;
+			term_accumulator_start <= 1'b0;
 			//term_division_start <= 1'b0;
 			//init_val <= 0;	//write a loop here
 			end
@@ -339,7 +359,11 @@ always @(*) begin
 			exponent_operand_b <= 0;
 			mult_start <= 0;
 
-			divide_start <= 0;
+			div_start <= 0;
+			
+			
+			
+			
 			end
 
 		STATE_NORM_ANGLE_WAIT : begin
@@ -355,7 +379,7 @@ always @(*) begin
 			mult_operand_b <= 0;
 			mult_start <= 0;
 
-			divide_start <= 0;
+			div_start <= 0;
 			end
 
 		STATE_TERM_ACC_WAIT: begin
@@ -375,7 +399,7 @@ always @(*) begin
 			exponent_operand_b <= term_accumulator_operand_b;
 			exponent_start <= term_accumulator_exponent_start;
 			
-			divide_start <= term_accumulator_divide_start;
+			div_start <= term_accumulator_div_start;
 			end
 		default: begin
 			add_operand_a[0] <= 0;
@@ -393,7 +417,7 @@ always @(*) begin
 			exponent_operand_b <= 0;
 
 			exponent_start <= 0;
-			exp_eval_divide_start <= 0;
+			div_start <= 0;
 			end
 		endcase
     end
