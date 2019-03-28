@@ -82,25 +82,28 @@ always @(posedge clock) begin
 		STATE_NORMALIZATION_WAIT : begin
 			angle_normalization_input_ready <= 1'b0;
 
-			if (angle_normalization_out_ready)
+			if (angle_normalization_out_ready) begin
 				state_angle_normalization <= STATE_END_SEQUENCE;
 				mem_angle_combination_value_write_en <= 1'b1;
-			else
+				end
+			else begin
 				state_angle_normalization <= STATE_NORMALIZATION_WAIT;
 				mem_angle_combination_value_write_en <= 1'b0;
-			end
-
+                end
+            end
 		STATE_END_SEQUENCE : begin
 			mem_angle_combination_value_read_addr <= mem_angle_combination_value_read_addr + 1;
 
-			if (mem_angle_combination_value_read_addr == (NUM_ANGLE-1))
+			if (mem_angle_combination_value_read_addr == (NUM_ANGLE-1)) begin
 				state_angle_normalization <= STATE_DEFAULT;
 				angle_normalization_input_ready <= 1'b0;
 				angle_normalization_done <= 1'b1;
-			else
+				end
+			else begin
 				state_angle_normalization <= STATE_NORMALIZATION_WAIT;
 				angle_normalization_input_ready <= 1'b1;
 				angle_normalization_done <= 1'b0;
+				end
 			end 
 
 		default : begin

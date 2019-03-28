@@ -1,0 +1,100 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Wed Mar 13 20:25:21 2019
+# Process ID: 4237
+# Current directory: /home/exbiks/BTP/Phase2/BTP/verilog_codes
+# Command line: vivado
+# Log file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.log
+# Journal file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/exbiks/ProjectPunisher/ProjectPunisher.xpr
+update_compile_order -fileset sources_1
+add_files -norecurse {/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/stack.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top angle_normalization [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+add_files -norecurse /home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top float_point_multiplier [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files /home/exbiks/Phase2/BTP/verilog_codes/float_point_adder.sv] -no_script -reset -force -quiet
+remove_files  /home/exbiks/Phase2/BTP/verilog_codes/float_point_adder.sv
+export_ip_user_files -of_objects  [get_files /home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv] -no_script -reset -force -quiet
+remove_files  /home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv
+export_ip_user_files -of_objects  [get_files /home/exbiks/Phase2/BTP/verilog_codes/angle_combination.sv] -no_script -reset -force -quiet
+remove_files  /home/exbiks/Phase2/BTP/verilog_codes/angle_combination.sv
+export_ip_user_files -of_objects  [get_files /home/exbiks/Downloads/angle_normalization.sv] -no_script -reset -force -quiet
+remove_files  /home/exbiks/Downloads/angle_normalization.sv
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+add_files -norecurse /home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top exponent_operation [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top float_point_adder [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top sine_calculator [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top stack [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top float_point_multiplier [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
