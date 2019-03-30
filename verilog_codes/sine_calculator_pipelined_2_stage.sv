@@ -14,7 +14,7 @@ module sine_calculator #(
 	output logic out_data_ready);
 
 
-localparam SIG_MANTISSA_BITS = 3;
+localparam SIG_MANTISSA_BITS = 6;
 
 logic [3:0] state_sine_calculator;
 
@@ -56,15 +56,25 @@ always @(posedge clk) begin
 	/////////////////////////////////////////////////////////////////////
 	end
 
-/* TO BE COMPLETED BY AGRAWAL
-rams_sp_rom_angle_sine_calculator #(
-    .MEM_WIDTH(SIG_MANTISSA_BITS),
-    .MEM_DEPTH()
-) inst_rams_sp_rom_sine_calculator (
-    .clock   (clock),
+rams_sp_rom_angle_sine_val_exp0 #(
+    .MEM_WIDTH(32),
+    .MEM_DEPTH(64)
+) inst_rams_sp_rom_sine_val_exp0 (
+    .clock   (clk),
     .enable  (1),
     .address (mem_sine_cosine_lut_addr),
-    .dout    (mem_sine_cosine_lut_data_out)
-);*/
+    .dout    (mem_sine_cosine_lut_data_out[0])
+);
+
+rams_sp_rom_angle_sine_val_exp1 #(
+    .MEM_WIDTH(32),
+    .MEM_DEPTH(64)
+) inst_rams_sp_rom_sine_val_exp1 (
+    .clock   (clk),
+    .enable  (1),
+    .address (mem_sine_cosine_lut_addr),
+    .dout    (mem_sine_cosine_lut_data_out[1])
+);
+
 
 endmodule // sine_calculator
