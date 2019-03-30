@@ -10,7 +10,7 @@ module mult_add #(
 		input logic [DATA_WIDTH-1:0] mult_result,
 		input logic mult_result_ready,
 
-		input logic [DATA_WIDTH-1] add_result,
+		input logic [DATA_WIDTH-1:0] add_result,
 		input logic add_result_ready,
 
 		output logic [DATA_WIDTH-1:0] mult_a,
@@ -19,10 +19,17 @@ module mult_add #(
 
 		output logic [DATA_WIDTH-1:0] add_a,
 		output logic [DATA_WIDTH-1:0] add_b,
-		output logic add_start.
+		output logic add_start,
 
 		output logic [DATA_WIDTH-1:0] out_value,
 		output logic data_ready);
+
+
+localparam STATE_DEFAULT = 4'd0;
+localparam STATE_MULT_BEGIN = 4'd1;
+localparam STATE_MULT_WAIT = 4'd2;
+localparam STATE_ADD_WAIT = 4'd3;
+
 
 
 logic [3:0] state_mult_add;
@@ -33,12 +40,12 @@ always @(posedge clock) begin
 
 		STATE_DEFAULT : begin
 			case (start_mult_add)
-				1'b1 : state_mult_add <= STATE_;
+				1'b1 : state_mult_add <= STATE_MULT_BEGIN;
 				1'b0 : state_mult_add <= STATE_DEFAULT;
 				endcase
 			mult_a <= inp_values[0];
 			mult_b <= inp_values[1];
-			add_a <= inp_values[2]
+			add_a <= inp_values[2];
 
 			data_ready <= 1'b0;
 			end
@@ -62,7 +69,7 @@ always @(posedge clock) begin
 					add_start <= 1'b1;
 					end
 				endcase
-
+                end
 		STATE_ADD_WAIT : begin
 			add_start <= 1'b0;
 
