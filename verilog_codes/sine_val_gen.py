@@ -2,7 +2,7 @@ import math
 exp_len = 8
 mantissa_len = 23
 
-sig_mantissa_len = 3
+sig_mantissa_len = 6
 
 def decimalToBinary(num, k_prec) :
     binary = ""  
@@ -76,6 +76,8 @@ for i in range(2**(sig_mantissa_len)):
 	val_str = "{0:032b}".format(val)
 	#print(val_str)
 	theta = ieee2dec(val_str)
-	ctheta = math.cos(theta)
-	stheta = math.sin(theta) 
-	print(theta,dec2ieee(ctheta),dec2ieee(stheta))
+	#ctheta = math.cos(theta)
+	stheta = math.sin(theta)
+	ieee_stheta = dec2ieee(stheta)
+	h = hex(int(ieee_stheta,2)) 
+	print("6'b{0:06b}".format(i)+": data<= 32'h"+h[2:]+";")
