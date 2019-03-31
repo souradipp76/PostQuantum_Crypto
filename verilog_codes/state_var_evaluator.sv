@@ -9,7 +9,6 @@
 /////////////////////////////////////////////////////////////////////////
 
 module exp_evaluator #(
-	parameter DATA_WIDTH = 32,
 	parameter NUM_INIT_VAL = 6,
 	parameter NUM_EVAL_VAL = 3,
 	parameter NUM_KEY_VAL = 23,
@@ -78,7 +77,7 @@ localparam STATE_TERM_ACC_WAIT = 4'd6;
 localparam STATE_FETCH_INIT_VAL = 4'd7;
 localparam STATE_DATA_OUT = 4'd8;
 
-
+localparam DATA_WIDTH = 1 + EXP_LEN + MANTISSA_LEN;
 /////////////////////////////////////////
 logic [DATA_WIDTH-1:0] init_val [NUM_INIT_VAL-1:0];
 logic [3:0] state_exp_eval;
