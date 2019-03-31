@@ -19,7 +19,7 @@ module mult_add #(
 
 		output logic [DATA_WIDTH-1:0] add_a,
 		output logic [DATA_WIDTH-1:0] add_b,
-		output logic add_start.
+		output logic add_start,
 
 		output logic [DATA_WIDTH-1:0] out_value,
 		output logic data_ready);
