@@ -2,8 +2,8 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Thu Mar 28 22:36:12 2019
-# Process ID: 7245
+# Start of session at: Sat Mar 30 21:38:19 2019
+# Process ID: 1508
 # Current directory: /home/exbiks/BTP/Phase2/BTP/verilog_codes
 # Command line: vivado
 # Log file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.log
@@ -12,47 +12,29 @@
 start_gui
 open_project /home/exbiks/ProjectPunisher/ProjectPunisher.xpr
 update_compile_order -fileset sources_1
-add_files -norecurse {/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv /home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv}
+add_files -norecurse /home/exbiks/BTP/Phase2/BTP/verilog_codes/mult_add.sv
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top float_point_multiplier [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
 update_compile_order -fileset sources_1
 reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top mult_add [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
 update_compile_order -fileset sources_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
 reset_run synth_1
 launch_runs synth_1 -jobs 4
 wait_on_run synth_1

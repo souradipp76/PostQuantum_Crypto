@@ -1,9 +1,3 @@
-import math
-exp_len = 8
-mantissa_len = 23
-
-sig_mantissa_len = 6
-
 def decimalToBinary(num, k_prec) :
     binary = ""  
     Integral = int(num)  
@@ -27,6 +21,8 @@ def decimalToBinary(num, k_prec) :
     return binary
 
 def dec2ieee(theta):
+	if theta == 0:
+		return "{0:032b}".format(0)
 	theta_binary = []
 	if (theta >= 0):
 		theta_binary.append('0')
@@ -34,7 +30,7 @@ def dec2ieee(theta):
 		theta_binary.append('1')
 		theta = -theta
 
-	exponent = 127
+	exponent = 128
 
 	#Finding mantissa and exponent of theta
 	while(True):
@@ -51,33 +47,11 @@ def dec2ieee(theta):
 	return 	"".join([theta_binary[0], "{0:08b}".format(exponent), decimalToBinary(theta,23)[1:]])
 
 
-def ieee2dec(b):
-	sign = b[0]
-	exp = b[1:9]
-	mantissa = '1.'+b[9:32]
-
-	sign_val = (-1)**int(sign)
-	exp_val = 2**(int(exp,2)-127)
-	mantissa_val = 1
-	for i in range(1,23):
-		mantissa_val+= int(b[31-(23-i)])*(2**(-i))
-	# print(sign)
-	# print(exp)
-	# print(mantissa)
-	return sign_val*exp_val*mantissa_val
-
-# print(ieee2dec('11000010111101101110100101111001'))
-
-
-e = 128
-s = 0
-for i in range(2**(sig_mantissa_len)):
-	val = (s<<(exp_len+mantissa_len))+(e<<mantissa_len)+(i<<(mantissa_len-sig_mantissa_len))
-	val_str = "{0:032b}".format(val)
-	#print(val_str)
-	theta = ieee2dec(val_str)
-	#ctheta = math.cos(theta)
-	stheta = math.sin(theta)
-	ieee_stheta = dec2ieee(stheta)
-	h = hex(int(ieee_stheta,2)) 
-	print("6'b{0:06b}".format(i)+": data<= 32'h"+h[2:]+";")
+params = [5.8229,5.0781,4.7667,0,0,0,0.2944,0.1765,0.0947,0.5080,0.2540,0.1270,0.0095,0.0016,0.0002,0.0050,0,0.0008,9.8100,10.0000,0.0010,0.0005,40.7488]
+eps = 1/params[-1]
+#print(params[-1],params[-2])
+params[-2] = params[-2]*params[-1]
+#print(params)
+#print(eps)
+for i in range(len(params)):
+	print("{0:08x}".format((int(dec2ieee(params[i]),2))))
