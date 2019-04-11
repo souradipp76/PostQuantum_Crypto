@@ -5,14 +5,107 @@ module top_module #(
 	
 	(
 		input logic clock,
-		input logic enable,
-		input logic reset,
+		input logic start_top,
+		input logic reset);
 
-		output logic );
 
+
+localparam NUM_INIT_VAL = 6;
+localparam NUM_EVAL_VAL = 3;
+localparam NUM_STATE_VAR = NUM_EVAL_VAL + NUM_INIT_VAL;
+
+localparam NUM_KEY_VAL = 12;
 
 localparam DELTA_T = ;
-localparam EXP_BIAS = ;
+localparam EXP_BIAS = (2**(EXP_LEN-1)) - 1;
+localparam DATA_WIDTH = EXP_LEN + MANTISSA_LEN + 1;
+
+///////////////////////////////////////////////////
+logic start_exp_evaluator;
+
+logic [$clog2(NUM_KEY_VAL)-1:0] exp_evaluator_mem_key_val_addr;
+logic [$clog2(NUM_STATE_VAR)-1:0] exp_evaluator_mem_state_var_read_addr;
+logic [$clog2(NUM_STATE_VAR)-1:0] exp_evaluator_mem_state_var_write_addr;
+
+logic [DATA_WIDTH-1:0] exp_evaluator_mem_state_var_write_data_in;
+logic exp_evaluator_mem_state_var_write_we;
+
+logic [DATA_WIDTH-1:0] exp_evaluator_mult_operand_a;
+logic [DATA_WIDTH-1:0] exp_evaluator_mult_operand_b;
+logic exp_evaluator_mult_start;
+
+logic [DATA_WIDTH-1:0] exp_evaluator_add_operand_a [1:0];
+logic [DATA_WIDTH-1:0] exp_evaluator_add_operand_b [1:0];
+logic exp_evaluator_add_start [1:0];
+
+logic [DATA_WIDTH-1:0] exp_evaluator_exponent_operand_a;
+logic [DATA_WIDTH-1:0] exp_evaluator_exponent_operand_b;
+logic exp_evaluator_exponent_start;
+
+
+///////////////////////////////////////////////////
+logic [DATA_WIDTH-1:0] mem_key_val_data_out;
+logic [DATA_WIDTH-1:0] mem_key_val_data_in;
+logic [$clog2(NUM_KEY_VAL)-1:0] mem_key_val_read_addr;
+logic [$clog2(NUM_KEY_VAL)-1:0] mem_key_val_write_addr;
+logic mem_key_val_write_we;
+
+
+/////////////////////////////////////////////////////
+logic [DATA_WIDTH-1:0] mem_state_var_data_out;
+logic [DATA_WIDTH-1:0] mem_state_var_data_in;
+logic [$clog2(NUM_STATE_VAR)-1:0] mem_state_var_read_addr;
+logic [$clog2(NUM_STATE_VAR)-1:0] mem_state_var_write_addr;
+logic mem_state_var_write_we;
+
+
+
+/////////////////////////////////////////////////////
+logic start_mult_add;
+
+logic [DATA_WIDTH-1:0] mult_add_mult_operand_a;
+logic [DATA_WIDTH-1:0] mult_add_mult_operand_b;
+logic mult_add_mult_start;
+
+logic [DATA_WIDTH-1:0] mult_add_add_operand_a;
+logic [DATA_WIDTH-1:0] mult_add_add_operand_b;
+logic mult_add_add_start;
+
+logic [DATA_WIDTH-1:0] mult_add_result;
+logic mult_add_result_ready;
+
+logic [DATA_WIDTH-1:0] mult_add_inp_values [2:0];
+
+
+//////////////////////////////////////////////////////
+logic [DATA_WIDTH-1:0] mult_result;
+logic mult_result_ready;
+
+logic mult_start;
+logic [DATA_WIDTH-1:0] mult_operand_a;
+logic [DATA_WIDTH-1:0] mult_operand_b;
+
+
+//////////////////////////////////////////////////////
+logic [DATA_WIDTH-1:0] add_result [1:0];
+logic add_result_ready [1:0];
+
+logic add_start [1:0];
+logic [DATA_WIDTH-1:0] add_operand_a [1:0];
+logic [DATA_WIDTH-1:0] add_operand_b [1:0];
+
+
+//////////////////////////////////////////////////////
+logic exponent_start;
+logic [DATA_WIDTH-1:0] exponent_operand_a;
+logic [DATA_WIDTH-1:0] exponent_operand_b;
+logic exponent_result_ready;
+logic [DATA_WIDTH-1:0] exponent_result;
+
+
+/////////////////////////////////////////////////////
+logic [$clog2(NUM_STATE_VAR)-1:0] top_mem_state_var_write_addr;
+assign top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
 
 
 exp_evaluator #(
@@ -23,32 +116,32 @@ exp_evaluator #(
 ) inst_exp_evaluator (
 	.clock                       (clock),
 	.start_exp_evaluator         (start_exp_evaluator),
-	.reset                       (reset),
-	.mem_state_var_read_data_out (mem_state_var_read_data_out),
+	.reset                       (0),
+	.mem_state_var_read_data_out (mem_state_var_data_out),
 	.mem_key_val_data_out        (mem_key_val_data_out),
-	.mem_state_var_data_out      (mem_state_var_data_out),
+	//.mem_state_var_data_out      (mem_state_var_data_out),
 	.mult_result_ready           (mult_result_ready),
 	.mult_result                 (mult_result),
-	.add_result_ready            (0),
-	.add_result                  (0),
+	.add_result_ready            (add_result_ready),
+	.add_result                  (add_result),
 	.exponent_result_ready       (exponent_result_ready),
 	.exponent_result             (exponent_result),
 	.div_result_ready            (div_result_ready),
 	.div_result                  (div_result),
-	.mem_state_var_read_addr     (mem_state_var_read_addr),
-	.mem_state_var_write_addr    (mem_state_var_write_addr),
-	.mem_state_var_write_data_in (mem_state_var_write_data_in),
-	.mem_state_var_write_we      (mem_state_var_write_we),
-	.mem_key_val_addr            (mem_key_val_addr),
-	.mult_operand_a              (mult_operand_a),
-	.mult_operand_b              (mult_operand_b),
-	.mult_start                  (mult_start),
-	.add_operand_a               (0),
-	.add_operand_b               (0),
-	.add_start                   (0),
-	.exponent_operand_a          (exponent_operand_a),
-	.exponent_operand_b          (exponent_operand_b),
-	.exponent_start              (exponent_start),
+	.mem_state_var_read_addr     (exp_evaluator_mem_state_var_read_addr),
+	.mem_state_var_write_addr    (exp_evaluator_mem_state_var_write_addr),
+	.mem_state_var_write_data_in (exp_evaluator_mem_state_var_write_data_in),
+	.mem_state_var_write_we      (exp_evaluator_mem_state_var_write_we),
+	.mem_key_val_addr            (exp_evaluator_mem_key_val_addr),
+	.mult_operand_a              (exp_evaluator_mult_operand_a),
+	.mult_operand_b              (exp_evaluator_mult_operand_b),
+	.mult_start                  (exp_evaluator_mult_start),
+	.add_operand_a               (exp_evaluator_add_operand_a),
+	.add_operand_b               (exp_evaluator_add_operand_b),
+	.add_start                   (exp_evaluator_add_start),
+	.exponent_operand_a          (exp_evaluator_exponent_operand_a),
+	.exponent_operand_b          (exp_evaluator_exponent_operand_b),
+	.exponent_start              (exp_evaluator_exponent_start),
 	.div_divisor                 (div_divisor),
 	.div_dividend                (div_dividend),
 	.div_start                   (div_start),
@@ -56,34 +149,33 @@ exp_evaluator #(
 );
 
 
-
 simple_dual_one_clock #(
 	.MEM_WIDTH(DATA_WIDTH),
 	.MEM_DEPTH(NUM_KEY_VAL)
 ) mem_key_values (
 	.clock      (clock),
-	.en_a       (en_a),
-	.en_b       (en_b),
-	.write_en_a (write_en_a),
-	.addr_a     (addr_a),
-	.addr_b     (addr_b),
-	.data_in_a  (data_in_a),
-	.data_out_b (data_out_b)
+	.en_a       (1),
+	.en_b       (1),
+	.write_en_a (mem_key_val_write_we),
+	.addr_a     (mem_key_val_write_addr),
+	.addr_b     (mem_key_val_read_addr),
+	.data_in_a  (mem_key_val_data_in),
+	.data_out_b (mem_key_val_data_out)
 );
 
 
 simple_dual_one_clock #(
 	.MEM_WIDTH(DATA_WIDTH),
-	.MEM_DEPTH()
+	.MEM_DEPTH(NUM_EVAL_VAL+NUM_INIT_VAL)
 ) mem_state_var (
 	.clock      (clock),
-	.en_a       (en_a),
-	.en_b       (en_b),
-	.write_en_a (write_en_a),
-	.addr_a     (addr_a),
-	.addr_b     (addr_b),
-	.data_in_a  (data_in_a),
-	.data_out_b (data_out_b)
+	.en_a       (1),
+	.en_b       (1),
+	.write_en_a (mem_state_var_write_we),
+	.addr_a     (mem_state_var_write_addr),
+	.addr_b     (mem_state_var_read_addr),
+	.data_in_a  (mem_state_var_data_in),
+	.data_out_b (mem_state_var_data_out)
 );
 
 
@@ -92,23 +184,73 @@ mult_add #(
 ) inst_mult_add (
 	.clock             (clock),
 	.start_mult_add    (start_mult_add),
-	.inp_values        (0),
+	.inp_values        (mult_add_inp_values),
 	.mult_result       (mult_result),
 	.mult_result_ready (mult_result_ready),
 	.add_result        (add_result),
 	.add_result_ready  (add_result_ready),
-	.mult_a            (mult_a),
-	.mult_b            (mult_b),
-	.mult_start        (mult_start),
-	.add_a             (add_a),
-	.add_b             (add_b),
-	.add_start         (add_start),
-	.out_value         (out_value),
-	.data_ready        (data_ready)
+	.mult_a            (mult_add_mult_operand_a),
+	.mult_b            (mult_add_mult_operand_b),
+	.mult_start        (mult_add_mult_start),
+	.add_a             (mult_add_add_operand_a),
+	.add_b             (mult_add_add_operand_b),
+	.add_start         (mult_add_add_start),
+	.out_value         (mult_add_result),
+	.data_ready        (mult_add_result_ready)
 );
 
-logic [] top_mem_state_var_write_addr;
-assign top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
+
+float_point_multiplier_wrapper #(
+	.EXP_LEN(EXP_LEN),
+	.MANTISSA_LEN(MANTISSA_LEN)
+) inst_float_point_multiplier_wrapper (
+	.clock             (clock),
+	.inp_a             (mult_operand_a),
+	.inp_b             (mult_operand_b),
+	.inp_data_ready    (mult_start),
+	.out_product_ready (mult_result_ready),
+	.out_product       (mult_result)
+);
+
+
+float_point_adder #(
+	.EXP_LEN(EXP_LEN),
+	.MANTISSA_LEN(MANTISSA_LEN)
+) inst_float_point_adder_0 (
+	.clk            (clock),
+	.a              (add_operand_a[0]),
+	.b              (add_operand_b[0]),
+	.inp_data_ready (add_start[0]),
+	.sum            (add_result[0]),
+	.sum_ready      (add_result_ready[0])
+);
+
+float_point_adder #(
+	.EXP_LEN(EXP_LEN),
+	.MANTISSA_LEN(MANTISSA_LEN)
+) inst_float_point_adder_1 (
+	.clk            (clock),
+	.a              (add_operand_a[1]),
+	.b              (add_operand_b[1]),
+	.inp_data_ready (add_start[1]),
+	.sum            (add_result[1]),
+	.sum_ready      (add_result_ready[1])
+);
+
+
+exponent_operation #(
+	.DATA_WIDTH(DATA_WIDTH),
+	.EXPONENT_WIDTH(EXPONENT_WIDTH)
+) inst_exponent_operation (
+	.clock        (clock),
+	.start        (exponent_start),
+	.inp_value    (exponent_operand_a),
+	.inp_exponent (exponent_operand_b),
+	.output_ready (exponent_result_ready),
+	.out_value    (exponent_result)
+);
+
+
 
 always @(posedge clock) begin
 
@@ -204,7 +346,7 @@ always @(posedge clock) begin
 			state_top <= STATE_DEFAULT;
 			timestamp <= timestamp + DELTA_T;
 			end
-			
+
 		STATE_MULT_ADD_WAIT : begin
 			case (mult_add_data_ready)
 				1'b1 : begin 
