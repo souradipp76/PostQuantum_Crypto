@@ -15,7 +15,8 @@ module exp_evaluator #(
 	parameter NUM_ANGLE_COMB = 21,
 	parameter EXP_LEN = 8,
     parameter MANTISSA_LEN = 23,
-    parameter CODE_WIDTH = 8)
+    parameter CODE_WIDTH = 8,
+    parameter DATA_WIDTH = 32)
 	
 	(
 		input logic clock,
@@ -77,7 +78,6 @@ localparam STATE_TERM_ACC_WAIT = 4'd6;
 localparam STATE_FETCH_INIT_VAL = 4'd7;
 localparam STATE_DATA_OUT = 4'd8;
 
-localparam DATA_WIDTH = 1 + EXP_LEN + MANTISSA_LEN;
 /////////////////////////////////////////
 logic [DATA_WIDTH-1:0] init_val [NUM_INIT_VAL-1:0];
 logic [3:0] state_exp_eval;
@@ -360,9 +360,12 @@ always @(*) begin
 
 			div_start <= 0;
 			
-			
-			
-			
+			/////memory part//////
+            mem_angle_combination_value_write <= angle_combination_mem_angle_combination_value_write_en;
+            mem_angle_combination_value_write_addr <= angle_combination_mem_angle_combination_value_write_addr;
+            mem_angle_combination_value_read_addr <= 0;
+            mem_angle_combination_value_in <= angle_combination_mem_angle_combination_value_data_in; 
+
 			end
 
 		STATE_NORM_ANGLE_WAIT : begin
@@ -379,6 +382,13 @@ always @(*) begin
 			mult_start <= 0;
 
 			div_start <= 0;
+			
+			/////memory part//////
+            mem_angle_combination_value_write <= angle_normalization_mem_angle_combination_value_write_en;
+            mem_angle_combination_value_write_addr <= angle_normalization_mem_angle_combination_value_write_addr;
+            mem_angle_combination_value_read_addr <= angle_normalization_mem_angle_combination_value_read_addr;
+            mem_angle_combination_value_in <= angle_normalization_mem_angle_combination_value_data_in; 
+ 
 			end
 
 		STATE_TERM_ACC_WAIT: begin
@@ -399,6 +409,14 @@ always @(*) begin
 			exponent_start <= term_accumulator_exponent_start;
 			
 			div_start <= term_accumulator_div_start;
+			
+			
+			/////memory part//////??????????? CHECK
+            mem_angle_combination_value_write <= 0;
+            mem_angle_combination_value_write_addr <= 0;
+            mem_angle_combination_value_read_addr <= 0;
+            mem_angle_combination_value_in <= 0; 
+
 			end
 		default: begin
 			add_operand_a[0] <= 0;
@@ -417,6 +435,14 @@ always @(*) begin
 
 			exponent_start <= 0;
 			div_start <= 0;
+			
+			
+			/////memory part//////
+			mem_angle_combination_value_write <= 0;
+            mem_angle_combination_value_write_addr <= 0;
+            mem_angle_combination_value_read_addr <= 0;
+            mem_angle_combination_value_in <= 0; 
+			
 			end
 		endcase
     end

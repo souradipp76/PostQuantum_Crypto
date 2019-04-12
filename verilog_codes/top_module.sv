@@ -16,7 +16,7 @@ localparam NUM_STATE_VAR = NUM_EVAL_VAL + NUM_INIT_VAL;
 
 localparam NUM_KEY_VAL = 12;
 
-localparam DELTA_T = ;
+localparam DELTA_T = 32'h3a83126f;///delta_t = 0.001
 localparam EXP_BIAS = (2**(EXP_LEN-1)) - 1;
 localparam DATA_WIDTH = EXP_LEN + MANTISSA_LEN + 1;
 
@@ -102,9 +102,18 @@ logic [DATA_WIDTH-1:0] exponent_operand_b;
 logic exponent_result_ready;
 logic [DATA_WIDTH-1:0] exponent_result;
 
+/////////////////
+logic div_start;
+logic data_ready;
+logic div_result_ready;
+logic [DATA_WIDTH-1:0] div_divisor;
+logic [DATA_WIDTH-1:0] div_dividend;
+logic [DATA_WIDTH-1:0] div_result;
 
 /////////////////////////////////////////////////////
 logic [$clog2(NUM_STATE_VAR)-1:0] top_mem_state_var_write_addr;
+logic [$clog2(NUM_STATE_VAR)-1:0] top_mem_state_var_read_addr;
+
 assign top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
 
 
@@ -145,7 +154,7 @@ exp_evaluator #(
 	.div_divisor                 (div_divisor),
 	.div_dividend                (div_dividend),
 	.div_start                   (div_start),
-	.data_ready                  (data_ready)
+    .exp_eval_data_ready         (data_ready)
 );
 
 
@@ -187,8 +196,8 @@ mult_add #(
 	.inp_values        (mult_add_inp_values),
 	.mult_result       (mult_result),
 	.mult_result_ready (mult_result_ready),
-	.add_result        (add_result),
-	.add_result_ready  (add_result_ready),
+	.add_result        (add_result[0]),
+	.add_result_ready  (add_result_ready[0]),
 	.mult_a            (mult_add_mult_operand_a),
 	.mult_b            (mult_add_mult_operand_b),
 	.mult_start        (mult_add_mult_start),
@@ -240,7 +249,7 @@ float_point_adder #(
 
 exponent_operation #(
 	.DATA_WIDTH(DATA_WIDTH),
-	.EXPONENT_WIDTH(EXPONENT_WIDTH)
+	.EXPONENT_WIDTH(EXP_LEN)
 ) inst_exponent_operation (
 	.clock        (clock),
 	.start        (exponent_start),
@@ -250,6 +259,33 @@ exponent_operation #(
 	.out_value    (exponent_result)
 );
 
+logic state_top;
+logic exp_evaluator_data_ready;
+logic [DATA_WIDTH-1:0] top_mult_add_operand [2:0];
+logic mem_state_var_write_en;
+logic [DATA_WIDTH-1:0] epsilon_inv;
+logic [DATA_WIDTH-1:0] map_min;
+logic mult_add_data_ready;
+logic [DATA_WIDTH-1:0] mult_add_data;
+logic [MANTISSA_LEN-1:0] interval_mantissa;
+logic [EXP_LEN-1:0] interval_exponent;
+logic [7:0] mem_encrypt_txt_addr;
+logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_in;
+logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_out;
+logic [DATA_WIDTH-1:0] timestamp;
+
+localparam STATE_DEFAULT = 4'd0;
+localparam STATE_KEY_RX = 4'd1;
+localparam STATE_EXP_EVAL_BEGIN = 4'd2;
+localparam STATE_EXP_EVAL_WAIT = 4'd3;
+localparam STATE_POST_PROCESS_1 = 4'd4;
+localparam STATE_POST_PROCESS_2 = 4'd5;
+localparam STATE_POST_PROCESS_3 = 4'd6;
+localparam STATE_POST_PROCESS_3_WAIT = 4'd7;
+localparam STATE_ENCRYPT = 4'd8;
+localparam STATE_ENCRYPT_STORE = 4'd9;
+localparam STATE_MULT_ADD_WAIT = 4'd10;
+
 
 
 always @(posedge clock) begin
@@ -258,7 +294,7 @@ always @(posedge clock) begin
 
 		STATE_DEFAULT : begin
 			case (start_top)
-				1'b1 : state_top <= STATE_;
+				1'b1 : state_top <= STATE_EXP_EVAL_BEGIN;///////Change accordingly
 				1'b0 : state_top <= STATE_DEFAULT;
 				endcase
 			top_mem_state_var_read_addr <= 0;
@@ -277,13 +313,14 @@ always @(posedge clock) begin
 			start_exp_evaluator <= 1'b0;
 			case (exp_evaluator_data_ready)
 				1'b1 : state_top <= STATE_POST_PROCESS_1;
-				1'b0 : STATE_EXP_EVAL_WAIT;
+				1'b0 : state_top <= STATE_EXP_EVAL_WAIT;
+				endcase
 			end
 
 		STATE_POST_PROCESS_1 : begin
 
 			case (top_mem_state_var_read_addr)
-				3'd9 : begin
+				4'd9 : begin
 					state_top <= STATE_POST_PROCESS_3;
 					top_mem_state_var_read_addr <= 0;
 					end
@@ -292,22 +329,22 @@ always @(posedge clock) begin
 					top_mem_state_var_read_addr <= top_mem_state_var_read_addr + 6;
 					end
 				endcase
-			operand[0] <= DELTA_T;
-			operand[2] <= mem_state_var_data_out;
+			top_mult_add_operand[0] <= DELTA_T;
+			top_mult_add_operand[2] <= mem_state_var_data_out;
 			mem_state_var_write_en <= 1'b0;
 			end
 
 		STATE_POST_PROCESS_2 : begin
 			start_mult_add <= 1'b1;
-			operand[1] <= mem_state_var_data_out;
+			top_mult_add_operand[1] <= mem_state_var_data_out;
 			top_mem_state_var_read_addr <= top_mem_state_var_read_addr - 5;
 			state_top <= STATE_MULT_ADD_WAIT;
 			end
 
 		STATE_POST_PROCESS_3 : begin
-			operand[0] <= mem_state_var_data_out;
-			operand[1] <= epsilon_inv;
-			operand[2] <= map_min;
+			top_mult_add_operand[0] <= mem_state_var_data_out;
+			top_mult_add_operand[1] <= epsilon_inv;
+			top_mult_add_operand[2] <= map_min;
 			start_mult_add <= 1'b1;
 			state_top <= STATE_POST_PROCESS_3_WAIT;
 			end
@@ -337,10 +374,10 @@ always @(posedge clock) begin
 			end
 
 		STATE_ENCRYPT_STORE : begin
-			case (mem_encrypt_txt_data_out[])
+			case (mem_encrypt_txt_data_out[3*DATA_WIDTH + 2:3*DATA_WIDTH])
 				3'b000 : mem_encrypt_txt_data_in <= {3'b100, timestamp, {DATA_WIDTH{1'b0}}, {DATA_WIDTH{1'b0}}};
 				3'b100 : mem_encrypt_txt_data_in <= {3'b110, mem_encrypt_txt_data_out[(3*DATA_WIDTH)-1:2*DATA_WIDTH], timestamp,  {DATA_WIDTH{1'b0}}};
-				3'b110 : mem_encrypt_txt_data_in <= {3'b111, mem_encrypt_txt_data_out[(3*DATA_WIDTH)-1:2*DATA_WIDTH], mem_encrypt_txt_data_out[(2*DATA_WIDTH)-1:1*DATA_WIDTH] timestamp};
+				3'b110 : mem_encrypt_txt_data_in <= {3'b111, mem_encrypt_txt_data_out[(3*DATA_WIDTH)-1:2*DATA_WIDTH], mem_encrypt_txt_data_out[(2*DATA_WIDTH)-1:1*DATA_WIDTH], timestamp};
 				default : mem_encrypt_txt_data_in <= mem_encrypt_txt_data_out;
 				endcase
 			state_top <= STATE_DEFAULT;
