@@ -30,6 +30,13 @@ module simple_dual_one_clock#(
 
 	reg [MEM_WIDTH-1:0] ram [MEM_DEPTH-1:0];
 
+integer i;	
+initial begin
+    for(i=0;i<MEM_DEPTH;i=i+1) begin
+        ram[i]=$random;
+        end
+end	
+
 always @(posedge clock) begin
 	if (en_a) begin
 		if (write_en_a)
