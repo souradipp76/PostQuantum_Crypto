@@ -56,7 +56,7 @@ always @(posedge clk) begin
 	/////////////////////////////////////////////////////////////////////
 	end
 
-rams_sp_rom_angle_sine_val_exp0 #(
+rams_sp_rom_sine_val_exp0 #(
     .MEM_WIDTH(32),
     .MEM_DEPTH(64)
 ) inst_rams_sp_rom_sine_val_exp0 (
@@ -66,7 +66,7 @@ rams_sp_rom_angle_sine_val_exp0 #(
     .dout    (mem_sine_cosine_lut_data_out[0])
 );
 
-rams_sp_rom_angle_sine_val_exp1 #(
+rams_sp_rom_sine_val_exp1 #(
     .MEM_WIDTH(32),
     .MEM_DEPTH(64)
 ) inst_rams_sp_rom_sine_val_exp1 (

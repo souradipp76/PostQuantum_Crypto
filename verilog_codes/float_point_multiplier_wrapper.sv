@@ -14,12 +14,19 @@ module float_point_multiplier_wrapper #(
 	output logic [EXP_LEN+MANTISSA_LEN+1-1:0] out_product);
 
 
+localparam STATE_DEFAULT = 4'd0;
+localparam STATE_MULT_WAIT = 4'd1;
+localparam STATE_DATA_OUT = 4'd2;
+localparam MULT_DELAY = 4;
+
 logic mult_enable;
 
 logic mult_clock_en;
 assign mult_clock_en = clock & mult_enable;
 
 logic [3:0] state_float_point_multiplier_wrapper;
+integer counter_mult;
+
 
 always @(posedge clock) begin
 
@@ -31,11 +38,11 @@ always @(posedge clock) begin
 
 			if (inp_data_ready) begin
 				state_float_point_multiplier_wrapper <= STATE_MULT_WAIT;
-				mult_clock_en <= 1'b1;
+				mult_enable <= 1'b1;
 				end
 			else begin
 				state_float_point_multiplier_wrapper <= STATE_DEFAULT;
-				mult_clock_en <= 1'b0;
+				mult_enable <= 1'b0;
 				end
 			end
 
@@ -44,12 +51,12 @@ always @(posedge clock) begin
 				4'd0 : begin
 					state_float_point_multiplier_wrapper  <= STATE_DATA_OUT;
 					counter_mult <= MULT_DELAY;
-					mult_clock_en <= 1'b0;
+					mult_enable <= 1'b0;
 					end
 				default : begin
 					state_float_point_multiplier_wrapper <= STATE_MULT_WAIT;
 					counter_mult <= counter_mult - 1;
-					mult_clock_en <= 1'b1;
+					mult_enable <= 1'b1;
 					end
 				endcase
 			end
@@ -72,7 +79,7 @@ float_point_multiplier #(
 	.clk            (mult_clock_en),
 	.input_a        (inp_a),
 	.input_b        (inp_b),
-	.output_product (output_product)
+	.output_product (out_product)
 );
 
 endmodule
