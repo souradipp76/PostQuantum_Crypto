@@ -116,6 +116,33 @@ logic [$clog2(NUM_STATE_VAR)-1:0] top_mem_state_var_read_addr;
 
 assign top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
 
+///////////////////////////////////////////////////////
+logic [3:0] state_top;
+logic exp_evaluator_data_ready;
+logic [DATA_WIDTH-1:0] top_mult_add_operand [2:0];
+logic mem_state_var_write_en;
+logic [DATA_WIDTH-1:0] epsilon_inv;
+logic [DATA_WIDTH-1:0] map_min;
+logic mult_add_data_ready;
+logic [DATA_WIDTH-1:0] mult_add_data;
+logic [MANTISSA_LEN-1:0] interval_mantissa;
+logic [EXP_LEN-1:0] interval_exponent;
+logic [7:0] mem_encrypt_txt_addr;
+logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_in;
+logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_out;
+logic [DATA_WIDTH-1:0] timestamp;
+
+localparam STATE_DEFAULT = 4'd0;
+localparam STATE_KEY_RX = 4'd1;
+localparam STATE_EXP_EVAL_BEGIN = 4'd2;
+localparam STATE_EXP_EVAL_WAIT = 4'd3;
+localparam STATE_POST_PROCESS_1 = 4'd4;
+localparam STATE_POST_PROCESS_2 = 4'd5;
+localparam STATE_POST_PROCESS_3 = 4'd6;
+localparam STATE_POST_PROCESS_3_WAIT = 4'd7;
+localparam STATE_ENCRYPT = 4'd8;
+localparam STATE_ENCRYPT_STORE = 4'd9;
+localparam STATE_MULT_ADD_WAIT = 4'd10;
 
 exp_evaluator #(
 	.DATA_WIDTH(DATA_WIDTH),
@@ -259,32 +286,7 @@ exponent_operation #(
 	.out_value    (exponent_result)
 );
 
-logic state_top;
-logic exp_evaluator_data_ready;
-logic [DATA_WIDTH-1:0] top_mult_add_operand [2:0];
-logic mem_state_var_write_en;
-logic [DATA_WIDTH-1:0] epsilon_inv;
-logic [DATA_WIDTH-1:0] map_min;
-logic mult_add_data_ready;
-logic [DATA_WIDTH-1:0] mult_add_data;
-logic [MANTISSA_LEN-1:0] interval_mantissa;
-logic [EXP_LEN-1:0] interval_exponent;
-logic [7:0] mem_encrypt_txt_addr;
-logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_in;
-logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_out;
-logic [DATA_WIDTH-1:0] timestamp;
 
-localparam STATE_DEFAULT = 4'd0;
-localparam STATE_KEY_RX = 4'd1;
-localparam STATE_EXP_EVAL_BEGIN = 4'd2;
-localparam STATE_EXP_EVAL_WAIT = 4'd3;
-localparam STATE_POST_PROCESS_1 = 4'd4;
-localparam STATE_POST_PROCESS_2 = 4'd5;
-localparam STATE_POST_PROCESS_3 = 4'd6;
-localparam STATE_POST_PROCESS_3_WAIT = 4'd7;
-localparam STATE_ENCRYPT = 4'd8;
-localparam STATE_ENCRYPT_STORE = 4'd9;
-localparam STATE_MULT_ADD_WAIT = 4'd10;
 
 
 
