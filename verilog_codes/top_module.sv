@@ -128,8 +128,8 @@ logic [DATA_WIDTH-1:0] mult_add_data;
 logic [MANTISSA_LEN-1:0] interval_mantissa;
 logic [EXP_LEN-1:0] interval_exponent;
 logic [7:0] mem_encrypt_txt_addr;
-logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_in;
-logic [DATA_WIDTH-1:0] mem_encrypt_txt_data_out;
+logic [3*DATA_WIDTH+3-1:0] mem_encrypt_txt_data_in;
+logic [3*DATA_WIDTH+3-1:0] mem_encrypt_txt_data_out;
 logic [DATA_WIDTH-1:0] timestamp;
 
 localparam STATE_DEFAULT = 4'd0;
@@ -300,6 +300,12 @@ always @(posedge clock) begin
 				1'b0 : state_top <= STATE_DEFAULT;
 				endcase
 			top_mem_state_var_read_addr <= 0;
+			
+			mem_state_var_write_we <= 0;
+			mem_state_var_write_addr <= 0;
+			mem_state_var_read_addr <= 0;
+			mem_state_var_data_in <= 0;
+			
 			end
 
 		STATE_KEY_RX : begin
@@ -308,7 +314,13 @@ always @(posedge clock) begin
 
 		STATE_EXP_EVAL_BEGIN : begin
 			start_exp_evaluator <= 1'b1;
-			state_top <= STATE_EXP_EVAL_WAIT;
+			state_top <= STATE_EXP_EVAL_WAIT;  
+			
+			mem_state_var_write_we <= exp_evaluator_mem_state_var_write_we;
+            mem_state_var_write_addr <= exp_evaluator_mem_state_var_write_addr;
+            mem_state_var_read_addr <= exp_evaluator_mem_state_var_read_addr;
+            mem_state_var_data_in <= exp_evaluator_mem_state_var_write_data_in;
+            			          
 			end
 
 		STATE_EXP_EVAL_WAIT : begin
@@ -317,6 +329,12 @@ always @(posedge clock) begin
 				1'b1 : state_top <= STATE_POST_PROCESS_1;
 				1'b0 : state_top <= STATE_EXP_EVAL_WAIT;
 				endcase
+
+			mem_state_var_write_we <= exp_evaluator_mem_state_var_write_we;
+            mem_state_var_write_addr <= exp_evaluator_mem_state_var_write_addr;
+            mem_state_var_read_addr <= exp_evaluator_mem_state_var_read_addr;
+            mem_state_var_data_in <= exp_evaluator_mem_state_var_write_data_in;
+            	
 			end
 
 		STATE_POST_PROCESS_1 : begin
@@ -334,6 +352,7 @@ always @(posedge clock) begin
 			top_mult_add_operand[0] <= DELTA_T;
 			top_mult_add_operand[2] <= mem_state_var_data_out;
 			mem_state_var_write_en <= 1'b0;
+			
 			end
 
 		STATE_POST_PROCESS_2 : begin
@@ -402,6 +421,12 @@ always @(posedge clock) begin
 
 		default : begin 
 			state_top <= STATE_DEFAULT;
+			
+            mem_state_var_write_we <= 0;
+            mem_state_var_write_addr <= 0;
+            mem_state_var_read_addr <= 0;
+            mem_state_var_data_in <= 0;
+            
 			end
 		endcase // start_top
 	end

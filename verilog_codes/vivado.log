@@ -2,8 +2,8 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Sat Apr 13 00:07:55 2019
-# Process ID: 24002
+# Start of session at: Sat Apr 13 18:37:16 2019
+# Process ID: 14039
 # Current directory: /home/exbiks/BTP/Phase2/BTP/verilog_codes
 # Command line: vivado
 # Log file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.log
@@ -17,73 +17,35 @@ INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2017.4/data/ip'.
 update_compile_order -fileset sources_1
-launch_simulation
-INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
-INFO: [SIM-utils-51] Simulation object is 'sim_1'
-INFO: [SIM-utils-54] Inspecting design source files for 'top_module' in fileset 'sim_1'...
-INFO: [USF-XSim-97] Finding global include files...
-INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
-INFO: [USF-XSim-2] XSim::Compile design
-INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
-xvlog --incr --relax -L xil_defaultlib -prj top_module_vlog.prj
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module angle_combination
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module angle_normalization
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module angle_normalization_wrapper
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module decoder_type_1
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module decoder_type_2
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module decoder_type_3
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module exponent_operation
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module float_point_adder
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module float_point_multiplier
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module float_point_multiplier_wrapper
-INFO: [VRFC 10-2458] undeclared symbol output_product, assumed default net type wire [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:75]
-ERROR: [VRFC 10-91] STATE_DEFAULT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:28]
-ERROR: [VRFC 10-91] STATE_DEFAULT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:29]
-ERROR: [VRFC 10-91] STATE_MULT_WAIT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:33]
-ERROR: [VRFC 10-91] STATE_DEFAULT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:37]
-ERROR: [VRFC 10-91] STATE_MULT_WAIT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:42]
-ERROR: [VRFC 10-91] counter_mult is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:43]
-ERROR: [VRFC 10-91] STATE_DATA_OUT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:45]
-ERROR: [VRFC 10-91] counter_mult is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:46]
-ERROR: [VRFC 10-91] STATE_MULT_WAIT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:50]
-ERROR: [VRFC 10-91] counter_mult is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:51]
-ERROR: [VRFC 10-91] STATE_DATA_OUT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:57]
-ERROR: [VRFC 10-91] STATE_DEFAULT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:59]
-ERROR: [VRFC 10-91] STATE_DEFAULT is not declared [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:63]
-ERROR: [VRFC 10-1040] module float_point_multiplier_wrapper ignored due to previous errors [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:3]
-INFO: [USF-XSim-69] 'compile' step finished in '0' seconds
-INFO: [USF-XSim-99] Step results log file:'/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim/xvlog.log'
-ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim/xvlog.log' file for more information.
-ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
-ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
 reset_run synth_1
 launch_runs synth_1 -jobs 4
-[Sat Apr 13 00:13:04 2019] Launched synth_1...
+[Sat Apr 13 18:58:32 2019] Launched synth_1...
 Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
-update_compile_order -fileset sources_1
 reset_run synth_1
 launch_runs synth_1 -jobs 4
-[Sat Apr 13 00:14:16 2019] Launched synth_1...
+[Sat Apr 13 19:01:56 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Sat Apr 13 19:05:16 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Sat Apr 13 19:08:20 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Sat Apr 13 19:14:25 2019] Launched synth_1...
 Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
 launch_simulation
 INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
 INFO: [SIM-utils-51] Simulation object is 'sim_1'
-INFO: [SIM-utils-54] Inspecting design source files for 'top_module' in fileset 'sim_1'...
+INFO: [SIM-utils-54] Inspecting design source files for 'top_sim' in fileset 'sim_1'...
 INFO: [USF-XSim-97] Finding global include files...
 INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
 INFO: [USF-XSim-2] XSim::Compile design
 INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
-xvlog --incr --relax -L xil_defaultlib -prj top_module_vlog.prj
+xvlog --incr --relax -L xil_defaultlib -prj top_sim_vlog.prj
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module angle_combination
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv" into library xil_defaultlib
@@ -128,15 +90,17 @@ INFO: [VRFC 10-2458] undeclared symbol stack_empty, assumed default net type wir
 INFO: [VRFC 10-2458] undeclared symbol stack_full, assumed default net type wire [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:186]
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module top_module
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/ProjectPunisher/ProjectPunisher.srcs/sim_1/new/top_sim.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_sim
 INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
 INFO: [USF-XSim-3] XSim::Elaborate design
 INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
 Vivado Simulator 2017.4
 Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: /opt/Xilinx/Vivado/2017.4/bin/unwrapped/lnx64.o/xelab -wto 1dd95bf8cd1047fead1eb95bbf4149a5 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_module_behav xil_defaultlib.top_module xil_defaultlib.glbl -log elaborate.log 
+Running: /opt/Xilinx/Vivado/2017.4/bin/unwrapped/lnx64.o/xelab -wto 1dd95bf8cd1047fead1eb95bbf4149a5 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_sim_behav xil_defaultlib.top_sim xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port reset [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:128]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port reset [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:155]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port reset [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv:45]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port output_value [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:213]
 WARNING: [VRFC 10-278] actual bit length 9 differs from formal bit length 8 for port inp_code [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:122]
@@ -148,105 +112,37 @@ WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:223]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:224]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port enable [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:239]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:166]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:167]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:181]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:182]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 8 for port inp_exponent [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:257]
-ERROR: [VRFC 10-1546] variable mult_clock_en might have multiple concurrent drivers [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:31]
-WARNING: [VRFC 10-597] element index 98 into mem_encrypt_txt_data_out is out of bounds [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:377]
-WARNING: [VRFC 10-597] element index 95 into mem_encrypt_txt_data_out is out of bounds [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:379]
-WARNING: [VRFC 10-597] element index 95 into mem_encrypt_txt_data_out is out of bounds [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:380]
-ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
-INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
-INFO: [USF-XSim-99] Step results log file:'/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim/elaborate.log'
-ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim/elaborate.log' file for more information.
-ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
-ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
-launch_simulation
-INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
-INFO: [SIM-utils-51] Simulation object is 'sim_1'
-INFO: [SIM-utils-54] Inspecting design source files for 'top_module' in fileset 'sim_1'...
-INFO: [USF-XSim-97] Finding global include files...
-INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
-INFO: [USF-XSim-2] XSim::Compile design
-INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
-xvlog --incr --relax -L xil_defaultlib -prj top_module_vlog.prj
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module angle_combination
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module angle_normalization
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module angle_normalization_wrapper
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module decoder_type_1
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module decoder_type_2
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module decoder_type_3
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module exponent_operation
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module float_point_adder
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module float_point_multiplier
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module float_point_multiplier_wrapper
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/mult_add.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mult_add
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rf_rst.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module rams_sp_rf_rst
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module rams_sp_rom_angle_comb_detail
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module rams_sp_rom_sine_val_exp0
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module rams_sp_rom_sine_val_exp1
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module simple_dual_one_clock
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sine_calculator
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/stack.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module stack
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module exp_evaluator
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module term_accumulator
-INFO: [VRFC 10-2458] undeclared symbol stack_empty, assumed default net type wire [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:185]
-INFO: [VRFC 10-2458] undeclared symbol stack_full, assumed default net type wire [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:186]
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module top_module
-INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
-INFO: [USF-XSim-3] XSim::Elaborate design
-INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
-Vivado Simulator 2017.4
-Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: /opt/Xilinx/Vivado/2017.4/bin/unwrapped/lnx64.o/xelab -wto 1dd95bf8cd1047fead1eb95bbf4149a5 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_module_behav xil_defaultlib.top_module xil_defaultlib.glbl -log elaborate.log 
-Using 8 slave threads.
-Starting static elaboration
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port reset [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:128]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port reset [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv:45]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port output_value [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:213]
-WARNING: [VRFC 10-278] actual bit length 9 differs from formal bit length 8 for port inp_code [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:122]
-WARNING: [VRFC 10-278] actual bit length 9 differs from formal bit length 8 for port inp_code [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:135]
-WARNING: [VRFC 10-278] actual bit length 9 differs from formal bit length 8 for port inp_code [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:152]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port enable [/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv:64]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port enable [/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv:74]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port enable [/home/exbiks/BTP/Phase2/BTP/verilog_codes/stack.sv:86]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:223]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:224]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port enable [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:239]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:166]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:167]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:181]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:182]
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 8 for port inp_exponent [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:257]
-WARNING: [VRFC 10-597] element index 98 into mem_encrypt_txt_data_out is out of bounds [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:377]
-WARNING: [VRFC 10-597] element index 95 into mem_encrypt_txt_data_out is out of bounds [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:379]
-WARNING: [VRFC 10-597] element index 95 into mem_encrypt_txt_data_out is out of bounds [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:380]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:193]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:194]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_a [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:208]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port en_b [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:209]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 8 for port inp_exponent [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:284]
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [XSIM 43-4100] "/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv" Line 2. Module top_module_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv" Line 11. Module exp_evaluator(NUM_KEY_VAL=12) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv" Line 7. Module angle_combination(NUM_ANGLE_COMB=21) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv" Line 1. Module angle_normalization_wrapper(NUM_ANGLE=21) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv" Line 13. Module angle_normalization doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv" Line 3. Module term_accumulator(NUM_KEY_VAL=12,ANGLE_ADDR_WIDTH=5) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv" Line 2. Module decoder_type_1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv" Line 2. Module decoder_type_2 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv" Line 2. Module decoder_type_3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv" Line 3. Module sine_calculator doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv" Line 1. Module rams_sp_rom_sine_val_exp0 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv" Line 1. Module rams_sp_rom_sine_val_exp1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/stack.sv" Line 3. Module stack(DEPTH=64) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rf_rst.sv" Line 17. Module rams_sp_rf_rst(MEM_DEPTH=64) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv" Line 17. Module simple_dual_one_clock(MEM_DEPTH=21) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv" Line 2. Module rams_sp_rom_angle_comb_detail doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv" Line 17. Module simple_dual_one_clock(MEM_DEPTH=12) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv" Line 17. Module simple_dual_one_clock(MEM_DEPTH=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/mult_add.sv" Line 1. Module mult_add doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv" Line 3. Module float_point_multiplier_wrapper doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv" Line 13. Module float_point_multiplier_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv" Line 12. Module float_point_adder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv" Line 12. Module float_point_adder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv" Line 2. Module exponent_operation(EXPONENT_WIDTH=8) doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.angle_combination(NUM_ANGLE_COMB...
@@ -271,18 +167,19 @@ Compiling module xil_defaultlib.float_point_multiplier_default
 Compiling module xil_defaultlib.float_point_multiplier_wrapper
 Compiling module xil_defaultlib.float_point_adder
 Compiling module xil_defaultlib.exponent_operation(EXPONENT_WIDT...
-Compiling module xil_defaultlib.top_module
+Compiling module xil_defaultlib.top_module_default
+Compiling module xil_defaultlib.top_sim
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot top_module_behav
+Built simulation snapshot top_sim_behav
 INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
 INFO: [USF-XSim-4] XSim::Simulate design
 INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/exbiks/ProjectPunisher/ProjectPunisher.sim/sim_1/behav/xsim'
 INFO: [USF-XSim-98] *** Running xsim
-   with args "top_module_behav -key {Behavioral:sim_1:Functional:top_module} -tclbatch {top_module.tcl} -log {simulate.log}"
+   with args "top_sim_behav -key {Behavioral:sim_1:Functional:top_sim} -tclbatch {top_sim.tcl} -log {simulate.log}"
 INFO: [USF-XSim-8] Loading simulator feature
 Vivado Simulator 2017.4
 Time resolution is 1 ps
-source top_module.tcl
+source top_sim.tcl
 # set curr_wave [current_wave_config]
 # if { [string length $curr_wave] == 0 } {
 #   if { [llength [get_objects]] > 0} {
@@ -293,11 +190,11 @@ source top_module.tcl
 #   }
 # }
 # run 1000ns
-INFO: [USF-XSim-96] XSim completed. Design snapshot 'top_module_behav' loaded.
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'top_sim_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 6388.426 ; gain = 68.688 ; free physical = 2462 ; free virtual = 7145
-add_force {/top_module/clock} -radix bin {1 0ns} {0 5000ps} -repeat_every 10000ps
-restart
-INFO: [Simtcl 6-17] Simulation restarted
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 6633.109 ; gain = 68.684 ; free physical = 893 ; free virtual = 4863
 run 10 us
-run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Apr 13 19:23:18 2019...
