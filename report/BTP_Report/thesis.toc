@@ -1,0 +1,26 @@
+\contentsline {chapter}{Abstract}{i}
+\contentsline {chapter}{List of Figures}{iii}
+\contentsline {chapter}{Nomenclature}{iv}
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}
+\contentsline {section}{\numberline {1.2}Problem Definition}{2}
+\contentsline {chapter}{\numberline {2}Preliminaries}{3}
+\contentsline {section}{\numberline {2.1}Present-day Cryptography}{3}
+\contentsline {section}{\numberline {2.2}Shor's Algorithm}{3}
+\contentsline {section}{\numberline {2.3}Shor's Algorithm \& Present Encryption Methods}{4}
+\contentsline {section}{\numberline {2.4}Post-Quantum Cryptography}{4}
+\contentsline {section}{\numberline {2.5}Chaos based Cryptography}{5}
+\contentsline {section}{\numberline {2.6}Field Programmable Gate Array}{6}
+\contentsline {chapter}{\numberline {3}Literature Survey}{7}
+\contentsline {section}{\numberline {3.1}Chaos and Cryptography}{7}
+\contentsline {section}{\numberline {3.2}Discrete Chaos}{7}
+\contentsline {section}{\numberline {3.3}Chaos in Non-Linear Dynamic Systems}{8}
+\contentsline {section}{\numberline {3.4}Baptista-type Cryptosystem}{8}
+\contentsline {chapter}{\numberline {4}Proposed Approach}{9}
+\contentsline {chapter}{\numberline {5}Work Progress}{10}
+\contentsline {section}{\numberline {5.1}Simulation of Non-Linear Dynamic system}{10}
+\contentsline {section}{\numberline {5.2}Verifying the scheme in MATLAB}{10}
+\contentsline {subsection}{\numberline {5.2.1}Simulation Results}{11}
+\contentsline {section}{\numberline {5.3}FPGA Implementation}{15}
+\contentsline {chapter}{\numberline {6}Future Work}{17}

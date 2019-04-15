@@ -1,0 +1,58 @@
+Author: Mandar Kulkarni
+Date: 3rd April 2013
+
+Further modified by Dr. Sonali Chouhan, EEE Department, IIT Guwahati (16/04/2016)
+
+GUIDELINES FOR USING LATEX STYLE (iitgthesis.cls) FOR IIT GUWAHATI  THESIS FORMAT
+
+This thesis template includes -
+1) A guideline text file - the one you have opened now
+2) Root file for example thesis -  thesis.tex
+3) A supplementary file - prelude.tex
+4) IIT Guwahati LaTex Style for thesis writing - iitgthesis.cls
+5) IITG logo (.eps file)
+
+Steps to write your thesis -  
+1) Open prelude.tex
+a ) Change the btp title, author names and guide name
+b) If you are using any abbreviations, those should be mentioned in nomenclature section of this file. 
+c) Add acknowledgements, if any
+d) The contents page and list of  figures are designed to get automatically generated as and when  you add your content in the report.
+
+2) Open thesis.tex
+a) Start adding required chapters in your report starting from 
+"% Include the technical part of the report". 
+b) A sample introduction chapter has been added for you to know how to go about adding chapters. Note that if you have to include - 
+"\include{chapter1.tex}"
+then the corresponding LaTex file you should create is chapter1.tex
+c) Modify the bibliography according to your needs
+d) If at all you do not want "Chapter <number>" to be written on top of the page where you ad your chapters, add this patch before \begin{document}.
+
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{1\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    %\ifnum \c@secnumdepth >\m@ne
+    %    \huge\bfseries \@chapapp
+    %    \par\nobreak
+    %    \vskip 20\p@
+    %\fi
+    \interlinepenalty\@M
+    \Huge \bfseries\thechapter.\space #1\par\nobreak
+    \vskip 40\p@
+  }}
+  \makeatother
+
+
+3) Compile your Latex code and build the output in .ps format. Open this  .ps file using Ghostview. And follow these steps to get a good quality pdf 
+    1. File->Convert
+    2. Set Device: pdfwrite, Resolution: 600, Pages: select all
+    3. Press "Properties" and set these properties:
+       CompatibilityLevel        1.3
+       PDFSETTINGS        /prepress
+       EmbedAllFonts        true
+       SubsetFonts        true
+    4. OK, OK
+    5. Give filename.pdf
+
+

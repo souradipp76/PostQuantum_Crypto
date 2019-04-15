@@ -1,0 +1,34 @@
+\chapter{Introduction}
+\label{chap:intro}
+\setlength{\parskip}{1.5mm}
+%\setlength{\baselineskip}{1.4mm}
+\section{Motivation}
+% Today, we send data from one computer to another without a second thought assuming a secure connection between them. But what if that connection cannot be trusted? The impact in the world economy can be devastating. E-commerce, cloud services, online stock trading and anything that relies that on the internet security would be rendered useless. This scenario is plausible in not too distant future. A developing technology called quantum computing would be able to break the encryption that is the backbone of secure internet communication. Today, secure communication relies on exchange of keys or secret codes to ensure parties are who they say they are and exchange messages that can't be read by others.
+
+In this modern era, while transferring data from one computer to another, we almost everytime assume a secure connection. However, in a situation where this security is broken, the effects can be devastating and almost all the businesses and services relying on internet including banking and cloud services would be rendered useless. Such a situation may not be too distant in future. Advancements in quantum computing have posed a threat to the existing cryptographic methods on which the complete data communication infrastructure relies on, including the most popular public-key cryptography.
+
+In 1994, a mathematician named Peter Shor, developed an algorithm which is able to break the security of key exchanges and digital signatures. Using this algorithm, a quantum computer would be able to crack the most sophisticated encryption in a matter of minutes. Quantum computers operate differently from traditional computers i.e. they work at atomic level. The essential units of a quantum computer is a qubit in contrast to bits used in traditional computers. A qubit is able to represent 0 and 1 simultaneously. Due to this property, few qubits can speed up certain types of computation by an enormous amount and hence quantum computers are more suitable for brute-force exhaustive searches. Although, this new technology is ideal for solving complex problems in astrophysics, pharmaceuticals and weather forecasting, it can also break the encryption and endanger our privacy and security.\\\\\\
+
+\section{Problem Definition}
+The objective of this project is to design and implement a chaos-based cryptographic system on hardware that is secure against Shor's Algorithm running on an ideal quantum computer.
+
+This problem focuses on going beyond traditional cryptographic methods and implementing a new chaos based encryption-decryption technique in dedicated hardware like Field Programmable Gate Array (FPGA). Our aim is to design the system in such a way that it is simple enough to be implemented in practice, it is computationally efficient and it provides a reasonable degree of security. The system must also possess a number of fundamental features which are important for any cryptosystem in general. In order to achieve this goal some necessary steps to be performed along with the design and implementation are:
+\begin{itemize}
+  \item Verification of Encryption-Decryption Algorithm
+    \begin{itemize}
+        \item Validity of chaotic nature and quantum-safe properties of the scheme
+    \end{itemize}
+
+  \item Hardware-level optimization of the Algorithm
+    \begin{itemize}
+        \item Efficient pipelining of the algorithm for fast response in practical scenarios
+    \end{itemize}
+  \item Key Generation \& Management
+    \begin{itemize}
+        \item Storage and maintenanace of valid keys and efficient key exchange strategies
+    \end{itemize}
+  \item Security Analysis of the Cryptosystem
+    \begin{itemize}
+        \item Analysis of randomness and running time of the system
+    \end{itemize}
+\end{itemize}
