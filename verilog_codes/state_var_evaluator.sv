@@ -25,7 +25,6 @@ module exp_evaluator #(
 
 		input logic [DATA_WIDTH-1:0] mem_state_var_read_data_out,
 		input logic [DATA_WIDTH-1:0] mem_key_val_data_out,
-		input logic [DATA_WIDTH-1:0] mem_state_var_data_out,
 
 
 		input logic mult_result_ready,
@@ -82,8 +81,6 @@ localparam STATE_DATA_OUT = 4'd8;
 logic [DATA_WIDTH-1:0] init_val [NUM_INIT_VAL-1:0];
 logic [3:0] state_exp_eval;
 integer counter;
-
-logic [$clog2(NUM_EVAL_VAL+NUM_INIT_VAL)-1:0] exp_eval_mem_state_var_addr;
 /////////////////////////////////////
 logic angle_combination_start;
 logic angle_combination_done;
@@ -254,23 +251,23 @@ always @(posedge clock) begin
 				state_exp_eval <= STATE_DEFAULT;
 				end
 			exp_eval_data_ready <= 1'b0;
-			exp_eval_mem_state_var_addr <= 3'd0;
+			mem_state_var_read_addr <= 3'd0;
 			end
 
 		STATE_FETCH_INIT_VAL : begin
 			case (counter)
 				NUM_INIT_VAL : begin
 					counter <= 1;
-					exp_eval_mem_state_var_addr <= 0;
+					mem_state_var_read_addr <= 0;
 					state_exp_eval <= STATE_ANGLE_COMB_START;
 					end
 				default : begin
 					counter <= counter + 1;
-					exp_eval_mem_state_var_addr <= counter;
+					mem_state_var_read_addr <= counter;
 					state_exp_eval <= STATE_FETCH_INIT_VAL;
 					end
 				endcase
-			init_val[exp_eval_mem_state_var_addr] <= mem_state_var_data_out;
+			init_val[mem_state_var_read_addr] <= mem_state_var_read_data_out;
 			end
 
 		STATE_ANGLE_COMB_START : begin
