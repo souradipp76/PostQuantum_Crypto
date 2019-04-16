@@ -11,7 +11,8 @@ module sine_calculator #(
 	input logic inp_sine_cosine,
 
 	output logic [EXP_LEN+MANTISSA_LEN+1-1:0] out_value,
-	output logic out_data_ready);
+	output logic out_data_ready
+	);
 
 
 localparam SIG_MANTISSA_BITS = 6;
@@ -21,11 +22,12 @@ logic [3:0] state_sine_calculator;
 logic [EXP_LEN-1:0] theta_exp;
 logic [MANTISSA_LEN-1:0] theta_mantissa;
 logic theta_sign;
+assign theta_mantissa = inp_theta[MANTISSA_LEN-1:0];
 
 logic sine_cosine;
 
 logic [SIG_MANTISSA_BITS-1:0] mem_sine_cosine_lut_addr;
-logic [EXP_LEN+MANTISSA_LEN+1-1:0] mem_sine_cosine_lut_data_out [2**(EXP_LEN)-1:0];
+logic [EXP_LEN+MANTISSA_LEN+1-1:0] mem_sine_cosine_lut_data_out [1:0];
 
 always @(posedge clk) begin
 	////////////////////////////////////////////////////////////////

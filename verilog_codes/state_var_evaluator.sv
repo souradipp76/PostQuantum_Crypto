@@ -89,15 +89,12 @@ logic [$clog2(NUM_ANGLE_COMB)-1:0] angle_combination_mem_angle_combination_value
 logic angle_combination_mem_angle_combination_value_write_en;
 logic [DATA_WIDTH-1:0] angle_combination_mem_angle_combination_value_data_in;
 
-logic normalize_angle_start;
-logic normalize_angle_done;
 logic [$clog2(NUM_ANGLE_COMB)-1:0] angle_normalization_mem_angle_combination_value_read_addr;
 logic [$clog2(NUM_ANGLE_COMB)-1:0] angle_normalization_mem_angle_combination_value_write_addr;
 logic [DATA_WIDTH-1:0] angle_normalization_mem_angle_combination_value_data_in;
 logic angle_normalization_mem_angle_combination_value_write_en;
 
 logic term_accumulator_start;
-logic term_accumulator_done;
 logic [$clog2(NUM_EVAL_VAL+NUM_INIT_VAL)-1:0] term_accumulator_mem_state_var_addr;
 logic [DATA_WIDTH-1:0] term_accumulator_output_value;
 
@@ -129,7 +126,7 @@ logic [15:0] mem_angle_combination_detail_datao;
 
 logic [DATA_WIDTH-1:0] mem_angle_normalized_data_out;
 logic [$clog2(NUM_ANGLE_COMB)-1:0] term_accumulator_mem_angle_normalized_addr;  
-logic start_angle_normalization;
+logic angle_normalization_start;
 logic angle_normalization_done;
 
 
@@ -162,7 +159,7 @@ angle_normalization_wrapper #(
 	.NUM_ANGLE(NUM_ANGLE_COMB)
 ) inst_angle_normalization_wrapper (
 	.clock                                  (clock),
-	.start_angle_normalization              (start_angle_normalization),
+	.start_angle_normalization              (angle_normalization_start),
 	.mem_angle_combination_value_data_out   (mem_angle_combination_value_data_out),
 	.angle_normalization_add_sum            (add_result[0]),
 	.angle_normalization_add_ready          (add_result_ready[0]),
@@ -195,9 +192,9 @@ term_accumulator #(
 	.add_data_ready                (add_result_ready[0]),
 	.divide_data_ready             (div_result_ready),
 	.exponent_data_ready           (exponent_result_ready),
-	.mem_angle_normalized_data_out (mem_angle_normalized_data_out),
+	.mem_angle_normalized_data_out (mem_angle_combination_value_data_out),
 	.mem_key_val_data_out          (mem_key_val_data_out),
-	.mem_state_var_data_out        (mem_state_var_data_out),
+	.mem_state_var_data_out        (mem_state_var_read_data_out),
 	.mult_start                    (term_accumulator_mult_start),
 	.add_start                     (term_accumulator_add_start),
 	.exponent_start                (term_accumulator_exponent_start),
@@ -286,18 +283,18 @@ always @(posedge clock) begin
 			end
 
 		STATE_NORM_ANGLE_START : begin
-			normalize_angle_start <= 1'b1;
+			angle_normalization_start <= 1'b1;
 			state_exp_eval <= STATE_NORM_ANGLE_WAIT;
 			end
 
 		STATE_NORM_ANGLE_WAIT : begin
-			if (normalize_angle_done == 1'b1) begin
+			if (angle_normalization_done == 1'b1) begin
 				state_exp_eval <= STATE_TERM_ACC_START;
 				end
 			else begin
 				state_exp_eval <= STATE_NORM_ANGLE_WAIT;
 				end
-			normalize_angle_start <= 1'b0;
+			angle_normalization_start <= 1'b0;
 			end
 
 		STATE_TERM_ACC_START : begin
@@ -306,7 +303,7 @@ always @(posedge clock) begin
 			end
 
 		STATE_TERM_ACC_WAIT : begin
-			if (term_accumulator_done == 1'b1) begin
+			if (term_accumulator_output_ready == 1'b1) begin
 				state_exp_eval <= STATE_DATA_OUT;
 				end
 			else begin
@@ -324,7 +321,7 @@ always @(posedge clock) begin
 			state_exp_eval <= STATE_DEFAULT;
 			exp_eval_data_ready <= 1'b1;
 			angle_combination_start <= 1'b0;
-			normalize_angle_start <= 1'b0;
+			angle_normalization_start <= 1'b0;
 			term_accumulator_start <= 1'b0;
 			//term_division_start <= 1'b0;
 			//init_val <= 0;	//write a loop here
@@ -353,7 +350,7 @@ always @(*) begin
 
 			exponent_operand_a <= 0;
 			exponent_operand_b <= 0;
-			mult_start <= 0;
+			exponent_start <= 0;
 
 			div_start <= 0;
 			
@@ -377,6 +374,10 @@ always @(*) begin
 			mult_operand_a <= 0;
 			mult_operand_b <= 0;
 			mult_start <= 0;
+			
+			exponent_operand_a <= 0;
+            exponent_operand_b <= 0;
+            exponent_start <= 0;
 
 			div_start <= 0;
 			
@@ -411,7 +412,7 @@ always @(*) begin
 			/////memory part//////??????????? CHECK
             mem_angle_combination_value_write <= 0;
             mem_angle_combination_value_write_addr <= 0;
-            mem_angle_combination_value_read_addr <= 0;
+            mem_angle_combination_value_read_addr <= term_accumulator_mem_angle_normalized_addr;
             mem_angle_combination_value_in <= 0; 
 
 			end

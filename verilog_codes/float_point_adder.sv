@@ -58,13 +58,13 @@ always @(posedge clk) begin
 		4'd0 : begin
 			if (inp_data_ready == 1'b1) begin
 				state <= 4'd1;
-				sum_ready <= 1'b0;
+				//sum_ready <= 1'b0;
 				end
 			else begin
 				state <= 4'd0;
-				sum_ready <= 1'b1;
+				//sum_ready <= 1'b1;
 				end
-
+			sum_ready <= 1'b0;
 			in_exponent_a <= a[MANTISSA_LEN+EXP_LEN-1:MANTISSA_LEN];
 			in_exponent_b <= b[MANTISSA_LEN+EXP_LEN-1:MANTISSA_LEN];
 

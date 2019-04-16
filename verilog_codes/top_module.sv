@@ -42,6 +42,10 @@ logic [DATA_WIDTH-1:0] exp_evaluator_exponent_operand_a;
 logic [DATA_WIDTH-1:0] exp_evaluator_exponent_operand_b;
 logic exp_evaluator_exponent_start;
 
+logic [DATA_WIDTH-1:0] exp_evaluator_div_operand_a;
+logic [DATA_WIDTH-1:0] exp_evaluator_div_operand_b;
+logic exp_evaluator_div_start;
+
 
 ///////////////////////////////////////////////////
 logic [DATA_WIDTH-1:0] mem_key_val_data_out;
@@ -50,7 +54,7 @@ logic [$clog2(NUM_KEY_VAL)-1:0] mem_key_val_read_addr;
 logic [$clog2(NUM_KEY_VAL)-1:0] mem_key_val_write_addr;
 logic mem_key_val_write_we;
 
-
+assign mem_key_val_read_addr = exp_evaluator_mem_key_val_addr;
 /////////////////////////////////////////////////////
 logic [DATA_WIDTH-1:0] mem_state_var_data_out;
 logic [DATA_WIDTH-1:0] mem_state_var_data_in;
@@ -74,7 +78,7 @@ logic mult_add_add_start;
 logic [DATA_WIDTH-1:0] mult_add_result;
 logic mult_add_result_ready;
 
-logic [DATA_WIDTH-1:0] mult_add_inp_values [2:0];
+logic [DATA_WIDTH-1:0] top_mult_add_operand [2:0];
 
 
 //////////////////////////////////////////////////////
@@ -119,11 +123,11 @@ assign top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
 ///////////////////////////////////////////////////////
 logic [3:0] state_top;
 logic exp_evaluator_data_ready;
-logic [DATA_WIDTH-1:0] top_mult_add_operand [2:0];
+
 logic mem_state_var_write_en;
 logic [DATA_WIDTH-1:0] epsilon_inv;
 logic [DATA_WIDTH-1:0] map_min;
-logic mult_add_data_ready;
+
 logic [DATA_WIDTH-1:0] mult_add_data;
 logic [MANTISSA_LEN-1:0] interval_mantissa;
 logic [EXP_LEN-1:0] interval_exponent;
@@ -155,7 +159,6 @@ exp_evaluator #(
 	.reset                       (0),
 	.mem_state_var_read_data_out (mem_state_var_data_out),
 	.mem_key_val_data_out        (mem_key_val_data_out),
-	//.mem_state_var_data_out      (mem_state_var_data_out),
 	.mult_result_ready           (mult_result_ready),
 	.mult_result                 (mult_result),
 	.add_result_ready            (add_result_ready),
@@ -178,9 +181,9 @@ exp_evaluator #(
 	.exponent_operand_a          (exp_evaluator_exponent_operand_a),
 	.exponent_operand_b          (exp_evaluator_exponent_operand_b),
 	.exponent_start              (exp_evaluator_exponent_start),
-	.div_divisor                 (div_divisor),
-	.div_dividend                (div_dividend),
-	.div_start                   (div_start),
+	.div_divisor                 (exp_evaluator_div_operand_b),
+	.div_dividend                (exp_evaluator_div_operand_a),
+	.div_start                   (exp_evaluator_div_start),
     .exp_eval_data_ready         (data_ready)
 );
 
@@ -220,7 +223,7 @@ mult_add #(
 ) inst_mult_add (
 	.clock             (clock),
 	.start_mult_add    (start_mult_add),
-	.inp_values        (mult_add_inp_values),
+	.inp_values        (top_mult_add_operand),
 	.mult_result       (mult_result),
 	.mult_result_ready (mult_result_ready),
 	.add_result        (add_result[0]),
@@ -301,11 +304,6 @@ always @(posedge clock) begin
 				endcase
 			top_mem_state_var_read_addr <= 0;
 			
-			mem_state_var_write_we <= 0;
-			mem_state_var_write_addr <= 0;
-			mem_state_var_read_addr <= 0;
-			mem_state_var_data_in <= 0;
-			
 			end
 
 		STATE_KEY_RX : begin
@@ -314,12 +312,7 @@ always @(posedge clock) begin
 
 		STATE_EXP_EVAL_BEGIN : begin
 			start_exp_evaluator <= 1'b1;
-			state_top <= STATE_EXP_EVAL_WAIT;  
-			
-			mem_state_var_write_we <= exp_evaluator_mem_state_var_write_we;
-            mem_state_var_write_addr <= exp_evaluator_mem_state_var_write_addr;
-            mem_state_var_read_addr <= exp_evaluator_mem_state_var_read_addr;
-            mem_state_var_data_in <= exp_evaluator_mem_state_var_write_data_in;
+			state_top <= STATE_EXP_EVAL_WAIT;
             			          
 			end
 
@@ -329,11 +322,6 @@ always @(posedge clock) begin
 				1'b1 : state_top <= STATE_POST_PROCESS_1;
 				1'b0 : state_top <= STATE_EXP_EVAL_WAIT;
 				endcase
-
-			mem_state_var_write_we <= exp_evaluator_mem_state_var_write_we;
-            mem_state_var_write_addr <= exp_evaluator_mem_state_var_write_addr;
-            mem_state_var_read_addr <= exp_evaluator_mem_state_var_read_addr;
-            mem_state_var_data_in <= exp_evaluator_mem_state_var_write_data_in;
             	
 			end
 
@@ -371,7 +359,7 @@ always @(posedge clock) begin
 			end
 
 		STATE_POST_PROCESS_3_WAIT : begin
-			case (mult_add_data_ready)
+			case (mult_add_result_ready)
 				1'b1 : state_top <= STATE_ENCRYPT;
 				1'b0 : state_top <= STATE_POST_PROCESS_3_WAIT;
 				endcase
@@ -406,7 +394,7 @@ always @(posedge clock) begin
 			end
 
 		STATE_MULT_ADD_WAIT : begin
-			case (mult_add_data_ready)
+			case (mult_add_result_ready)
 				1'b1 : begin 
 					state_top <= STATE_POST_PROCESS_1;
 					mem_state_var_write_en <= 1'b1;
@@ -421,14 +409,92 @@ always @(posedge clock) begin
 
 		default : begin 
 			state_top <= STATE_DEFAULT;
-			
-            mem_state_var_write_we <= 0;
-            mem_state_var_write_addr <= 0;
-            mem_state_var_read_addr <= 0;
-            mem_state_var_data_in <= 0;
-            
 			end
 		endcase // start_top
 	end
+	
+	always @(*) begin
+    
+        case (state_top)
+            
+            STATE_EXP_EVAL_WAIT : begin
+                mult_operand_a <= exp_evaluator_mult_operand_a;
+                mult_operand_b <= exp_evaluator_mult_operand_b;
+                mult_start <= exp_evaluator_mult_start;
+                
+                add_operand_a[0] <= exp_evaluator_add_operand_a[0];
+                add_operand_b[0] <=  exp_evaluator_add_operand_b[0];
+                add_operand_a[1] <= exp_evaluator_add_operand_a[1];
+                add_operand_b[1] <=  exp_evaluator_add_operand_b[1];
+                add_start[0] <= exp_evaluator_add_start[0];
+                add_start[1] <= exp_evaluator_add_start[1];
+                
+                exponent_operand_a <= exp_evaluator_exponent_operand_a;
+                exponent_operand_b <= exp_evaluator_exponent_operand_b;
+                exponent_start <= exp_evaluator_exponent_start;
+                
+                div_start <= 0;
+                
+                /////memory part//////
+                mem_state_var_write_we <= exp_evaluator_mem_state_var_write_we;
+                mem_state_var_write_addr <= exp_evaluator_mem_state_var_write_addr;
+                mem_state_var_read_addr <= exp_evaluator_mem_state_var_read_addr;
+                mem_state_var_data_in <= exp_evaluator_mem_state_var_write_data_in;
+                
+                end
+    
+            STATE_MULT_ADD_WAIT : begin
+
+                mult_operand_a <= mult_add_mult_operand_a;
+                mult_operand_b <= mult_add_mult_operand_b;
+                mult_start <= mult_add_mult_start;
+                
+                add_operand_a[0] <= mult_add_add_operand_a;
+                add_operand_b[0] <= mult_add_add_operand_b;
+                add_start[0] <= mult_add_add_start;
+                add_operand_a[1] <= 0;
+                add_operand_b[1] <= 0;
+                add_start[1] <= 0;
+                
+                exponent_operand_a <= 0;
+                exponent_operand_b <= 0;
+                exponent_start <= 0;
+                
+                div_start <= 0;
+                /////memory part//////
+                mem_state_var_write_we <= 0;
+                mem_state_var_write_addr <= 0;
+                mem_state_var_read_addr <= 0;
+                mem_state_var_data_in <= 0;
+                
+                end
+            default: begin
+                add_operand_a[0] <= 0;
+                add_operand_b[0] <= 0;
+                add_operand_a[1] <= 0;
+                add_operand_b[1] <= 0;
+                add_start[0]     <= 0;
+                add_start[1]     <= 0;
+    
+                mult_operand_a <= 0;
+                mult_operand_b <= 0;
+                mult_start <= 0;
+    
+                exponent_operand_a <= 0;
+                exponent_operand_b <= 0;
+                exponent_start <= 0;
+                
+                div_start <= 0;
+                
+                
+                /////memory part//////	
+                mem_state_var_write_we <= 0;
+                mem_state_var_write_addr <= 0;
+                mem_state_var_read_addr <= 0;
+                mem_state_var_data_in <= 0;
+                
+                end
+            endcase
+        end
 
 endmodule

@@ -1,3 +1,6 @@
+//Fix the following issue
+//The input value of exponent will be in floatig point
+//We need to convert to an integer before starting operation.
 
 module exponent_operation #(
 	
@@ -8,7 +11,7 @@ module exponent_operation #(
 	input logic clock,
 	input logic start,
 	input logic [DATA_WIDTH-1:0] inp_value,
-	input logic [EXPONENT_WIDTH-1:0] inp_exponent,
+	input logic [DATA_WIDTH-1:0] inp_exponent,
 
 	output logic output_ready,
 	output logic [DATA_WIDTH-1:0] out_value);
@@ -42,7 +45,7 @@ always @(posedge clock) begin
 
 		4'd1 : begin
 			if (exponent == 1) begin
-				state_exponent_operation <= 4'd1;
+				state_exponent_operation <= 4'd5;
 				end
 			else begin
 				state_exponent_operation <= 4'd2;

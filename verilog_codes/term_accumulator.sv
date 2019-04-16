@@ -1,4 +1,4 @@
-
+//Add ROM with postfix details
 
 module term_accumulator #(
 	parameter DATA_WIDTH = 32,
@@ -40,11 +40,11 @@ module term_accumulator #(
 	output logic [$clog2(NUM_KEY_VAL)-1:0] mem_key_val_addr,
 	output logic [$clog2(NUM_STATE_VAR)-1:0] mem_state_var_addr,
 
-	output logic output_value,
+	output logic [DATA_WIDTH-1:0] output_value,
 	output logic output_ready);
 
 ///////////////////////////////////////////////
-localparam POSTFIX_DATA_WIDTH = 9;
+localparam POSTFIX_DATA_WIDTH = CODE_WIDTH;     //localparam POSTFIX_DATA_WIDTH = 9;
 localparam POSTFIX_DATA_DEPTH = 1024;
 localparam POSTFIX_DATA_END_CODE = {CODE_WIDTH{1'b1}};
 
@@ -100,7 +100,7 @@ assign decoded_data = decoder_const_data | decoder_trigo_data | decoder_state_va
 logic alu_data_ready;
 assign alu_data_ready = mult_data_ready | add_data_ready | divide_data_ready | exponent_data_ready;
 
-logic alu_output;
+logic [DATA_WIDTH-1:0] alu_output;
 assign alu_output = mult_result | add_result | divide_result | exponent_result;
 
 
@@ -156,6 +156,7 @@ decoder_type_3 #(
 	.sin_calc_start                (decoder_trigo_sine_calc_start),
 	.out_angle                     (decoder_trigo_angle),
 	.out_sine_cosine               (decoder_trigo_sine_cosine),
+	.data_ready                    (decoder_trigo_data_ready),
 	.out_value                     (decoder_trigo_data)
 );
 
