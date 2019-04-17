@@ -21,6 +21,10 @@ localparam EXP_BIAS = (2**(EXP_LEN-1)) - 1;
 localparam DATA_WIDTH = EXP_LEN + MANTISSA_LEN + 1;
 
 ///////////////////////////////////////////////////
+logic clock_mem;
+assign clock_mem = ~clock;
+
+///////////////////////////////////////////////////
 logic start_exp_evaluator;
 
 logic [$clog2(NUM_KEY_VAL)-1:0] exp_evaluator_mem_key_val_addr;
@@ -155,6 +159,7 @@ exp_evaluator #(
 	.NUM_KEY_VAL(NUM_KEY_VAL)
 ) inst_exp_evaluator (
 	.clock                       (clock),
+	.clock_mem					 (clock_mem),
 	.start_exp_evaluator         (start_exp_evaluator),
 	.reset                       (0),
 	.mem_state_var_read_data_out (mem_state_var_data_out),
@@ -192,7 +197,7 @@ simple_dual_one_clock #(
 	.MEM_WIDTH(DATA_WIDTH),
 	.MEM_DEPTH(NUM_KEY_VAL)
 ) mem_key_values (
-	.clock      (clock),
+	.clock      (clock_mem),
 	.en_a       (1),
 	.en_b       (1),
 	.write_en_a (mem_key_val_write_we),
@@ -207,7 +212,7 @@ simple_dual_one_clock #(
 	.MEM_WIDTH(DATA_WIDTH),
 	.MEM_DEPTH(NUM_EVAL_VAL+NUM_INIT_VAL)
 ) mem_state_var (
-	.clock      (clock),
+	.clock      (clock_mem),
 	.en_a       (1),
 	.en_b       (1),
 	.write_en_a (mem_state_var_write_we),
