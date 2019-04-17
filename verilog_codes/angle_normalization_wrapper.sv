@@ -93,6 +93,7 @@ always @(posedge clock) begin
             end
 		STATE_END_SEQUENCE : begin
 			mem_angle_combination_value_read_addr <= mem_angle_combination_value_read_addr + 1;
+			mem_angle_combination_value_write_en <= 1'b0;
 
 			if (mem_angle_combination_value_read_addr == (NUM_ANGLE-1)) begin
 				state_angle_normalization <= STATE_DEFAULT;
