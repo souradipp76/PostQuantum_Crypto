@@ -20,6 +20,7 @@ module exp_evaluator #(
 	
 	(
 		input logic clock,
+		input logic clock_mem,
 		input logic start_exp_evaluator,
 		input logic reset,
 
@@ -213,7 +214,7 @@ simple_dual_one_clock #(
 	.MEM_WIDTH(DATA_WIDTH),
 	.MEM_DEPTH(21)
 ) mem_angle_combination_value (
-	.clock      (clock),
+	.clock      (clock_mem),
 	.en_a       (1),
 	.en_b       (1),
 	.write_en_a (mem_angle_combination_value_write),
@@ -229,7 +230,7 @@ rams_sp_rom_angle_comb_detail #(
 	.MEM_WIDTH(16),
 	.MEM_DEPTH(21)
 ) inst_rams_sp_rom_angle_comb_detail (
-	.clock   (clock),
+	.clock   (clock_mem),
 	.enable  (1),
 	.address (mem_angle_combination_detail_addr),
 	.dout    (mem_angle_combination_detail_datao)
@@ -323,6 +324,7 @@ always @(posedge clock) begin
 			angle_combination_start <= 1'b0;
 			angle_normalization_start <= 1'b0;
 			term_accumulator_start <= 1'b0;
+			counter <= 1;
 			//term_division_start <= 1'b0;
 			//init_val <= 0;	//write a loop here
 			end
@@ -434,7 +436,7 @@ always @(*) begin
 			exponent_start <= 0;
 			div_start <= 0;
 			
-			
+			mem_state_var_write_we <= 0;
 			/////memory part//////
 			mem_angle_combination_value_write <= 0;
             mem_angle_combination_value_write_addr <= 0;
