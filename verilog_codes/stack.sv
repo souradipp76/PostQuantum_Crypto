@@ -6,6 +6,7 @@ module stack #(
 
 	(
 	input logic clock,
+	input logic clock_mem,
 	input logic reset,
 	input logic [DATA_WIDTH-1:0] inp_data,
 	input logic push,
@@ -82,7 +83,7 @@ rams_sp_rf_rst #(
     .MEM_DEPTH(DEPTH))    stack_mem
     
     (
-    .clock(clock),
+    .clock(clock_mem),
     .enable(1),
     .write_en(mem_stack_write_en),
     .reset(reset),

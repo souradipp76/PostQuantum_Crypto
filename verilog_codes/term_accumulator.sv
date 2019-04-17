@@ -179,6 +179,7 @@ stack #(
 	.DEPTH(64)
 ) inst_stack (
 	.clock       (clock),
+	.clock_mem   (clock_mem),
 	.reset       (reset),
 	.inp_data    (stack_input),
 	.push        (stack_push),
@@ -191,8 +192,8 @@ stack #(
 rams_sp_rom_pf1 #(
 
 ) inst_rams_sp_rom_pf1 (
-	.clock   (clock),
-	.enable  (enable),
+	.clock   (clock_mem),
+	.enable  (1),
 	.address (mem_term_detail_postfix_addr),
 	.dout    (mem_term_detail_postfix_data_out)
 );
