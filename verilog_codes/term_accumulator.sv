@@ -11,6 +11,7 @@ module term_accumulator #(
 	
 	(
 	input logic clock,
+	input logic clock_mem,
 	input logic reset,
 	input logic term_accumulator_start,
 
@@ -185,6 +186,15 @@ stack #(
 	.out_data    (stack_output),
 	.stack_empty (stack_empty),
 	.stack_full  (stack_full)
+);
+
+rams_sp_rom_pf1 #(
+
+) inst_rams_sp_rom_pf1 (
+	.clock   (clock),
+	.enable  (enable),
+	.address (mem_term_detail_postfix_addr),
+	.dout    (mem_term_detail_postfix_data_out)
 );
 
 

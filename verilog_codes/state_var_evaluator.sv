@@ -183,6 +183,7 @@ term_accumulator #(
 	.ANGLE_ADDR_WIDTH($clog2(NUM_ANGLE_COMB))
 ) inst_term_accumulator (
 	.clock                         (clock),
+	.clock_mem                     (clock_mem),
 	.reset                         (reset),
 	.term_accumulator_start        (term_accumulator_start),
 	.mult_result                   (mult_result),
