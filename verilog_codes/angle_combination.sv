@@ -40,6 +40,8 @@ logic [EXP_LEN-1:0] angle_exponent [3:0];
 logic [MANTISSA_LEN-1:0] angle_mantissa [3:0];
 integer j;
 
+logic add_result_ready_reg [1:0];
+
 
 always @(posedge clock) begin		//angle_combination
 
@@ -151,6 +153,9 @@ always @(posedge clock) begin		//angle_combination
 
 			angle_combination_add_start[0] <= 1'b1;
             angle_combination_add_start[1] <= 1'b1;
+
+            add_result_ready_reg[0] <= 1'b0;
+            add_result_ready_reg[1] <= 1'b0;
             
 			state_angle_combination <= 4'd4;
 			end
@@ -159,7 +164,10 @@ always @(posedge clock) begin		//angle_combination
 			angle_combination_add_start[0] <= 1'b0;
             angle_combination_add_start[1] <= 1'b0;
 
-			case ({angle_combination_add_ready[0], angle_combination_add_ready[1]})
+            add_result_ready_reg[0] <= add_result_ready_reg[0] | angle_combination_add_ready[0];
+            add_result_ready_reg[1] <= add_result_ready_reg[1] | angle_combination_add_ready[1];
+
+			case ({add_result_ready_reg[0], add_result_ready_reg[1]})
 				2'b11 : state_angle_combination <= 4'd5;
 				2'b00 : state_angle_combination <= 4'd4;
 				2'b01 : state_angle_combination <= 4'd4;
@@ -173,17 +181,20 @@ always @(posedge clock) begin		//angle_combination
 
 			angle_combination_add_start[0] <= 1'b1;
 
+			add_result_ready_reg[0] <= 1'b0;
+            add_result_ready_reg[1] <= 1'b0;
+
 			state_angle_combination <= 4'd6;
 			end
 
 		4'd6 : begin
 			angle_combination_add_start[0] <= 1'b0;
+			
+			add_result_ready_reg[0] <= add_result_ready_reg[0] | angle_combination_add_ready[0];
 
-			case ({angle_combination_add_ready[0], angle_combination_add_ready[1]})
-				2'b11 : state_angle_combination <= 4'd7;
-				2'b00 : state_angle_combination <= 4'd6;
-                2'b01 : state_angle_combination <= 4'd6;
-                2'b10 : state_angle_combination <= 4'd6;
+			case (add_result_ready_reg[0])
+				2'b1 : state_angle_combination <= 4'd7;
+				2'b0 : state_angle_combination <= 4'd6;
 				endcase
 			end
 
