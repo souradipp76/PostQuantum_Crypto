@@ -47,7 +47,7 @@ always @(posedge clk) begin
 
 		4'd0 : begin
 			if (input_data_ready == 1'b1) begin
-				state_angle_normalization <= 4'd1;
+				state_angle_normalization <= 4'd5;  //changed from 4'd1
 				end
 			else begin
 				state_angle_normalization <= 4'd0;
@@ -98,7 +98,8 @@ always @(posedge clk) begin
 				end
 
 			else begin
-				if (angle_magnitude[MANTISSA_LEN-1:0] > PI_MANTISSA) begin
+				//if (angle_magnitude[MANTISSA_LEN-1:0] > PI_MANTISSA) begin
+				if ((angle_magnitude[MANTISSA_LEN-1:0] > PI_MANTISSA) & (angle_magnitude[MANTISSA_LEN+EXP_LEN-1:MANTISSA_LEN] == (EXP_BIAS + 8'd1))) begin
 					state_angle_normalization <= 4'd1;
 					end
 				else begin
@@ -143,6 +144,9 @@ always @(posedge clk) begin
 			state_angle_normalization <= 4'd0;
 			output_angle_normalization_done <= 1'b0;
 			output_normalized_angle <= 0;
+			angle_normalization_add_start <= 1'b0;
+			angle_normalization_add_a <= 0;
+			angle_normalization_add_b <= 0;
 			end
 
 		endcase
