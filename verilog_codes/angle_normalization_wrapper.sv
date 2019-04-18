@@ -1,7 +1,7 @@
 module angle_normalization_wrapper #(
 	parameter EXP_LEN = 8,
 	parameter MANTISSA_LEN = 23,
-	parameter NUM_ANGLE = 22)
+	parameter NUM_ANGLE = 20)
 
 	(
 	input logic clock,
@@ -35,7 +35,7 @@ logic [3:0] state_angle_normalization;
 logic angle_normalization_input_ready;
 logic angle_normalization_out_ready;
 
-assign mem_angle_combination_value_write_addr = mem_angle_combination_value_read_addr - 1;
+assign mem_angle_combination_value_write_addr = mem_angle_combination_value_read_addr;
 
 angle_normalization #(
 	.EXP_LEN(EXP_LEN),
@@ -61,22 +61,20 @@ always @(posedge clock) begin
 	case (state_angle_normalization)
 
 		STATE_DEFAULT : begin
-			
 			angle_normalization_done <= 1'b0;
 
 			case (start_angle_normalization)
 				1'b1 : begin
 					state_angle_normalization <= STATE_NORMALIZATION_WAIT;
 					angle_normalization_input_ready <= 1'b1;
-					mem_angle_combination_value_read_addr <= mem_angle_combination_value_read_addr + 1;
 					end
 
 				1'b0 : begin
 					state_angle_normalization <= STATE_DEFAULT;
 					angle_normalization_input_ready <= 1'b0;
-					mem_angle_combination_value_read_addr <= 0;
 					end
 				endcase
+			mem_angle_combination_value_read_addr <= 0;
 			end
 
 		STATE_NORMALIZATION_WAIT : begin
