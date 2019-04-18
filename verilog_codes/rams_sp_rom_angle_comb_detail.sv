@@ -1,7 +1,7 @@
 
 module rams_sp_rom_angle_comb_detail #(
 	parameter MEM_WIDTH = 16,
-	parameter MEM_DEPTH = 21)
+	parameter MEM_DEPTH = 20)
 	(
 	input logic clock,
 	input logic enable, 
@@ -27,16 +27,15 @@ always @(posedge clock) begin
 			5'b01000: data <= 16'hf3df;
 			5'b01001: data <= 16'h0bff;
 			5'b01010: data <= 16'hf2ff;
-			5'b01011: data <= 16'hf24f;
+			5'b01011: data <= 16'hf2cf;
 			5'b01100: data <= 16'h1acf;
 			5'b01101: data <= 16'h1aff;
 			5'b01110: data <= 16'hf2df;
 			5'b01111: data <= 16'h12df;
 			5'b10000: data <= 16'hff4f;
 			5'b10001: data <= 16'h1fcf;
-			5'b10010: data <= 16'hfbcf;
-			5'b10011: data <= 16'hf2cf;
-			5'b10100: data <= 16'h1b4f;
+			5'b10010: data <= 16'hf3cf;
+			5'b10011: data <= 16'h1b4f;
 			endcase
 			end
 	end
