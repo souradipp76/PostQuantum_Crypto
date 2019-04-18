@@ -22,6 +22,7 @@ module float_point_adder #(
 	output logic [EXP_LEN+MANTISSA_LEN+1-1:0] sum,
 	output logic sum_ready);
 
+
 logic [3:0] state;
 
 logic [EXP_LEN-1:0] in_exponent_a;
@@ -46,9 +47,15 @@ logic [MANTISSA_LEN+1-1:0] mantissa_a_shifted;
 logic [MANTISSA_LEN+1-1:0] mantissa_b_shifted;
 logic exponent_diff_zero;
 
-assign a_zero = ~|{in_sign_a,in_exponent_a,in_mantissa_a};
-assign b_zero = ~|{in_sign_b,in_exponent_b,in_mantissa_b};
+assign a_zero = ~|{in_sign_a,in_exponent_a,in_mantissa_a[MANTISSA_LEN-1:0]};
+assign b_zero = ~|{in_sign_b,in_exponent_b,in_mantissa_b[MANTISSA_LEN-1:0]};
 assign exponent_diff_zero = ~|exponent_diff;
+
+genvar i;
+logic [EXP_LEN+MANTISSA_LEN-1:0] xor_inputs;
+
+for (i = 0; i < EXP_LEN+MANTISSA_LEN; i=i+1)
+	assign xor_inputs[i] = (a[i]^b[i]);
 
 
 always @(posedge clk) begin
@@ -74,12 +81,26 @@ always @(posedge clk) begin
 			in_sign_a <= a[MANTISSA_LEN+EXP_LEN];
 			in_sign_b <= b[MANTISSA_LEN+EXP_LEN];
 
-			in_magnitudes_equal <= ~(a[MANTISSA_LEN+EXP_LEN-1:0]^b[MANTISSA_LEN+EXP_LEN-1:0]);
+			//in_magnitudes_equal <= ~(a[MANTISSA_LEN+EXP_LEN-1:0]^b[MANTISSA_LEN+EXP_LEN-1:0]);
+			in_magnitudes_equal <= ~|xor_inputs;
 			operation_subtract <= a[MANTISSA_LEN+EXP_LEN]^b[MANTISSA_LEN+EXP_LEN];
 			end
 
 		4'd1 : begin
-			if (in_magnitudes_equal == 1'b1) begin
+			
+			if (a_zero == 1'b1) begin
+				sign_sum <= in_sign_b;
+				exponent_sum <= in_exponent_b;
+				mantissa_sum <= in_mantissa_b;
+				state <= 4'd6;
+				end
+			else if (b_zero == 1'b1) begin
+				sign_sum <= in_sign_a;
+				exponent_sum <= in_exponent_a;
+				mantissa_sum <= in_mantissa_a;
+				state <= 4'd6;
+				end
+			else if (in_magnitudes_equal == 1'b1) begin
 				if (operation_subtract == 1'b1) begin
 					sign_sum <= 0;
 					exponent_sum <= 0;
@@ -92,18 +113,6 @@ always @(posedge clk) begin
 					mantissa_sum <= in_mantissa_a;
 					state <= 4'd6;
 					end
-				end
-			else if (a_zero == 1'b1) begin
-				sign_sum <= in_sign_b;
-				exponent_sum <= in_exponent_b;
-				mantissa_sum <= in_mantissa_b;
-				state <= 4'd6;
-				end
-			else if (b_zero == 1'b1) begin
-				sign_sum <= in_sign_a;
-				exponent_sum <= in_exponent_a;
-				mantissa_sum <= in_mantissa_a;
-				state <= 4'd6;
 				end
 			else begin
 				sign_sum <= 0;
