@@ -228,6 +228,7 @@ case (state_term_accumulator)
 			2'b00 : decoder_const_start <= 1'b1; 
 			2'b01 : decoder_state_var_key_val_start <= 1'b1;
 			2'b11 : decoder_trigo_start <= 1'b1;
+			default : decoder_const_start <= 1'b0;
 			endcase
 
 		case (mem_term_detail_postfix_data_out[CODE_WIDTH-1:CODE_WIDTH-1-1])
@@ -237,6 +238,11 @@ case (state_term_accumulator)
 		end
 
 	STATE_WAIT_DATA_DECODE : begin
+
+		decoder_const_start <= 1'b0;
+		decoder_state_var_key_val_start <= 1'b0;
+		decoder_trigo_start <= 1'b0;
+
 		case (decoded_data_ready)
 			1'b1    : state_term_accumulator <= STATE_PUSH_DATA_DECODED;
 			default : state_term_accumulator <= STATE_WAIT_DATA_DECODE;
