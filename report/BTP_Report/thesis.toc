@@ -27,8 +27,9 @@
 \contentsline {section}{\numberline {5.2}Key Generation}{13}
 \contentsline {section}{\numberline {5.3}FPGA Implementation}{14}
 \contentsline {section}{\numberline {5.4}Analysis}{15}
-\contentsline {subsection}{\numberline {5.4.1}Test for Chaos}{15}
-\contentsline {subsubsection}{Collison Test}{15}
-\contentsline {subsection}{\numberline {5.4.2}Test for Randomness}{15}
-\contentsline {subsection}{\numberline {5.4.3}Complexity}{15}
-\contentsline {chapter}{\numberline {6}Future Work}{16}
+\contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{15}
+\contentsline {subsubsection}{Test for Chaos}{15}
+\contentsline {subsubsection}{Collision Test}{16}
+\contentsline {subsubsection}{Test for Randomness}{16}
+\contentsline {subsection}{\numberline {5.4.2}Complexity}{17}
+\contentsline {chapter}{\numberline {6}Future Work}{18}

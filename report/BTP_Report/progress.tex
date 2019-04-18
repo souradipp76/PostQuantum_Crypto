@@ -172,9 +172,81 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 4. {\bf Control Unit} - Essentially a state machine that co-ordinates the operation of all other modules including evaluation of state-variables and transfer of data through USB/Ethernet port.
 
 \section{Analysis}
-\subsection{Test for Chaos}
-\subsubsection{Collison Test}
-Collison resistance is a property of cryptographic algorithms which makes it difficult to find two inputs which are encrypted to the same output. It must be ensured that finding collisions is as hard as some of the hard mathematical problems like integer factorization  or discrete logarithm. Collision resistance does not mean that no collisions exist; simply that they are hard to find. We show that the proposed algorithm is fully collision resistant i.e. collisions exist.
+\subsection{General Properties of the Cryptosystem}
+\subsubsection{Test for Chaos}
+There are some essential requirements that need to be obeyed by any chaos based cryptosystem. These requirements include:
+\begin{enumerate}
+	\item Sensitivity to Parametric values: A small variation in one of the system parameters is enough to make two trajectories, starting at the same initial point, separate at exponential rate.
+	\item Sensitivity to Initial  Condition:  two  trajectories  starting  at  two  different,  though  arbitrarily  close,  initial points separate from each other exponentially.
+	\item Ergodicity:  Almost every trajectory tends to an invariant distribution that is independent of the initial conditions, and almost every trajectory will eventually visit any arbitrary interval of arbitrary size.
+\end{enumerate}
 
-\subsection{Test for Randomness}
+The proposed cryptosystem also holds such properties.The three qualities mentioned earlier are clearly evident from the plots and graphs shown Fig. ,Fig. \& Fig. . It is observed that keeping the parameters in one case and initial conditions in another case, constant leads to two completely different trajectories. Thus the map generated from the compound triple pendulum model possesses the essential chaotic properties to be employed in a general cryptosystem. 
+
+\subsubsection{Collision Test}
+Collision resistance is a property of cryptographic algorithms which makes it difficult to find two inputs which are encrypted to the same output. It must be ensured that finding collisions must be kept as hard as some of the hard mathematical problems like integer factorization  or discrete logarithm. Collision resistance does not mean that no collisions exist; simply that they are hard to find. Here, we show that the proposed algorithm is fully collision resistant i.e. no collisions exist.
+
+Since the entire range of $\theta$'s are partitioned according to the number of characters(say 256), different characters are mappped to points in different intervals. Hence two different inputs having different characters are completely mapped to different intervals. So the encryption scheme is completely free of collisions. 
+
+\subsubsection{Test for Randomness}
+For testing randomness of the chaotic map, statistical tests are generally applied. These statistical tests are generally employed for testing randomness in pseudo random number generators. Here, Diehard random number generator test suite has been employed to do such tests. Developed by George Marsaglia, Diehard is a battery of tests which are used to determine the quality of PRNGs. The list of tests performed on the generated chaotic map data and the corresponding results obtained are shown in Table 5.1.
+
+\begin{table}[h!]
+\begin{center}
+\caption{Dieharder Test}
+\label{tab:table1}
+\begin{tabular}{|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+    \hline
+    \textbf{test\_name} & \textbf{ntup} & \textbf{tsamples} & \textbf{psamples} & \textbf{p-value} & \textbf{Assessment}\\
+    \hline
+    diehard\_birthdays &    0 &        100 &      100 & 0.98409924 &   PASSED \\  
+    diehard\_operm5 &    0 &    1000000 &      100 & 0.02570841 &   PASSED \\  
+    diehard\_rank\_32x32 &    0 &      40000 &      100 & 0.30314396 &   PASSED \\  
+    diehard\_rank\_6x8 &    0 &     100000 &      100 & 0.07586247 &   PASSED \\  
+    diehard\_bitstream &    0 &    2097152 &      100 & 0.83264505 &   PASSED \\  
+    diehard\_opso &    0 &    2097152 &      100 & 0.93701062 &   PASSED \\  
+    diehard\_oqso &    0 &    2097152 &      100 & 0.63759752 &   PASSED \\  
+    diehard\_dna &    0 &    2097152 &      100 & 0.73795350 &   PASSED \\  
+    diehard\_count\_1s\_str &    0 &     256000 &      100 & 0.77268562 &   PASSED \\  
+    diehard\_count\_1s\_byt &    0 &     256000 &      100 & 0.55542008 &   PASSED \\  
+    diehard\_parking\_lot &    0 &      12000 &      100 & 0.70977074 &   PASSED \\  
+    diehard\_2dsphere &    2 &       8000 &      100 & 0.58428028 &   PASSED \\  
+    diehard\_3dsphere &    3 &       4000 &      100 & 0.86446205 &   PASSED \\  
+    diehard\_squeeze &    0 &     100000 &      100 & 0.19422339 &   PASSED \\  
+    diehard\_sums &    0 &        100 &      100 & 0.33263813 &   PASSED \\  
+    diehard\_runs &    0 &     100000 &      100 & 0.50609448 &   PASSED \\    
+    diehard\_craps &    0 &     200000 &      100 & 0.36377661 &   PASSED \\   
+    marsaglia\_tsang\_gcd &    0 &   10000000 &      100 & 0.66121444 &   PASSED \\ 
+    sts\_monobit &    1 &     100000 &      100 & 0.31074688 &   PASSED \\  
+    sts\_runs &    2 &     100000 &      100 & 0.98606705 &   PASSED \\  
+    sts\_serial &    1 &     100000 &      100 & 0.23629469 &   PASSED \\  
+    sts\_serial &    2 &     100000 &      100 & 0.85410639 &   PASSED \\  
+    sts\_serial &    8 &     100000 &      100 & 0.11131795 &   PASSED \\  
+    sts\_serial &   16 &     100000 &      100 & 0.83380616 &   PASSED \\  
+    rgb\_bitdist &    1 &     100000 &      100 & 0.45061356 &   PASSED \\  
+    rgb\_bitdist &    6 &     100000 &      100 & 0.53111009 &   PASSED \\   
+    rgb\_bitdist &   12 &     100000 &      100 & 0.64865649 &   PASSED \\  
+    rgb\_minimum\_distance &    2 &      10000 &     1000 & 0.41755433 &   PASSED \\   
+    rgb\_minimum\_distance &    4 &      10000 &     1000 & 0.11298477 &   PASSED \\  
+    rgb\_permutations &    2 &     100000 &      100 & 0.79654377 &   PASSED \\ 
+    rgb\_permutations &    4 &     100000 &      100 & 0.85371565 &   PASSED \\  
+    rgb\_lagged\_sum &    0 &    1000000 &      100 & 0.92039997 &   PASSED \\   
+    rgb\_lagged\_sum &   16 &    1000000 &      100 & 0.78219023 &   PASSED \\   
+    rgb\_lagged\_sum &   32 &    1000000 &      100 & 0.64955712 &   PASSED \\  
+    rgb\_kstest\_test &    0 &      10000 &     1000 & 0.58005862 &   PASSED \\  
+    dab\_bytedistrib &    0 &   51200000 &        1 & 0.01089458 &   PASSED \\  
+    dab\_dct &  256 &      50000 &        1 & 0.06122408 &   PASSED \\  
+    dab\_filltree &   32 &   15000000 &        1 & 0.12524761 &   PASSED \\   
+    dab\_filltree2 &    0 &    5000000 &        1 & 0.50605989 &   PASSED \\  
+    dab\_monobit2 &   12 &   65000000 &        1 & 0.27940682 &   PASSED \\  
+        
+    \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+It is observed that in most of the tests, the chaotic map generator performs well. This can be attributed largely due to the non-linear dynamics of the map.\\\\
+
 \subsection{Complexity}
+
+In this report, we give an overview of the computational complexity of the algorithm both on software as well as hardware level.
