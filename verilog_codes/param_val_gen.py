@@ -30,7 +30,7 @@ def dec2ieee(theta):
 		theta_binary.append('1')
 		theta = -theta
 
-	exponent = 128
+	exponent = 127
 
 	#Finding mantissa and exponent of theta
 	while(True):
