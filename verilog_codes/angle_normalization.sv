@@ -65,6 +65,16 @@ always @(posedge clk) begin
 			else begin
 				angle_excess_exponent <= angle_magnitude[MANTISSA_LEN+EXP_LEN-1:MANTISSA_LEN] - 1;
 				end
+			state_angle_normalization <= 4'd9;
+			end
+
+		4'd9 : begin
+			if (angle_excess_exponent < (EXP_BIAS + 2)) begin
+				angle_excess_exponent <= EXP_BIAS + 2;
+				end
+			else begin
+				angle_excess_exponent <= angle_excess_exponent;
+				end
 			state_angle_normalization <= 4'd2;
 			end
 
@@ -134,7 +144,15 @@ always @(posedge clk) begin
 			end
 
 		4'd8 : begin
-			output_normalized_angle <= {1'b0, angle_magnitude[EXP_LEN+MANTISSA_LEN-1:0]};
+
+			if (angle_sign) begin
+				output_normalized_angle <= {~angle_magnitude[EXP_LEN+MANTISSA_LEN], angle_magnitude[EXP_LEN+MANTISSA_LEN-1:0]};
+				end
+			else begin
+				output_normalized_angle <= {angle_magnitude[EXP_LEN+MANTISSA_LEN], angle_magnitude[EXP_LEN+MANTISSA_LEN-1:0]};
+				end
+
+			//output_normalized_angle <= {1'b0, angle_magnitude[EXP_LEN+MANTISSA_LEN-1:0]};
 			output_angle_normalization_done <= 1'b1;
 
 			state_angle_normalization <= 4'd0;
