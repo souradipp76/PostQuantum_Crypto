@@ -122,13 +122,15 @@ logic [DATA_WIDTH-1:0] div_result;
 logic [$clog2(NUM_STATE_VAR)-1:0] top_mem_state_var_write_addr;
 logic [$clog2(NUM_STATE_VAR)-1:0] top_mem_state_var_read_addr;
 
-assign top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
+//assign top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
+
+logic top_mem_state_var_write_we;
+logic [DATA_WIDTH-1:0] top_mem_state_var_write_data_in;
 
 ///////////////////////////////////////////////////////
 logic [3:0] state_top;
 logic exp_evaluator_data_ready;
 
-logic mem_state_var_write_en;
 logic [DATA_WIDTH-1:0] epsilon_inv;
 logic [DATA_WIDTH-1:0] map_min;
 
@@ -294,8 +296,17 @@ exponent_operation #(
 	.out_value    (exponent_result)
 );
 
+logic [DATA_WIDTH-1:0] initial_conditions [5:0];
+integer temp_counter = 0;
 
-
+initial begin
+	initial_conditions[0] = 32'h413a5532;
+	initial_conditions[1] = 32'h41227fcb;
+	initial_conditions[2] = 32'h411888ce;
+	initial_conditions[3] = 0;
+	initial_conditions[4] = 0;
+	initial_conditions[5] = 0;
+end
 
 
 always @(posedge clock) begin
@@ -304,7 +315,7 @@ always @(posedge clock) begin
 
 		STATE_DEFAULT : begin
 			case (start_top)
-				1'b1 : state_top <= STATE_EXP_EVAL_BEGIN;///////Change accordingly
+				1'b1 : state_top <= STATE_KEY_RX;
 				1'b0 : state_top <= STATE_DEFAULT;
 				endcase
 			top_mem_state_var_read_addr <= 0;
@@ -312,7 +323,20 @@ always @(posedge clock) begin
 			end
 
 		STATE_KEY_RX : begin
-
+			case(temp_counter)
+				32'd6 : begin
+					state_top <= STATE_EXP_EVAL_BEGIN;
+					temp_counter <= 0;
+					top_mem_state_var_write_we <= 0;
+					end
+				default : begin
+					state_top <= STATE_KEY_RX;
+					temp_counter <= temp_counter + 1;
+					top_mem_state_var_write_we <= 1;
+					end
+				endcase
+			top_mem_state_var_write_addr <= temp_counter;
+			top_mem_state_var_write_data_in <= initial_conditions[temp_counter];
 			end
 
 		STATE_EXP_EVAL_BEGIN : begin
@@ -344,7 +368,7 @@ always @(posedge clock) begin
 				endcase
 			top_mult_add_operand[0] <= DELTA_T;
 			top_mult_add_operand[2] <= mem_state_var_data_out;
-			mem_state_var_write_en <= 1'b0;
+			top_mem_state_var_write_we <= 1'b0;
 			
 			end
 
@@ -402,14 +426,15 @@ always @(posedge clock) begin
 			case (mult_add_result_ready)
 				1'b1 : begin 
 					state_top <= STATE_POST_PROCESS_1;
-					mem_state_var_write_en <= 1'b1;
+					top_mem_state_var_write_we <= 1'b1;
 					end
 				1'b0 : begin 
 					state_top <= STATE_MULT_ADD_WAIT;
-					mem_state_var_write_en <= 1'b0;
+					top_mem_state_var_write_we <= 1'b0;
 					end
 				endcase
-			mem_state_var_data_in <= mult_add_data;
+			top_mem_state_var_write_data_in <= mult_add_result;
+			top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
 			end
 
 		default : begin 
@@ -421,6 +446,13 @@ always @(posedge clock) begin
 	always @(*) begin
     
         case (state_top)
+
+        	STATE_KEY_RX : begin
+        		mem_state_var_write_we <= top_mem_state_var_write_we;
+                mem_state_var_write_addr <= top_mem_state_var_write_addr;
+                mem_state_var_read_addr <= 0;
+                mem_state_var_data_in <= top_mem_state_var_write_data_in;
+            	end
             
             STATE_EXP_EVAL_WAIT : begin
                 mult_operand_a <= exp_evaluator_mult_operand_a;
@@ -467,7 +499,7 @@ always @(posedge clock) begin
                 
                 div_start <= 0;
                 /////memory part//////
-                mem_state_var_write_we <= 0;
+                mem_state_var_write_we <= top_mem_state_var_write_we;
                 mem_state_var_write_addr <= 0;
                 mem_state_var_read_addr <= 0;
                 mem_state_var_data_in <= 0;
@@ -495,7 +527,7 @@ always @(posedge clock) begin
                 /////memory part//////	
                 mem_state_var_write_we <= 0;
                 mem_state_var_write_addr <= 0;
-                mem_state_var_read_addr <= 0;
+                mem_state_var_read_addr <= top_mem_state_var_read_addr;
                 mem_state_var_data_in <= 0;
                 
                 end
