@@ -12,7 +12,7 @@ module exp_evaluator #(
 	parameter NUM_INIT_VAL = 6,
 	parameter NUM_EVAL_VAL = 3,
 	parameter NUM_KEY_VAL = 23,
-	parameter NUM_ANGLE_COMB = 21,
+	parameter NUM_ANGLE_COMB = 20,
 	parameter EXP_LEN = 8,
     parameter MANTISSA_LEN = 23,
     parameter CODE_WIDTH = 8,
@@ -213,7 +213,7 @@ term_accumulator #(
 
 simple_dual_one_clock #(
 	.MEM_WIDTH(DATA_WIDTH),
-	.MEM_DEPTH(21)
+	.MEM_DEPTH(NUM_ANGLE_COMB)
 ) mem_angle_combination_value (
 	.clock      (clock_mem),
 	.en_a       (1),
@@ -229,7 +229,7 @@ simple_dual_one_clock #(
 
 rams_sp_rom_angle_comb_detail #(
 	.MEM_WIDTH(16),
-	.MEM_DEPTH(21)
+	.MEM_DEPTH(NUM_ANGLE_COMB)
 ) inst_rams_sp_rom_angle_comb_detail (
 	.clock   (clock_mem),
 	.enable  (1),

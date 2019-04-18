@@ -300,9 +300,9 @@ logic [DATA_WIDTH-1:0] initial_conditions [5:0];
 integer temp_counter = 0;
 
 initial begin
-	initial_conditions[0] = 32'h413a5532;
-	initial_conditions[1] = 32'h41227fcb;
-	initial_conditions[2] = 32'h411888ce;
+	initial_conditions[0] = 32'h40ba5532;
+	initial_conditions[1] = 32'h40a27fcb;
+	initial_conditions[2] = 32'h409888ce;
 	initial_conditions[3] = 0;
 	initial_conditions[4] = 0;
 	initial_conditions[5] = 0;
