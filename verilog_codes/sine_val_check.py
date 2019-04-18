@@ -5,9 +5,6 @@ import math
 param_dict={}
 p= [5.8229,5.0781,4.7667,0,0,0,0.2944,0.1765,0.0947,0.5080,0.2540,0.1270,0.0095,0.0016,0.0002,0.0050,0,0.0008,9.8100,10.0000,0.0010,0.0005,40.7488]
 
-p[0]-=math.pi
-p[1]-=math.pi
-p[2]-=math.pi
 param_dict['x(1)'] = p[0];
 param_dict['x(2)'] = p[1];
 param_dict['x(3)'] = p[2];
@@ -47,7 +44,7 @@ trig_dict["x(2)-x(3)"]=p[1]-p[2]
 trig_dict["2*x(1)-x(2)-x(3)"]=2*p[0]-p[1]-p[2]
 trig_dict["2*x(1)-x(2)"]=2*p[0]-p[1]
 trig_dict["x(2)-2*x(3)"]=p[1]-2*p[2]
-trig_dict["2*x(1)+x(2)-2*x(3)"]=2*p[0]-p[1]-2*p[2]
+trig_dict["2*x(1)+x(2)-2*x(3)"]=2*p[0]+p[1]-2*p[2]
 trig_dict["x(3)"]=p[2]
 trig_dict["2*x(1)-x(3)"]=2*p[0]-p[2]
 trig_dict["2*x(2)-x(3)"]=2*p[1]-p[2]
@@ -56,8 +53,7 @@ trig_dict["2*x(1)-2*x(2)+x(3)"]=2*p[0]-2*p[1]+p[2]
 
 
 for item in trig_dict:
-    if trig_dict[item]>math.pi/2.0:
-        trig_dict[item]-=math.pi
-    elif trig_dict[item]<-math.pi/2.0:
-        trig_dict[item]+=math.pi
+    trig_dict[item]=(trig_dict[item]+2*math.pi)%(2*math.pi)
+    if trig_dict[item]>math.pi:
+        trig_dict[item]-=2*math.pi
     print("{} : {}".format(item,trig_dict[item]))
