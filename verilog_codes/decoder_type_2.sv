@@ -43,6 +43,7 @@ always @(posedge clock) begin
 			mem_key_val_addr <= inp_code[CODE_WIDTH-1-3:0];
 			mem_state_var_addr <= inp_code[CODE_WIDTH-1-5:0];
 			code <= inp_code[CODE_WIDTH-1:0];
+			out_value <= 0;
 			data_ready <= 1'b0;
 			end
 
@@ -71,6 +72,7 @@ always @(posedge clock) begin
 		default : begin
 			state_decoder <= STATE_DEFAULT;
 			counter <= MEM_DELAY - 1;
+			out_value <= 0;
 			end
 		endcase
 	end
