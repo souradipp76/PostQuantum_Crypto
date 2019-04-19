@@ -173,14 +173,14 @@ sine_calculator #(
 	.out_value       (sine_calc_sin_value),
 	.out_data_ready  (sine_calc_done)
 );
-
+logic stack_reset;
 stack #(
 	.DATA_WIDTH(DATA_WIDTH),
 	.DEPTH(64)
 ) inst_stack (
 	.clock       (clock),
 	.clock_mem   (clock_mem),
-	.reset       (reset),
+	.reset       (stack_reset),
 	.inp_data    (stack_input),
 	.push        (stack_push),
 	.pop         (stack_pop),
@@ -199,7 +199,6 @@ rams_sp_rom_pf1 #(
 );
 
 
-
 /////////////////////////////////////////////////
 always @(posedge clock) begin
 
@@ -215,6 +214,7 @@ case (state_term_accumulator)
 		output_ready <= 4'd0;
 		stack_extension_read_pointer <= 2'b00;
 		mem_term_detail_postfix_addr <= 0;
+		stack_reset <= 1'b1;
 		end
 
 	STATE_POSTFIX_TERM_READ : begin
@@ -224,6 +224,7 @@ case (state_term_accumulator)
 		//decoder_state_var_key_val_code <= mem_term_detail_postfix_data_out;
 
 		stack_push <= 1'b0;
+		stack_reset <= 1'b0;
 
 		case (mem_term_detail_postfix_data_out[CODE_WIDTH-1:CODE_WIDTH-1-1])
 			2'b00 : decoder_const_start <= 1'b1; 
@@ -288,6 +289,7 @@ case (state_term_accumulator)
 				end
 			endcase
 		state_term_accumulator <= STATE_POSTFIX_TERM_READ;
+		$display("%h",stack_extension[1]);
 		end
 
 	STATE_OPN : begin
@@ -296,7 +298,7 @@ case (state_term_accumulator)
 		operand_a <= stack_extension[0];
 
 		case (term_detail_postfix[CODE_WIDTH-1-5:0])
-			3'b100 : operand_b <= {stack_extension[1][DATA_WIDTH-1], stack_extension[1][DATA_WIDTH-2:0]};
+			3'b100 : operand_b <= {~stack_extension[1][DATA_WIDTH-1], stack_extension[1][DATA_WIDTH-2:0]};
 			default  : operand_b <= stack_extension[1];
 			endcase
 
@@ -325,7 +327,14 @@ case (state_term_accumulator)
 				stack_pop <= 1'b0;
 				end
 			endcase
-		stack_push_value <= alu_output;
+		//stack_push_value <= alu_output;
+		case (term_detail_postfix[CODE_WIDTH-1-5:0])
+			3'b100 : stack_push_value <= add_result;
+			3'b011 : stack_push_value <= add_result;
+			3'b010 : stack_push_value <= divide_result;
+			3'b001 : stack_push_value <= mult_result;
+			3'b000 : stack_push_value <= exponent_result;
+			endcase
 		end
 
 	STATE_PUSH_DATA_ALU : begin
@@ -338,6 +347,7 @@ case (state_term_accumulator)
 			POSTFIX_DATA_END_CODE : state_term_accumulator <= STATE_DATA_OUT;
 			default : state_term_accumulator <= STATE_POSTFIX_TERM_READ;
 			endcase
+		$display("%h",stack_extension[1]);
 		end
 
 	STATE_DATA_OUT : begin
@@ -348,6 +358,12 @@ case (state_term_accumulator)
 
 	default : begin
 		state_term_accumulator <= STATE_DEFAULT;
+		mult_start <= 1'b0;
+		add_start <= 1'b0;
+		exponent_start <= 1'b0;
+		divide_start <= 1'b0;
+		stack_pop <= 1'b0;
+		stack_push <= 1'b0;
 		end
 	endcase
 end
