@@ -16,6 +16,7 @@ module float_point_multiplier #(
 
 	(
 	input logic clk,
+	input logic reset_neg,
 	input logic [EXP_LEN+MANTISSA_LEN+1-1:0] input_a,
 	input logic [EXP_LEN+MANTISSA_LEN+1-1:0] input_b,
 
@@ -44,7 +45,7 @@ logic [MANTISSA_LEN+1-1:0] mantissa_prod_h_l;
 logic [MANTISSA_LEN+1-1:0] mantissa_prod_l_l;
 
 logic [MANTISSA_LEN+1-1:0] mantissa_prod_sum_1;
-logic [MANTISSA_LEN+MANTISSA_LEN:(MANTISSA_LEN+1)/2] mantissa_prod_sum_2;
+logic [MANTISSA_LEN+MANTISSA_LEN+1:(MANTISSA_LEN+1)/2] mantissa_prod_sum_2;
 
 logic [MANTISSA_LEN+MANTISSA_LEN+1:(MANTISSA_LEN+1)/2] product_mantissa;
 
@@ -57,6 +58,14 @@ logic zero_product[3:0];
 assign output_product = {product_sign[4], product_exp_adjusted, product_mantissa_adjusted};
 
 always @(posedge clk) begin
+
+if (~reset_neg) begin
+	product_exp_adjusted <= 0;
+	product_mantissa_adjusted <= 0;
+	product_sign[4] <= 0;
+	end
+
+else begin
 	///////////////////////////////////////////////////////////////////////////////////
 	if (zero_product[3] == 1'b1) begin
 		product_exp_adjusted <= 0;
@@ -79,14 +88,14 @@ always @(posedge clk) begin
 
 			default : begin
 				product_exp_adjusted <= product_exp[3];
-				product_mantissa_adjusted <= product_mantissa[MANTISSA_LEN+MANTISSA_LEN+1:MANTISSA_LEN+1+1];
+				product_mantissa_adjusted <= product_mantissa[MANTISSA_LEN+MANTISSA_LEN-1:MANTISSA_LEN+1-1];
 				end
 			endcase
 
 		product_sign[4] <= product_sign[3];
 		end
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	product_mantissa <= mantissa_prod_sum_1 + mantissa_prod_sum_2;
+	product_mantissa <= {{((MANTISSA_LEN-1)/2){1'b0}}, mantissa_prod_sum_1} + mantissa_prod_sum_2;
 
 	product_sign[3] <= product_sign[2];
 	product_zero[3] <= product_zero[2];
@@ -117,6 +126,7 @@ always @(posedge clk) begin
 	product_sign[0] <= input_a[MANTISSA_LEN+EXP_LEN+1-1]^input_b[MANTISSA_LEN+EXP_LEN+1-1];
 	product_zero[0] <= (~(zero_a && zero_b));
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	end
 end
 
 endmodule
