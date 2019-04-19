@@ -51,6 +51,7 @@ always @(posedge clock) begin
 			mem_angle_normalized_addr <= inp_code[CODE_WIDTH-1-3:0];
 			code <= inp_code;
 			data_ready <= 1'b0;
+			out_value <= 0;
 			end
 
 		STATE_MEM_WAIT : begin
@@ -96,6 +97,8 @@ always @(posedge clock) begin
 			state_decoder <= STATE_DEFAULT;
 			counter_memory <= MEM_DELAY - 1;
 			counter_sin_calc <= SIN_CALC_DELAY - 1;
+			out_angle <= 0;
+			out_value <= 0;
 			end
 		endcase
 	end
