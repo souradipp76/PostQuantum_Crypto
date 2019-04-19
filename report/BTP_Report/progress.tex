@@ -181,7 +181,31 @@ There are some essential requirements that need to be obeyed by any chaos based 
 	\item Ergodicity:  Almost every trajectory tends to an invariant distribution that is independent of the initial conditions, and almost every trajectory will eventually visit any arbitrary interval of arbitrary size.
 \end{enumerate}
 
-The proposed cryptosystem also holds such properties.The three qualities mentioned earlier are clearly evident from the plots and graphs shown Fig. ,Fig. \& Fig. . It is observed that keeping the parameters in one case and initial conditions in another case, constant leads to two completely different trajectories. Thus the map generated from the compound triple pendulum model possesses the essential chaotic properties to be employed in a general cryptosystem. 
+\begin{figure}[H]
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=1\linewidth]{theta.jpg}
+\caption{Variation of ${\theta}$ for ${m_{1}=0.2944}$}\label{fig:theta_comp}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=1\linewidth]{theta_near.jpg}
+\caption{Variation of ${\theta}$ for ${m_{1}=0.294401}$}\label{fig:trajectory_near_comp}
+\end{subfigure}
+\caption{Plot showing Sensitivity to Parameter value ${m}$ with ${\Delta m = 10^{-6}}$}\label{fig:image6}
+\end{figure}
+
+\begin{figure}[H]
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=1\linewidth]{theta.jpg}
+\caption{Variation of ${\theta}$ for ${\theta_{1}(0)=-0.4603}$}\label{fig:theta_comp}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=1\linewidth]{theta_ch.jpg}
+\caption{Variation of ${\theta}$ for ${\theta_{1}(0)=-0.460301}$}\label{fig:theta_ch_comp}
+\end{subfigure}
+\caption{Plot showing Sensitivity to Intital condition of ${\theta_{1}}$with ${\Delta \theta_{1} = 10^{-6}}$}\label{fig:image7}
+\end{figure}
+
+The proposed cryptosystem also holds such properties. The three qualities mentioned earlier are clearly evident from the plots and graphs shown Fig. 5.11 and Fig. 5.12. It is observed that keeping the parameters in one case and initial conditions in another case, constant leads to two completely different trajectories. Thus the map generated from the compound triple pendulum model possesses the essential chaotic properties to be employed in a general cryptosystem. 
 
 \subsubsection{Collision Test}
 Collision resistance is a property of cryptographic algorithms which makes it difficult to find two inputs which are encrypted to the same output. It must be ensured that finding collisions must be kept as hard as some of the hard mathematical problems like integer factorization  or discrete logarithm. Collision resistance does not mean that no collisions exist; simply that they are hard to find. Here, we show that the proposed algorithm is fully collision resistant i.e. no collisions exist.
@@ -245,8 +269,16 @@ For testing randomness of the chaotic map, statistical tests are generally appli
 \end{center}
 \end{table}
 
-It is observed that in most of the tests, the chaotic map generator performs well. This can be attributed largely due to the non-linear dynamics of the map.\\\\
+It is observed that in most of the tests, the chaotic map generator performs well. This can be attributed largely due to the non-linear dynamics of the map.
 
-\subsection{Complexity}
+\subsection{Complexity Analysis}
 
 In this report, we give an overview of the computational complexity of the algorithm both on software as well as hardware level.
+
+\subsubsection{Algorithm Complexity}
+Firstly, the computation of the state variable (${\theta}$) values for a time duration $t$ and time step $\Delta t$ requires $N$ iterations where $N= \frac{t}{\Delta t}$. In each iteration only 6 equations are solved for the 6 state variables ($\theta_{1}, \theta_{2}, \theta_{3}, \dot{\theta_{1}}, \dot{\theta_{2}}, \dot{\theta_{3}}$) each in $O(1)$ time. Thus the time required for generating the map is asymptotically $O(N)$. Here space complexity is also $O(N)$ for storing the state variable values. Secondly, Baptista type patitioning takes constant time if the range of the variables are already computed in the previous step. For assigning the variable values to the corresponding intervals, $O(N)$ time is required for each value. Thirdly, for encryption of a plaintext having $M$ characters, there would be $M$ iterations and in each iteration the encrypted value is randomly selected from the computed interval which takes constant time. So overall time complexity of encryption is $O(N+M)$. Space complexity is still $O(N)$. Similarly, for decryption time complexity is also $O(N+M)$.\\
+\textbf{Information Rate:} The information rate of any cryptosysytem is define d as the ratio of the size of plaintext to that of the cipher text. In our cryptosystem, we have
+\begin{equation}
+R = \frac{plaintext\ size}{ciphertext\ size} = \frac{8*M}{\log_2N*M} = \frac{8}{\log_2N}
+\end{equation}
+\subsubsection{Hardware Complexity}

@@ -29,7 +29,9 @@
 \contentsline {section}{\numberline {5.4}Analysis}{15}
 \contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{15}
 \contentsline {subsubsection}{Test for Chaos}{15}
-\contentsline {subsubsection}{Collision Test}{16}
-\contentsline {subsubsection}{Test for Randomness}{16}
-\contentsline {subsection}{\numberline {5.4.2}Complexity}{17}
-\contentsline {chapter}{\numberline {6}Future Work}{18}
+\contentsline {subsubsection}{Collision Test}{17}
+\contentsline {subsubsection}{Test for Randomness}{17}
+\contentsline {subsection}{\numberline {5.4.2}Complexity Analysis}{17}
+\contentsline {subsubsection}{Algorithm Complexity}{17}
+\contentsline {subsubsection}{Hardware Complexity}{19}
+\contentsline {chapter}{\numberline {6}Future Work}{20}
