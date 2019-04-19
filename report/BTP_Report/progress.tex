@@ -171,6 +171,84 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 
 4. {\bf Control Unit} - Essentially a state machine that co-ordinates the operation of all other modules including evaluation of state-variables and transfer of data through USB/Ethernet port.
 
+\begin{center}
+\resizebox{8cm}{8cm}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=6cm, semithick]
+  %\tikyle{every state}=[draw=none,text=black]
+    
+  \node[state] (A)                         {$DEFAULT$};
+  \node[state] (B) [above left of=A]      {\begin{tabular}{c}$FETCH$\\$INITIAL$\\$CONDITIONS$\end{tabular}};
+  \node[state] (C) [right of=B]            {\begin{tabular}{c}$ANGLE$\\$COMBINATION$\\$CALC$\end{tabular}};
+  \node[state] (D) [below right of=C]      {\begin{tabular}{c}$ANGLE$\\$NORMALIZATION$\end{tabular}};
+  \node[state] (E) [below left of=D]       {\begin{tabular}{c}$POSTFIX$\\$TERM$\\$ACCUMULATE$\end{tabular}};
+  \node[state] (F) [left of = E]           {\begin{tabular}{c}$STORE$\\$OUTPUT$\\$DATA$\end{tabular}};
+
+\path
+
+(A) edge [loop right] node {} (A)
+(B) edge             node {} (C)
+(C) edge [bend left] node {} (D)
+(D) edge [bend left] node {} (E)
+(E) edge             node {} (F)
+(F) edge [bend left] node {} (A)
+(A) edge [bend left] node {} (B);
+\node[below=7cm] at (current bounding box.base) {caption 3};
+\end{tikzpicture}
+}\end{center}
+
+
+\begin{center}
+\resizebox{8cm}{8cm}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=6cm, semithick]
+  %\tikyle{every state}=[draw=none,text=black]
+
+  \node[state] (A)                         {$DEFAULT$};
+  \node[state] (B) [above of=A]            {\begin{tabular}{c}$READ$\\$POSTFIX$\\$CODE$\end{tabular}};
+  \node[state] (C) [right of=B]            {\begin{tabular}{c}$DATA\ OR$\\$OPERATOR?$\end{tabular}};
+  \node[state] (D) [below of=C]            {\begin{tabular}{c}$PUSH$\\$DATA\ TO$\\$STACK$\end{tabular}};
+  \node[state] (E) [above right of=C]      {\begin{tabular}{c}$OPERATE\ ON$\\$TOP\ TWO$\\$STACK\ VALUES$\end{tabular}};
+
+\path
+
+(A) edge [loop right] node {} (A)
+(B) edge             node {code} (C)
+(B) edge [bend left] node {eof} (A)
+(C) edge [bend left] node {data} (D)
+(C) edge [bend left] node {operator} (E)
+(E) edge [bend left] node {} (D)
+(D) edge [] node {} (B)
+(A) edge [bend left] node {start} (B);
+\node[below=3cm] at (current bounding box.base) {caption 3};
+\end{tikzpicture}
+}\end{center}
+
+\begin{center}
+\resizebox{8cm}{8cm}{
+\begin{tikzpicture}[->,>=stealth',shorten >=2pt,auto,node distance=6cm, semithick]
+  %\tikyle{every state}=[draw=none,text=black]
+
+  \node[state] (A)                         {$DEFAULT$};
+  \node[state] (B) [above left of=A]      {\begin{tabular}{c}$RECEIVE$\\$KEY$\end{tabular}};
+  \node[state] (C) [right of=B]            {\begin{tabular}{c}$EVALUATE$\\$EXPRESSION$\end{tabular}};
+  \node[state] (D) [below right of=C]      {\begin{tabular}{c}$MODIFY$\\$STATE$\\$VARIABLES$\end{tabular}};
+  \node[state] (E) [below left of=D]       {\begin{tabular}{c}$OBTAIN$\\$CHAOTIC$\\$MAP$\end{tabular}};
+  \node[state] (F) [left of = E]           {\begin{tabular}{c}$GENERATE$\\$CIPHERTEXT$\end{tabular}};
+  %\node[state] (G) [left of = F]           {\begin{tabular}{c}$STORE$\\$CIPHERTEXT$\end{tabular}};
+
+\path
+
+(A) edge [loop right] node {} (A)
+(B) edge             node {} (C)
+(C) edge [bend left] node {} (D)
+(D) edge [bend left] node {} (E)
+(E) edge             node {} (F)
+(F) edge [bend left] node {} (C)
+(A) edge [bend left] node {} (B);
+\node[below=7cm] at (current bounding box.base) {caption 3};
+\end{tikzpicture}
+}\end{center}
+
+
 \section{Analysis}
 \subsection{General Properties of the Cryptosystem}
 \subsubsection{Test for Chaos}
@@ -275,10 +353,12 @@ It is observed that in most of the tests, the chaotic map generator performs wel
 
 In this report, we give an overview of the computational complexity of the algorithm both on software as well as hardware level.
 
-\subsubsection{Algorithm Complexity}
-Firstly, the computation of the state variable (${\theta}$) values for a time duration $t$ and time step $\Delta t$ requires $N$ iterations where $N= \frac{t}{\Delta t}$. In each iteration only 6 equations are solved for the 6 state variables ($\theta_{1}, \theta_{2}, \theta_{3}, \dot{\theta_{1}}, \dot{\theta_{2}}, \dot{\theta_{3}}$) each in $O(1)$ time. Thus the time required for generating the map is asymptotically $O(N)$. Here space complexity is also $O(N)$ for storing the state variable values. Secondly, Baptista type patitioning takes constant time if the range of the variables are already computed in the previous step. For assigning the variable values to the corresponding intervals, $O(N)$ time is required for each value. Thirdly, for encryption of a plaintext having $M$ characters, there would be $M$ iterations and in each iteration the encrypted value is randomly selected from the computed interval which takes constant time. So overall time complexity of encryption is $O(N+M)$. Space complexity is still $O(N)$. Similarly, for decryption time complexity is also $O(N+M)$.\\
+\subsubsection{Setup Complexity}
+Firstly, the computation of the state variable (${\theta}$) values for a time duration $t$ and time step $\Delta t$ requires $N$ iterations where $N= \frac{t}{\Delta t}$. In each iteration only 6 equations are solved for the 6 state variables ($\theta_{1}, \theta_{2}, \theta_{3}, \dot{\theta_{1}}, \dot{\theta_{2}}, \dot{\theta_{3}}$) each in $O(1)$ time. Thus the time required for generating the map is asymptotically $O(N)$. Here space complexity is also $O(N)$ for storing the state variable values. Secondly, Baptista type patitioning takes constant time if the range of the variables are already computed in the previous step. For assigning the variable values to the corresponding intervals, $O(N)$ time is required for each value. Thirdly, for encryption of a plaintext having $M$ characters, there would be $M$ iterations and in each iteration the encrypted value is randomly selected from the computed interval which takes constant time. So the time complexity for setup of the encryption module is $O(N)$ and $O(M)$ is the time complexity of processing each plaintext. Space complexity is still $O(N)$. Similarly, for decryption time complexity is also $O(N)$ and $O(M)$ for setup and processing respectively.\\
 \textbf{Information Rate:} The information rate of any cryptosysytem is define d as the ratio of the size of plaintext to that of the cipher text. In our cryptosystem, we have
 \begin{equation}
 R = \frac{plaintext\ size}{ciphertext\ size} = \frac{8*M}{\log_2N*M} = \frac{8}{\log_2N}
 \end{equation}
 \subsubsection{Hardware Complexity}
+\subsection{Reason for Quantum-Safe}
+The argument in regards to the quantum-safe property of this algorithm is due to its innate chaotic nature. Traditional Shor's and Glover's algorithms cannot break this system as they deal with a different paradigm of hard problems like integer factorization and discrete logarithm. Also the highly non-linear and interdependent nature of the dynamical system makes it difficult for even the quantum algorithms to do brute force attacks without the total or partial knowledge of key. Even with partial knowledge of key values, it is useless to do brute force attacks as the chaotic maps are highly sensitive to key values. The key size is about $21\times(32 bits) = 672 bits$ for single precision arithmetic which is quite large enough. All these reasons direct us to be confidently stand by this algorithms and call it quantum computing immune. 

@@ -26,12 +26,13 @@
 \contentsline {subsection}{\numberline {5.1.3}Encryption - Decryption}{12}
 \contentsline {section}{\numberline {5.2}Key Generation}{13}
 \contentsline {section}{\numberline {5.3}FPGA Implementation}{14}
-\contentsline {section}{\numberline {5.4}Analysis}{15}
-\contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{15}
-\contentsline {subsubsection}{Test for Chaos}{15}
-\contentsline {subsubsection}{Collision Test}{17}
-\contentsline {subsubsection}{Test for Randomness}{17}
-\contentsline {subsection}{\numberline {5.4.2}Complexity Analysis}{17}
-\contentsline {subsubsection}{Algorithm Complexity}{17}
-\contentsline {subsubsection}{Hardware Complexity}{19}
-\contentsline {chapter}{\numberline {6}Future Work}{20}
+\contentsline {section}{\numberline {5.4}Analysis}{17}
+\contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{17}
+\contentsline {subsubsection}{Test for Chaos}{17}
+\contentsline {subsubsection}{Collision Test}{18}
+\contentsline {subsubsection}{Test for Randomness}{19}
+\contentsline {subsection}{\numberline {5.4.2}Complexity Analysis}{19}
+\contentsline {subsubsection}{Setup Complexity}{19}
+\contentsline {subsubsection}{Hardware Complexity}{21}
+\contentsline {subsection}{\numberline {5.4.3}Reason for Quantum-Safe}{21}
+\contentsline {chapter}{\numberline {6}Future Work}{22}
