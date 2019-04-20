@@ -29,7 +29,7 @@
 \contentsline {section}{\numberline {5.4}Analysis}{17}
 \contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{17}
 \contentsline {subsubsection}{Test for Chaos}{17}
-\contentsline {subsubsection}{Collision Test}{18}
+\contentsline {subsubsection}{Collision Test}{19}
 \contentsline {subsubsection}{Test for Randomness}{19}
 \contentsline {subsection}{\numberline {5.4.2}Complexity Analysis}{19}
 \contentsline {subsubsection}{Setup Complexity}{19}

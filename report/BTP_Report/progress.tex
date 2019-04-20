@@ -157,6 +157,36 @@ From the figures 5.8 \& 5.9 , it is observed that there is peak at 1700 (seconds
 
 \section{FPGA Implementation}
 The complete design is being implemented at Register-Transfer Level (RTL) in {\bf Verilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The following diagram shows the implementation plan for the design :
+
+\begin{center}
+\resizebox{8cm}{8cm}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm, semithick]
+  %\tikyle{every state}=[draw=none,text=black]
+    
+  \node[state] (A)                         {\begin{tabular}{c}$Control$\\$Unit$\end{tabular}};
+  \node[state] (C) [above of=A]            {\begin{tabular}{c}$Ethernet$\\$\&$\\$USB$ $ Interface$\\$Module$\end{tabular}};
+  \node[state] (B) [right of=C]      {\begin{tabular}{c}$I/O$\\$Ports$\end{tabular}};
+  \node[state] (D) [below right of=A]      {\begin{tabular}{c}$LUT2$\\$Mapping$\\$Plaintext$ $to$\\$Ciphertext$\end{tabular}};
+  \node[state] (E) [below left of=A]       {\begin{tabular}{c}$LUT1$\\$Various$\\$Constants$\end{tabular}};
+  \node[state] (F) [below of = A]           {\begin{tabular}{c}$Arithmetic$\\$\&$ $Logic$\\$Unit$\end{tabular}};
+
+\path
+% (A) edge [loop right] node {} (A)
+% (B) edge             node {} (A)
+(C) edge             node {} (B)
+(D) edge [bend right] node {} (A)
+(E) edge [bend left]node {} (A)
+(F) edge             node {} (A)
+(A) edge             node {} (F)
+(A) edge             node {} (C)
+(C) edge             node {} (A)
+(A) edge [bend right] node {} (D)
+(A) edge [bend left]node {} (E);
+\node[below=7cm] at (current bounding box.base) {caption 3};
+\end{tikzpicture}
+}\end{center}
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{fpga_block.jpg}
@@ -196,6 +226,11 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 \end{tikzpicture}
 }\end{center}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{vivado_simulation.png}
+\caption{Simulation of cryptosystem in Vivado}\label{fig:vivado_simulation}
+\end{figure}
 
 \begin{center}
 \resizebox{8cm}{8cm}{

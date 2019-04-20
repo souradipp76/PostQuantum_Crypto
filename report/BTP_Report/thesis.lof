@@ -17,6 +17,7 @@
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Periodic Properties of ${\theta _{1}}$\relax }}{14}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Periodic Properties of ${\theta _{3}}$\relax }}{14}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Block Diagram of FPGA Implementation\relax }}{15}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Plot showing Sensitivity to Parameter value ${m}$ with ${\Delta m = 10^{-6}}$\relax }}{18}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Plot showing Sensitivity to Intital condition of ${\theta _{1}}$with ${\Delta \theta _{1} = 10^{-6}}$\relax }}{18}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Simulation of cryptosystem in Vivado\relax }}{16}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Plot showing Sensitivity to Parameter value ${m}$ with ${\Delta m = 10^{-6}}$\relax }}{18}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Plot showing Sensitivity to Intital condition of ${\theta _{1}}$with ${\Delta \theta _{1} = 10^{-6}}$\relax }}{18}
 \addvspace {10\p@ }
