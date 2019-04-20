@@ -156,20 +156,66 @@ From the figures 5.8 \& 5.9 , it is observed that there is peak at 1700 (seconds
 
 
 \section{FPGA Implementation}
-The complete design is being implemented at Register-Transfer Level (RTL) in {\bf Verilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The following diagram shows the implementation plan for the design :
+The complete design has been implemented at Register-Transfer Level (RTL) in {\bf SystemVerilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The synthesis tool used is Xilinx Synthesis Tool (XST). The following diagram shows the implementation plan for the design :
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{fpga_block.jpg}
 \caption{Block Diagram of FPGA Implementation}\label{fig:fpga_block}
 \end{figure}
 
-1. {\bf Arithmetic and Logical Unit (ALU)} - The ALU uses floating-point arithmetic whose precision can be configured at the time of synthesis. This has been done to enable the study of how security strength varies with arithmetic precision.
 
-2. {\bf Look-Up Table (LUT)} - A fast Look-Up table is to be implemented for storing various constants and the mapping between clear-text and cipher-text.
+\subsection{Arithmetic and Logic Unit (ALU)}
+The Arithmetic and Logical Unit (ALU) has been appropriately parametrised to enable it to function at any given level of floating point precision (default format is IEEE-754). It consists of the following datapath units -
 
-3. {\bf Ethernet and USB Module} - These are required to enable the device to encrypt or decrypt both a stream of data as well as complete file.
+1. {\bf Addition Module} - This module performs floating point addition. The complete datapath has been split into 4 stages keeping in mind the target clock frequency 100 MHz. Current design contains 2 units of Addition Module.
 
-4. {\bf Control Unit} - Essentially a state machine that co-ordinates the operation of all other modules including evaluation of state-variables and transfer of data through USB/Ethernet port.
+2. {\bf Multiplication Module} - This module performs floating point multiplication. The complete multiplication datapath has been split into 5 stages in order to achieve the target clock frequency. Moreover, if required, the module can be configured to function in pipeline mode. Current design contains 1 unit of Multiplication Module.
+
+3. {\bf Exponentiation Module} - This module evaluates the value of an input raised to an integer exponent. It utilises an instance of the multiplication module. Current design contains 1 unit of Exponentiation Module.
+
+4. {\bf Division Module} - This module performs floating point division The complete datapath has been split into multiple stages keeping in mind the target clock frequency 100 MHz. However, since, the division operation requires significantly more clock cycles compared to other operations, the design has been optimised to reduce the number of division oeration to minimum. Current design contains 1 unit of Division Module.
+
+\subsection{Control Unit}
+The control unit of the implementation is essentially a Finite State Machine (FSM) which performs the required tasks in a well-defined sequence. In order to achieve an efficient implementation, the complete FSM has been factored into simpler state machines. A top-level FSM serves as control for these simpler FSMs. Basic description for these state machines is given as follows -
+
+\subsubsection{Top-Level State Machine}
+
+\begin{center}
+\resizebox{8cm}{8cm}{
+\begin{tikzpicture}[->,>=stealth',shorten >=2pt,auto,node distance=6cm, semithick]
+  %\tikyle{every state}=[draw=none,text=black]
+
+  \node[state] (A)                         {$DEFAULT$};
+  \node[state] (B) [above left of=A]      {\begin{tabular}{c}$RECEIVE$\\$KEY$\end{tabular}};
+  \node[state] (C) [right of=B]            {\begin{tabular}{c}$EVALUATE$\\$EXPRESSION$\end{tabular}};
+  \node[state] (D) [below right of=C]      {\begin{tabular}{c}$MODIFY$\\$STATE$\\$VARIABLES$\end{tabular}};
+  \node[state] (E) [below left of=D]       {\begin{tabular}{c}$OBTAIN$\\$CHAOTIC$\\$MAP$\end{tabular}};
+  \node[state] (F) [left of = E]           {\begin{tabular}{c}$GENERATE$\\$CIPHERTEXT$\end{tabular}};
+  %\node[state] (G) [left of = F]           {\begin{tabular}{c}$STORE$\\$CIPHERTEXT$\end{tabular}};
+
+\path
+
+(A) edge [loop right] node {} (A)
+(B) edge             node {} (C)
+(C) edge [bend left] node {} (D)
+(D) edge [bend left] node {} (E)
+(E) edge             node {} (F)
+(F) edge [bend left] node {} (C)
+(A) edge [bend left] node {} (B);
+\node[below=7cm] at (current bounding box.base) {Simplified form of Top-Level FSM};
+\end{tikzpicture}
+}\end{center}
+
+\begin{itemize}
+\item DEFAULT : Initial state of FSM after reset. Involves no processing.
+\item RECEIVE_KEY : Involves receiving the encryption/decryption key values through USB or Ethernet interface.
+\item EVALUATE_EXPRESSION : Evaluates the state-space expression using the given initial conditions for the chaotic dynamic system.
+\item MODIFY_STATE_VARIABLES : Updates the state variables based on the values obtained in previous state.
+\item OBTAIN_CHAOTIC_MAP : Evaluates a chaotic map through a linear combination of values of all state variable.
+\item GENERATE_CIPHERTEXT : Generates the ciphertext for a particular plaintext string using the generated chaotic map.
+\end{itemize}
+
+\subsubsection{Evaluate State-Space Expression}
 
 \begin{center}
 \resizebox{8cm}{8cm}{
@@ -196,6 +242,16 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 \end{tikzpicture}
 }\end{center}
 
+\begin{itemize}
+\item DEFAULT : Initial state of FSM after reset. Involves no processing.
+\item FETCH_INITIAL_CONDITIONS : Involves fetching the required initial conditions from Block-RAM.
+\item ANGLE_COMBINATION_CALC : Create a cache containing frequently used linear combinations of state variables.
+\item ANGLE_NORMALIZATION : Normalize the trigonometric inputs to the range [-pi, pi].
+\item POSTFIX_TERM_ACCUMULATE : Evaluates the state-space expression stored in postfix form.
+\item STORE_OUTPUT_DATA : Store the values of state-space expression obtained in previous state to a Block-RAM .
+\end{itemize}
+
+\subsubsection{Postfix Expression Evaluation}
 
 \begin{center}
 \resizebox{8cm}{8cm}{
@@ -222,32 +278,13 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 \end{tikzpicture}
 }\end{center}
 
-\begin{center}
-\resizebox{8cm}{8cm}{
-\begin{tikzpicture}[->,>=stealth',shorten >=2pt,auto,node distance=6cm, semithick]
-  %\tikyle{every state}=[draw=none,text=black]
-
-  \node[state] (A)                         {$DEFAULT$};
-  \node[state] (B) [above left of=A]      {\begin{tabular}{c}$RECEIVE$\\$KEY$\end{tabular}};
-  \node[state] (C) [right of=B]            {\begin{tabular}{c}$EVALUATE$\\$EXPRESSION$\end{tabular}};
-  \node[state] (D) [below right of=C]      {\begin{tabular}{c}$MODIFY$\\$STATE$\\$VARIABLES$\end{tabular}};
-  \node[state] (E) [below left of=D]       {\begin{tabular}{c}$OBTAIN$\\$CHAOTIC$\\$MAP$\end{tabular}};
-  \node[state] (F) [left of = E]           {\begin{tabular}{c}$GENERATE$\\$CIPHERTEXT$\end{tabular}};
-  %\node[state] (G) [left of = F]           {\begin{tabular}{c}$STORE$\\$CIPHERTEXT$\end{tabular}};
-
-\path
-
-(A) edge [loop right] node {} (A)
-(B) edge             node {} (C)
-(C) edge [bend left] node {} (D)
-(D) edge [bend left] node {} (E)
-(E) edge             node {} (F)
-(F) edge [bend left] node {} (C)
-(A) edge [bend left] node {} (B);
-\node[below=7cm] at (current bounding box.base) {caption 3};
-\end{tikzpicture}
-}\end{center}
-
+\begin{itemize}
+\item DEFAULT : Initial state of FSM after reset. Involves no processing.
+\item READ_POSTFIX_CODE : Fetch the code indicating the next term of postfix expression.
+\item DATA OR OPERATOR : Check if the code fetched corresponds to a data value or an operator.
+\item OPERATE_ON_TOP_TWO_STACK_VALUES : Perform the corresponding operation of the two data values at stored at top of the stack.
+\item PUSH_DATA_TO_STACK : Push the data value in postfix expression or the result of ALU operation onto the stack.
+\end(itemize}
 
 \section{Analysis}
 \subsection{General Properties of the Cryptosystem}
