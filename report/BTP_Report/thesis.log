@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  21 APR 2019 04:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  21 APR 2019 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1015,7 +1015,7 @@ Package epstopdf Info: Source file: <iitglogo.eps>
 (epstopdf)                    size: 267449 bytes
 (epstopdf)             Command: <repstopdf --outfile=iitglogo-eps-converted-to.
 pdf iitglogo.eps>
-(epstopdf)             \includegraphics on input line 50.
+(epstopdf)             \includegraphics on input line 56.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1024,64 +1024,72 @@ nclusion: found PDF version <1.7>, but at most version <1.5> allowed
 <iitglogo-eps-converted-to.pdf, id=32, 597.23125pt x 602.25pt>
 File: iitglogo-eps-converted-to.pdf Graphic file (type pdf)
 <use iitglogo-eps-converted-to.pdf>
-Package pdftex.def Info: iitglogo-eps-converted-to.pdf  used on input line 50.
+Package pdftex.def Info: iitglogo-eps-converted-to.pdf  used on input line 56.
 (pdftex.def)             Requested size: 112.85542pt x 113.81102pt.
 [1
 
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./iitglogo-eps-converted-t
-o.pdf>] [1
-
-] (./thesis.toc
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 6.
+o.pdf>]
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 64.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 6.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 64.
+
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 6.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 64.
+
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 6.
+(Font)              <12> on input line 64.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 6.
+(Font)              <8> on input line 64.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 6.
-LaTeX Font Info:    Try loading font information for U+msa on input line 6.
+(Font)              <6> on input line 64.
+LaTeX Font Info:    Try loading font information for U+msa on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 6.
+LaTeX Font Info:    Try loading font information for U+msb on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 6.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [2
+) [1
+
+
+] [2
+
+
+] [3
+
+]
+(./thesis.toc [4
 
 ])
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
- [3]
-(./thesis.lof)
+ [5] (./thesis.lof)
 \tf@lof=\write6
 \openout6 = `thesis.lof'.
 
- [4
+ [6
 
-] [5
+] [7
 
 ])
 \openout2 = `introduction.aux'.
@@ -1126,36 +1134,42 @@ Chapter 2.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
 
-<./fig2/timeline.png, id=81, 726.715pt x 382.42876pt>
+
+Overfull \hbox (0.71495pt too wide) in paragraph at lines 32--34
+   |[] \OT1/lmr/m/n/12 The promi-nent ex-am-ple is the Dae-men-Ri-j-men \OT1/lm
+r/m/it/12 Ri-jn-dael \OT1/lmr/m/n/12 ci-pher which
+ []
+
+<./fig2/timeline.png, id=88, 726.715pt x 382.42876pt>
 File: ./fig2/timeline.png Graphic file (type png)
 <use ./fig2/timeline.png>
-Package pdftex.def Info: ./fig2/timeline.png  used on input line 39.
+Package pdftex.def Info: ./fig2/timeline.png  used on input line 38.
 (pdftex.def)             Requested size: 284.52756pt x 149.73015pt.
 [4]
-<./fig2/image_chaos0.jpg, id=86, 236.38312pt x 86.57344pt>
+<./fig2/image_chaos0.jpg, id=93, 236.38312pt x 86.57344pt>
 File: ./fig2/image_chaos0.jpg Graphic file (type jpg)
 <use ./fig2/image_chaos0.jpg>
-Package pdftex.def Info: ./fig2/image_chaos0.jpg  used on input line 54.
+Package pdftex.def Info: ./fig2/image_chaos0.jpg  used on input line 53.
 (pdftex.def)             Requested size: 227.62204pt x 83.36713pt.
-<./fig2/image_chaos.png, id=87, 420.82219pt x 151.3153pt>
+<./fig2/image_chaos.png, id=94, 420.82219pt x 151.3153pt>
 File: ./fig2/image_chaos.png Graphic file (type png)
 <use ./fig2/image_chaos.png>
-Package pdftex.def Info: ./fig2/image_chaos.png  used on input line 58.
+Package pdftex.def Info: ./fig2/image_chaos.png  used on input line 57.
 (pdftex.def)             Requested size: 227.62204pt x 81.84756pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 53--61
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 52--60
 []$[]$ $[]$ 
  []
 
 [5 <./fig2/timeline.png> <./fig2/image_chaos0.jpg> <./fig2/image_chaos.png>]
-<./fig2/fpga.jpg, id=93, 876.27374pt x 559.08875pt>
+<./fig2/fpga.jpg, id=101, 876.27374pt x 559.08875pt>
 File: ./fig2/fpga.jpg Graphic file (type jpg)
 <use ./fig2/fpga.jpg>
-Package pdftex.def Info: ./fig2/fpga.jpg  used on input line 72.
+Package pdftex.def Info: ./fig2/fpga.jpg  used on input line 71.
 (pdftex.def)             Requested size: 369.88582pt x 236.00148pt.
 )
 [6 <./fig2/fpga.jpg>]
@@ -1181,7 +1195,7 @@ Chapter 4.
 
  (./progress.tex
 Chapter 5.
-<./fig2/ball.jpg, id=107, 459.96844pt x 250.68657pt>
+<./fig2/ball.jpg, id=114, 459.96844pt x 250.68657pt>
 File: ./fig2/ball.jpg Graphic file (type jpg)
 <use ./fig2/ball.jpg>
 Package pdftex.def Info: ./fig2/ball.jpg  used on input line 24.
@@ -1191,7 +1205,7 @@ Overfull \hbox (22.76358pt too wide) in paragraph at lines 24--25
 [][] 
  []
 
-<./fig2/pendulum.jpg, id=108, 495.35063pt x 376.40625pt>
+<./fig2/pendulum.jpg, id=115, 495.35063pt x 376.40625pt>
 File: ./fig2/pendulum.jpg Graphic file (type jpg)
 <use ./fig2/pendulum.jpg>
 Package pdftex.def Info: ./fig2/pendulum.jpg  used on input line 28.
@@ -1201,12 +1215,12 @@ Overfull \hbox (2.61107pt too wide) in paragraph at lines 23--31
 []$[]$ $[]$ 
  []
 
-<./fig2/param.jpg, id=109, 401.24907pt x 385.44pt>
+<./fig2/param.jpg, id=116, 401.24907pt x 385.44pt>
 File: ./fig2/param.jpg Graphic file (type jpg)
 <use ./fig2/param.jpg>
 Package pdftex.def Info: ./fig2/param.jpg  used on input line 36.
 (pdftex.def)             Requested size: 182.09831pt x 174.92848pt.
-<./fig2/ic.jpg, id=110, 322.20375pt x 159.59625pt>
+<./fig2/ic.jpg, id=117, 322.20375pt x 159.59625pt>
 File: ./fig2/ic.jpg Graphic file (type jpg)
 <use ./fig2/ic.jpg>
 Package pdftex.def Info: ./fig2/ic.jpg  used on input line 40.
@@ -1228,14 +1242,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--84
 
  []
 
-<./fig2/theta.jpg, id=114, 562.1pt x 421.575pt>
+<./fig2/theta.jpg, id=121, 562.1pt x 421.575pt>
 File: ./fig2/theta.jpg Graphic file (type jpg)
 <use ./fig2/theta.jpg>
 Package pdftex.def Info: ./fig2/theta.jpg  used on input line 87.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 88.
-<./fig2/theta_norm.jpg, id=115, 562.1pt x 421.575pt>
+<./fig2/theta_norm.jpg, id=122, 562.1pt x 421.575pt>
 File: ./fig2/theta_norm.jpg Graphic file (type jpg)
 <use ./fig2/theta_norm.jpg>
 Package pdftex.def Info: ./fig2/theta_norm.jpg  used on input line 91.
@@ -1245,19 +1259,19 @@ Overfull \hbox (2.61107pt too wide) in paragraph at lines 86--94
 []$[]$ $[]$ 
  []
 
-<./fig2/trajectory.jpg, id=116, 562.1pt x 421.575pt>
+<./fig2/trajectory.jpg, id=123, 562.1pt x 421.575pt>
 File: ./fig2/trajectory.jpg Graphic file (type jpg)
 <use ./fig2/trajectory.jpg>
 Package pdftex.def Info: ./fig2/trajectory.jpg  used on input line 99.
 (pdftex.def)             Requested size: 318.66946pt x 239.00082pt.
 [11 <./fig2/param.jpg> <./fig2/ic.jpg> <./fig2/theta.jpg> <./fig2/theta_norm.jp
 g>]
-<./fig2/crypto.jpg, id=121, 570.63188pt x 265.74281pt>
+<./fig2/crypto.jpg, id=129, 570.63188pt x 265.74281pt>
 File: ./fig2/crypto.jpg Graphic file (type jpg)
 <use ./fig2/crypto.jpg>
 Package pdftex.def Info: ./fig2/crypto.jpg  used on input line 109.
 (pdftex.def)             Requested size: 284.52756pt x 132.50208pt.
-<./fig2/Dataflow.jpg, id=122, 816.04875pt x 161.60374pt>
+<./fig2/Dataflow.jpg, id=130, 816.04875pt x 161.60374pt>
 File: ./fig2/Dataflow.jpg Graphic file (type jpg)
 <use ./fig2/Dataflow.jpg>
 Package pdftex.def Info: ./fig2/Dataflow.jpg  used on input line 116.
@@ -1268,17 +1282,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--118
  []
 
 [12 <./fig2/trajectory.jpg> <./fig2/crypto.jpg>]
-<./fig2/periodogram.jpg, id=126, 562.1pt x 421.575pt>
+<./fig2/periodogram.jpg, id=134, 562.1pt x 421.575pt>
 File: ./fig2/periodogram.jpg Graphic file (type jpg)
 <use ./fig2/periodogram.jpg>
 Package pdftex.def Info: ./fig2/periodogram.jpg  used on input line 126.
 (pdftex.def)             Requested size: 318.66946pt x 239.00082pt.
-<./fig2/auto_corr1.jpg, id=127, 562.1pt x 421.575pt>
+<./fig2/auto_corr1.jpg, id=135, 562.1pt x 421.575pt>
 File: ./fig2/auto_corr1.jpg Graphic file (type jpg)
 <use ./fig2/auto_corr1.jpg>
 Package pdftex.def Info: ./fig2/auto_corr1.jpg  used on input line 133.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
-<./fig2/period1.jpg, id=128, 562.1pt x 421.575pt>
+<./fig2/period1.jpg, id=136, 562.1pt x 421.575pt>
 File: ./fig2/period1.jpg Graphic file (type jpg)
 <use ./fig2/period1.jpg>
 Package pdftex.def Info: ./fig2/period1.jpg  used on input line 137.
@@ -1289,12 +1303,12 @@ Overfull \hbox (2.61107pt too wide) in paragraph at lines 132--140
  []
 
 [13 <./fig2/Dataflow.jpg> <./fig2/periodogram.jpg>]
-<./fig2/auto_corr3.jpg, id=134, 562.1pt x 421.575pt>
+<./fig2/auto_corr3.jpg, id=141, 562.1pt x 421.575pt>
 File: ./fig2/auto_corr3.jpg Graphic file (type jpg)
 <use ./fig2/auto_corr3.jpg>
 Package pdftex.def Info: ./fig2/auto_corr3.jpg  used on input line 145.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
-<./fig2/period3.jpg, id=135, 562.1pt x 421.575pt>
+<./fig2/period3.jpg, id=142, 562.1pt x 421.575pt>
 File: ./fig2/period3.jpg Graphic file (type jpg)
 <use ./fig2/period3.jpg>
 Package pdftex.def Info: ./fig2/period3.jpg  used on input line 149.
@@ -1321,42 +1335,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--157
 
 [14 <./fig2/auto_corr1.jpg> <./fig2/period1.jpg> <./fig2/auto_corr3.jpg> <./fig
 2/period3.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
 
  []
 
 [15]
-<./fig2/schematic.png, id=142, 1276.77pt x 927.465pt>
+<./fig2/schematic.png, id=149, 1276.77pt x 927.465pt>
 File: ./fig2/schematic.png Graphic file (type png)
 <use ./fig2/schematic.png>
-Package pdftex.def Info: ./fig2/schematic.png  used on input line 213.
+Package pdftex.def Info: ./fig2/schematic.png  used on input line 217.
 (pdftex.def)             Requested size: 426.79134pt x 310.02695pt.
  [16 <./fig2/schematic.png>] [17] [18] [19]
 File: ./fig2/theta.jpg Graphic file (type jpg)
 <use ./fig2/theta.jpg>
-Package pdftex.def Info: ./fig2/theta.jpg  used on input line 341.
+Package pdftex.def Info: ./fig2/theta.jpg  used on input line 357.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
-<./fig2/theta_near.jpg, id=157, 562.1pt x 421.575pt>
+<./fig2/theta_near.jpg, id=164, 562.1pt x 421.575pt>
 File: ./fig2/theta_near.jpg Graphic file (type jpg)
 <use ./fig2/theta_near.jpg>
-Package pdftex.def Info: ./fig2/theta_near.jpg  used on input line 345.
+Package pdftex.def Info: ./fig2/theta_near.jpg  used on input line 361.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 340--348
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 356--364
 []$[]$ $[]$ 
  []
 
 File: ./fig2/theta.jpg Graphic file (type jpg)
 <use ./fig2/theta.jpg>
-Package pdftex.def Info: ./fig2/theta.jpg  used on input line 353.
+Package pdftex.def Info: ./fig2/theta.jpg  used on input line 369.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
-<./fig2/theta_ch.jpg, id=158, 562.1pt x 421.575pt>
+<./fig2/theta_ch.jpg, id=165, 562.1pt x 421.575pt>
 File: ./fig2/theta_ch.jpg Graphic file (type jpg)
 <use ./fig2/theta_ch.jpg>
-Package pdftex.def Info: ./fig2/theta_ch.jpg  used on input line 357.
+Package pdftex.def Info: ./fig2/theta_ch.jpg  used on input line 373.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 352--360
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 368--376
 []$[]$ $[]$ 
  []
 
@@ -1365,17 +1379,17 @@ Overfull \hbox (2.61107pt too wide) in paragraph at lines 352--360
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [21] [22]
-<./fig2/table.png, id=169, 758.835pt x 309.155pt>
+<./fig2/table.png, id=176, 758.835pt x 309.155pt>
 File: ./fig2/table.png Graphic file (type png)
 <use ./fig2/table.png>
-Package pdftex.def Info: ./fig2/table.png  used on input line 443.
-(pdftex.def)             Requested size: 364.19664pt x 148.37856pt.
+Package pdftex.def Info: ./fig2/table.png  used on input line 459.
+(pdftex.def)             Requested size: 318.66946pt x 129.83005pt.
 ) [23 <./fig2/table.png>]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex
 Chapter 6.
-<./fig2/vivado_simulation.png, id=174, 1866.975pt x 1027.84pt>
+<./fig2/vivado_simulation.png, id=182, 1866.975pt x 1027.84pt>
 File: ./fig2/vivado_simulation.png Graphic file (type png)
 <use ./fig2/vivado_simulation.png>
 Package pdftex.def Info: ./fig2/vivado_simulation.png  used on input line 10.
@@ -1404,27 +1418,28 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 27515 strings out of 494923
- 563580 string characters out of 6180742
- 640999 words of memory out of 5000000
- 30304 multiletter control sequences out of 15000+600000
- 584067 words of font info for 60 fonts, out of 8000000 for 9000
+ 27521 strings out of 494923
+ 563633 string characters out of 6180742
+ 641023 words of memory out of 5000000
+ 30310 multiletter control sequences out of 15000+600000
+ 587030 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,11n,77p,10402b,913s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,13n,77p,10402b,962s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/s
 hare/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/publi
 c/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share
 /texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm
 /lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on thesis.pdf (32 pages, 1357387 bytes).
+fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmsy8.pfb>
+Output written on thesis.pdf (34 pages, 1383470 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
+ 240 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  241 words of extra memory for PDF output out of 10000 (max. 10000000)
 

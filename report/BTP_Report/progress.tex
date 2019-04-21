@@ -158,7 +158,9 @@ From the figures 5.8 \& 5.9 , it is observed that there is peak at 1700 (seconds
 \section{FPGA Implementation}
 The complete design is being implemented at Register-Transfer Level (RTL) in {\bf Verilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The following diagram shows the implementation plan for the design :
 
-\begin{center}
+% \begin{center}
+\begin{figure}[H]
+\centering
 \resizebox{8cm}{8cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
@@ -182,9 +184,11 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 (C) edge             node {} (A)
 (A) edge [bend right] node {} (D)
 (A) edge [bend left]node {} (E);
-\node[below=7cm] at (current bounding box.base) {Overview of FPGA Implementation};
+% \node[below=7cm] at (current bounding box.base) {Overview of FPGA Implementation};
 \end{tikzpicture}
-}\end{center}
+}\caption{Overview of FPGA Implementation}\label{fig:fpga_implement}
+\end{figure}
+% \end{center}
 
 
 The complete design has been implemented at Register-Transfer Level (RTL) in {\bf SystemVerilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The synthesis tool used is Xilinx Synthesis Tool (XST). The following diagram shows the implementation plan for the design :
@@ -219,7 +223,9 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 
 \subsubsection{Top-Level State Machine}
 
-\begin{center}
+% \begin{center}
+\begin{figure}[H]
+\centering
 \resizebox{10cm}{10cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=2pt,auto,node distance=6cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
@@ -241,9 +247,11 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 (E) edge             node {} (F)
 (F) edge [bend left] node {} (C)
 (A) edge [bend left] node {} (B);
-\node[below=7cm] at (current bounding box.base) {Simplified form of Top-Level FSM};
+% \node[below=7cm] at (current bounding box.base) {Simplified form of Top-Level FSM};
 \end{tikzpicture}
-}\end{center}
+}\caption{Simplified form of Top-Level FSM}\label{fig:fsm_top}
+\end{figure}
+% \end{center}
 
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
@@ -256,7 +264,9 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 
 \subsubsection{Evaluate State-Space Expression}
 
-\begin{center}
+% \begin{center}
+\begin{figure}[H]
+\centering
 \resizebox{10cm}{10cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=6cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
@@ -277,9 +287,11 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 (E) edge             node {} (F)
 (F) edge [bend left] node {} (A)
 (A) edge [bend left] node {} (B);
-\node[below=7cm] at (current bounding box.base) {Simplified FSM of State-Space solver};
+% \node[below=7cm] at (current bounding box.base) {Simplified FSM of State-Space solver};
 \end{tikzpicture}
-}\end{center}
+}\caption{Simplified FSM of State-Space solver}\label{fig:fsm_state_space}
+\end{figure}
+% \end{center}
 
 
 \begin{itemize}
@@ -293,8 +305,10 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 
 \subsubsection{Postfix Expression Evaluation}
 
-\begin{center}
-\resizebox{8cm}{8cm}{
+% \begin{center}
+\begin{figure}[H]
+\centering
+\resizebox{7cm}{7cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=6cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
 
@@ -316,11 +330,13 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 (A) edge [bend left] node {start} (B);
 \node[below=3cm] at (current bounding box.base) {Simplified FSM for Postfix Evaluator};
 \end{tikzpicture}
-}\end{center}
+}\caption{Simplified FSM for Postfix Evaluator}\label{fig:fsm_postfix}
+\end{figure}
+% \end{center}
 
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
-\item READ\_POSTFIX\_CODE : Fetch the code indicating the next term of postfix expression.
+\item READ\_POSTFIX\_CODE : Fetch the code for the next term of postfix expression.
 \item DATA OR OPERATOR : Check if the code fetched corresponds to a data value or an operator.
 \item OPERATE\_ON\_TOP\_TWO\_STACK\_VALUES : Perform the corresponding operation of the two data values at stored at top of the stack.
 \item PUSH\_DATA\_TO\_STACK : Push the data value in postfix expression or the result of ALU operation onto the stack.
@@ -331,9 +347,9 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 \subsubsection{Test for Chaos}
 There are some essential requirements that need to be obeyed by any chaos based cryptosystem. These requirements include:
 \begin{enumerate}
-	\item Sensitivity to Parametric values: A small variation in one of the system parameters is enough to make two trajectories, starting at the same initial point, separate at exponential rate.
-	\item Sensitivity to Initial  Condition:  two  trajectories  starting  at  two  different,  though  arbitrarily  close,  initial points separate from each other exponentially.
-	\item Ergodicity:  Almost every trajectory tends to an invariant distribution that is independent of the initial conditions, and almost every trajectory will eventually visit any arbitrary interval of arbitrary size.
+	\item Sensitivity to Parametric values: It refers to the fact that a small perturbation in one of the system parameters is enough to make two trajectories, starting at the same initial point, diverge at exponential rate.
+	\item Sensitivity to Initial  Condition:  Two  trajectories  starting  at  two  different  but  arbitrarily  close initial points diverge from each other at an exponential rate.
+	\item Ergodicity:  Almost every trajectory tends toward an invariant distribution which is independent of the initial conditions, and almost every trajectory will eventually visit any arbitrary interval of arbitrary size.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -360,10 +376,10 @@ There are some essential requirements that need to be obeyed by any chaos based 
 \caption{Plot showing Sensitivity to Intital condition of ${\theta_{1}}$with ${\Delta \theta_{1} = 10^{-6}}$}\label{fig:image7}
 \end{figure}
 
-The proposed cryptosystem also holds such properties. The three qualities mentioned earlier are clearly evident from the plots and graphs shown Fig. 5.11 and Fig. 5.12. It is observed that keeping the parameters in one case and initial conditions in another case, constant leads to two completely different trajectories. Thus the map generated from the compound triple pendulum model possesses the essential chaotic properties to be employed in a general cryptosystem. 
+The proposed cryptosystem also holds such properties. The three qualities mentioned earlier are clearly evident from the plots and graphs shown Fig. 5.15 and Fig. 5.16. It is observed that keeping the parameters in one case and initial conditions in another case, constant leads to two completely different trajectories. Thus the map generated from the compound triple pendulum model possesses the essential chaotic properties to be employed in a general cryptosystem. 
 
 \subsubsection{Collision Test}
-Collision resistance is a property of cryptographic algorithms which makes it difficult to find two inputs which are encrypted to the same output. It must be ensured that finding collisions must be kept as hard as some of the hard mathematical problems like integer factorization  or discrete logarithm. Collision resistance does not mean that no collisions exist; simply that they are hard to find. Here, we show that the proposed algorithm is fully collision resistant i.e. no collisions exist.
+Collision resistance is a property of cryptographic algorithms which makes it difficult to find two inputs which are encrypted to the same output. It must be ensured that finding collisions must be kept as hard as some of the hard mathematical problems like integer factorization  or discrete logarithm. Collision resistance does not mean that no collisions exist, it simply means that they are very hard to find. Here, we show that the proposed algorithm is fully collision resistant i.e. no collisions exist.
 
 Since the entire range of $\theta$'s are partitioned according to the number of characters(say 256), different characters are mappped to points in different intervals. Hence two different inputs having different characters are completely mapped to different intervals. So the encryption scheme is completely free of collisions. 
 
@@ -437,10 +453,10 @@ Firstly, the computation of the state variable (${\theta}$) values for a time du
 R = \frac{plaintext\ size}{ciphertext\ size} = \frac{8*M}{\log_2N*M} = \frac{8}{\log_2N}
 \end{equation}
 \subsubsection{Hardware Resource Utilization}
-The following (Fig. 5.13) shows the utilization of hardware resources during simulation of the model. The maximum resources used is in the storage of state variable values in the LUT. It is about 1.3\% of the total fgpa memory and hence the memory usage is quite low. 
+The following (Fig. 5.17) shows the resource utilization of the complete RTL implementation after synthesis using XST tool. The maximum resources used is in the storage of state variable values in the LUT. It is only about 1.3\% of the total fgpa memory and hence the memory usage is quite low. It can be seen that 1726 LUTs and 1883 Flip-Flops are required. Also, due to target device being FPGA, instances of DSP48 have been used.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\linewidth]{table.png}
+\includegraphics[width=0.7\linewidth]{table.png}
 \caption{Table showing Resource Utilization}\label{fig:table}
 \end{figure}
 

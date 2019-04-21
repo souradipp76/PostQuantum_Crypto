@@ -4,7 +4,7 @@
 %\setlength{\baselineskip}{1.4mm}
 
 \section{Present-day Cryptography}
-Cryptography is the practice and study of techniques for secure data transfer over insecure channels in presence of unauthorized users, usually called adversaries. Prior to modern age, cryptography was most exclusively referred to as encryption, i.e. the process of converting data from readable state to apparent noise.
+Cryptography is the  study and practice of techniques for secure data transfer over insecure channels in presence of unauthorized users, usually called adversaries. Prior to modern age, cryptography was most exclusively referred to as encryption, i.e. the process of converting data from readable state to apparent noise.
 
 Most of the present-day encryption algorithms are based on overlapping theory of mathematics and computer science. These are largely designed around a 'trap-door functions', i.e. problems with sufficient computational hardness. These problems can be theoretically solved, but this is not possible to do within reasonable time and with the resources that usually at disposal.
 
@@ -13,13 +13,12 @@ Advances in mathematics such as improved algorithms on the integer factorization
 \section{Shor's Algorithm}
 Published in 1995 and named after it's formulator, Shor's algorithm, is a quantum algorithm for finding the prime factors of any given integer N.
 
-The importance of Shor's algorithm lies in it's ability to find the prime factors of an integer in polynomial time, in comparison to the most efficient classical algorithms known, such as general number field sieve, which works in sub-exponential time. This is possible to due to efficiency of quantum Fourier transform and modular exponentiation by repeated squaring.
+The importance of Shor's algorithm lies in it's ability to find the prime factors of an integer in polynomial time, in comparison to the most efficient classical algorithms known, such as general number field sieve, which takes sub-exponential time. This is possible to due to efficiency of quantum fourier transform and modular exponentiation by repeated squaring.
 
 \section{Shor's Algorithm \& Present Encryption Methods}
-All of the popular cryptographic algorithms rely on one of the three hard problems - integer-factorization problem, the discrete logarithm problem or the elliptic-curve discrete logarithm problem. These problems were viewed as important because of the difficulty of factoring large
-numbers is relied upon for many cryptography systems. If an efficient method of factoring large numbers is implemented, most of the encryption schemes would be next to worthless to protect their data. 
+All of the popular cryptographic algorithms rely on one of the three hard problems - integer factorization problem, the discrete logarithm problem or the elliptic-curve discrete logarithm problem. These problems were viewed as important because many cryptography systems rely upon the difficulty of factoring large numbers. If an efficient method of factoring large numbers can be implemented, most of the encryption schemes would be next to worthless to protect their data. 
 
-With Shor's algorithm, these can be be solved in reasonable polynomial time. This implies that, with a quantum computer having sufficient number of qubits, Shor's algorithm can be used to break the public-key cryptography schemes including RSA.However, the experimental quantum computers available today succumb to noise and decoherence problems, hence, cannot be used to break current encryption schemes.
+With Shor's algorithm, these can be be solved in reasonable polynomial time. This implies that, with a quantum computer having sufficient number of qubits, Shor's algorithm can be used to break the public-key cryptography schemes including RSA. However, the experimental quantum computers available today succumb to noise and decoherence problems, hence, cannot be used to break current encryption schemes.
 
 \section{Post-Quantum Cryptography}
 Post-Quantum Cryptography refers to the study of classical encryption schemes that are considered to be secure against an attack by quantum computers. As discussed above, most of the popular encryption methods can be efficiently broken using a sufficiently powerful hypothetical quantum computer. Thus, scientists are preparing methods to secure data against attacks when quantum computing becomes much more powerful.
@@ -28,16 +27,16 @@ Daniel J. Bernstein[11] lists the following important classes of cryptographic m
 \begin{description}[align=left, style=multiline,leftmargin=4 cm]
 \item [Hash-based - ] This includes Merkle's hash-tree public-key signature system, building upon the one-message idea.
 \item [Code-based - ] An example is McEliece's hidden-Goppa-code public-key encryption system.
-\item [Lattice-based - ] The most popular example that garnered most interest is Hoffstein-Pipher-Silverman NTRU public-key-encryption system.
+\item [Lattice-based - ] The most popular example that garnered most of the interest is Hoffstein-Pipher-Silverman NTRU public-key-encryption system.
 \item [Multivariate quadratic equation based- ] One of the examples is Patarin's {\em HFEv} public-key-signature system originally proposed by Matsumoto and Imai.\\
-\item [Secret-key based - ] The leading example is the DaemenRijmen
-{\em Rijndael} cipher which was renamed AES(Advanced Encryption Standard).
+\item [Secret-key based - ] The prominent example is the DaemenRijmen
+{\em Rijndael} cipher which was called AES (Advanced Encryption Standard).
 \end{description}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{timeline.png}
-\caption{Timeline for Quantum Cryptography}\label{fig:timeline}
+\caption{Timeline for Cryptography \& Quantum Processing}\label{fig:timeline}
 \end{figure}
 
 
@@ -45,9 +44,9 @@ Daniel J. Bernstein[11] lists the following important classes of cryptographic m
 
 
 \section{Chaos based Cryptography}
-Apart from the popular post-quantum cryptographic methods, a new method of constructing cryptosystems utilising the nonpredictability property of discrete chaotic systems has become somewhat noteworthy from practical perspectives. This type of systems are based on the characteristics of chaos, which are sensitivity of parameters, sensitivity of initial points, and randomness of sequences obtained by iterating a chaotic map. A ciphertext is obtained by the iteration of a inverse chaotic map from an initial point, which denotes a plaintext. 
+Apart from the popular post-quantum cryptographic methods, a new method of constructing cryptosystems utilising the non-predictability property of discrete chaotic systems has become somewhat noteworthy from practical perspectives. This type of systems are based on the characteristics of chaos, which are sensitivity of parameters, sensitivity of initial points, and randomness of sequences obtained by iterating a chaotic map. A ciphertext is obtained by the iteration of a inverse chaotic map from an initial point denoting a plaintext. 
 
-If the times of the iteration is large enough, the randomness of the encryption and the decryption functions are so large that attackers are unable to break this cryptosystem by statistical characteristics. Hence, nonlinear dynamical systems with chaos seem to be good candidates for constructing such encryption-decryption algorithms. Most of these methods have been used in the development of symmetric ciphers for encryption of 2D images.
+If the number of iterations is large enough, the randomness of the encryption and the decryption functions would be so large that attackers would be unable to break this cryptosystem by statistical characteristics. Hence, nonlinear dynamic systems with chaos are generally viewed to be good candidates for constructing such encryption-decryption algorithms. Most of these methods have been used in the development of symmetric ciphers for encryption of 2D images.
 
 \begin{figure}[H]
 \begin{subfigure}{0.5\textwidth}

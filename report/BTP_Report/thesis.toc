@@ -1,6 +1,6 @@
-\contentsline {chapter}{Abstract}{i}
-\contentsline {chapter}{List of Figures}{iv}
-\contentsline {chapter}{Nomenclature}{v}
+\contentsline {chapter}{Abstract}{iii}
+\contentsline {chapter}{List of Figures}{vi}
+\contentsline {chapter}{Nomenclature}{vii}
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Motivation}{1}
@@ -42,3 +42,5 @@
 \contentsline {subsection}{\numberline {5.4.3}Reason for being Quantum-Safe}{23}
 \contentsline {chapter}{\numberline {6}Results \& Conclusion}{24}
 \contentsline {chapter}{\numberline {7}Future Work}{25}
+\contentsline {subsubsection}{Algorithmic Aspect}{25}
+\contentsline {subsubsection}{Hardware Implementation Aspect}{25}
