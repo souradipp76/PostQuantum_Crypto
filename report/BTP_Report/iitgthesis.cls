@@ -114,11 +114,11 @@
     \begin{center}
       \mbox{}\\
       {\bf\expandafter\uppercase\expandafter{\LARGE\@title}} \\[\@thesistitlebigskip]
-      {\large A \@doctype\ submitted in partial fulfillment of} \\
+      {\large A \@doctype\ submitted in fulfillment of} \\
       {\large the requirements for the degree of}\\[\@thesistitlemedskip]
       {\large \@iitgdegree} \\[\@thesistitlemedskip]
       {\large by} \\[\@thesistitlemedskip]
-      {\large \bf \@author} \\[\@thesistitlemedskip]
+      {\large \bf \@author} \\[\@thesistitlebigskip]
     %   {\large \bf (Roll No. \@rollnum)} \\[\@thesistitlebigskip]
     %   {\large \bf \@author} \\
       {\large Under the guidance of }  \\
@@ -186,8 +186,8 @@
     {\large This is to certify that the work contained in this \@doctype\ entitled}\\[\@thesisapprovalmedskip]
     {\bf\expandafter\uppercase\expandafter{\Large\@title}}\\[\@thesisapprovalmedskip]
     {\large is the work of}\\[\@thesisapprovalmedskip]
-    {\Large \bf \@author }\\
-    {\Large (Roll No. \@rollnum)}\\[\@thesisapprovalmedskip]
+    {\Large \bf \@author }\\[\@thesisapprovalmedskip]
+    %{\Large (Roll No. \@rollnum)}\\[\@thesisapprovalmedskip]
     {\large for the award of the degree of Bachelor of Technology, carried out in the
         Department of Electronics and Electrical Engineering, Indian Institute of Technology Guwahati
         under my supervision and that it has not been submitted~elsewhere for a degree.
