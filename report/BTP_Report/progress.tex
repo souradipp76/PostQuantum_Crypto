@@ -153,10 +153,9 @@ It is observed that for certain specific parameters or initial conditions, the m
 \end{figure}
 
 From the figures 5.8 \& 5.9 , it is observed that there is peak at 1700 (seconds/Cycle) for $\theta_{1}$ whereas no such peak occurs for $\theta_{3}$. Thus $\theta_{1}$ is periodic in nature. The values obtained from the periodicity test and plots of circular auto-correlation clearly differentiates the parameters and initial values which leads to periodic nature of the motion and those which lead to non-periodic nature of the motion. Thus by iterating through all possibles values of the parameters and checking likewise for non-periodic nature, a set of keys was generated and stored. 
-
+\\\\\\
 
 \section{FPGA Implementation}
-<<<<<<< HEAD
 The complete design is being implemented at Register-Transfer Level (RTL) in {\bf Verilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The following diagram shows the implementation plan for the design :
 
 \begin{center}
@@ -183,19 +182,18 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 (C) edge             node {} (A)
 (A) edge [bend right] node {} (D)
 (A) edge [bend left]node {} (E);
-\node[below=7cm] at (current bounding box.base) {caption 3};
+\node[below=7cm] at (current bounding box.base) {Overview of FPGA Implementation};
 \end{tikzpicture}
 }\end{center}
 
 
-=======
 The complete design has been implemented at Register-Transfer Level (RTL) in {\bf SystemVerilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The synthesis tool used is Xilinx Synthesis Tool (XST). The following diagram shows the implementation plan for the design :
->>>>>>> ef44e07eb3660eaf43b1c4a5669622aa06534846
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{fpga_block.jpg}
-\caption{Block Diagram of FPGA Implementation}\label{fig:fpga_block}
-\end{figure}
+
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=10cm]{fpga_block.jpg}
+% \caption{Block Diagram of FPGA Implementation}\label{fig:fpga_block}
+% \end{figure}
 
 
 \subsection{Arithmetic and Logic Unit (ALU)}
@@ -204,10 +202,17 @@ The Arithmetic and Logical Unit (ALU) has been appropriately parametrised to ena
 1. {\bf Addition Module} - This module performs floating point addition. The complete datapath has been split into 4 stages keeping in mind the target clock frequency 100 MHz. Current design contains 2 units of Addition Module.
 
 2. {\bf Multiplication Module} - This module performs floating point multiplication. The complete multiplication datapath has been split into 5 stages in order to achieve the target clock frequency. Moreover, if required, the module can be configured to function in pipeline mode. Current design contains 1 unit of Multiplication Module.
+\\
 
 3. {\bf Exponentiation Module} - This module evaluates the value of an input raised to an integer exponent. It utilises an instance of the multiplication module. Current design contains 1 unit of Exponentiation Module.
 
 4. {\bf Division Module} - This module performs floating point division The complete datapath has been split into multiple stages keeping in mind the target clock frequency 100 MHz. However, since, the division operation requires significantly more clock cycles compared to other operations, the design has been optimised to reduce the number of division oeration to minimum. Current design contains 1 unit of Division Module.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{schematic.png}
+\caption{Schematic of multiplier module}\label{fig:schematic}
+\end{figure}
 
 \subsection{Control Unit}
 The control unit of the implementation is essentially a Finite State Machine (FSM) which performs the required tasks in a well-defined sequence. In order to achieve an efficient implementation, the complete FSM has been factored into simpler state machines. A top-level FSM serves as control for these simpler FSMs. Basic description for these state machines is given as follows -
@@ -215,7 +220,7 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 \subsubsection{Top-Level State Machine}
 
 \begin{center}
-\resizebox{8cm}{8cm}{
+\resizebox{10cm}{10cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=2pt,auto,node distance=6cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
 
@@ -242,17 +247,17 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
-\item RECEIVE_KEY : Involves receiving the encryption/decryption key values through USB or Ethernet interface.
-\item EVALUATE_EXPRESSION : Evaluates the state-space expression using the given initial conditions for the chaotic dynamic system.
-\item MODIFY_STATE_VARIABLES : Updates the state variables based on the values obtained in previous state.
-\item OBTAIN_CHAOTIC_MAP : Evaluates a chaotic map through a linear combination of values of all state variable.
-\item GENERATE_CIPHERTEXT : Generates the ciphertext for a particular plaintext string using the generated chaotic map.
+\item RECEIVE\_KEY : Involves receiving the encryption/decryption key values through USB or Ethernet interface.
+\item EVALUATE\_EXPRESSION : Evaluates the state-space expression using the given initial conditions for the chaotic dynamic system.
+\item MODIFY\_STATE\_VARIABLES : Updates the state variables based on the values obtained in previous state.
+\item OBTAIN\_CHAOTIC\_MAP : Evaluates a chaotic map through a linear combination of values of all state variable.
+\item GENERATE\_CIPHERTEXT : Generates the ciphertext for a particular plaintext string using the generated chaotic map.
 \end{itemize}
 
 \subsubsection{Evaluate State-Space Expression}
 
 \begin{center}
-\resizebox{8cm}{8cm}{
+\resizebox{10cm}{10cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=6cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
     
@@ -272,28 +277,21 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 (E) edge             node {} (F)
 (F) edge [bend left] node {} (A)
 (A) edge [bend left] node {} (B);
-\node[below=7cm] at (current bounding box.base) {caption 3};
+\node[below=7cm] at (current bounding box.base) {Simplified FSM of State-Space solver};
 \end{tikzpicture}
 }\end{center}
 
-<<<<<<< HEAD
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{vivado_simulation.png}
-\caption{Simulation of cryptosystem in Vivado}\label{fig:vivado_simulation}
-\end{figure}
-=======
+
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
-\item FETCH_INITIAL_CONDITIONS : Involves fetching the required initial conditions from Block-RAM.
-\item ANGLE_COMBINATION_CALC : Create a cache containing frequently used linear combinations of state variables.
-\item ANGLE_NORMALIZATION : Normalize the trigonometric inputs to the range [-pi, pi].
-\item POSTFIX_TERM_ACCUMULATE : Evaluates the state-space expression stored in postfix form.
-\item STORE_OUTPUT_DATA : Store the values of state-space expression obtained in previous state to a Block-RAM .
+\item FETCH\_INITIAL\_CONDITIONS : Involves fetching the required initial conditions from Block-RAM.
+\item ANGLE\_COMBINATION\_CALC : Create a cache containing frequently used linear combinations of state variables.
+\item ANGLE\_NORMALIZATION : Normalize the trigonometric inputs to the range $[-\pi, \pi]$.
+\item POSTFIX\_TERM\_ACCUMULATE : Evaluates the state-space expression stored in postfix form.
+\item STORE\_OUTPUT\_DATA : Store the values of state-space expression obtained in previous state to a Block-RAM .
 \end{itemize}
 
 \subsubsection{Postfix Expression Evaluation}
->>>>>>> ef44e07eb3660eaf43b1c4a5669622aa06534846
 
 \begin{center}
 \resizebox{8cm}{8cm}{
@@ -316,17 +314,17 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 (E) edge [bend left] node {} (D)
 (D) edge [] node {} (B)
 (A) edge [bend left] node {start} (B);
-\node[below=3cm] at (current bounding box.base) {caption 3};
+\node[below=3cm] at (current bounding box.base) {Simplified FSM for Postfix Evaluator};
 \end{tikzpicture}
 }\end{center}
 
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
-\item READ_POSTFIX_CODE : Fetch the code indicating the next term of postfix expression.
+\item READ\_POSTFIX\_CODE : Fetch the code indicating the next term of postfix expression.
 \item DATA OR OPERATOR : Check if the code fetched corresponds to a data value or an operator.
-\item OPERATE_ON_TOP_TWO_STACK_VALUES : Perform the corresponding operation of the two data values at stored at top of the stack.
-\item PUSH_DATA_TO_STACK : Push the data value in postfix expression or the result of ALU operation onto the stack.
-\end(itemize}
+\item OPERATE\_ON\_TOP\_TWO\_STACK\_VALUES : Perform the corresponding operation of the two data values at stored at top of the stack.
+\item PUSH\_DATA\_TO\_STACK : Push the data value in postfix expression or the result of ALU operation onto the stack.
+\end{itemize}
 
 \section{Analysis}
 \subsection{General Properties of the Cryptosystem}
@@ -370,7 +368,7 @@ Collision resistance is a property of cryptographic algorithms which makes it di
 Since the entire range of $\theta$'s are partitioned according to the number of characters(say 256), different characters are mappped to points in different intervals. Hence two different inputs having different characters are completely mapped to different intervals. So the encryption scheme is completely free of collisions. 
 
 \subsubsection{Test for Randomness}
-For testing randomness of the chaotic map, statistical tests are generally applied. These statistical tests are generally employed for testing randomness in pseudo random number generators. Here, Diehard random number generator test suite has been employed to do such tests. Developed by George Marsaglia, Diehard is a battery of tests which are used to determine the quality of PRNGs. The list of tests performed on the generated chaotic map data and the corresponding results obtained are shown in Table 5.1.
+For testing randomness of the chaotic map, necessary statistical tests were applied. These statistical tests are generally employed for testing randomness in pseudo random number generators. Here, Diehard random number generator test suite has been used to do such tests. Developed by George Marsaglia, Diehard is a battery of tests which are used to determine the quality of PRNGs. The list of tests performed on the generated chaotic map data and the corresponding results obtained are shown in Table 5.1.
 
 \begin{table}[h!]
 \begin{center}
@@ -438,6 +436,19 @@ Firstly, the computation of the state variable (${\theta}$) values for a time du
 \begin{equation}
 R = \frac{plaintext\ size}{ciphertext\ size} = \frac{8*M}{\log_2N*M} = \frac{8}{\log_2N}
 \end{equation}
-\subsubsection{Hardware Complexity}
-\subsection{Reason for Quantum-Safe}
+\subsubsection{Hardware Resource Utilization}
+The following (Fig. 5.13) shows the utilization of hardware resources during simulation of the model. The maximum resources used is in the storage of state variable values in the LUT. It is about 1.3\% of the total fgpa memory and hence the memory usage is quite low. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{table.png}
+\caption{Table showing Resource Utilization}\label{fig:table}
+\end{figure}
+
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.4\linewidth]{graph.png}
+% \caption{Bar graph showing Resource Utilization}\label{fig:graph}
+% \end{figure}
+
+\subsection{Reason for being Quantum-Safe}
 The argument in regards to the quantum-safe property of this algorithm is due to its innate chaotic nature. Traditional Shor's and Glover's algorithms cannot break this system as they deal with a different paradigm of hard problems like integer factorization and discrete logarithm. Also the highly non-linear and interdependent nature of the dynamical system makes it difficult for even the quantum algorithms to do brute force attacks without the total or partial knowledge of key. Even with partial knowledge of key values, it is useless to do brute force attacks as the chaotic maps are highly sensitive to key values. The key size is about $21\times(32 bits) = 672 bits$ for single precision arithmetic which is quite large enough. All these reasons direct us to be confidently stand by this algorithms and call it quantum computing immune. 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  20 APR 2019 23:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  21 APR 2019 04:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -938,7 +938,7 @@ LaTeX Warning: Label `fig:theta_comp' multiply defined.
 
 LaTeX Warning: Label `sub@fig:theta_comp' multiply defined.
 
-) (./future.aux)
+) (./conclusion.aux) (./future.aux)
 
 LaTeX Warning: Label `ref:lone' multiply defined.
 
@@ -1304,79 +1304,113 @@ Overfull \hbox (2.61107pt too wide) in paragraph at lines 144--152
 []$[]$ $[]$ 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--157
+
+ []
+
 [14 <./fig2/auto_corr1.jpg> <./fig2/period1.jpg> <./fig2/auto_corr3.jpg> <./fig
 2/period3.jpg>]
-<./fig2/fpga_block.jpg, id=139, 587.19376pt x 424.58624pt>
-File: ./fig2/fpga_block.jpg Graphic file (type jpg)
-<use ./fig2/fpga_block.jpg>
-Package pdftex.def Info: ./fig2/fpga_block.jpg  used on input line 192.
-(pdftex.def)             Requested size: 284.52756pt x 205.73619pt.
- [15 <./fig2/fpga_block.jpg>]
-<./fig2/vivado_simulation.png, id=143, 1866.975pt x 1027.84pt>
-File: ./fig2/vivado_simulation.png Graphic file (type png)
-<use ./fig2/vivado_simulation.png>
-Package pdftex.def Info: ./fig2/vivado_simulation.png  used on input line 231.
-(pdftex.def)             Requested size: 426.79134pt x 234.95534pt.
- [16 <./fig2/vivado_simulation.png>] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 204--206
+
+ []
+
+[15]
+<./fig2/schematic.png, id=142, 1276.77pt x 927.465pt>
+File: ./fig2/schematic.png Graphic file (type png)
+<use ./fig2/schematic.png>
+Package pdftex.def Info: ./fig2/schematic.png  used on input line 213.
+(pdftex.def)             Requested size: 426.79134pt x 310.02695pt.
+ [16 <./fig2/schematic.png>] [17] [18] [19]
 File: ./fig2/theta.jpg Graphic file (type jpg)
 <use ./fig2/theta.jpg>
-Package pdftex.def Info: ./fig2/theta.jpg  used on input line 299.
+Package pdftex.def Info: ./fig2/theta.jpg  used on input line 341.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
-<./fig2/theta_near.jpg, id=151, 562.1pt x 421.575pt>
+<./fig2/theta_near.jpg, id=157, 562.1pt x 421.575pt>
 File: ./fig2/theta_near.jpg Graphic file (type jpg)
 <use ./fig2/theta_near.jpg>
-Package pdftex.def Info: ./fig2/theta_near.jpg  used on input line 303.
+Package pdftex.def Info: ./fig2/theta_near.jpg  used on input line 345.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 298--306
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 340--348
 []$[]$ $[]$ 
  []
 
 File: ./fig2/theta.jpg Graphic file (type jpg)
 <use ./fig2/theta.jpg>
-Package pdftex.def Info: ./fig2/theta.jpg  used on input line 311.
+Package pdftex.def Info: ./fig2/theta.jpg  used on input line 353.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
-<./fig2/theta_ch.jpg, id=152, 562.1pt x 421.575pt>
+<./fig2/theta_ch.jpg, id=158, 562.1pt x 421.575pt>
 File: ./fig2/theta_ch.jpg Graphic file (type jpg)
 <use ./fig2/theta_ch.jpg>
-Package pdftex.def Info: ./fig2/theta_ch.jpg  used on input line 315.
+Package pdftex.def Info: ./fig2/theta_ch.jpg  used on input line 357.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 310--318
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 352--360
 []$[]$ $[]$ 
  []
 
-[18 <./fig2/theta_near.jpg> <./fig2/theta_ch.jpg>]
+[20 <./fig2/theta_near.jpg> <./fig2/theta_ch.jpg>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[19] [20]) [21]
+[21] [22]
+<./fig2/table.png, id=169, 758.835pt x 309.155pt>
+File: ./fig2/table.png Graphic file (type png)
+<use ./fig2/table.png>
+Package pdftex.def Info: ./fig2/table.png  used on input line 443.
+(pdftex.def)             Requested size: 364.19664pt x 148.37856pt.
+) [23 <./fig2/table.png>]
+\openout2 = `conclusion.aux'.
+
+ (./conclusion.tex
+Chapter 6.
+<./fig2/vivado_simulation.png, id=174, 1866.975pt x 1027.84pt>
+File: ./fig2/vivado_simulation.png Graphic file (type png)
+<use ./fig2/vivado_simulation.png>
+Package pdftex.def Info: ./fig2/vivado_simulation.png  used on input line 10.
+(pdftex.def)             Requested size: 455.24408pt x 250.62321pt.
+) [24
+
+
+
+ <./fig2/vivado_simulation.png>]
 \openout2 = `future.aux'.
 
  (./future.tex
-Chapter 6.
-) [22
+Chapter 7.
+) [25
 
 
 
-] [23
+] [26
 
 
 ] (./thesis.aux (./prelude.aux) (./introduction.aux)
 (./preliminaries.aux) (./literature.aux) (./system.aux) (./progress.aux)
-(./future.aux))
+(./conclusion.aux) (./future.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 27498 strings out of 494923
- 563294 string characters out of 6180742
- 640546 words of memory out of 5000000
- 30294 multiletter control sequences out of 15000+600000
+ 27515 strings out of 494923
+ 563580 string characters out of 6180742
+ 640999 words of memory out of 5000000
+ 30304 multiletter control sequences out of 15000+600000
  584067 words of font info for 60 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,11n,77p,10402b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,11n,77p,10402b,913s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/s
 hare/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/publi
@@ -1387,10 +1421,10 @@ fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on thesis.pdf (29 pages, 1324764 bytes).
+Output written on thesis.pdf (32 pages, 1357387 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
- 119 compressed objects within 2 object streams
+ 230 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 236 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
 
