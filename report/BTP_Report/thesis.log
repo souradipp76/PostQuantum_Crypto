@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  21 APR 2019 17:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  22 APR 2019 03:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1148,7 +1148,7 @@ r/m/it/12 Ri-jn-dael \OT1/lmr/m/n/12 ci-pher which
 File: ./fig2/timeline.png Graphic file (type png)
 <use ./fig2/timeline.png>
 Package pdftex.def Info: ./fig2/timeline.png  used on input line 38.
-(pdftex.def)             Requested size: 284.52756pt x 149.73015pt.
+(pdftex.def)             Requested size: 398.33858pt x 209.62454pt.
 [4]
 <./fig2/image_chaos0.jpg, id=93, 236.38312pt x 86.57344pt>
 File: ./fig2/image_chaos0.jpg Graphic file (type jpg)
@@ -1181,7 +1181,13 @@ Chapter 3.
 
 
 
-]) [8]
+]
+Overfull \hbox (4.69618pt too wide) in paragraph at lines 23--24
+\OT1/lmr/m/n/12 Proposed by M.S. Bap-tista, this is a chaotic cryp-tosys-tem ba
+sed on the interval-partitioning
+ []
+
+) [8]
 \openout2 = `system.aux'.
 
  (./system.tex
@@ -1335,7 +1341,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--157
 
 [14 <./fig2/auto_corr1.jpg> <./fig2/period1.jpg> <./fig2/auto_corr3.jpg> <./fig
 2/period3.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 208--210
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
 
  []
 
@@ -1343,34 +1349,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 208--210
 <./fig2/schematic.png, id=149, 1276.77pt x 927.465pt>
 File: ./fig2/schematic.png Graphic file (type png)
 <use ./fig2/schematic.png>
-Package pdftex.def Info: ./fig2/schematic.png  used on input line 217.
+Package pdftex.def Info: ./fig2/schematic.png  used on input line 216.
 (pdftex.def)             Requested size: 426.79134pt x 310.02695pt.
  [16 <./fig2/schematic.png>] [17] [18] [19]
 File: ./fig2/theta.jpg Graphic file (type jpg)
 <use ./fig2/theta.jpg>
-Package pdftex.def Info: ./fig2/theta.jpg  used on input line 357.
+Package pdftex.def Info: ./fig2/theta.jpg  used on input line 356.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 <./fig2/theta_near.jpg, id=164, 562.1pt x 421.575pt>
 File: ./fig2/theta_near.jpg Graphic file (type jpg)
 <use ./fig2/theta_near.jpg>
-Package pdftex.def Info: ./fig2/theta_near.jpg  used on input line 361.
+Package pdftex.def Info: ./fig2/theta_near.jpg  used on input line 360.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 356--364
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 355--363
 []$[]$ $[]$ 
  []
 
 File: ./fig2/theta.jpg Graphic file (type jpg)
 <use ./fig2/theta.jpg>
-Package pdftex.def Info: ./fig2/theta.jpg  used on input line 369.
+Package pdftex.def Info: ./fig2/theta.jpg  used on input line 368.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 <./fig2/theta_ch.jpg, id=165, 562.1pt x 421.575pt>
 File: ./fig2/theta_ch.jpg Graphic file (type jpg)
 <use ./fig2/theta_ch.jpg>
-Package pdftex.def Info: ./fig2/theta_ch.jpg  used on input line 373.
+Package pdftex.def Info: ./fig2/theta_ch.jpg  used on input line 372.
 (pdftex.def)             Requested size: 227.62204pt x 170.71764pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 368--376
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 367--375
 []$[]$ $[]$ 
  []
 
@@ -1382,7 +1388,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <./fig2/table.png, id=176, 758.835pt x 309.155pt>
 File: ./fig2/table.png Graphic file (type png)
 <use ./fig2/table.png>
-Package pdftex.def Info: ./fig2/table.png  used on input line 459.
+Package pdftex.def Info: ./fig2/table.png  used on input line 458.
 (pdftex.def)             Requested size: 318.66946pt x 129.83005pt.
 ) [23 <./fig2/table.png>]
 \openout2 = `conclusion.aux'.
@@ -1418,13 +1424,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 27521 strings out of 494923
- 563633 string characters out of 6180742
- 641023 words of memory out of 5000000
- 30310 multiletter control sequences out of 15000+600000
+ 27519 strings out of 494923
+ 563576 string characters out of 6180742
+ 641022 words of memory out of 5000000
+ 30308 multiletter control sequences out of 15000+600000
  587030 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,13n,77p,10402b,962s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,14n,77p,10402b,962s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/s
 hare/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/publi
@@ -1436,7 +1442,7 @@ fb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></us
 r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
 blic/lm/lmsy8.pfb>
-Output written on thesis.pdf (34 pages, 1383470 bytes).
+Output written on thesis.pdf (34 pages, 1383376 bytes).
 PDF statistics:
  240 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams

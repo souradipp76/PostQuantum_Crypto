@@ -6,7 +6,7 @@
 \section{Present-day Cryptography}
 Cryptography is the  study and practice of techniques for secure data transfer over insecure channels in presence of unauthorized users, usually called adversaries. Prior to modern age, cryptography was most exclusively referred to as encryption, i.e. the process of converting data from readable state to apparent noise.
 
-Most of the present-day encryption algorithms are based on overlapping theory of mathematics and computer science. These are largely designed around a 'trap-door functions', i.e. problems with sufficient computational hardness. These problems can be theoretically solved, but this is not possible to do within reasonable time and with the resources that usually at disposal.
+Most of the present-day encryption algorithms are based on overlapping theory of mathematics and computer science. These are largely designed around `trap-door functions', i.e. problems with sufficient computational hardness. These problems can be theoretically solved, but is is not possible to do within reasonable time and with the resources that are usually at disposal.
 
 Advances in mathematics such as improved algorithms on the integer factorization problem and discrete logarithm problem and availability of more computational power require these methods to adapt with time. Most of the algorithms can, however, be made secure against these advancements just by increasing the key-length.
 
@@ -30,12 +30,12 @@ Daniel J. Bernstein[11] lists the following important classes of cryptographic m
 \item [Lattice-based - ] The most popular example that garnered most of the interest is Hoffstein-Pipher-Silverman NTRU public-key-encryption system.
 \item [Multivariate quadratic equation based- ] One of the examples is Patarin's {\em HFEv} public-key-signature system originally proposed by Matsumoto and Imai.\\
 \item [Secret-key based - ] The prominent example is the DaemenRijmen
-{\em Rijndael} cipher which was called AES (Advanced Encryption Standard).
+{\em Rijndael} cipher which was later named AES (Advanced Encryption Standard).
 \end{description}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{timeline.png}
+\includegraphics[width=14cm]{timeline.png}
 \caption{Timeline for Cryptography \& Quantum Processing}\label{fig:timeline}
 \end{figure}
 
@@ -44,7 +44,7 @@ Daniel J. Bernstein[11] lists the following important classes of cryptographic m
 
 
 \section{Chaos based Cryptography}
-Apart from the popular post-quantum cryptographic methods, a new method of constructing cryptosystems utilising the non-predictability property of discrete chaotic systems has become somewhat noteworthy from practical perspectives. This type of systems are based on the characteristics of chaos, which are sensitivity of parameters, sensitivity of initial points, and randomness of sequences obtained by iterating a chaotic map. A ciphertext is obtained by the iteration of a inverse chaotic map from an initial point denoting a plaintext. 
+Apart from the popular post-quantum cryptographic methods, a new method of constructing cryptosystems utilising the non-predictability property of discrete chaotic systems has become somewhat noteworthy from practical perspectives. This type of systems are based on the characteristics of chaos, which are sensitivity of parameters, sensitivity of initial points, and randomness of sequences obtained by iterating a chaotic map. A ciphertext is obtained by the iteration of an inverse chaotic map from an initial point denoting a plaintext. 
 
 If the number of iterations is large enough, the randomness of the encryption and the decryption functions would be so large that attackers would be unable to break this cryptosystem by statistical characteristics. Hence, nonlinear dynamic systems with chaos are generally viewed to be good candidates for constructing such encryption-decryption algorithms. Most of these methods have been used in the development of symmetric ciphers for encryption of 2D images.
 
@@ -65,7 +65,7 @@ A field programmable gate array is a set (array) of reconfigurable gates that ca
 
 FPGAs are built in form of an array of configurable logic blocks (CLBs). Each of these CLBs can be programmed to perform a logic function and then connected to each other through a hierarchy of interconnects (routing channels) to form a complex logic. FPGA also has a set of I/O elements for interfacing with external devices such as flash memories and network ports.
 
-The structure of CLBs varies with model and manufacturers, but all of them share a lot of similarity. Figure 2.1 shows the structure of Cyclone IV CLB, consisting of a 4-input LUT and a flip-flop. By loading appropriate values, the LUT can be programmed to perform any 4-input function. Further, the choice of multiplexer select signals determines how the data is routed through LUT to the neighbouring LEs and IOEs. The LUT output either goes directly to the LE output for combinational logic, or it can be routed through the register for sequential logic.
+The structure of CLBs varies with model and manufacturers, but all of them share a lot of similarity. Figure 2.3 shows the structure of Cyclone IV CLB, consisting of a 4-input LUT and a flip-flop. By loading appropriate values, the LUT can be programmed to perform any 4-input function. Further, the choice of multiplexer select signals determines how the data is routed through LUT to the neighbouring LEs and IOEs. The LUT output either goes directly to the LE output for combinational logic, or it can be routed through the register for sequential logic.
 \begin{figure}[H]
 \centering
 \includegraphics[width=13cm]{fpga.jpg}

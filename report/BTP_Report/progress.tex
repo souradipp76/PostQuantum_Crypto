@@ -102,7 +102,7 @@ These are some of the observations from the simulation of the triple-pendulum mo
 
 
 \subsection{Encryption - Decryption}
-Our approach is to convert the plain-text into ascii format and  map the value to the partitioned intervals of the triple-pendulum motion simulated within a specific duration of time for a particular set of parameters and initial conditions. The initial conditions and parameters of the different equation forms a part of the private key. Following the Baptista-type method, the entire range of the chaotic function was partitioned into a number of intervals equal to the number of characters. Each character in the plain-text is then mapped to a specific interval and then to a time point randomly selecting from that interval.  
+Our approach is to convert the plain-text into ascii format and  map the value to the intervals partitioned from the range of values of the triple-pendulum motion simulated within a specific duration of time for a particular set of parameters and initial conditions. The initial conditions and parameters of the different equation forms a part of the private key. Following the Baptista-type method, the entire range of the chaotic function was partitioned into a number of intervals equal to the number of characters. Each character in the plain-text is then mapped to a specific interval and then to a time point randomly selecting from that interval.  
 
 \begin{figure}[H]
 \centering
@@ -156,19 +156,18 @@ From the figures 5.8 \& 5.9 , it is observed that there is peak at 1700 (seconds
 \\\\\\
 
 \section{FPGA Implementation}
-The complete design is being implemented at Register-Transfer Level (RTL) in {\bf Verilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The following diagram shows the implementation plan for the design :
-
+The complete design has been implemented at Register-Transfer Level (RTL) in {\bf SystemVerilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The synthesis tool used is Xilinx Synthesis Tool (XST). The following diagram shows the implementation plan for the design :
 % \begin{center}
 \begin{figure}[H]
 \centering
-\resizebox{8cm}{8cm}{
+\resizebox{10cm}{10cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
     
   \node[state] (A)                         {\begin{tabular}{c}$Control$\\$Unit$\end{tabular}};
   \node[state] (C) [above of=A]            {\begin{tabular}{c}$Ethernet$\\$\&$\\$USB$ $ Interface$\\$Module$\end{tabular}};
   \node[state] (B) [right of=C]      {\begin{tabular}{c}$I/O$\\$Ports$\end{tabular}};
-  \node[state] (D) [below right of=A]      {\begin{tabular}{c}$LUT2$\\$Mapping$\\$Plaintext$ $to$\\$Ciphertext$\end{tabular}};
+  \node[state] (D) [below right of=A]      {\begin{tabular}{c}$LUT2$\\$Mapping$ $of$\\$Plaintext$ $to$\\$Ciphertext$\end{tabular}};
   \node[state] (E) [below left of=A]       {\begin{tabular}{c}$LUT1$\\$Various$\\$Constants$\end{tabular}};
   \node[state] (F) [below of = A]           {\begin{tabular}{c}$Arithmetic$\\$\&$ $Logic$\\$Unit$\end{tabular}};
 
@@ -191,7 +190,7 @@ The complete design is being implemented at Register-Transfer Level (RTL) in {\b
 % \end{center}
 
 
-The complete design has been implemented at Register-Transfer Level (RTL) in {\bf SystemVerilog HDL} and the target device chosen is Digilent Nexys Board with {\bf Xilinx Artix-7 FPGA}. The synthesis tool used is Xilinx Synthesis Tool (XST). The following diagram shows the implementation plan for the design :
+
 
 % \begin{figure}[H]
 % \centering
@@ -210,7 +209,7 @@ The Arithmetic and Logical Unit (ALU) has been appropriately parametrised to ena
 
 3. {\bf Exponentiation Module} - This module evaluates the value of an input raised to an integer exponent. It utilises an instance of the multiplication module. Current design contains 1 unit of Exponentiation Module.
 
-4. {\bf Division Module} - This module performs floating point division The complete datapath has been split into multiple stages keeping in mind the target clock frequency 100 MHz. However, since, the division operation requires significantly more clock cycles compared to other operations, the design has been optimised to reduce the number of division oeration to minimum. Current design contains 1 unit of Division Module.
+4. {\bf Division Module} - This module performs floating point division. The complete datapath has been split into multiple stages keeping in mind the target clock frequency 100 MHz. However, since, the division operation requires significantly more clock cycles compared to other operations, the design has been optimised to reduce the number of division oeration to minimum. Current design contains 1 unit of Division Module.
 
 \begin{figure}[H]
 \centering
@@ -328,7 +327,7 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 (E) edge [bend left] node {} (D)
 (D) edge [] node {} (B)
 (A) edge [bend left] node {start} (B);
-\node[below=3cm] at (current bounding box.base) {Simplified FSM for Postfix Evaluator};
+% \node[below=3cm] at (current bounding box.base) {Simplified FSM for Postfix Evaluator};
 \end{tikzpicture}
 }\caption{Simplified FSM for Postfix Evaluator}\label{fig:fsm_postfix}
 \end{figure}
