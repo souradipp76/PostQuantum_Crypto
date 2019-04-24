@@ -77,11 +77,13 @@ localparam STATE_TERM_ACC_START = 4'd5;
 localparam STATE_TERM_ACC_WAIT = 4'd6;
 localparam STATE_FETCH_INIT_VAL = 4'd7;
 localparam STATE_DATA_OUT = 4'd8;
+localparam STATE_INC_EXP_INDEX = 4'd9;
 
 /////////////////////////////////////////
 logic [DATA_WIDTH-1:0] init_val [NUM_INIT_VAL-1:0];
 logic [3:0] state_exp_eval;
 integer counter;
+logic [1:0] expression_index;
 /////////////////////////////////////
 logic angle_combination_start;
 logic angle_combination_done;
@@ -186,6 +188,7 @@ term_accumulator #(
 	.clock_mem                     (clock_mem),
 	.reset                         (reset),
 	.term_accumulator_start        (term_accumulator_start),
+	.expression_index              (expression_index),
 	.mult_result                   (mult_result),
 	.add_result                    (add_result[0]),
 	.divide_result                 (div_result),
@@ -226,7 +229,6 @@ simple_dual_one_clock #(
 );
 
 
-
 rams_sp_rom_angle_comb_detail #(
 	.MEM_WIDTH(16),
 	.MEM_DEPTH(NUM_ANGLE_COMB)
@@ -249,8 +251,10 @@ always @(posedge clock) begin
 			else begin
 				state_exp_eval <= STATE_DEFAULT;
 				end
+			expression_index <= 2'd0;
 			exp_eval_data_ready <= 1'b0;
 			mem_state_var_read_addr <= 3'd0;
+			mem_state_var_write_addr <= 3'd6;
 			end
 
 		STATE_FETCH_INIT_VAL : begin
@@ -312,22 +316,31 @@ always @(posedge clock) begin
 				state_exp_eval <= STATE_TERM_ACC_WAIT;
 				end
 			term_accumulator_start <= 1'b0;
+			mem_state_var_write_data_in <= term_accumulator_output_value;
 			end
 
 		STATE_DATA_OUT : begin
-			exp_eval_data_ready <= 1'b1;
-			state_exp_eval <= STATE_DEFAULT;
+			mem_state_var_write_we <= 1'b1;
+			state_exp_eval <= STATE_INC_EXP_INDEX;
+			end
+
+		STATE_INC_EXP_INDEX : begin
+			case (expression_index)
+				2'b10 : begin state_exp_eval <= STATE_DEFAULT; exp_eval_data_ready <= 1'b1; end
+				default : begin state_exp_eval <= STATE_TERM_ACC_START; exp_eval_data_ready <= 1'b0; end
+				endcase
+			expression_index <= expression_index + 1;
+			mem_state_var_write_we <= 1'b0;
+			mem_state_var_write_addr <= mem_state_var_write_addr + 1;
 			end
 
 		default : begin
 			state_exp_eval <= STATE_DEFAULT;
-			exp_eval_data_ready <= 1'b1;
+			exp_eval_data_ready <= 1'b0;
 			angle_combination_start <= 1'b0;
 			angle_normalization_start <= 1'b0;
 			term_accumulator_start <= 1'b0;
 			counter <= 1;
-			//term_division_start <= 1'b0;
-			//init_val <= 0;	//write a loop here
 			end
 		endcase
 	end
