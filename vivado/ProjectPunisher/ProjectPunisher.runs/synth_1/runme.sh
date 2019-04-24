@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log decoder_type_3.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source decoder_type_3.tcl
+EAStep vivado -log top_module.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl

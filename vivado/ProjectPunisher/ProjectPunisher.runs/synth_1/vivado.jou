@@ -2,11 +2,11 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Wed Mar 20 00:00:29 2019
-# Process ID: 28776
+# Start of session at: Thu Apr 18 17:42:49 2019
+# Process ID: 9242
 # Current directory: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1
-# Command line: vivado -log decoder_type_3.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source decoder_type_3.tcl
-# Log file: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/decoder_type_3.vds
+# Command line: vivado -log top_module.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl
+# Log file: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/top_module.vds
 # Journal file: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source decoder_type_3.tcl -notrace
+source top_module.tcl -notrace
