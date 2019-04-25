@@ -14,7 +14,7 @@ localparam NUM_INIT_VAL = 6;
 localparam NUM_EVAL_VAL = 3;
 localparam NUM_STATE_VAR = NUM_EVAL_VAL + NUM_INIT_VAL;
 
-localparam NUM_KEY_VAL = 12;
+localparam NUM_KEY_VAL = 13;
 
 localparam DELTA_T = 32'h3a83126f;///delta_t = 0.001
 localparam EXP_BIAS = (2**(EXP_LEN-1)) - 1;
@@ -463,92 +463,139 @@ always @(*) begin
     case (state_top)
 
     	STATE_KEY_RX : begin
-    		mem_state_var_write_we <= top_mem_state_var_write_we;
-            mem_state_var_write_addr <= top_mem_state_var_write_addr;
-            mem_state_var_read_addr <= 0;
-            mem_state_var_data_in <= top_mem_state_var_write_data_in;
+			mem_state_var_write_we = top_mem_state_var_write_we;
+			mem_state_var_write_addr = top_mem_state_var_write_addr;
+			mem_state_var_read_addr = 0;
+			mem_state_var_data_in = top_mem_state_var_write_data_in;
         	end
         
-        STATE_EXP_EVAL_WAIT : begin
-            mult_operand_a <= exp_evaluator_mult_operand_a;
-            mult_operand_b <= exp_evaluator_mult_operand_b;
-            mult_start <= exp_evaluator_mult_start;
-            
-            add_operand_a[0] <= exp_evaluator_add_operand_a[0];
-            add_operand_b[0] <=  exp_evaluator_add_operand_b[0];
-            add_operand_a[1] <= exp_evaluator_add_operand_a[1];
-            add_operand_b[1] <=  exp_evaluator_add_operand_b[1];
-            add_start[0] <= exp_evaluator_add_start[0];
-            add_start[1] <= exp_evaluator_add_start[1];
-            
-            exponent_operand_a <= exp_evaluator_exponent_operand_a;
-            exponent_operand_b <= exp_evaluator_exponent_operand_b;
-            exponent_start <= exp_evaluator_exponent_start;
-            
-            div_dividend <= exp_evaluator_div_operand_b;
-            div_divisor <= exp_evaluator_div_operand_a;
-            div_start <= exp_evaluator_div_start;
-            
-            /////memory part//////
-            mem_state_var_write_we <= exp_evaluator_mem_state_var_write_we;
-            mem_state_var_write_addr <= exp_evaluator_mem_state_var_write_addr;
-            mem_state_var_read_addr <= exp_evaluator_mem_state_var_read_addr;
-            mem_state_var_data_in <= exp_evaluator_mem_state_var_write_data_in;
-            
+		STATE_EXP_EVAL_WAIT : begin
+			mem_state_var_write_we = exp_evaluator_mem_state_var_write_we;
+			mem_state_var_write_addr = exp_evaluator_mem_state_var_write_addr;
+			mem_state_var_read_addr = exp_evaluator_mem_state_var_read_addr;
+			mem_state_var_data_in = exp_evaluator_mem_state_var_write_data_in;
             end
 
         STATE_MULT_ADD_WAIT : begin
+			mem_state_var_write_we = top_mem_state_var_write_we;
+			mem_state_var_write_addr = 0;
+			mem_state_var_read_addr = 0;
+			mem_state_var_data_in = 0;
+			end
 
-            mult_operand_a <= mult_add_mult_operand_a;
-            mult_operand_b <= mult_add_mult_operand_b;
-            mult_start <= mult_add_mult_start;
-            
-            add_operand_a[0] <= mult_add_add_operand_a;
-            add_operand_b[0] <= mult_add_add_operand_b;
-            add_start[0] <= mult_add_add_start;
-            add_operand_a[1] <= 0;
-            add_operand_b[1] <= 0;
-            add_start[1] <= 0;
-            
-            exponent_operand_a <= 0;
-            exponent_operand_b <= 0;
-            exponent_start <= 0;
-            
-            div_start <= 0;
-            /////memory part//////
-            mem_state_var_write_we <= top_mem_state_var_write_we;
-            mem_state_var_write_addr <= 0;
-            mem_state_var_read_addr <= 0;
-            mem_state_var_data_in <= 0;
-            
-            end
         default: begin
-            add_operand_a[0] <= 0;
-            add_operand_b[0] <= 0;
-            add_operand_a[1] <= 0;
-            add_operand_b[1] <= 0;
-            add_start[0]     <= 0;
-            add_start[1]     <= 0;
+			mem_state_var_write_we = 0;
+			mem_state_var_write_addr = 0;
+			mem_state_var_read_addr = top_mem_state_var_read_addr;
+			mem_state_var_data_in = 0;
+			end
+		endcase
+	end
 
-            mult_operand_a <= 0;
-            mult_operand_b <= 0;
-            mult_start <= 0;
+always @(*) begin
 
-            exponent_operand_a <= 0;
-            exponent_operand_b <= 0;
-            exponent_start <= 0;
-            
-            div_start <= 0;
-            
-            
-            /////memory part//////	
-            mem_state_var_write_we <= 0;
-            mem_state_var_write_addr <= 0;
-            mem_state_var_read_addr <= top_mem_state_var_read_addr;
-            mem_state_var_data_in <= 0;
-            
-            end
-        endcase
-    end
+	case(state_top)
+	
+		STATE_EXP_EVAL_WAIT : begin
+			div_dividend = exp_evaluator_div_operand_b;
+			div_divisor = exp_evaluator_div_operand_a;
+			div_start = exp_evaluator_div_start;
+			end
+        
+        STATE_MULT_ADD_WAIT : begin
+			div_dividend = 0;
+			div_divisor = 0;
+			div_start = 0;
+			end
+        
+		default : begin
+			div_dividend = 0;
+			div_divisor = 0;
+			div_start = 0;
+			end
+		endcase
+	end
+
+always @(*) begin
+
+	case(state_top)
+    
+		STATE_EXP_EVAL_WAIT : begin
+			add_operand_a[0] = exp_evaluator_add_operand_a[0];
+			add_operand_b[0] =  exp_evaluator_add_operand_b[0];
+			add_operand_a[1] = exp_evaluator_add_operand_a[1];
+			add_operand_b[1] =  exp_evaluator_add_operand_b[1];
+			add_start[0] = exp_evaluator_add_start[0];
+			add_start[1] = exp_evaluator_add_start[1];
+			end
+        
+		STATE_MULT_ADD_WAIT : begin
+			add_operand_a[0] = mult_add_add_operand_a;
+			add_operand_b[0] = mult_add_add_operand_b;
+			add_start[0] = mult_add_add_start;
+			add_operand_a[1] = 0;
+			add_operand_b[1] = 0;
+			add_start[1] = 0;
+			end
+        
+		default : begin
+			add_operand_a[0] = 0;
+			add_operand_b[0] = 0;
+			add_operand_a[1] = 0;
+			add_operand_b[1] = 0;
+			add_start[0]     = 0;
+			add_start[1]     = 0;
+			end
+		endcase
+	end
+
+always @(*) begin
+
+	case(state_top)
+    
+		STATE_EXP_EVAL_WAIT : begin
+			mult_operand_a = exp_evaluator_mult_operand_a;
+			mult_operand_b = exp_evaluator_mult_operand_b;
+			mult_start = exp_evaluator_mult_start;
+			end
+        
+		STATE_MULT_ADD_WAIT : begin
+			mult_operand_a = mult_add_mult_operand_a;
+			mult_operand_b = mult_add_mult_operand_b;
+			mult_start = mult_add_mult_start;
+			end
+        
+		default : begin
+			mult_operand_a = 0;
+			mult_operand_b = 0;
+			mult_start = 0;
+			end
+		endcase
+	end
+
+
+always @(*) begin
+
+	case(state_top)
+    
+        STATE_EXP_EVAL_WAIT : begin
+			exponent_operand_a = exp_evaluator_exponent_operand_a;
+			exponent_operand_b = exp_evaluator_exponent_operand_b;
+			exponent_start = exp_evaluator_exponent_start;
+			end
+        
+		STATE_MULT_ADD_WAIT : begin
+			exponent_operand_a = 0;
+			exponent_operand_b = 0;
+			exponent_start = 0;
+			end
+        
+		default : begin
+			exponent_operand_a = 0;
+			exponent_operand_b = 0;
+			exponent_start = 0;
+			end
+		endcase
+	end
 
 endmodule
