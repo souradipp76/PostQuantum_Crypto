@@ -1,0 +1,18 @@
+#!/bin/sh
+# Find forbidden PostScript operators in the files specified
+# on stdin.
+# [21-May-1999] -- update with extended list for PostScript Level 3,
+#		   from pp. 802--803 of the PostScript Language Reference
+#		   Manual, 3rd edition, 1999.
+# [29-Jun-1996] -- update to show matching bad operator
+# [23-Oct-1992]
+
+# Level 2 list (19 operators):
+# /banddevice|grestoreall|nulldevice|setpageparams|copypage|initclip|quit|setsccbatch|erasepage|initgraphics|renderbands|setscreen|exitserver|initmatrix|setdevice|settransfer|framedevice|note|setmatrix/
+
+# Level 3 list (36 operators):
+nawk '
+/^%/	{next}
+match($0,/[^A-Za-z](banddevice|clear|cleardictstack|copypage|erasepage|executive|exitserver|framedevice|grestoreall|initclip|initgraphics|initmatrix|nulldevice|quit|renderbands|setblackgeneration|setcolorrendering|setcolorscreen|setcolortransfer|setflat|setglobal|setgstate|sethalftone|setmatrix|setoverprint|setpagedevice|setscreen|setshared|setsmoothness|settransfer|setundercolorremoval|startjob|statusdict|undefinefont|undefineresource|userdict)[^A-Za-z]/) {
+	print FILENAME ":" NR ": " $0 ": [" substr($0,RSTART,RLENGTH) "] illegal in EPS file"
+}' $*

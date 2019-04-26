@@ -1,0 +1,24 @@
+\chapter{Literature Survey}
+\label{chap:lit}
+\setlength{\parskip}{1.5mm}
+%\setlength{\baselineskip}{1.4mm}
+\section{Chaos and Cryptography}
+Over last few years, there has been a great interest in understanding the working of chaotic systems. They are distinguished by their high sensitivity to initial conditions, statistical similarity to random signals and a continuous broad-band power spectrum. This has garnered interest from cryptanalysts and there have been several publications proposing various chaos-based cryptographic systems such as in [2], [4].
+
+The chaos-based cryptosystems can be sub-divided into two classes. First one involves numerically computing a large number of iterations over time of a chaotic system, using message as the initial data. (see [1]). The second class amounts to scrambling a message with a chaotic dynamic function. This includes chaotic switching, additive masking, message embedding, etc.
+
+The relevance and usefulness of chaos in these systems have been demonstrated through comparative studies between characteristics of chaotic systems and requirements of a strong cipher (see [1], [4]). Several properties of chaotic maps are similar to those of cryptographic maps : extreme sensitivity to initial conditions and parameters, unstable periodic orbits with large time-periods. Further, iterations of chaotic map spread the initial region over entire map, introducing diffusion which is an important requirement for a strong cipher.
+
+\section{Discrete Chaos}
+It must be noted that when chaotic systems are simulated on computers with limited precision, the sequences x\textsubscript{k} generated are not exactly chaotic. Since, the cardinality of this set is finite, such sequences will always be a part of a loop of finite period. It can be expected that this period wouldn't be too short and will be greatly chaotic in nature. Claiming such properties, however, requires some consideration [7]. Contributions made in this regard and discussion about discrete chaos can be found in [9]. However, some noteworthy takeaways are listed below -
+\begin{itemize}
+\item Through numerical experiments, it has been shown that mean cycle L of such a system is O(2\textsuperscript{P/2}), where P is the amount of precision in terms of number of bits. This serves as good reference while working with chaotic systems. However, it must be verified as there are no mathematical proofs to support it.
+\item The rounding error in computer systems poses another problem. The errors made in each iteration will culminate at a very fast rate due to high sensitivity of the system on the initial conditions. Thus, the actual trajectory and the calculated trajectory will be considerably different after a few iterations. However, a famous lemma called "Shadowing Lemma", guarantees that one can always find an actual trajectory that is arbitrarily near the calculated trajectory.
+\end{itemize}
+
+\section{Chaos in Non-Linear Dynamic Systems}
+Many real world phenomena can be mathematically modelled as non-linear dynamic systems. Out of these phenomena, some exhibit significant degree of chaos. The unpredictability of these non-linear phenomena is due to the fact that the system passes through a series of {\em unstable states}. Also, these non-linear systems generally display very sensitive dependence on initial conditions which is the main reason for generating chaotic maps using non-linear dynamic systems. It must, however, be noted that not every complicated dynamic behavior can be considered chaotic. Chaotic systems differ from {\em noisy motion} in that their randomness is due to interaction of few simple laws. The quantitive description, however, lies in the concept of Lyapunov exponents which measures the exponential divergence of trajectories of the chaotic maps. 
+
+\section{Baptista-type Cryptosystem}
+Proposed by M.S. Baptista, this is a chaotic cryptosystem based on the interval-partitioning of chaotic orbits of a 1D chaotic map called logistic map. This uses the ergodic property of chaos, which enables the construction of very fast and secure encryption-decryption schemes due to its simplicity and less complex structure. The main idea of this scheme is to first map the text characters to real values and then algorithms are applied to encrypt the message. Decryption is performed by iterating the chaotic map and then corresponding symbol for the real values are obtained by inverting the process.
+
