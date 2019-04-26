@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  22 APR 2019 03:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.14)  25 APR 2019 23:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1426,7 +1426,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  27519 strings out of 494923
  563576 string characters out of 6180742
- 641022 words of memory out of 5000000
+ 641023 words of memory out of 5000000
  30308 multiletter control sequences out of 15000+600000
  587030 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
