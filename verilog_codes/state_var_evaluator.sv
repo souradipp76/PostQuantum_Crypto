@@ -376,7 +376,7 @@ always @(*) begin
             mem_angle_combination_value_read_addr <= 0;
             mem_angle_combination_value_in <= angle_combination_mem_angle_combination_value_data_in; 
             
-            mem_state_var_write_we <= 0;
+            //mem_state_var_write_we <= 0;
 			end
 
 		STATE_NORM_ANGLE_WAIT : begin
@@ -404,7 +404,7 @@ always @(*) begin
             mem_angle_combination_value_read_addr <= angle_normalization_mem_angle_combination_value_read_addr;
             mem_angle_combination_value_in <= angle_normalization_mem_angle_combination_value_data_in; 
             
-            mem_state_var_write_we <= 0;
+            //mem_state_var_write_we <= 0;
 			end
 
 		STATE_TERM_ACC_WAIT: begin
@@ -426,7 +426,7 @@ always @(*) begin
 			
 			div_start <= term_accumulator_div_start;
 			
-			mem_state_var_write_we <= 0;
+			//mem_state_var_write_we <= 0;
 			/////memory part//////??????????? CHECK
             mem_angle_combination_value_write <= 0;
             mem_angle_combination_value_write_addr <= 0;
@@ -452,7 +452,7 @@ always @(*) begin
 			exponent_start <= 0;
 			div_start <= 0;
 			
-			mem_state_var_write_we <= 0;
+			//mem_state_var_write_we <= 0;
 			/////memory part//////
 			mem_angle_combination_value_write <= 0;
             mem_angle_combination_value_write_addr <= 0;

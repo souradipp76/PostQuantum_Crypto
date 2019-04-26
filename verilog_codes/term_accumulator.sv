@@ -47,7 +47,7 @@ module term_accumulator #(
 
 ///////////////////////////////////////////////
 localparam POSTFIX_DATA_WIDTH = CODE_WIDTH;     //localparam POSTFIX_DATA_WIDTH = 9;
-localparam POSTFIX_DATA_DEPTH = 1024;
+localparam POSTFIX_DATA_DEPTH = 1403;
 localparam POSTFIX_DATA_END_CODE = {CODE_WIDTH{1'b1}};
 
 ///////////////////////////////////////////////
@@ -63,6 +63,7 @@ localparam STATE_DATA_OUT = 4'd7;
 ///////////////////////////////////////////////
 logic [3:0] state_term_accumulator;
 logic [POSTFIX_DATA_WIDTH-1:0] term_detail_postfix;
+logic [POSTFIX_DATA_WIDTH-1:0] term_detail_postfix_wire;
 logic [1:0] expression_index_reg;
 
 ///////////////////////////////////////////////
@@ -211,14 +212,12 @@ rams_sp_rom_pf3 #(
 	.dout    (mem_term_detail_postfix_data_out[2])
 );
 
-logic [POSTFIX_DATA_WIDTH-1:0] term_detail_postfix;
-
 always @(*) begin
 	case (expression_index)
-		2'b00 : term_detail_postfix = mem_term_detail_postfix_data_out[0];
-		2'b01 : term_detail_postfix = mem_term_detail_postfix_data_out[1];
-		2'b10 : term_detail_postfix = mem_term_detail_postfix_data_out[2];
-		default : term_detail_postfix = mem_term_detail_postfix_data_out[0];
+		2'b00 : term_detail_postfix_wire = mem_term_detail_postfix_data_out[0];
+		2'b01 : term_detail_postfix_wire = mem_term_detail_postfix_data_out[1];
+		2'b10 : term_detail_postfix_wire = mem_term_detail_postfix_data_out[2];
+		default : term_detail_postfix_wire = mem_term_detail_postfix_data_out[0];
 		endcase
 	end
 
@@ -243,19 +242,19 @@ case (state_term_accumulator)
 
 	STATE_POSTFIX_TERM_READ : begin
 		mem_term_detail_postfix_addr <= mem_term_detail_postfix_addr + 1;
-		term_detail_postfix <= term_detail_postfix;
+		term_detail_postfix <= term_detail_postfix_wire;
 
 		stack_push <= 1'b0;
 		stack_reset <= 1'b0;
 
-		case (term_detail_postfix[CODE_WIDTH-1:CODE_WIDTH-1-1])
+		case (term_detail_postfix_wire[CODE_WIDTH-1:CODE_WIDTH-1-1])
 			2'b00 : decoder_const_start <= 1'b1; 
 			2'b01 : decoder_state_var_key_val_start <= 1'b1;
 			2'b11 : decoder_trigo_start <= 1'b1;
 			default : decoder_const_start <= 1'b0;
 			endcase
 
-		case (term_detail_postfix[CODE_WIDTH-1:CODE_WIDTH-1-1])
+		case (term_detail_postfix_wire[CODE_WIDTH-1:CODE_WIDTH-1-1])
 			2'b10   : state_term_accumulator <= STATE_OPN;
 			default : state_term_accumulator <= STATE_WAIT_DATA_DECODE;
 			endcase
