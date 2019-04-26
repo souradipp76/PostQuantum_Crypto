@@ -57,6 +57,7 @@ initial begin
 	ram[9] <= 32'h3ba3d70a;
 	ram[10] <= 32'h00000000;
 	ram[11] <= 32'h3a51b717;
+	ram[12] <= 32'h411cf5c2;
 end
 
 always @(posedge clock) begin
