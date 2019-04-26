@@ -295,6 +295,7 @@ exponent_operation #(
 	.out_value    (exponent_result)
 );
 
+
 /*
 float_point_divider inst_float_point_divider (
 	.input_a      (div_dividend),
@@ -303,12 +304,14 @@ float_point_divider inst_float_point_divider (
 	.input_b_stb  (div_start),
 	.output_z_ack (1),
 	.clk          (clock),
-	.rst          (0),
+	.rst          (start_top),
 	.output_z     (div_result),
 	.output_z_stb (div_result_ready),
 	.input_a_ack  (input_a_ack),
 	.input_b_ack  (input_b_ack)
-);*/
+);
+*/
+
 
 float_point_divider_ip inst_float_point_divider_ip (
 	.clock        (clock),

@@ -11,16 +11,15 @@ module float_point_divider_ip (
 
 
 
+
+
 floating_point_0 your_instance_name (
   .aclk(clock),                                  // input wire aclk
   .s_axis_a_tvalid(div_start),            // input wire s_axis_a_tvalid
-  .s_axis_a_tready(s_axis_a_tready),            // output wire s_axis_a_tready
   .s_axis_a_tdata(dividend),              // input wire [31 : 0] s_axis_a_tdata
   .s_axis_b_tvalid(div_start),            // input wire s_axis_b_tvalid
-  .s_axis_b_tready(s_axis_b_tready),            // output wire s_axis_b_tready
   .s_axis_b_tdata(divisor),              // input wire [31 : 0] s_axis_b_tdata
   .m_axis_result_tvalid(result_ready),  // output wire m_axis_result_tvalid
-  .m_axis_result_tready(m_axis_result_tready),  // input wire m_axis_result_tready
   .m_axis_result_tdata(div_result)    // output wire [31 : 0] m_axis_result_tdata
 );
 

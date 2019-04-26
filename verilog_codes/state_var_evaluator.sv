@@ -368,6 +368,8 @@ always @(*) begin
 			exponent_operand_b <= 0;
 			exponent_start <= 0;
 
+			div_divisor <= 0;
+			div_dividend <= 0;
 			div_start <= 0;
 			
 			/////memory part//////
@@ -396,6 +398,8 @@ always @(*) begin
             exponent_operand_b <= 0;
             exponent_start <= 0;
 
+            div_divisor <= 0;
+			div_dividend <= 0;
 			div_start <= 0;
 			
 			/////memory part//////
@@ -424,6 +428,8 @@ always @(*) begin
 			exponent_operand_b <= term_accumulator_operand_b;
 			exponent_start <= term_accumulator_exponent_start;
 			
+			div_divisor <= term_accumulator_operand_b;
+			div_dividend <= term_accumulator_operand_a;
 			div_start <= term_accumulator_div_start;
 			
 			//mem_state_var_write_we <= 0;
@@ -450,6 +456,9 @@ always @(*) begin
 			exponent_operand_b <= 0;
 
 			exponent_start <= 0;
+			
+			div_divisor <= 0;
+			div_dividend <= 0;
 			div_start <= 0;
 			
 			//mem_state_var_write_we <= 0;
