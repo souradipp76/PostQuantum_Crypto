@@ -31,7 +31,7 @@ logic [DATA_WIDTH-1:0] mem_stack_data_out;
 //assign mem_stack_addr_write = stack_pointer + 1;
 
 
-assign stack_empty = ~|stack_pointer;
+assign stack_empty = ~|mem_stack_addr_write;
 assign stack_full = &stack_pointer;
 
 logic [POINTER_WIDTH-1:0] mem_stack_addr;
@@ -51,7 +51,7 @@ end
 always @(posedge clock) begin
 
 	if (reset) begin
-		stack_pointer <= 0;
+		//stack_pointer <= 0;
 		out_data <= 0;
 		mem_stack_data_in <= inp_data;
 		mem_stack_write_en <= 1'b0;

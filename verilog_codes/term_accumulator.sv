@@ -47,7 +47,7 @@ module term_accumulator #(
 
 ///////////////////////////////////////////////
 localparam POSTFIX_DATA_WIDTH = CODE_WIDTH;     //localparam POSTFIX_DATA_WIDTH = 9;
-localparam POSTFIX_DATA_DEPTH = 1403;
+localparam POSTFIX_DATA_DEPTH = 1425;
 localparam POSTFIX_DATA_END_CODE = {CODE_WIDTH{1'b1}};
 
 ///////////////////////////////////////////////
@@ -340,7 +340,7 @@ case (state_term_accumulator)
 		case (alu_data_ready)
 			1'b1 : begin
 				state_term_accumulator <= STATE_PUSH_DATA_ALU;
-				stack_pop <= 1'b1;
+				stack_pop <= (1'b1 & (~stack_empty));
 				end
 			default : begin
 				state_term_accumulator <= STATE_WAIT_OPN;
@@ -358,12 +358,25 @@ case (state_term_accumulator)
 		end
 
 	STATE_PUSH_DATA_ALU : begin
-		stack_extension[1] <= stack_push_value;
-		stack_extension[0] <= stack_output;
+		//stack_extension[1] <= stack_push_value;
+		//stack_extension[0] <= stack_output;
+
+		case (stack_empty)
+			1'b0 : begin
+				stack_extension[1] <= stack_push_value;
+				stack_extension[0] <= stack_output;
+				stack_extension_read_pointer <= 2'b11;
+				end
+			1'b1 : begin
+				stack_extension[1] <= 0;
+				stack_extension[0] <= stack_push_value;
+				stack_extension_read_pointer <= 2'b01;
+				end
+			endcase
 
 		stack_pop <= 1'b0;
 
-		case (term_detail_postfix)
+		case (term_detail_postfix_wire)
 			POSTFIX_DATA_END_CODE : state_term_accumulator <= STATE_DATA_OUT;
 			default : state_term_accumulator <= STATE_POSTFIX_TERM_READ;
 			endcase

@@ -190,7 +190,7 @@ exp_evaluator #(
 	.div_divisor                 (exp_evaluator_div_operand_b),
 	.div_dividend                (exp_evaluator_div_operand_a),
 	.div_start                   (exp_evaluator_div_start),
-    .exp_eval_data_ready         (data_ready)
+    .exp_eval_data_ready         (exp_evaluator_data_ready)
 );
 
 
@@ -347,7 +347,9 @@ always @(posedge clock) begin
 				1'b0 : state_top <= STATE_DEFAULT;
 				endcase
 			top_mem_state_var_read_addr <= 0;
-			
+			top_mem_state_var_write_we <= 0;
+			top_mem_state_var_write_addr <= 0;
+			top_mem_state_var_write_data_in <= 0;
 			end
 
 		STATE_KEY_RX : begin
@@ -397,7 +399,6 @@ always @(posedge clock) begin
 			top_mult_add_operand[0] <= DELTA_T;
 			top_mult_add_operand[2] <= mem_state_var_data_out;
 			top_mem_state_var_write_we <= 1'b0;
-			
 			end
 
 		STATE_POST_PROCESS_2 : begin
@@ -461,12 +462,17 @@ always @(posedge clock) begin
 					top_mem_state_var_write_we <= 1'b0;
 					end
 				endcase
+						start_mult_add <= 1'b0;
 			top_mem_state_var_write_data_in <= mult_add_result;
-			top_mem_state_var_write_addr = top_mem_state_var_read_addr - 1;
+			top_mem_state_var_write_addr <= top_mem_state_var_read_addr - 1;
 			end
 
 		default : begin 
 			state_top <= STATE_DEFAULT;
+			top_mem_state_var_write_we <= 0;
+			top_mem_state_var_write_addr <= 0;
+			top_mem_state_var_read_addr <= 0;
+			top_mem_state_var_write_data_in <= 0;
 			end
 		endcase // start_top
 	end
@@ -491,9 +497,16 @@ always @(*) begin
 
         STATE_MULT_ADD_WAIT : begin
 			mem_state_var_write_we = top_mem_state_var_write_we;
-			mem_state_var_write_addr = 0;
-			mem_state_var_read_addr = 0;
-			mem_state_var_data_in = 0;
+			mem_state_var_write_addr = top_mem_state_var_write_addr;
+			mem_state_var_read_addr = top_mem_state_var_read_addr;
+			mem_state_var_data_in = top_mem_state_var_write_data_in;
+			end
+
+		STATE_POST_PROCESS_1 : begin
+			mem_state_var_write_we = top_mem_state_var_write_we;
+			mem_state_var_write_addr = top_mem_state_var_write_addr;
+			mem_state_var_read_addr = top_mem_state_var_read_addr;
+			mem_state_var_data_in = top_mem_state_var_write_data_in;
 			end
 
         default: begin
