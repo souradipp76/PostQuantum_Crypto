@@ -166,12 +166,14 @@ sine_calculator #(
 	.MANTISSA_LEN(MANTISSA_LEN)
 ) inst_sine_calculator (
 	.clk             (clock),
-	.enable          (decoder_trigo_sine_calc_start),
+	.inp_data_ready  (decoder_trigo_sine_calc_start),
 	.inp_theta       (decoder_trigo_angle),
 	.inp_sine_cosine (decoder_trigo_sine_cosine),
 	.out_value       (sine_calc_sin_value),
 	.out_data_ready  (sine_calc_done)
 );
+
+
 logic stack_reset;
 stack #(
 	.DATA_WIDTH(DATA_WIDTH),
