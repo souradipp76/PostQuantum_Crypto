@@ -25,9 +25,9 @@
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Simplified form of Top-Level FSM\relax }}{22}
 \contentsline {figure}{\numberline {5.16}{\ignorespaces Simplified FSM of State-Space solver\relax }}{23}
 \contentsline {figure}{\numberline {5.17}{\ignorespaces Simplified FSM for Postfix Evaluator\relax }}{24}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Plot showing Sensitivity to Parameter value ${m}$ with ${\Delta m = 10^{-6}}$\relax }}{25}
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Plot showing Sensitivity to Intital condition of ${\theta _{1}}$with ${\Delta \theta _{1} = 10^{-6}}$\relax }}{25}
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Table showing Resource Utilization\relax }}{28}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Plot showing Sensitivity to Parameter value ${m}$ with ${\Delta m = 10^{-6}}$\relax }}{26}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Plot showing Sensitivity to Intital condition of ${\theta _{1}}$with ${\Delta \theta _{1} = 10^{-6}}$\relax }}{26}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Table showing Resource Utilization\relax }}{29}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Simulation of hardware implementation in Xilinx Vivado\relax }}{30}
 \addvspace {10\p@ }

@@ -1,6 +1,6 @@
-\contentsline {chapter}{Abstract}{iii}
-\contentsline {chapter}{List of Figures}{vi}
-\contentsline {chapter}{Nomenclature}{vii}
+\contentsline {chapter}{Abstract}{i}
+\contentsline {chapter}{List of Figures}{iv}
+\contentsline {chapter}{Nomenclature}{v}
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Motivation}{1}
@@ -32,15 +32,15 @@
 \contentsline {subsubsection}{Top-Level State Machine}{22}
 \contentsline {subsubsection}{Evaluate State-Space Expression}{23}
 \contentsline {subsubsection}{Postfix Expression Evaluation}{24}
-\contentsline {section}{\numberline {5.4}Analysis}{24}
-\contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{24}
-\contentsline {subsubsection}{Test for Chaos}{24}
+\contentsline {section}{\numberline {5.4}Analysis}{25}
+\contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{25}
+\contentsline {subsubsection}{Test for Chaos}{25}
 \contentsline {subsubsection}{Collision Test}{26}
-\contentsline {subsubsection}{Test for Randomness}{26}
-\contentsline {subsection}{\numberline {5.4.2}Complexity Analysis}{26}
-\contentsline {subsubsection}{Setup Complexity}{26}
-\contentsline {subsubsection}{Hardware Resource Utilization}{28}
-\contentsline {subsection}{\numberline {5.4.3}Reason for being Quantum-Safe}{28}
+\contentsline {subsubsection}{Test for Randomness}{27}
+\contentsline {subsection}{\numberline {5.4.2}Complexity Analysis}{27}
+\contentsline {subsubsection}{Setup Complexity}{27}
+\contentsline {subsubsection}{Hardware Resource Utilization}{29}
+\contentsline {subsection}{\numberline {5.4.3}Reason for being Quantum-Safe}{29}
 \contentsline {chapter}{\numberline {6}Results \& Conclusion}{30}
 \contentsline {chapter}{\numberline {7}Future Work}{31}
 \contentsline {subsubsection}{Algorithmic Aspect}{31}

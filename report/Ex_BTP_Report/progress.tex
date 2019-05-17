@@ -75,7 +75,7 @@ The above equations can be simlified as follows:
 \end{split}
 \end{align}
 The three values $\ddot{\theta_{1}},\ddot{\theta_{2}},\ddot{\theta_{3}}$ are calulated using the above equations.
-The differential equations are solved numerically using the following equations by iterating for t = 0 to T:
+The differential equations are solved numerically using the following equations by iterating for t = 0 to N where $N=\frac{T}{\Delta t}$:
 \begin{align}
 \begin{split}
 \theta^{(t+1)}_{1} \leftarrow \theta^{(t)}_{1} + \dot{\theta_{1}}^{(t+1)}\Delta t \\
@@ -86,9 +86,9 @@ The differential equations are solved numerically using the following equations 
 
 \begin{align}
 \begin{split}
-\dot{\theta_{1}} \leftarrow \dot{\theta_{1}} + \ddot{\theta_{1}}^{(t+1)}\Delta t \\
-\dot{\theta_{2}} \leftarrow \dot{\theta_{2}} + \ddot{\theta_{2}}^{(t+1)}\Delta t \\
-\dot{\theta_{3}} \leftarrow \dot{\theta_{3}} + \ddot{\theta_{3}}^{(t+1)}\Delta t \\  
+\dot{\theta_{1}}^{(t+1)} \leftarrow \dot{\theta_{1}}^{(t)} + \ddot{\theta_{1}}^{(t+1)}\Delta t \\
+\dot{\theta_{2}}^{(t+1)} \leftarrow \dot{\theta_{2}}^{(t)} + \ddot{\theta_{2}}^{(t+1)}\Delta t \\
+\dot{\theta_{3}}^{(t+1)} \leftarrow \dot{\theta_{3}}^{(t)} + \ddot{\theta_{3}}^{(t+1)}\Delta t \\  
 \end{split}
 \end{align}
 Store the values of $\theta$ in a vector $y$ such that\\
@@ -195,11 +195,10 @@ Fisher's g-statistic is defined as the ratio of the maximum periodogram value($P
 \begin{equation}
     g = \frac{\max_{k} I(\omega_{k})}{\sum_{k=1}^{[N/2]}I(\omega_{k})}  
 \end{equation}
-where $I(\omega_{k})$ are the periodogram values.Using the value of g we are able to calculate the dominant periods of the signal as shown in [11].
+where $I(\omega_{k})$ are the periodogram values. Using the value of g, we are able to calculate the dominant periods of the signal as shown in [11].
 
 The key of this symmetric cryptosystem includes the parameters, initial conditions, time duration, time step, minimum value of $\hat{\textbf{y}}$ and $\epsilon$.\\
-
-$K=\{\theta^{(0)}_{1},\theta^{(0)}_{2},\theta^{(0)}_{3},\dot{\theta}^{(0)}_{1},\dot{\theta}^{(0)}_{2},\dot{\theta}^{(0)}_{3}, m_{1},m_{2},m_{3}, l_{1},l_{2},l_{3}, I_{1},I_{2},I_{3}, k_{1},k_{2},k_{3}, g, \hat{y}_{min}, \epsilon \}$
+$K=\{\theta^{(0)}_{1},\theta^{(0)}_{2},\theta^{(0)}_{3},\dot{\theta}^{(0)}_{1},\dot{\theta}^{(0)}_{2},\dot{\theta}^{(0)}_{3}, m_{1},m_{2},m_{3}, l_{1},l_{2},l_{3}, I_{1},I_{2},I_{3}, k_{1},k_{2},k_{3}, g, \hat{y}_{min}, \hat{y}_{min}/\epsilon \}$
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\linewidth]{periodogram.jpg}
@@ -355,9 +354,9 @@ If first 2 bits are 11, check the last 3 bits. They denote the following:
 
 011 $\leftarrow$ Addition \& 100 $\leftarrow$ Subtraction\\
 Here addition and subtraction are handled similarly, only the sign bit is flipped for subtraction.\\
-If the code is 0xff then it denotes the end of expression. For other cases, the last 6 bits denote address in LUT in order.All these decodings are done using the decoder modules or during term accumulation. 
+If the code is 0xff then it denotes the end of expression. For other cases, the last 6 bits denote address in LUT in order. All these decodings are done using the decoder modules or during term accumulation. 
 
-\textbf{Stack:} A stack has been implemented using memory for evaluation of the poxtfix expressions. It consists of 2 immediate registers and stack memory. The immediate registers stores the top 2 values of the stack. Whenever an operation is detected in the expression, the operation is done on the 2 immediate registers and the result is stored in the 1st register. The other register is filled with the value popped from the top of the stack memory. Whenever a value is to be pushed into the stack, the value from the 2nd register is pushed to the memory,the value of 1st register to the 2nd register and the new value to the 1st register.And vice-versa for pop. 
+\textbf{Stack:} A stack has been implemented using memory for evaluation of the poxtfix expressions. It consists of 2 immediate registers and stack memory. The immediate registers stores the top 2 values of the stack. Whenever an operation is detected in the expression, the operation is done on the 2 immediate registers and the result is stored in the 1st register. The other register is filled with the value popped from the top of the stack memory. Whenever a value is to be pushed into the stack, the value from the 2nd register is pushed to the memory, the value of 1st register to the 2nd register and the new value to the 1st register. And vice-versa for pop. 
 
 \subsection{Arithmetic and Logic Unit (ALU)}
 The Arithmetic and Logical Unit (ALU) has been appropriately parametrised to enable it to function at any given level of floating point precision (default format is IEEE-754). It consists of the following datapath units -
@@ -411,13 +410,22 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 \end{figure}
 % \end{center}
 
+% \begin{itemize}
+% \item DEFAULT : Initial state of FSM after reset. Involves no processing.
+% \item RECEIVE\_KEY : Involves receiving the encryption/decryption key values through USB or Ethernet interface.
+% \item EVALUATE\_EXPRESSION : Evaluates the state-space expression using the given initial conditions for the chaotic dynamic system.
+% \item MODIFY\_STATE\_VARIABLES : Updates the state variables based on the values obtained in previous state.
+% \item OBTAIN\_CHAOTIC\_MAP : Evaluates a chaotic map through a linear combination of values of all state variable.
+% \item GENERATE\_CIPHERTEXT : Generates the ciphertext for a particular plaintext string using the generated chaotic map.
+% \end{itemize}
+
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
-\item RECEIVE\_KEY : Involves receiving the encryption/decryption key values through USB or Ethernet interface.
-\item EVALUATE\_EXPRESSION : Evaluates the state-space expression using the given initial conditions for the chaotic dynamic system.
-\item MODIFY\_STATE\_VARIABLES : Updates the state variables based on the values obtained in previous state.
-\item OBTAIN\_CHAOTIC\_MAP : Evaluates a chaotic map through a linear combination of values of all state variable.
-\item GENERATE\_CIPHERTEXT : Generates the ciphertext for a particular plaintext string using the generated chaotic map.
+\item RECEIVE\_KEY : Involves receiving the encryption or decryption key values through USB or Ethernet interface.
+\item EVALUATE\_EXPRESSION : Evaluates the state-space expression using the given initial conditions for the chaotic dynamic system. The processing begins in state STATE\_EXP\_EVAL\_BEGIN and the FSM waits for the complete signal \\(exp\_evaluator\_data\_ready) in state STATE\_EXP\_EVAL\_WAIT.
+\item MODIFY\_STATE\_VARIABLES : Updates the state variables based on the values obtained in previous state. Involves updating the state variables using the values calculated in previous states.(theta\_dot(t+1) = theta\_dot(t) + theta\_dot\_dot(t)*deltaT, theta(t+1) = theta(t) + theta\_dot(t)*deltaT). Involves using the mult\_add module to perform these operations. This operation takes place across states \\ STATE\_POST\_PROCESS\_1, STATE\_POST\_PROCESS\_2, STATE\_MULT\_ADD\_WAIT.
+\item OBTAIN\_CHAOTIC\_MAP : Evaluates a chaotic map through a linear combination of values of all state variable. Calculates the linear combination of theta, theta\_dot and theta\_dot\_dot. Currently, the value of theta itself corresponds to the chaotic map. Further, it calculates the intervals in which the value lies and adds it to corresponding addrss in LUT. This is done in state STATE\_POST\_PROCESS\_3, STATE\_POST\_PROCESS\_3\_WAIT, STATE\_ENCRYPT, STATE\_ENCRYPT\_STORE.
+\item GENERATE\_CIPHERTEXT : Generates the ciphertext for a particular plaintext string using the generated chaotic map. Uses LUT to convert plaintext to ciphertext.
 \end{itemize}
 
 \subsubsection{Evaluate State-Space Expression}
@@ -452,12 +460,21 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 % \end{center}
 
 
+% \begin{itemize}
+% \item DEFAULT : Initial state of FSM after reset. Involves no processing.
+% \item FETCH\_INITIAL\_CONDITIONS : Involves fetching the required initial conditions from Block-RAM.
+% \item ANGLE\_COMBINATION\_CALC : Create a cache containing frequently used linear combinations of state variables.
+% \item ANGLE\_NORMALIZATION : Normalize the trigonometric inputs to the range $[-\pi, \pi]$.
+% \item POSTFIX\_TERM\_ACCUMULATE : Evaluates the state-space expression stored in postfix form.
+% \item STORE\_OUTPUT\_DATA : Store the values of state-space expression obtained in previous state to a Block-RAM .
+% \end{itemize}
+
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
-\item FETCH\_INITIAL\_CONDITIONS : Involves fetching the required initial conditions from Block-RAM.
-\item ANGLE\_COMBINATION\_CALC : Create a cache containing frequently used linear combinations of state variables.
-\item ANGLE\_NORMALIZATION : Normalize the trigonometric inputs to the range $[-\pi, \pi]$.
-\item POSTFIX\_TERM\_ACCUMULATE : Evaluates the state-space expression stored in postfix form.
+\item FETCH\_INITIAL\_CONDITIONS : Involves fetching the required initial conditions from Block-RAM. This includes STATE\_FETCH\_INIT\_VAL. Reads the theta and theta\_dot values from the BRAM mem\_state\_var in the top module.
+\item ANGLE\_COMBINATION\_CALC : Create a cache containing frequently used linear combinations of state variables. Spans across STATE\_ANGLE\_COMB\_START (trigger the module) and STATE\_ANGLE\_COMB\_WAIT (wait for module to complete execution).
+\item ANGLE\_NORMALIZATION : Normalize the trigonometric inputs to the range $[-\pi, \pi]$. Spans across STATE\_NORM\_ANGLE\_START (trigger the module) and STATE\_NORM\_ANGLE\_WAIT (wait for module to complete execution).
+\item POSTFIX\_TERM\_ACCUMULATE : Evaluates the state-space expression stored in postfix form. Spans across STATE\_TERM\_ACC\_START (trigger the module) and STATE\_TERM\_ACC\_WAIT (wait for module to complete execution).
 \item STORE\_OUTPUT\_DATA : Store the values of state-space expression obtained in previous state to a Block-RAM .
 \end{itemize}
 
@@ -466,7 +483,7 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 % \begin{center}
 \begin{figure}[H]
 \centering
-\resizebox{7cm}{7cm}{
+\resizebox{8cm}{8cm}{
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=6cm, semithick]
   %\tikyle{every state}=[draw=none,text=black]
 
@@ -492,13 +509,22 @@ The control unit of the implementation is essentially a Finite State Machine (FS
 \end{figure}
 % \end{center}
 
+% \begin{itemize}
+% \item DEFAULT : Initial state of FSM after reset. Involves no processing.
+% \item READ\_POSTFIX\_CODE : Fetch the code for the next term of postfix expression.
+% \item DATA OR OPERATOR : Check if the code fetched corresponds to a data value or an operator.
+% \item OPERATE\_ON\_TOP\_TWO\_STACK\_VALUES : Perform the corresponding operation of the two data values at stored at top of the stack.
+% \item PUSH\_DATA\_TO\_STACK : Push the data value in postfix expression or the result of ALU operation onto the stack.
+% \end{itemize}
+
 \begin{itemize}
 \item DEFAULT : Initial state of FSM after reset. Involves no processing.
-\item READ\_POSTFIX\_CODE : Fetch the code for the next term of postfix expression.
-\item DATA OR OPERATOR : Check if the code fetched corresponds to a data value or an operator.
-\item OPERATE\_ON\_TOP\_TWO\_STACK\_VALUES : Perform the corresponding operation of the two data values at stored at top of the stack.
-\item PUSH\_DATA\_TO\_STACK : Push the data value in postfix expression or the result of ALU operation onto the stack.
+\item READ\_POSTFIX\_CODE : Fetch the code for the next term of postfix expression from rams\_sp\_rom\_pfX(where X is 1/2/3).
+\item DATA OR OPERATOR : Check if the code fetched corresponds to a data value or an operator. Takes place in STATE\_POSTFIX\_TERM\_READ.
+\item OPERATE\_ON\_TOP\_TWO\_STACK\_VALUES : Perform the corresponding operation of the two data values at stored at top of the stack. Spans across STATE\_OPN\_START (trigger the module) and STATE\_OPN\_WAIT (wait for module to complete execution).
+\item PUSH\_DATA\_TO\_STACK : Push the data value in postfix expression or the result of ALU operation onto the stack. STATE\_PUSH\_DATA\_DECODED pushes a data value from memory to stack. STATE\_PUSH\_DATA\_ALU pushes the result of operation to stack.
 \end{itemize}
+
 
 \section{Analysis}
 \subsection{General Properties of the Cryptosystem}
@@ -539,10 +565,10 @@ The proposed cryptosystem also holds such properties. The three qualities mentio
 \subsubsection{Collision Test}
 Collision resistance is a property of cryptographic algorithms which makes it difficult to find two inputs which are encrypted to the same output. It must be ensured that finding collisions must be kept as hard as some of the hard mathematical problems like integer factorization  or discrete logarithm. Collision resistance does not mean that no collisions exist, it simply means that they are very hard to find. Here, we show that the proposed algorithm is fully collision resistant i.e. no collisions exist.
 
-Since the entire range of $\theta$'s are partitioned according to the number of characters(say 256), different characters are mappped to points in different intervals. Hence two different inputs having different characters are completely mapped to different intervals. So the encryption scheme is completely free of collisions. 
+Since the entire range of $\hat{\textbf{y}}$ are partitioned according to the number of characters(say 256 i.e. $[\hat{y}_{min}+k\epsilon,\hat{y}_{min}+(k+1)\epsilon )$ for $k=0,1, ... , 255$), different characters are mappped to points in different intervals. Hence two different inputs having different characters are completely mapped to different intervals. So the encryption scheme is completely free of collisions. 
 
 \subsubsection{Test for Randomness}
-For testing randomness of the chaotic map, necessary statistical tests were applied. These statistical tests are generally employed for testing randomness in pseudo random number generators. Here, Diehard random number generator test suite has been used to do such tests. Developed by George Marsaglia, Diehard is a battery of tests which are used to determine the quality of PRNGs. The list of tests performed on the generated chaotic map data and the corresponding results obtained are shown in Table 5.1.
+For testing randomness of the chaotic map, necessary statistical tests were applied. These statistical tests are generally employed for testing randomness in pseudo random number generators. Here, Diehard random number generator test suite has been used to do such tests. Developed by George Marsaglia, Diehard is a battery of tests which are used to determine the quality of PRNGs. The list of tests performed on the generated chaotic map data and the corresponding results obtained are shown in Table 5.2.
 
 \begin{table}[h!]
 \begin{center}
@@ -605,10 +631,10 @@ It is observed that in most of the tests, the chaotic map generator performs wel
 In this report, we give an overview of the computational complexity of the algorithm both on software as well as hardware level.
 
 \subsubsection{Setup Complexity}
-Firstly, the computation of the state variable (${\theta}$) values for a time duration $t$ and time step $\Delta t$ requires $N$ iterations where $N= \frac{t}{\Delta t}$. In each iteration only 6 equations are solved for the 6 state variables ($\theta_{1}, \theta_{2}, \theta_{3}, \dot{\theta_{1}}, \dot{\theta_{2}}, \dot{\theta_{3}}$) each in $O(1)$ time. Thus the time required for generating the map is asymptotically $O(N)$. Here space complexity is also $O(N)$ for storing the state variable values. Secondly, Baptista type patitioning takes constant time if the range of the variables are already computed in the previous step. For assigning the variable values to the corresponding intervals, $O(N)$ time is required for each value. Thirdly, for encryption of a plaintext having $M$ characters, there would be $M$ iterations and in each iteration the encrypted value is randomly selected from the computed interval which takes constant time. So the time complexity for setup of the encryption module is $O(N)$ and $O(M)$ is the time complexity of processing each plaintext. Space complexity is still $O(N)$. Similarly, for decryption time complexity is also $O(N)$ and $O(M)$ for setup and processing respectively.\\
-\textbf{Information Rate:} The information rate of any cryptosysytem is define d as the ratio of the size of plaintext to that of the cipher text. In our cryptosystem, we have
+Firstly, the computation of the state variable (${\theta}$) values for a time duration $t$ and time step $\Delta T$ requires $N$ iterations where $N= \frac{T}{\Delta t}$. In each iteration only 6 equations are solved for the 6 state variables ($\theta_{1}, \theta_{2}, \theta_{3}, \dot{\theta_{1}}, \dot{\theta_{2}}, \dot{\theta_{3}}$) each in $O(1)$ time. Thus the time required for generating the map is asymptotically $O(N)$. Here space complexity is also $O(N)$ for storing the state variable values. Secondly, Baptista type patitioning takes constant time if the range of the variables are already computed in the previous step. For assigning the variable values to the corresponding intervals, $O(N)$ time is required for each value. Thirdly, for encryption of a plaintext having $M$ characters, there would be $M$ iterations and in each iteration the encrypted value is randomly selected from the computed interval which takes constant time. So the time complexity for setup of the encryption module is $O(N)$ and $O(M)$ is the time complexity of processing each plaintext. Space complexity is still $O(N)$. Similarly, for decryption time complexity is also $O(N)$ and $O(M)$ for setup and processing respectively.\\
+\textbf{Information Rate:} The information rate of any cryptosysytem is defined as the ratio of the size of plaintext to that of the cipher text. In our cryptosystem, we have
 \begin{equation}
-R = \frac{plaintext\ size}{ciphertext\ size} = \frac{8*M}{\log_2N*M} = \frac{8}{\log_2N}
+R = \frac{plaintext\ size}{ciphertext\ size} = \frac{8*M}{\ceil{\log_2N}*M} = \frac{8}{\ceil{\log_2N}}
 \end{equation}
 \subsubsection{Hardware Resource Utilization}
 The following (Fig. 5.17) shows the resource utilization of the complete RTL implementation after synthesis using XST tool. The maximum resources used is in the storage of state variable values in the LUT. It is only about 1.3\% of the total fgpa memory and hence the memory usage is quite low. It can be seen that 1726 LUTs and 1883 Flip-Flops are required. Also, due to target device being FPGA, instances of DSP48 have been used.
