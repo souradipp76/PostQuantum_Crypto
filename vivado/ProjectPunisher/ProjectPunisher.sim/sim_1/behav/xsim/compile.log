@@ -1,0 +1,53 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module angle_combination
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module angle_normalization
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module angle_normalization_wrapper
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decoder_type_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decoder_type_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decoder_type_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module exponent_operation
+INFO: [VRFC 10-2458] undeclared symbol out_product_ready, assumed default net type wire [/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv:40]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module float_point_adder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module float_point_multiplier
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module float_point_multiplier_wrapper
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/mult_add.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mult_add
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rf_rst.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rams_sp_rf_rst
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rams_sp_rom_angle_comb_detail
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rams_sp_rom_pf1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf2.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rams_sp_rom_pf2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf3.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rams_sp_rom_pf3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rams_sp_rom_sine_val_exp0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rams_sp_rom_sine_val_exp1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simple_dual_one_clock
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_calculator
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/stack.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module stack
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module exp_evaluator
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module term_accumulator
+INFO: [VRFC 10-2458] undeclared symbol stack_empty, assumed default net type wire [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:188]
+INFO: [VRFC 10-2458] undeclared symbol stack_full, assumed default net type wire [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:189]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_module
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/exbiks/ProjectPunisher/ProjectPunisher.srcs/sim_1/new/top_sim.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_sim

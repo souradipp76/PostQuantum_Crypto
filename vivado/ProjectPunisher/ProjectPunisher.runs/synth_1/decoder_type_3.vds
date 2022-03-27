@@ -1,0 +1,414 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Wed Mar 20 00:00:29 2019
+# Process ID: 28776
+# Current directory: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1
+# Command line: vivado -log decoder_type_3.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source decoder_type_3.tcl
+# Log file: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/decoder_type_3.vds
+# Journal file: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source decoder_type_3.tcl -notrace
+Command: synth_design -top decoder_type_3 -part xc7a200tsbg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 28781 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1260.168 ; gain = 73.996 ; free physical = 382 ; free virtual = 4764
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'decoder_type_3' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter CODE_WIDTH bound to: 8 - type: integer 
+	Parameter ANGLE_ADDER_WIDTH bound to: 5 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_MEM_WAIT bound to: 4'b0001 
+	Parameter STATE_DATA_OUT bound to: 4'b0010 
+	Parameter STATE_SIN_VALUE_FETCH bound to: 4'b0011 
+	Parameter STATE_SIN_CALC_WAIT bound to: 4'b0100 
+	Parameter MEM_DELAY bound to: 2 - type: integer 
+	Parameter SIN_CALC_DELAY bound to: 3 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element data_ready_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv:47]
+INFO: [Synth 8-256] done synthesizing module 'decoder_type_3' (1#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv:2]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[31]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[30]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[29]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[28]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[27]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[26]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[25]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[24]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[23]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[22]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[21]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[20]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[19]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[18]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[17]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[16]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[15]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[14]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[13]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[12]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[11]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[10]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[9]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[8]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[7]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[6]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[5]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[4]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[3]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[2]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[1]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[0]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1301.699 ; gain = 115.527 ; free physical = 393 ; free virtual = 4777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1301.699 ; gain = 115.527 ; free physical = 392 ; free virtual = 4776
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tsbg484-1
+INFO: [Device 21-403] Loading part xc7a200tsbg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1309.703 ; gain = 123.531 ; free physical = 393 ; free virtual = 4777
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 'code_reg' and it is trimmed from '8' to '6' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv:46]
+INFO: [Synth 8-802] inferred FSM for state register 'state_decoder_reg' in module 'decoder_type_3'
+INFO: [Synth 8-5544] ROM "mem_angle_normalized_addr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "counter_memory" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "out_angle" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sin_calc_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "counter_sin_calc" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "out_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_decoder" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_decoder" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+           STATE_DEFAULT |                              001 |                             0000
+          STATE_MEM_WAIT |                              010 |                             0001
+          STATE_DATA_OUT |                              100 |                             0010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_decoder_reg' using encoding 'one-hot' in module 'decoder_type_3'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1317.711 ; gain = 131.539 ; free physical = 385 ; free virtual = 4769
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      1 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module decoder_type_3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      1 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_code[7]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_code[6]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[31]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[30]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[29]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[28]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[27]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[26]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[25]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[24]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[23]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[22]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[21]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[20]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[19]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[18]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[17]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[16]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[15]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[14]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[13]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[12]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[11]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[10]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[9]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[8]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[7]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[6]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[5]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[4]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[3]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[2]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[1]
+WARNING: [Synth 8-3331] design decoder_type_3 has unconnected port inp_normalized_angle[0]
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (out_sine_cosine_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\out_angle_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (sin_calc_start_reg)
+INFO: [Synth 8-3886] merging instance 'code_reg[0]' (FDE) to 'mem_angle_normalized_addr_reg[0]'
+INFO: [Synth 8-3886] merging instance 'code_reg[1]' (FDE) to 'mem_angle_normalized_addr_reg[1]'
+INFO: [Synth 8-3886] merging instance 'code_reg[2]' (FDE) to 'mem_angle_normalized_addr_reg[2]'
+INFO: [Synth 8-3886] merging instance 'code_reg[3]' (FDE) to 'mem_angle_normalized_addr_reg[3]'
+INFO: [Synth 8-3886] merging instance 'code_reg[4]' (FDE) to 'mem_angle_normalized_addr_reg[4]'
+WARNING: [Synth 8-3332] Sequential element (counter_sin_calc_reg) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (sin_calc_start_reg) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[31]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[30]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[29]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[28]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[27]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[26]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[25]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[24]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[23]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[22]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[21]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[20]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[19]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[18]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[17]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[16]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[15]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[14]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[13]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[12]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[11]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[10]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[9]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[8]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[7]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[6]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[5]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[4]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[3]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[2]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[1]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_angle_reg[0]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (code_reg[5]) is unused and will be removed from module decoder_type_3.
+WARNING: [Synth 8-3332] Sequential element (out_sine_cosine_reg) is unused and will be removed from module decoder_type_3.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:27 . Memory (MB): peak = 1476.109 ; gain = 289.938 ; free physical = 201 ; free virtual = 4576
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:27 . Memory (MB): peak = 1476.109 ; gain = 289.938 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:27 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |BUFG |     1|
+|2     |LUT2 |     1|
+|3     |LUT3 |     2|
+|4     |LUT4 |     1|
+|5     |FDRE |    41|
+|6     |IBUF |    39|
+|7     |OBUF |    71|
++------+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |   156|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4574
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 104 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.125 ; gain = 298.953 ; free physical = 200 ; free virtual = 4575
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 1485.133 ; gain = 298.953 ; free physical = 200 ; free virtual = 4575
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+60 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:30 . Memory (MB): peak = 1561.125 ; gain = 388.328 ; free physical = 187 ; free virtual = 4543
+INFO: [Common 17-1381] The checkpoint '/home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/decoder_type_3.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file decoder_type_3_utilization_synth.rpt -pb decoder_type_3_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.17 . Memory (MB): peak = 1585.137 ; gain = 0.000 ; free physical = 188 ; free virtual = 4544
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 20 00:01:08 2019...

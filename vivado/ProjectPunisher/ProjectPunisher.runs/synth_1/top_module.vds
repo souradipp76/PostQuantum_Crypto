@@ -1,0 +1,1616 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Thu Apr 18 17:42:49 2019
+# Process ID: 9242
+# Current directory: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1
+# Command line: vivado -log top_module.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl
+# Log file: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/top_module.vds
+# Journal file: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source top_module.tcl -notrace
+Command: synth_design -top top_module -part xc7a200tsbg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 9295 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1262.172 ; gain = 75.984 ; free physical = 2550 ; free virtual = 7128
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top_module' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:2]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter NUM_INIT_VAL bound to: 6 - type: integer 
+	Parameter NUM_EVAL_VAL bound to: 3 - type: integer 
+	Parameter NUM_STATE_VAR bound to: 9 - type: integer 
+	Parameter NUM_KEY_VAL bound to: 12 - type: integer 
+	Parameter DELTA_T bound to: 981668463 - type: integer 
+	Parameter EXP_BIAS bound to: 127 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_KEY_RX bound to: 4'b0001 
+	Parameter STATE_EXP_EVAL_BEGIN bound to: 4'b0010 
+	Parameter STATE_EXP_EVAL_WAIT bound to: 4'b0011 
+	Parameter STATE_POST_PROCESS_1 bound to: 4'b0100 
+	Parameter STATE_POST_PROCESS_2 bound to: 4'b0101 
+	Parameter STATE_POST_PROCESS_3 bound to: 4'b0110 
+	Parameter STATE_POST_PROCESS_3_WAIT bound to: 4'b0111 
+	Parameter STATE_ENCRYPT bound to: 4'b1000 
+	Parameter STATE_ENCRYPT_STORE bound to: 4'b1001 
+	Parameter STATE_MULT_ADD_WAIT bound to: 4'b1010 
+INFO: [Synth 8-638] synthesizing module 'exp_evaluator' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:11]
+	Parameter NUM_INIT_VAL bound to: 6 - type: integer 
+	Parameter NUM_EVAL_VAL bound to: 3 - type: integer 
+	Parameter NUM_KEY_VAL bound to: 12 - type: integer 
+	Parameter NUM_ANGLE_COMB bound to: 21 - type: integer 
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter CODE_WIDTH bound to: 8 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_ANGLE_COMB_START bound to: 4'b0001 
+	Parameter STATE_ANGLE_COMB_WAIT bound to: 4'b0010 
+	Parameter STATE_NORM_ANGLE_START bound to: 4'b0011 
+	Parameter STATE_NORM_ANGLE_WAIT bound to: 4'b0100 
+	Parameter STATE_TERM_ACC_START bound to: 4'b0101 
+	Parameter STATE_TERM_ACC_WAIT bound to: 4'b0110 
+	Parameter STATE_FETCH_INIT_VAL bound to: 4'b0111 
+	Parameter STATE_DATA_OUT bound to: 4'b1000 
+INFO: [Synth 8-638] synthesizing module 'angle_combination' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv:7]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter NUM_ANGLE_COMB bound to: 21 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'angle_combination' (1#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_combination.sv:7]
+INFO: [Synth 8-638] synthesizing module 'angle_normalization_wrapper' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv:1]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter NUM_ANGLE bound to: 21 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_NORMALIZATION_WAIT bound to: 4'b0001 
+	Parameter STATE_END_SEQUENCE bound to: 4'b0010 
+INFO: [Synth 8-638] synthesizing module 'angle_normalization' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv:13]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter PI_MANTISSA bound to: 23'b10010010000111111011011 
+	Parameter EXP_BIAS bound to: 127 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'angle_normalization' (2#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization.sv:13]
+INFO: [Synth 8-256] done synthesizing module 'angle_normalization_wrapper' (3#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv:1]
+INFO: [Synth 8-638] synthesizing module 'term_accumulator' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:3]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter CODE_WIDTH bound to: 8 - type: integer 
+	Parameter NUM_KEY_VAL bound to: 12 - type: integer 
+	Parameter NUM_STATE_VAR bound to: 9 - type: integer 
+	Parameter ANGLE_ADDR_WIDTH bound to: 5 - type: integer 
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter POSTFIX_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter POSTFIX_DATA_DEPTH bound to: 1024 - type: integer 
+	Parameter POSTFIX_DATA_END_CODE bound to: 8'b11111111 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_POSTFIX_TERM_READ bound to: 4'b0001 
+	Parameter STATE_OPN bound to: 4'b0010 
+	Parameter STATE_WAIT_OPN bound to: 4'b0011 
+	Parameter STATE_WAIT_DATA_DECODE bound to: 4'b0100 
+	Parameter STATE_PUSH_DATA_ALU bound to: 4'b0101 
+	Parameter STATE_PUSH_DATA_DECODED bound to: 4'b0110 
+	Parameter STATE_DATA_OUT bound to: 4'b0111 
+INFO: [Synth 8-638] synthesizing module 'decoder_type_1' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter CODE_WIDTH bound to: 8 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_DECODE bound to: 4'b0001 
+INFO: [Synth 8-256] done synthesizing module 'decoder_type_1' (4#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv:2]
+INFO: [Synth 8-638] synthesizing module 'decoder_type_2' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter CODE_WIDTH bound to: 8 - type: integer 
+	Parameter MEM_ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_MEM_WAIT bound to: 4'b0001 
+	Parameter STATE_DATA_OUT bound to: 4'b0010 
+	Parameter MEM_DELAY bound to: 2 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'decoder_type_2' (5#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv:2]
+INFO: [Synth 8-638] synthesizing module 'decoder_type_3' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter CODE_WIDTH bound to: 8 - type: integer 
+	Parameter ANGLE_ADDR_WIDTH bound to: 5 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_MEM_WAIT bound to: 4'b0001 
+	Parameter STATE_DATA_OUT bound to: 4'b0010 
+	Parameter STATE_SIN_VALUE_FETCH bound to: 4'b0011 
+	Parameter STATE_SIN_CALC_WAIT bound to: 4'b0100 
+	Parameter MEM_DELAY bound to: 2 - type: integer 
+	Parameter SIN_CALC_DELAY bound to: 3 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'decoder_type_3' (6#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv:2]
+INFO: [Synth 8-638] synthesizing module 'sine_calculator' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv:3]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter SIG_MANTISSA_BITS bound to: 6 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'rams_sp_rom_sine_val_exp0' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv:1]
+	Parameter MEM_WIDTH bound to: 32 - type: integer 
+	Parameter MEM_DEPTH bound to: 64 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* rom_style = "block" *) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv:11]
+INFO: [Synth 8-256] done synthesizing module 'rams_sp_rom_sine_val_exp0' (7#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv:1]
+INFO: [Synth 8-638] synthesizing module 'rams_sp_rom_sine_val_exp1' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv:1]
+	Parameter MEM_WIDTH bound to: 32 - type: integer 
+	Parameter MEM_DEPTH bound to: 64 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* rom_style = "block" *) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv:11]
+INFO: [Synth 8-256] done synthesizing module 'rams_sp_rom_sine_val_exp1' (8#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv:1]
+WARNING: [Synth 8-3848] Net out_data_ready in module/entity sine_calculator does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv:14]
+INFO: [Synth 8-256] done synthesizing module 'sine_calculator' (9#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv:3]
+INFO: [Synth 8-638] synthesizing module 'stack' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/stack.sv:3]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter DEPTH bound to: 64 - type: integer 
+	Parameter POINTER_WIDTH bound to: 6 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'rams_sp_rf_rst' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rf_rst.sv:17]
+	Parameter MEM_WIDTH bound to: 32 - type: integer 
+	Parameter MEM_DEPTH bound to: 64 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'rams_sp_rf_rst' (10#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rf_rst.sv:17]
+INFO: [Synth 8-256] done synthesizing module 'stack' (11#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/stack.sv:3]
+INFO: [Synth 8-638] synthesizing module 'rams_sp_rom_pf1' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf1.sv:2]
+	Parameter MEM_WIDTH bound to: 8 - type: integer 
+	Parameter MEM_DEPTH bound to: 968 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* rom_style = "block" *) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf1.sv:12]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf1.sv:18]
+INFO: [Synth 8-256] done synthesizing module 'rams_sp_rom_pf1' (12#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf1.sv:2]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:303]
+INFO: [Synth 8-256] done synthesizing module 'term_accumulator' (13#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:3]
+INFO: [Synth 8-638] synthesizing module 'simple_dual_one_clock' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:17]
+	Parameter MEM_WIDTH bound to: 32 - type: integer 
+	Parameter MEM_DEPTH bound to: 21 - type: integer 
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+INFO: [Synth 8-256] done synthesizing module 'simple_dual_one_clock' (14#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:17]
+INFO: [Synth 8-638] synthesizing module 'rams_sp_rom_angle_comb_detail' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv:2]
+	Parameter MEM_WIDTH bound to: 16 - type: integer 
+	Parameter MEM_DEPTH bound to: 21 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* rom_style = "block" *) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv:12]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv:18]
+INFO: [Synth 8-256] done synthesizing module 'rams_sp_rom_angle_comb_detail' (15#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv:2]
+WARNING: [Synth 8-3848] Net mem_state_var_write_addr in module/entity exp_evaluator does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:45]
+WARNING: [Synth 8-3848] Net mem_state_var_write_data_in in module/entity exp_evaluator does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:46]
+WARNING: [Synth 8-3848] Net div_divisor in module/entity exp_evaluator does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:63]
+WARNING: [Synth 8-3848] Net div_dividend in module/entity exp_evaluator does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:64]
+INFO: [Synth 8-256] done synthesizing module 'exp_evaluator' (16#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:11]
+INFO: [Synth 8-638] synthesizing module 'simple_dual_one_clock__parameterized0' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:17]
+	Parameter MEM_WIDTH bound to: 32 - type: integer 
+	Parameter MEM_DEPTH bound to: 12 - type: integer 
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+INFO: [Synth 8-256] done synthesizing module 'simple_dual_one_clock__parameterized0' (16#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:17]
+INFO: [Synth 8-638] synthesizing module 'simple_dual_one_clock__parameterized1' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:17]
+	Parameter MEM_WIDTH bound to: 32 - type: integer 
+	Parameter MEM_DEPTH bound to: 9 - type: integer 
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+WARNING: [Synth 8-639] system function call 'random' not supported [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:38]
+INFO: [Synth 8-256] done synthesizing module 'simple_dual_one_clock__parameterized1' (16#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv:17]
+INFO: [Synth 8-638] synthesizing module 'mult_add' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/mult_add.sv:1]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_MULT_BEGIN bound to: 4'b0001 
+	Parameter STATE_MULT_WAIT bound to: 4'b0010 
+	Parameter STATE_ADD_WAIT bound to: 4'b0011 
+INFO: [Synth 8-256] done synthesizing module 'mult_add' (17#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/mult_add.sv:1]
+INFO: [Synth 8-638] synthesizing module 'float_point_multiplier_wrapper' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:3]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter STATE_DEFAULT bound to: 4'b0000 
+	Parameter STATE_MULT_WAIT bound to: 4'b0001 
+	Parameter STATE_DATA_OUT bound to: 4'b0010 
+	Parameter MULT_DELAY bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'float_point_multiplier' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:13]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+	Parameter BIAS bound to: 127 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element product_zero_reg[3] was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:92]
+WARNING: [Synth 8-6014] Unused sequential element product_zero_reg[2] was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:92]
+WARNING: [Synth 8-6014] Unused sequential element product_zero_reg[1] was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:92]
+WARNING: [Synth 8-6014] Unused sequential element product_zero_reg[0] was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:92]
+WARNING: [Synth 8-3936] Found unconnected internal register 'mantissa_prod_h_h_reg' and it is trimmed from '24' to '23' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:97]
+WARNING: [Synth 8-3848] Net zero_product[3] in module/entity float_point_multiplier does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:55]
+INFO: [Synth 8-256] done synthesizing module 'float_point_multiplier' (18#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:13]
+INFO: [Synth 8-256] done synthesizing module 'float_point_multiplier_wrapper' (19#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv:3]
+INFO: [Synth 8-638] synthesizing module 'float_point_adder' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv:12]
+	Parameter EXP_LEN bound to: 8 - type: integer 
+	Parameter MANTISSA_LEN bound to: 23 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'float_point_adder' (20#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv:12]
+INFO: [Synth 8-638] synthesizing module 'exponent_operation' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv:5]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter EXPONENT_WIDTH bound to: 8 - type: integer 
+	Parameter MULT_DELAY bound to: 4 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element exponent_operation_mult_a_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv:58]
+WARNING: [Synth 8-6014] Unused sequential element exponent_operation_mult_b_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv:59]
+WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv:66]
+WARNING: [Synth 8-3848] Net exponent_operation_mult_prod in module/entity exponent_operation does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv:27]
+INFO: [Synth 8-256] done synthesizing module 'exponent_operation' (21#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/exponent_operation.sv:5]
+WARNING: [Synth 8-693] zero replication count - replication ignored [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:408]
+WARNING: [Synth 8-6014] Unused sequential element interval_mantissa_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:395]
+WARNING: [Synth 8-6014] Unused sequential element interval_exponent_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:396]
+WARNING: [Synth 8-6014] Unused sequential element mem_encrypt_txt_addr_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:401]
+WARNING: [Synth 8-6014] Unused sequential element mem_encrypt_txt_data_in_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:416]
+WARNING: [Synth 8-6014] Unused sequential element timestamp_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:416]
+WARNING: [Synth 8-3848] Net mem_key_val_data_in in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:56]
+WARNING: [Synth 8-3848] Net mem_key_val_write_addr in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:58]
+WARNING: [Synth 8-3848] Net mem_key_val_write_we in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:59]
+WARNING: [Synth 8-3848] Net div_result_ready in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:116]
+WARNING: [Synth 8-3848] Net div_result in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:119]
+WARNING: [Synth 8-3848] Net exp_evaluator_data_ready in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:132]
+WARNING: [Synth 8-3848] Net epsilon_inv in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:134]
+WARNING: [Synth 8-3848] Net map_min in module/entity top_module does not have driver. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:135]
+INFO: [Synth 8-256] done synthesizing module 'top_module' (22#1) [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:2]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[31]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[30]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[29]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[28]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[27]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[26]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[25]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[24]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[23]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[22]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[21]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[20]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[19]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[18]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[17]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[16]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[15]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[14]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[13]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[12]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[11]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[10]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[9]
+WARNING: [Synth 8-3331] design exponent_operation has unconnected port inp_exponent[8]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port out_data_ready
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[16]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[15]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[14]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[13]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[12]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[11]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[10]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[9]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[8]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[7]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[6]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[5]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[4]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[3]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[2]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[1]
+WARNING: [Synth 8-3331] design sine_calculator has unconnected port inp_theta[0]
+WARNING: [Synth 8-3331] design angle_normalization has unconnected port reset
+WARNING: [Synth 8-3331] design angle_combination has unconnected port reset
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][31]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][30]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][29]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][28]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][27]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][26]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][25]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][24]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][23]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][22]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][21]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][20]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][19]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][18]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][17]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][16]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][15]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][14]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][13]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][12]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][11]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][10]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][9]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][8]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][7]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][6]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][5]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][4]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][3]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][2]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][1]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[5][0]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][31]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][30]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][29]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][28]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][27]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][26]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][25]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][24]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][23]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][22]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][21]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][20]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][19]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][18]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][17]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][16]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][15]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][14]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][13]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][12]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][11]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][10]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][9]
+WARNING: [Synth 8-3331] design angle_combination has unconnected port input_initial_value[4][8]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1315.703 ; gain = 129.516 ; free physical = 2555 ; free virtual = 7133
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result_ready to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[31] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[30] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[29] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[28] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[27] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[26] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[25] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[24] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[23] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[22] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[21] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[20] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[19] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[18] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[17] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[16] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[15] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[14] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[13] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[12] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[11] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[10] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[9] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[8] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[7] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[6] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[5] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[4] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[3] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[2] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[1] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin inst_exp_evaluator:div_result[0] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:162]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:write_en_a to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:addr_a[3] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:addr_a[2] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:addr_a[1] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:addr_a[0] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[31] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[30] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[29] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[28] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[27] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[26] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[25] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[24] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[23] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[22] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[21] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[20] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[19] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[18] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[17] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[16] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[15] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[14] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[13] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[12] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[11] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[10] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[9] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[8] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[7] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[6] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[5] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[4] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[3] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[2] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[1] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+WARNING: [Synth 8-3295] tying undriven pin mem_key_values:data_in_a[0] to constant 0 [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:201]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1315.703 ; gain = 129.516 ; free physical = 2559 ; free virtual = 7138
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a200tsbg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/exbiks/ProjectPunisher/ProjectPunisher.srcs/constrs_1/new/constraint1.xdc]
+Finished Parsing XDC File [/home/exbiks/ProjectPunisher/ProjectPunisher.srcs/constrs_1/new/constraint1.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 1695.734 ; gain = 0.000 ; free physical = 2185 ; free virtual = 6789
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1695.734 ; gain = 509.547 ; free physical = 2292 ; free virtual = 6891
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tsbg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1695.734 ; gain = 509.547 ; free physical = 2292 ; free virtual = 6891
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1695.734 ; gain = 509.547 ; free physical = 2294 ; free virtual = 6893
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_angle_combination_reg' in module 'angle_combination'
+INFO: [Synth 8-5546] ROM "angle_combination_done" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "init_val" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_combination_detail" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_exponent" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_combination_add_a" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_combination_add_a" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_combination_add_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_combination_add_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "add_result_ready_reg" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_angle_combination_detail_addr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_angle_combination_value_addr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_angle_combination_value_in" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_angle_combination_value_write" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_angle_combination" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_angle_combination" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "state_angle_combination" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'state_angle_normalization_reg' in module 'angle_normalization'
+INFO: [Synth 8-5544] ROM "output_angle_normalization_done" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_magnitude" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_sign" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_excess_exponent" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_normalization_add_a" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "output_normalized_angle" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_angle_normalization" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_angle_normalization" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_angle_normalization" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_angle_normalization" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_angle_normalization" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "angle_normalization_done" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "angle_normalization_done" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_normalization_input_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_angle_combination_value_write_en" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "state_angle_normalization" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state_angle_normalization" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3936] Found unconnected internal register 'code_reg' and it is trimmed from '8' to '6' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv:33]
+INFO: [Synth 8-5544] ROM "data_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "out_value" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "code" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+WARNING: [Synth 8-3936] Found unconnected internal register 'code_reg' and it is trimmed from '8' to '6' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv:45]
+INFO: [Synth 8-5544] ROM "state_decoder" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_key_val_addr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "data_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "out_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+WARNING: [Synth 8-3936] Found unconnected internal register 'code_reg' and it is trimmed from '8' to '6' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv:52]
+INFO: [Synth 8-802] inferred FSM for state register 'state_decoder_reg' in module 'decoder_type_3'
+INFO: [Synth 8-5544] ROM "mem_angle_normalized_addr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "data_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "counter_memory" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "out_angle" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sin_calc_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "counter_sin_calc" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "out_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_decoder" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_decoder" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv:13]
+WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv:13]
+WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_pf1.sv:14]
+INFO: [Synth 8-802] inferred FSM for state register 'state_term_accumulator_reg' in module 'term_accumulator'
+INFO: [Synth 8-5544] ROM "stack_extension" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "output_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stack_extension_read_pointer" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_term_detail_postfix_addr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "term_detail_postfix" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stack_push" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stack_push_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stack_input" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "operand_a" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stack_pop" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "output_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_term_accumulator" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_term_accumulator" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_term_accumulator" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "state_term_accumulator" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv:14]
+INFO: [Synth 8-802] inferred FSM for state register 'state_exp_eval_reg' in module 'exp_evaluator'
+INFO: [Synth 8-5544] ROM "init_val_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "init_val_reg[4]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "init_val_reg[3]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "init_val_reg[2]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "init_val_reg[1]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "init_val_reg[0]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "mem_state_var_read_addr" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "term_accumulator_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_normalization_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "angle_combination_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mem_state_var_read_addr" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "exp_eval_data_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "state_exp_eval" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "state_exp_eval" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_exp_eval" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_exp_eval" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'state_mult_add_reg' in module 'mult_add'
+INFO: [Synth 8-5544] ROM "mult_a" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "data_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mult_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "add_b" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "add_start" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_mult_add" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_mult_add" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element mantissa_prod_h_l_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element mantissa_prod_h_l_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element mantissa_a_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-6014] Unused sequential element mantissa_b_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-6014] Unused sequential element  was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:97]
+WARNING: [Synth 8-6014] Unused sequential element  was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:97]
+WARNING: [Synth 8-6014] Unused sequential element  was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element  was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:89]
+INFO: [Synth 8-5545] ROM "state_float_point_multiplier_wrapper" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "out_product_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "mult_enable" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "mult_enable" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "counter_mult" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "counter_mult" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv:51]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv:164]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv:163]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv:181]
+WARNING: [Synth 8-3936] Found unconnected internal register 'mantissa_diff_reg' and it is trimmed from '25' to '24' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_adder.sv:115]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'float_point_adder'
+INFO: [Synth 8-5544] ROM "sum" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mantissa_a_shifted" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "a_greater_b" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mantissa_diff" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sign_sum" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "in_exponent_a" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sum_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'state_exponent_operation_reg' in module 'exponent_operation'
+INFO: [Synth 8-5544] ROM "out_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "intermediate_prod" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "output_ready" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "exponent" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "state_exponent_operation" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state_exponent_operation" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "top_mult_add_operand" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "top_mult_add_operand" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "add_operand_a" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Common 17-14] Message 'Synth 8-5544' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-5545] ROM "state_top" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "temp_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "top_mem_state_var_write_we" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0000 |                             0000
+                 iSTATE0 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                 iSTATE2 |                             0011 |                             0011
+                 iSTATE3 |                             0100 |                             0100
+                 iSTATE4 |                             0101 |                             0101
+                 iSTATE5 |                             0110 |                             0110
+                 iSTATE6 |                             0111 |                             0111
+                 iSTATE7 |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_angle_combination_reg' using encoding 'sequential' in module 'angle_combination'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                             0000
+                 iSTATE4 |                              001 |                             0101
+                 iSTATE0 |                              010 |                             0001
+                 iSTATE1 |                              011 |                             0010
+                 iSTATE2 |                              100 |                             0011
+                 iSTATE3 |                              101 |                             0100
+                 iSTATE7 |                              110 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_angle_normalization_reg' using encoding 'sequential' in module 'angle_normalization'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+           STATE_DEFAULT |                              001 |                             0000
+          STATE_MEM_WAIT |                              010 |                             0001
+          STATE_DATA_OUT |                              100 |                             0010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_decoder_reg' using encoding 'one-hot' in module 'decoder_type_3'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+           STATE_DEFAULT |                         00000001 |                             0000
+ STATE_POSTFIX_TERM_READ |                         00000010 |                             0001
+               STATE_OPN |                         00000100 |                             0010
+          STATE_WAIT_OPN |                         00001000 |                             0011
+     STATE_PUSH_DATA_ALU |                         00010000 |                             0101
+          STATE_DATA_OUT |                         00100000 |                             0111
+  STATE_WAIT_DATA_DECODE |                         01000000 |                             0100
+ STATE_PUSH_DATA_DECODED |                         10000000 |                             0110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_term_accumulator_reg' using encoding 'one-hot' in module 'term_accumulator'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+           STATE_DEFAULT |                        000000001 |                             0000
+    STATE_FETCH_INIT_VAL |                        000000010 |                             0111
+  STATE_ANGLE_COMB_START |                        000000100 |                             0001
+   STATE_ANGLE_COMB_WAIT |                        000001000 |                             0010
+  STATE_NORM_ANGLE_START |                        000010000 |                             0011
+   STATE_NORM_ANGLE_WAIT |                        000100000 |                             0100
+    STATE_TERM_ACC_START |                        001000000 |                             0101
+     STATE_TERM_ACC_WAIT |                        010000000 |                             0110
+          STATE_DATA_OUT |                        100000000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_exp_eval_reg' using encoding 'one-hot' in module 'exp_evaluator'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+           STATE_DEFAULT |                               00 |                             0000
+        STATE_MULT_BEGIN |                               01 |                             0001
+         STATE_MULT_WAIT |                               10 |                             0010
+          STATE_ADD_WAIT |                               11 |                             0011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_mult_add_reg' using encoding 'sequential' in module 'mult_add'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                             0000
+                 iSTATE0 |                              001 |                             0001
+                 iSTATE1 |                              010 |                             0010
+                 iSTATE2 |                              011 |                             0011
+                 iSTATE3 |                              100 |                             0100
+                 iSTATE4 |                              101 |                             0101
+                 iSTATE5 |                              110 |                             0110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'float_point_adder'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                            00001 |                             0000
+                 iSTATE0 |                            00010 |                             0001
+                 iSTATE4 |                            00100 |                             0101
+                 iSTATE1 |                            01000 |                             0010
+                 iSTATE2 |                            10000 |                             0011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_exponent_operation_reg' using encoding 'one-hot' in module 'exponent_operation'
+WARNING: [Synth 8-327] inferring latch for variable 'mult_operand_a_reg' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:254]
+WARNING: [Synth 8-327] inferring latch for variable 'mult_operand_b_reg' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:255]
+WARNING: [Synth 8-327] inferring latch for variable 'mult_start_reg' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:256]
+WARNING: [Synth 8-327] inferring latch for variable 'exponent_operand_a_reg' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:293]
+WARNING: [Synth 8-327] inferring latch for variable 'exponent_operand_b_reg' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:294]
+WARNING: [Synth 8-327] inferring latch for variable 'exponent_start_reg' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:292]
+WARNING: [Synth 8-327] inferring latch for variable 'add_operand_a_reg[1]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:267]
+WARNING: [Synth 8-327] inferring latch for variable 'add_operand_a_reg[0]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:267]
+WARNING: [Synth 8-327] inferring latch for variable 'add_operand_b_reg[1]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:268]
+WARNING: [Synth 8-327] inferring latch for variable 'add_operand_b_reg[0]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:268]
+WARNING: [Synth 8-327] inferring latch for variable 'add_start_reg[1]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:269]
+WARNING: [Synth 8-327] inferring latch for variable 'add_start_reg[0]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/top_module.sv:269]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:41 . Memory (MB): peak = 1695.734 ; gain = 509.547 ; free physical = 2285 ; free virtual = 6884
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     36 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 3     
+	   3 Input     25 Bit       Adders := 2     
+	   3 Input     24 Bit       Adders := 2     
+	   2 Input     10 Bit       Adders := 1     
+	   3 Input      9 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 16    
+	   2 Input      6 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 4     
+	   2 Input      4 Bit       Adders := 4     
+	   2 Input      1 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 5     
++---Registers : 
+	               36 Bit    Registers := 1     
+	               35 Bit    Registers := 1     
+	               32 Bit    Registers := 54    
+	               25 Bit    Registers := 2     
+	               24 Bit    Registers := 12    
+	               23 Bit    Registers := 5     
+	               16 Bit    Registers := 1     
+	               12 Bit    Registers := 2     
+	               10 Bit    Registers := 1     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 21    
+	                6 Bit    Registers := 5     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 14    
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 68    
++---RAMs : 
+	               2K Bit         RAMs := 1     
+	              672 Bit         RAMs := 1     
+	              384 Bit         RAMs := 1     
+	              288 Bit         RAMs := 1     
++---ROMs : 
+	                              ROMs := 4     
++---Muxes : 
+	   9 Input     32 Bit        Muxes := 3     
+	   7 Input     32 Bit        Muxes := 7     
+	   2 Input     32 Bit        Muxes := 10    
+	   4 Input     32 Bit        Muxes := 17    
+	   8 Input     32 Bit        Muxes := 2     
+	   5 Input     32 Bit        Muxes := 1     
+	  12 Input     32 Bit        Muxes := 4     
+	   2 Input     31 Bit        Muxes := 2     
+	   2 Input     25 Bit        Muxes := 4     
+	   5 Input     25 Bit        Muxes := 2     
+	   7 Input     25 Bit        Muxes := 2     
+	   2 Input     24 Bit        Muxes := 20    
+	   4 Input     23 Bit        Muxes := 4     
+	   2 Input     23 Bit        Muxes := 2     
+	   8 Input     10 Bit        Muxes := 1     
+	  15 Input      9 Bit        Muxes := 1     
+	   7 Input      9 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 25    
+	   4 Input      8 Bit        Muxes := 6     
+	  14 Input      8 Bit        Muxes := 1     
+	   7 Input      8 Bit        Muxes := 4     
+	   5 Input      8 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 2     
+	   3 Input      6 Bit        Muxes := 1     
+	   9 Input      5 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 2     
+	   4 Input      5 Bit        Muxes := 3     
+	   8 Input      5 Bit        Muxes := 1     
+	  16 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 10    
+	   4 Input      4 Bit        Muxes := 3     
+	   9 Input      4 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 3     
+	  12 Input      3 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	  16 Input      3 Bit        Muxes := 2     
+	  27 Input      3 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 3     
+	   4 Input      2 Bit        Muxes := 2     
+	   5 Input      2 Bit        Muxes := 2     
+	   8 Input      2 Bit        Muxes := 2     
+	  16 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 47    
+	   4 Input      1 Bit        Muxes := 43    
+	   9 Input      1 Bit        Muxes := 29    
+	   7 Input      1 Bit        Muxes := 33    
+	   5 Input      1 Bit        Muxes := 4     
+	   3 Input      1 Bit        Muxes := 4     
+	   6 Input      1 Bit        Muxes := 4     
+	   8 Input      1 Bit        Muxes := 18    
+	  22 Input      1 Bit        Muxes := 1     
+	  16 Input      1 Bit        Muxes := 2     
+	  12 Input      1 Bit        Muxes := 8     
+	  13 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module top_module 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 3     
++---Registers : 
+	               32 Bit    Registers := 4     
+	                4 Bit    Registers := 3     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   7 Input     32 Bit        Muxes := 1     
+	  12 Input     32 Bit        Muxes := 4     
+	   4 Input     32 Bit        Muxes := 9     
+	   2 Input     32 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 3     
+	   2 Input      4 Bit        Muxes := 7     
+	   4 Input      4 Bit        Muxes := 2     
+	  12 Input      1 Bit        Muxes := 8     
+	  13 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 6     
+Module angle_combination 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
+	   2 Input      5 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 8     
+	               23 Bit    Registers := 4     
+	                8 Bit    Registers := 4     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 4     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   9 Input     32 Bit        Muxes := 2     
+	   4 Input     23 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 12    
+	   4 Input      8 Bit        Muxes := 4     
+	   9 Input      5 Bit        Muxes := 2     
+	  16 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 13    
+	   4 Input      1 Bit        Muxes := 4     
+	   9 Input      1 Bit        Muxes := 18    
+Module angle_normalization 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 4     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   7 Input     32 Bit        Muxes := 4     
+	  12 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 9     
+Module angle_normalization_wrapper 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 2     
++---Registers : 
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      5 Bit        Muxes := 2     
+	   4 Input      5 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+	   4 Input      1 Bit        Muxes := 5     
+	   5 Input      1 Bit        Muxes := 1     
+Module decoder_type_1 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     31 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+Module decoder_type_2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 4     
+Module decoder_type_3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      1 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 2     
+Module rams_sp_rom_sine_val_exp0 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
+Module rams_sp_rom_sine_val_exp1 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
+Module sine_calculator 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input     31 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 1     
+Module rams_sp_rf_rst 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               2K Bit         RAMs := 1     
+Module stack 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   3 Input      6 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 2     
+Module rams_sp_rom_pf1 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
+Module term_accumulator 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 1     
+	   8 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 1     
+	   8 Input     10 Bit        Muxes := 1     
+	  14 Input      8 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   8 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 6     
+	   6 Input      1 Bit        Muxes := 4     
+	   8 Input      1 Bit        Muxes := 18    
+Module simple_dual_one_clock 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	              672 Bit         RAMs := 1     
+Module rams_sp_rom_angle_comb_detail 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
++---Muxes : 
+	  22 Input      1 Bit        Muxes := 1     
+Module exp_evaluator 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 7     
+	   9 Input     32 Bit        Muxes := 1     
+	  15 Input      9 Bit        Muxes := 1     
+	   4 Input      5 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 1     
+	   9 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+	   4 Input      1 Bit        Muxes := 6     
+	   9 Input      1 Bit        Muxes := 11    
+Module simple_dual_one_clock__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	              384 Bit         RAMs := 1     
+Module simple_dual_one_clock__parameterized1 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	              288 Bit         RAMs := 1     
+Module mult_add 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 5     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   8 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 8     
+Module float_point_multiplier 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     36 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 3     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               36 Bit    Registers := 1     
+	               35 Bit    Registers := 1     
+	               24 Bit    Registers := 2     
+	               23 Bit    Registers := 1     
+	               12 Bit    Registers := 2     
+	                8 Bit    Registers := 6     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input     23 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
+Module float_point_multiplier_wrapper 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   4 Input      1 Bit        Muxes := 3     
+	   5 Input      1 Bit        Muxes := 1     
+Module float_point_adder 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     25 Bit       Adders := 1     
+	   3 Input     24 Bit       Adders := 1     
+	   3 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 4     
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               25 Bit    Registers := 1     
+	               24 Bit    Registers := 5     
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 3     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   7 Input     32 Bit        Muxes := 1     
+	   2 Input     25 Bit        Muxes := 2     
+	   5 Input     25 Bit        Muxes := 1     
+	   7 Input     25 Bit        Muxes := 1     
+	   2 Input     24 Bit        Muxes := 10    
+	   7 Input      9 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 5     
+	   4 Input      8 Bit        Muxes := 1     
+	   7 Input      8 Bit        Muxes := 2     
+	  16 Input      3 Bit        Muxes := 1     
+	  27 Input      3 Bit        Muxes := 1     
+	  16 Input      2 Bit        Muxes := 2     
+	  16 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 5     
+	   7 Input      1 Bit        Muxes := 12    
+Module exponent_operation 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   5 Input     32 Bit        Muxes := 1     
+	   5 Input      8 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6014] Unused sequential element inst_term_accumulator/decoder_key_val_state_var/mem_state_var_addr_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv:44]
+WARNING: [Synth 8-6014] Unused sequential element inst_term_accumulator/output_value_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:345]
+WARNING: [Synth 8-6014] Unused sequential element init_val_reg[5] was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:142]
+WARNING: [Synth 8-6014] Unused sequential element init_val_reg[4] was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:142]
+WARNING: [Synth 8-6014] Unused sequential element init_val_reg[3] was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv:142]
+WARNING: [Synth 8-3936] Found unconnected internal register 'inst_term_accumulator/inst_sine_calculator/theta_exp_reg' and it is trimmed from '8' to '1' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv:35]
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "mem_state_var_read_addr" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element inst_term_accumulator/mem_term_detail_postfix_addr_reg_rep was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/term_accumulator.sv:197]
+INFO: [Synth 8-4471] merging register 'inst_float_point_multiplier/mantissa_b_reg[23:0]' into 'inst_float_point_multiplier/mantissa_b_reg[23:0]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+INFO: [Synth 8-4471] merging register 'inst_float_point_multiplier/mantissa_a_reg[23:0]' into 'inst_float_point_multiplier/mantissa_a_reg[23:0]' [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-6014] Unused sequential element B was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element inst_float_point_multiplier/mantissa_b_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-6014] Unused sequential element inst_float_point_multiplier/mantissa_a_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-6014] Unused sequential element A was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:89]
+WARNING: [Synth 8-3936] Found unconnected internal register 'inst_float_point_multiplier/mantissa_a_reg' and it is trimmed from '24' to '12' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-3936] Found unconnected internal register 'inst_float_point_multiplier/mantissa_b_reg' and it is trimmed from '24' to '12' bits. [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+INFO: [Synth 8-5545] ROM "counter_mult" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element inst_float_point_multiplier/mantissa_prod_h_l_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element inst_float_point_multiplier/mantissa_prod_h_l_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element inst_float_point_multiplier/mantissa_prod_l_h_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element inst_float_point_multiplier/mantissa_b_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-6014] Unused sequential element B was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:96]
+WARNING: [Synth 8-6014] Unused sequential element inst_float_point_multiplier/mantissa_a_reg was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:103]
+WARNING: [Synth 8-6014] Unused sequential element A was removed.  [/home/exbiks/BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv:89]
+DSP Report: Generating DSP inst_float_point_multiplier/mantissa_prod_l_l_reg, operation Mode is: (A2*B2)'.
+DSP Report: register inst_float_point_multiplier/mantissa_b_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_l_reg.
+DSP Report: register inst_float_point_multiplier/mantissa_a_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_l_reg.
+DSP Report: register inst_float_point_multiplier/mantissa_prod_l_l_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_l_reg.
+DSP Report: operator inst_float_point_multiplier/mantissa_prod_l_l0 is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_l_reg.
+DSP Report: Generating DSP inst_float_point_multiplier/mantissa_prod_h_h_reg, operation Mode is: (A2*B2)'.
+DSP Report: register B is absorbed into DSP inst_float_point_multiplier/mantissa_prod_h_h_reg.
+DSP Report: register A is absorbed into DSP inst_float_point_multiplier/mantissa_prod_h_h_reg.
+DSP Report: register inst_float_point_multiplier/mantissa_prod_h_h_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_h_h_reg.
+DSP Report: operator inst_float_point_multiplier/mantissa_prod_h_h0 is absorbed into DSP inst_float_point_multiplier/mantissa_prod_h_h_reg.
+DSP Report: Generating DSP inst_float_point_multiplier/mantissa_prod_l_h_reg, operation Mode is: (A2*B2)'.
+DSP Report: register B is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_h_reg.
+DSP Report: register inst_float_point_multiplier/mantissa_a_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_h_reg.
+DSP Report: register inst_float_point_multiplier/mantissa_prod_l_h_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_h_reg.
+DSP Report: operator inst_float_point_multiplier/mantissa_prod_l_h0 is absorbed into DSP inst_float_point_multiplier/mantissa_prod_l_h_reg.
+DSP Report: Generating DSP inst_float_point_multiplier/mantissa_prod_sum_1_reg, operation Mode is: (PCIN+(A2*B2)')'.
+DSP Report: register inst_float_point_multiplier/mantissa_b_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_sum_1_reg.
+DSP Report: register A is absorbed into DSP inst_float_point_multiplier/mantissa_prod_sum_1_reg.
+DSP Report: register inst_float_point_multiplier/mantissa_prod_sum_1_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_sum_1_reg.
+DSP Report: register inst_float_point_multiplier/mantissa_prod_h_l_reg is absorbed into DSP inst_float_point_multiplier/mantissa_prod_sum_1_reg.
+DSP Report: operator inst_float_point_multiplier/mantissa_prod_sum_10 is absorbed into DSP inst_float_point_multiplier/mantissa_prod_sum_1_reg.
+DSP Report: operator inst_float_point_multiplier/mantissa_prod_h_l0 is absorbed into DSP inst_float_point_multiplier/mantissa_prod_sum_1_reg.
+INFO: [Synth 8-5545] ROM "state_top" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "temp_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-3332] Sequential element (inst_angle_normalization_wrapper/inst_angle_normalization/angle_sign_reg) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_key_val_state_var/code_reg[4]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_key_val_state_var/code_reg[3]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_key_val_state_var/code_reg[2]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_key_val_state_var/code_reg[1]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_key_val_state_var/code_reg[0]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/counter_sin_calc_reg) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[30]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[29]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[28]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[27]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[26]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[25]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[24]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[16]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[15]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[14]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[13]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[12]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[11]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[10]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[9]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[8]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[7]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[6]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[5]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[4]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[3]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[2]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[1]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/out_angle_reg[0]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/code_reg[4]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/code_reg[3]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/code_reg[2]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/code_reg[1]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/decoder_trigo/code_reg[0]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/divide_start_reg) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (exp_eval_data_ready_reg) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[23]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[22]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[21]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[20]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[19]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[18]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[17]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[16]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[15]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[14]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[13]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (inst_float_point_multiplier/product_mantissa_reg[12]) is unused and will be removed from module float_point_multiplier_wrapper.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[22]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[21]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[20]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[19]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[18]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[17]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[16]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[15]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[14]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[13]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[12]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[11]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[10]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[9]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[8]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[7]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[6]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[5]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[4]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[3]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[2]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[1]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (mantissa_diff_reg[0]) is unused and will be removed from module float_point_adder.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[31]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[30]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[29]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[28]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[27]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[26]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[25]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[24]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[23]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[22]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[21]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[20]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[19]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[18]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[17]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[16]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[15]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[14]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[13]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[12]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[11]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[10]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[9]) is unused and will be removed from module top_module.
+WARNING: [Synth 8-3332] Sequential element (exponent_operand_b_reg[8]) is unused and will be removed from module top_module.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:48 . Memory (MB): peak = 1695.734 ; gain = 509.547 ; free physical = 2251 ; free virtual = 6850
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------------------------+------------------------------------------------------------+---------------+----------------+
+|Module Name                   | RTL Object                                                 | Depth x Width | Implemented As | 
++------------------------------+------------------------------------------------------------+---------------+----------------+
+|rams_sp_rom_sine_val_exp0     | data_reg                                                   | 64x32         | Block RAM      | 
+|rams_sp_rom_sine_val_exp1     | data_reg                                                   | 64x32         | Block RAM      | 
+|rams_sp_rom_pf1               | data                                                       | 1024x1        | LUT            | 
+|rams_sp_rom_pf1               | data_reg                                                   | 1024x8        | Block RAM      | 
+|rams_sp_rom_angle_comb_detail | data_reg                                                   | 32x16         | Block RAM      | 
+|exp_evaluator                 | inst_term_accumulator/mem_term_detail_postfix_addr_reg_rep | 1024x1        | Block RAM      | 
++------------------------------+------------------------------------------------------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping  Report (see note below)
++-----------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name            | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++-----------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|rams_sp_rf_rst:        | ram_reg    | 64 x 32(READ_FIRST)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|simple_dual_one_clock: | ram_reg    | 32 x 32(READ_FIRST)    | W |   | 32 x 32(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++-----------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The tale above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping  Report (see note below)
++------------+------------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object             | Inference | Size (Depth x Width) | Primitives   | 
++------------+------------------------+-----------+----------------------+--------------+
+|top_module  | mem_key_values/ram_reg | Implied   | 16 x 32              | RAM32M x 6   | 
+|top_module  | mem_state_var/ram_reg  | Implied   | 16 x 32              | RAM32M x 6   | 
++------------+------------------------+-----------+----------------------+--------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping  Report (see note below)
++-----------------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name            | DSP Mapping      | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|float_point_multiplier | (A2*B2)'         | 12     | 12     | -      | -      | 24     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|float_point_multiplier | (A2*B2)'         | 12     | 12     | -      | -      | 23     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|float_point_multiplier | (A2*B2)'         | 12     | 12     | -      | -      | 24     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|float_point_multiplier | (PCIN+(A2*B2)')' | 12     | 12     | -      | -      | 24     | 1    | 1    | -    | -    | -     | 1    | 1    | 
++-----------------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:59 . Memory (MB): peak = 1716.734 ; gain = 530.547 ; free physical = 2056 ; free virtual = 6710
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/mem_term_detail_postfix_addr_reg_rep[2]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/mem_term_detail_postfix_addr_reg_rep[1]) is unused and will be removed from module exp_evaluator.
+WARNING: [Synth 8-3332] Sequential element (inst_term_accumulator/mem_term_detail_postfix_addr_reg_rep[0]) is unused and will be removed from module exp_evaluator.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:44 ; elapsed = 00:01:00 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2073 ; free virtual = 6704
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping  Report
++-----------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name            | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++-----------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|rams_sp_rf_rst:        | ram_reg    | 64 x 32(READ_FIRST)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|simple_dual_one_clock: | ram_reg    | 32 x 32(READ_FIRST)    | W |   | 32 x 32(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++-----------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping  Report
++------------+------------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object             | Inference | Size (Depth x Width) | Primitives   | 
++------------+------------------------+-----------+----------------------+--------------+
+|top_module  | mem_key_values/ram_reg | Implied   | 16 x 32              | RAM32M x 6   | 
+|top_module  | mem_state_var/ram_reg  | Implied   | 16 x 32              | RAM32M x 6   | 
++------------+------------------------+-----------+----------------------+--------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance inst_exp_evaluator/inst_term_accumulator/inst_stack/stack_mem/ram_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance inst_exp_evaluator/inst_term_accumulator/inst_stack/stack_mem/ram_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance inst_exp_evaluator/inst_term_accumulator/inst_rams_sp_rom_pf1/data_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance inst_exp_evaluator/mem_angle_combination_value/ram_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance inst_exp_evaluator/inst_rams_sp_rom_angle_comb_detail/data_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:45 ; elapsed = 00:01:01 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6699
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:01:02 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6699
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:01:02 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6699
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:46 ; elapsed = 00:01:03 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6698
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:46 ; elapsed = 00:01:03 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6698
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:46 ; elapsed = 00:01:03 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6698
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:46 ; elapsed = 00:01:03 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6698
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+-------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                                                            | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+-------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|top_module  | inst_float_point_multiplier_wrapper/inst_float_point_multiplier/product_sign_reg[4] | 5      | 1     | NO           | NO                 | YES               | 1      | 0       | 
++------------+-------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     3|
+|2     |CARRY4     |    71|
+|3     |DSP48E1    |     1|
+|4     |DSP48E1_1  |     3|
+|5     |LUT1       |    45|
+|6     |LUT2       |   199|
+|7     |LUT3       |   510|
+|8     |LUT4       |   348|
+|9     |LUT5       |   338|
+|10    |LUT6       |   527|
+|11    |MUXF7      |     8|
+|12    |RAM32M     |    12|
+|13    |RAMB18E1_2 |     1|
+|14    |RAMB18E1_3 |     1|
+|15    |RAMB18E1_4 |     1|
+|16    |RAMB18E1_5 |     1|
+|17    |RAMB18E1_8 |     1|
+|18    |SRL16E     |     1|
+|19    |FDRE       |  1883|
+|20    |LD         |   236|
+|21    |IBUF       |     2|
++------+-----------+------+
+
+Report Instance Areas: 
++------+---------------------------------------+--------------------------------------+------+
+|      |Instance                               |Module                                |Cells |
++------+---------------------------------------+--------------------------------------+------+
+|1     |top                                    |                                      |  4192|
+|2     |  inst_exp_evaluator                   |exp_evaluator                         |  2027|
+|3     |    inst_angle_combination             |angle_combination                     |   766|
+|4     |    inst_angle_normalization_wrapper   |angle_normalization_wrapper           |   237|
+|5     |      inst_angle_normalization         |angle_normalization                   |   208|
+|6     |    inst_rams_sp_rom_angle_comb_detail |rams_sp_rom_angle_comb_detail         |     2|
+|7     |    inst_term_accumulator              |term_accumulator                      |   802|
+|8     |      decoder_constants                |decoder_type_1                        |    26|
+|9     |      decoder_key_val_state_var        |decoder_type_2                        |    80|
+|10    |      decoder_trigo                    |decoder_type_3                        |    53|
+|11    |      inst_rams_sp_rom_pf1             |rams_sp_rom_pf1                       |     8|
+|12    |      inst_sine_calculator             |sine_calculator                       |     1|
+|13    |        inst_rams_sp_rom_sine_val_exp0 |rams_sp_rom_sine_val_exp0             |     1|
+|14    |      inst_stack                       |stack                                 |   120|
+|15    |        stack_mem                      |rams_sp_rf_rst                        |     8|
+|16    |    mem_angle_combination_value        |simple_dual_one_clock                 |     1|
+|17    |  inst_exponent_operation              |exponent_operation                    |   133|
+|18    |  inst_float_point_adder_0             |float_point_adder                     |   599|
+|19    |  inst_float_point_adder_1             |float_point_adder_0                   |   599|
+|20    |  inst_float_point_multiplier_wrapper  |float_point_multiplier_wrapper        |   279|
+|21    |    inst_float_point_multiplier        |float_point_multiplier                |   186|
+|22    |  inst_mult_add                        |mult_add                              |    15|
+|23    |  mem_key_values                       |simple_dual_one_clock__parameterized0 |    38|
+|24    |  mem_state_var                        |simple_dual_one_clock__parameterized1 |   107|
++------+---------------------------------------+--------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:46 ; elapsed = 00:01:03 . Memory (MB): peak = 1759.797 ; gain = 573.609 ; free physical = 2068 ; free virtual = 6698
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 557 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:00:42 . Memory (MB): peak = 1759.797 ; gain = 193.578 ; free physical = 2137 ; free virtual = 6768
+Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:01:03 . Memory (MB): peak = 1759.805 ; gain = 573.609 ; free physical = 2138 ; free virtual = 6768
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 338 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 18 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 248 instances were transformed.
+  LD => LDCE: 236 instances
+  RAM32M => RAM32M (inverted pins: WCLK) (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 12 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+219 Infos, 389 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:49 ; elapsed = 00:01:06 . Memory (MB): peak = 1759.805 ; gain = 587.004 ; free physical = 2151 ; free virtual = 6779
+INFO: [Common 17-1381] The checkpoint '/home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/top_module.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_module_utilization_synth.rpt -pb top_module_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.18 . Memory (MB): peak = 1783.809 ; gain = 0.000 ; free physical = 2153 ; free virtual = 6781
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 18 17:44:05 2019...

@@ -1,0 +1,29 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "/opt/Xilinx/Vivado/2017.4/data/xilinx_vip/include" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/angle_combination.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/angle_normalization.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/angle_normalization_wrapper.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/decoder_type_1.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/decoder_type_2.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/decoder_type_3.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/exponent_operation.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/float_point_adder.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/float_point_multiplier.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/float_point_multiplier_wrapper.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/mult_add.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/rams_sp_rf_rst.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/rams_sp_rom_angle_comb_detail.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp0.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/rams_sp_rom_sine_val_exp1.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/simple_dual_one_clock.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/sine_calculator_pipelined_2_stage.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/stack.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/state_var_evaluator.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/term_accumulator.sv" \
+"../../../../../BTP/Phase2/BTP/verilog_codes/top_module.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

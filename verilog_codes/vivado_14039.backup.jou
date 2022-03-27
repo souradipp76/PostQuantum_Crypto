@@ -1,0 +1,33 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Sat Apr 13 18:37:16 2019
+# Process ID: 14039
+# Current directory: /home/exbiks/BTP/Phase2/BTP/verilog_codes
+# Command line: vivado
+# Log file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.log
+# Journal file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/exbiks/ProjectPunisher/ProjectPunisher.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_simulation
+source top_sim.tcl
+run 10 us
+close_sim

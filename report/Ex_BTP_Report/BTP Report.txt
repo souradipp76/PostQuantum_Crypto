@@ -1,0 +1,137 @@
+--------------------------Abstract--------------------------------------
+
+
+
+-------------------------------------------------------------------------
+
+---------------------------1. Introduction----------------------------------
+1.1 Motivation
+Today, we send data from one computer to another without a second thought assuming a secure connection between them. But what if that connection cannot be trusted? The impact in the world economy can be devastatng. E-commerce, cloud services, online stock trading and anything that relies that on the internet security would be rendered useless. This scenario is plausible in not too distant future. A developing technology called quantum computing would be able to break the encryption that is the backbone of secure internet communication. Today, secure communication relies on exchange of keys or secret codes to ensure parties are who they say they are and exchange messages that can't be read by others.
+
+In 1994, a mathematicican, named Peter Shor, developed an algorithm which will break the security of key exchanges and digital signatures. Using this algorithms, a quantum computer would be able to crack today's most sophisticated encryption in minutes. Quantum computers operate differently from traditional computers. They work at atomic level and can shortcut physical restrictions that affect the traditional computers. Quantum use qubits instead of bits. A qubit is able to represent 0 and 1 simulataneously. And very few qubits can speed up certain types of computation by an enormous amount 
+
+This new technology is ideal for solving problems in astrophysics, pharmaceuticals and weather forecasting among many others. But it can also break the encryption on which the world relies. As soon as quantum computers break encryption which is estimated to be less than 10 years away, the threats are innumerable.
+
+1.2 Problem Definition
+The objective of this project is to design and implement a chaos-based cryptographic system that is secure against Shor's Algorithm running on an ideal quantum computer.
+--------------------------------------------------------------------------
+
+-------------------------2. Preliminaries------------------------
+
+2.1 Present-day Cryptographic Methods
+Cryptography is the practice and study of techniques for data transfer over insecure channels in presence of unauthorized users, usually called adversaries. Prior to modern age, cryptography was most exclusively referred to as encryption, i.e. the process of converting data from readable state to apparent noise.
+
+Most of the present-day encryption algorithms are based on overlapping theory of mathematics and computer science. These are largely designed around a 'trap-door functions', i.e. problems with sufficient computational hardness. These problems can be theoritically solved, but this is not possible to do within reasonable time and with the resources that usually at disposal.
+
+Advances in mathematics such as algorithms improving on the integer factorization problem and discrete logarithm problem and availability of more computational power require these methods to adapt with time. Most of the algorithms can, however, be made secure against these advancements just by increasing the key-length.
+
+2.2 Shor's Algorithm
+Published in 1994 and named after it's formulator, Shor's algorithm, is a quantum algorithm for finding the prime factors of any given integer N.
+
+The importance of Shor's algorithm lies in it's ability to find the prime factors of an integer in polynomial time, in comparision to the most efficient classical algorithms known, such as general number field sieve, which works in sub-exponential time. This is possible to due to efficiency of quantum fourier transform and modular exponentiation by repeated squaring.
+
+2.3 How does Shor's Algorithm threaten present-day encryption?
+All of the popular algorithms rely on one of the 3 hard problems - integer-factorization problem, the discrete logarithm problem or the elliptic-curve discrete logarithm problem. However, with Shor's algorithm, these can be be solved in reasonable time. This implies that, with a quantum computer having sufficient number of qubits, Shor's algorithm can be used to break the public-key cryptography schemes including RSA.
+
+However, the experimental quantum computers available today succumb to noise and decoherence problems, hence, cannot be used to break current encryption schemes.
+
+2.4 Post-Quantum Cryptography
+Post-Quantum Cryptography refers to the study of encryption schemes that are considered to be secure against an attack by quantum computers. As discussed above, most of the popular encryption methods can be efficiently broken using a sufficiently powerful hypothetical quantum computer. Thus, scientists are preparing methods to secure data against attacks when quantum computing becomes much more powerful.
+
+Daniel J. Bernstein[?] lists the following important classes of cryptographic methods beyond RSA, DSA and ECRSA - 
+	
+	2.4.1 Hash-based cryptography - This includes Merkle's hash-tree public-key signature system, building upon the one-message idea.
+	
+	2.4.2 Code-based cryptography - An example is McEliece's hidden-Goppa-code public-key encryption system
+
+	2.4.3 Lattice-based cryptography - The most popular example that garnered most interest is Hoffstein-Pipher-Silverman NTRU public-key-encryption system.
+
+	2.4.4 Multivariate-quadratic-equations cryptography - The most imporatant example includes Patarin's "HFE" public-key-signature system.
+
+	2.4.5 Secret-key cryptography - The most popular example is Daemen-Rijmen "Rijndael" cipher, commonly referred to as "AES"
+
+All of these encryption methods are considered to be resistant to both classical and quantum computing. These schemes are built around cryptographic primitives for which no efficient algorithm has been found yet, either for quantum or for classical computers.
+
+
+2.6 Field Programmable Gate Array
+
+
+----------------------------------------------------------------------------
+
+------------------------3. Literature Survey--------------------------------
+
+3.1 Chaos and Cryptography
+Over last few years, there has been a great interest in understanding the working of chaotic systems. They are distinguished by their high sensitivity to initial conditions, statistically similar to random signals and a continuous broad-band power spectrum. This has garnered interest from cryptanalysts and there have been several publications proposing various chaos-based cryptographic systems such as in [2], [3].
+
+The chaos-based cryptosystems can be sub-divided into two classes. First one involves numerically computing a large number of iterations over time of a chaotic system, using message as the initial data. (see [5], [6]). The second class amounts to scrambling a message with a chaotic dynamic. This includes additive masking, chaotic switching, message embedding, etc.
+
+The relevance and usefulness of chaos in these systems have been demonstrated through comparative studies between characteristics of chaotic systems and requirements of a strong cipher [1], [4]. Several properties of chaotic maps are similar to those of cryptographic maps : extreme sensitivity to initial conditions and parameters, unstable periodic orbits with large time-periods. Further, iterations of chaotic map spread the initial region over entire map, introducing diffusion which is an important requirement for a strong cipher.
+
+
+3.2 Discrete Chaos
+It must be noted that when chaotic systems are simulated or implemented on computers with limited precision, the sequences {xk} generated are not exactly chaotic. Since, the cardinality of the set of values of xk is finite, such sequences will always be a part of a loop of finite period. It can be expected that this period wouldn't be too short and will be greatly chaotic in nature. Claiming such properties, however, requires some consideration [7]. Contributions made in this regard and discussion about discrete chaos can be found in [8].
+
+However, the points that must be taken a note are -
+	
+	3.2.1 Through numerical expermiments, it has been shown that mean cycle L of such a system is O(2^(P/2)), where P is the amount of precision in terms of number of bits. This serves as good reference while working with chaotic systems. However, it must be verified as there are no mathematical prrofs to support it.
+
+	3.2.2 The rounding error in computer systems poses another problem. The errors made in each iteration will culminate at a very fast rate due to high sensitivity of the system on the initial conditions. Thus, the actual trajectory and the calculated trajectory will be considerably different after a few iterations. However, "Shadowing Lemma" in [10], guarantees that one can always find an actual trajectory that is aribitrarily near the calculated trajectory.
+
+
+3.3 Chaos in Multi-Pendulum Systems
+
+----------------------------------------------------------------------------
+
+
+-----------------------4. Our Approach--------------------------------------
+
+After referring extensive literature and keeping in mind the resources at our disposal, we have decided to take the following roadmap - 
+
+	-  Simulate multi-pendulum systems in PC
+	-  Mechanism to choose chaotic map
+	-  Key-generation Mechanism
+	-  Integrating the encryption scheme into an FPGA
+		- Optimization of equations of motion for hardware parallelisation
+		- Implementing variable-precision Arithmetic & Logical Unit
+		- Implementing control unit
+		- Implementing ethernet and USB functionality for data transfer
+
+----------------------------------------------------------------------------
+
+
+-------------------------5. Work Progress-----------------------------------
+
+5.1 Simulation of multi-pendulum system
+
+5.2 Verifying the scheme in MATLAB
+
+5.3 FPGA Implementation
+
+----------------------------------------------------------------------------
+
+-------------------------6. Future Work-------------------------------------
+
+
+----------------------------------------------------------------------------
+
+
+-------------------------7. References--------------------------------------
+1. A Connection Between Chaotic and Conventional Cryptography
+
+2. T. Yang, “A survey of chaotic secure communication systems,” Int. J. Comput. Cogn. 2004
+
+3. M. Hasler, “Synchronization of chaotic systems and transmission of information,” Int. J. Bifurc. Chaos, vol. 8, no. 4, Apr. 1998.
+
+4. Chaos-Based Cryptography: A Brief Overview by Ljupcˇo Kocarev
+
+5. J. Fridrich, “Symmetric ciphers based on two-dimensional chaotic maps,” Int. J. Bifurc. Chaos, vol. 8, no. 6, pp. 1259–1284, Jun. 1998
+
+6. R. Schmitz, “Use of chaotic dynamical systems in cryptography,” J. Franklin Inst., vol. 338, pp. 429–441, 2001
+
+7. D. E. Knuth, The Art of Computer Programming. Reading, MA: Addison-Wesley, 1998, vol. 2.
+
+8.  L. Kocarev, J. Szczepanski, J. M. Amigo, and I. Tomosvski, “L. Kocarev, J. Szczepanski, J. M. Amigo, and I. Tomosvski” IEEE Trans. Circuits Syst. I, Reg. Papes, to be published.
+
+9. R. Matthews, D. Wheeler, Supercomputer investigations of a chaotic encryption algorithm, Cryptologia XV 2 (1991) 140–152.
+
+10. E. Coven, I. Kan, J.A. Yorke, Pseudo-orbit shadowing in the family of tent maps, Trans. Amer. Math. Soc. 308 1 (1988) 227–241.
