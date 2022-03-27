@@ -18,10 +18,10 @@ Y3=Y(3,:);
 z = []
 for i=1:length(Y3)
     [s,e,m] = ieee754(Y3(i));
-    z = [z,[s,e,m]];
+    z = [z;[s,e,m]];
 end
 sz = size(z)
-dlmwrite('random_data2.txt',z,'')
+dlmwrite('random_data.txt',z,'')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%
