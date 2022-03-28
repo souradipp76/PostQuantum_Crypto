@@ -19,20 +19,28 @@ Y3=Y(3,:);
 figure;
 plot(t,Y);
 grid on
+title('Variation of Angles')
 xlabel('Time(t)[seconds]');ylabel('Theta[rad]');
 legend('theta1','theta2','theta3')
 
 Y = Y - (floor(Y./(2*pi)).*(2*pi));
 
 figure;
-plot(t,Y(1,:));
+plot(t,Y);
 grid on
-figure;
-plot(t,Y(2,:));
-grid on
-figure;
-plot(t,Y(3,:));
-grid on
+title('Variation of Normalized Angles')
+xlabel('Time(t)[seconds]');ylabel('Theta[rad]');
+legend('theta1','theta2','theta3')
+   
+% figure;
+% plot(t,Y(1,:));
+% grid on
+% figure;
+% plot(t,Y(2,:));
+% grid on
+% figure;
+% plot(t,Y(3,:));
+% grid on
 
 phi1=y(1,:)'; dtphi1=y(4,:)';
 phi2=y(2,:)'; dtphi2=y(5,:)';
@@ -47,6 +55,7 @@ grid on
 plot(l1*sin(phi1),-l1*cos(phi1));
 plot(l1*sin(phi1)+l2*sin(phi2),-l1*cos(phi1)-l2*cos(phi2));
 plot(l1*sin(phi1)+l2*sin(phi2)+l3*sin(phi3),-l1*cos(phi1)-l2*cos(phi2)-l3*cos(phi3));
+title('Trajectory of Triple Pendulum')
 legend('theta1','theta2','theta3')
 hold off;
 %%%%%%%%%%%%%%%%
@@ -69,94 +78,94 @@ hold off;
 % grid on
 % legend('theta1','theta2','theta3')
 % hold off;
-% 
-% %%%%%%%%%%%%%%%
-% [Pxx1,Fxx1] = periodogram(Y1,hamming(length(Y1)),length(Y1),fps);
-% [Pxx2,Fxx2] = periodogram(Y2,hamming(length(Y2)),length(Y2),fps);
-% [Pxx3,Fxx3] = periodogram(Y3,hamming(length(Y3)),length(Y3),fps);
-% figure;
-% hold on;
-% plot(Fxx1,10*log10(Pxx1));
-% plot(Fxx2,10*log10(Pxx2));
-% plot(Fxx3,10*log10(Pxx3));
-% grid on
-% xlabel('Frequency(f)[Hz]');
-% ylabel('Power[dB]');
-% title('Periodogram Power Spectral Density');
-% legend('theta1','theta2','theta3')
-% hold off;
-% % fprintf("Fisher's Kappa Test");
-% % Y_1 = max(Pxx1);
-% % Fkappa1 = Y_1./mean(Pxx1(2:end-1))
-% % Y_2 = max(Pxx2);
-% % Fkappa2 = Y_2./mean(Pxx2(2:end-1))
-% % Y_3 = max(Pxx3);
-% % Fkappa3 = Y_3./mean(Pxx2(2:end-1))
-% %%%%%%%%%%%%%%%%%
-% 
-% %%%%%%%%%%%%%%%%%
-% cir_autocorr1 = ifft(fft(Y1).*conj(fft(Y1)));
-% cir_autocorr2 = ifft(fft(Y2).*conj(fft(Y2)));
-% cir_autocorr3 = ifft(fft(Y3).*conj(fft(Y3)));
-% figure;
-% plot(cir_autocorr1);
-% grid on;
-% xlabel('Frequency(f)[Hz]');
-% ylabel('Power[dB]');
-% title('Circular AutoCorrelation');
-% 
-% figure;
-% plot(cir_autocorr2);
-% grid on;
-% xlabel('Frequency(f)[Hz]');
-% ylabel('Power[dB]');
-% title('Circular AutoCorrelation');
-% 
-% figure;
-% plot(cir_autocorr3);
-% grid on
-% xlabel('Frequency(f)[Hz]');
-% ylabel('Power[dB]');
-% title('Circular AutoCorrelation');
-% %%%%%%%%%%%%%%%%%%%
-% 
-% %%%%%%%%%%%%%%%%%%%
-% Z1 = fft(Y1);
-% N = length(Z1);
-% Z1(1) = [];
-% power1 = abs(Z1(1:floor(N/2))).^2;
-% Z2 = fft(Y2);
-% Z2(1) = [];
-% power2 = abs(Z2(1:floor(N/2))).^2;
-% Z3 = fft(Y3);
-% Z3(1) = [];
-% power3 = abs(Z3(1:floor(N/2))).^2;
-% nyquist = 1/2;
-% freq = (1:floor(N/2))/floor(N/2)*nyquist;
-% periodLength = 'second'; %or whatever units your signal was acquired in.
-% period = 1./freq;
-% 
-% figure;
-% plot(period,power1);
-% grid on;
-% ylabel('Power')
-% xlabel(['Period (' periodLength 's/Cycle)']);
-% title('Period Plot');
-% 
-% figure;
-% plot(period,power2);
-% grid on;
-% ylabel('Power')
-% xlabel(['Period (' periodLength 's/Cycle)']);
-% title('Period Plot');
-% 
-% figure;
-% plot(period,power3);
-% grid on;
-% ylabel('Power')
-% xlabel(['Period (' periodLength 's/Cycle)']);
-% title('Period Plot');
-% %%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+[Pxx1,Fxx1] = periodogram(Y1,hamming(length(Y1)),length(Y1),fps);
+[Pxx2,Fxx2] = periodogram(Y2,hamming(length(Y2)),length(Y2),fps);
+[Pxx3,Fxx3] = periodogram(Y3,hamming(length(Y3)),length(Y3),fps);
+figure;
+hold on;
+plot(Fxx1,10*log10(Pxx1));
+plot(Fxx2,10*log10(Pxx2));
+plot(Fxx3,10*log10(Pxx3));
+grid on
+xlabel('Frequency(f)[Hz]');
+ylabel('Power[dB]');
+title('Periodogram Power Spectral Density')
+legend('theta1','theta2','theta3')
+hold off;
+% fprintf("Fisher's Kappa Test");
+% Y_1 = max(Pxx1);
+% Fkappa1 = Y_1./mean(Pxx1(2:end-1))
+% Y_2 = max(Pxx2);
+% Fkappa2 = Y_2./mean(Pxx2(2:end-1))
+% Y_3 = max(Pxx3);
+% Fkappa3 = Y_3./mean(Pxx2(2:end-1))
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+cir_autocorr1 = ifft(fft(Y1).*conj(fft(Y1)));
+cir_autocorr2 = ifft(fft(Y2).*conj(fft(Y2)));
+cir_autocorr3 = ifft(fft(Y3).*conj(fft(Y3)));
+figure;
+plot(cir_autocorr1);
+grid on;
+xlabel('Frequency(f)[Hz]');
+ylabel('Power[dB]');
+title('Circular AutoCorrelation of Theta_1');
+
+figure;
+plot(cir_autocorr2);
+grid on;
+xlabel('Frequency(f)[Hz]');
+ylabel('Power[dB]');
+title('Circular AutoCorrelation of Theta_2');
+
+figure;
+plot(cir_autocorr3);
+grid on
+xlabel('Frequency(f)[Hz]');
+ylabel('Power[dB]');
+title('Circular AutoCorrelation of Theta_3');
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%
+Z1 = fft(Y1);
+N = length(Z1);
+Z1(1) = [];
+power1 = abs(Z1(1:floor(N/2))).^2;
+Z2 = fft(Y2);
+Z2(1) = [];
+power2 = abs(Z2(1:floor(N/2))).^2;
+Z3 = fft(Y3);
+Z3(1) = [];
+power3 = abs(Z3(1:floor(N/2))).^2;
+nyquist = 1/2;
+freq = (1:floor(N/2))/floor(N/2)*nyquist;
+periodLength = 'second'; %or whatever units your signal was acquired in.
+period = 1./freq;
+
+figure;
+plot(period,power1);
+grid on;
+ylabel('Power')
+xlabel(['Period (' periodLength 's/Cycle)']);
+title('Period Plot of Theta_1');
+
+figure;
+plot(period,power2);
+grid on;
+ylabel('Power')
+xlabel(['Period (' periodLength 's/Cycle)']);
+title('Period Plot of Theta_2');
+
+figure;
+plot(period,power3);
+grid on;
+ylabel('Power')
+xlabel(['Period (' periodLength 's/Cycle)']);
+title('Period Plot of Theta_3');
+%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5555
 % 

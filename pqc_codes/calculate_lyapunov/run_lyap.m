@@ -1,3 +1,5 @@
+clc;
+clear;
 theta1 = -0.4603;
 theta2 = -1.2051;
 theta3 = -1.5165;
