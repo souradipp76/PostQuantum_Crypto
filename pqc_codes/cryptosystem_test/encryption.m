@@ -6,9 +6,10 @@ function y = encryption(plain_text_arr,key)
     delta = 1/fps;
     eta = 0.99;
     ivp = key;
-    key_len = length(key(:,1)); 
+    key_len = length(key(:,1));
     
-    if isfile("theta_norm.csv")
+    %if isfile("theta_norm.csv")
+    if exist("theta_norm.csv", 'file') == 2
         X = csvread('theta_norm.csv',0,0);
         disp(size(X));
     else
@@ -57,8 +58,8 @@ function y = encryption(plain_text_arr,key)
         lookup_values = [lookup_values, j-1];
         lookup_table{d} = lookup_values;
     end 
-%     disp("Lookup Table");
-%     disp(lookup_table);
+    %disp("Lookup Table");
+    %disp(lookup_table);
     
     %%%%%%%%%%%%% Encryption %%%%%%%%%%%%%
     y = [];
@@ -71,46 +72,52 @@ function y = encryption(plain_text_arr,key)
     
     for i = 1:length(plain_text_arr)
         p = plain_text_arr(i);
-        flag = false;
-        index = 1;
-        while(flag == false)
-            r = rand(1,1);
-            %fprintf("Random num generated: %f\n", r);
-            lookup_values = lookup_table{p+1};
-            %c = intervals{1,d+1};
-            
-            %%%%select random between 0 to 1 and compare with eta %%%
-            if r > eta && lookup_values(index)
-                %fprintf("Index selected: %d, Value: %d\n", index, lookup_values(index));
-                C = lookup_values(index);
-                f = halfprecision(key(mod(i-1, key_len)+1,1));
-                
-                %%%% Operations %%%%%
-                C = circularBitRotate(C,-mod(i,16),16);
-                C = bitxor(C,f);
+        f = halfprecision(key(mod(i-1, key_len)+1,1));
+        
+%         %%%%% select index by repeatition %%%%%
+%         flag = false;
+%         index = 1;
+%         while(flag == false)
+%             r = rand(1,1);
+%             %fprintf("Random num generated: %f\n", r);
+%             lookup_values = lookup_table{p+1};
+%             %c = intervals{1,d+1};
+%             
+%             %%%%select random between 0 to 1 and compare with eta %%%
+%             if r > eta && lookup_values(index)
+%                 %fprintf("Index selected: %d, Value: %d\n", index, lookup_values(index));
+%                 C = lookup_values(index);
+%                 
+%                 %%%% Operations %%%%%
 %                 C = circularBitRotate(C,-mod(i,16),16);
 %                 C = bitxor(C,f);
-%                 C = circularBitRotate(C,-mod(i,16),16);
-%                 C = bitxor(C,f);
-                
-                y = [y, C];
-                flag = true;
-            else
-                index = mod((index+1),(length(lookup_values)+1));
-                if index == 0
-                    index = 1;
-                end
-            end  
-
-            %%%%% select random index %%%%%        
-%             len = length(lookup_values);
-%             r2 = randi([1, len],1,1);
-%             %fprintf("Random num generated for length %d: %d\n", len, r2);
-%             C = lookup_values(r2);
-%             %fprintf("Iteration: %d: key:%d\n", index, f);
-%             yy = bitxor(C,bitror(f, k));
-%             y = [y, yy];
-%             flag= true;
-        end
+%                 %C = circularBitRotate(C,-mod(i,16),16);
+%                 %C = bitxor(C,f);
+%                 %C = circularBitRotate(C,-mod(i,16),16);
+%                 %C = bitxor(C,f);
+%                 
+%                 y = [y, C];
+%                 flag = true;
+%             else
+%                 index = mod((index+1),(length(lookup_values)+1));
+%                 if index == 0
+%                     index = 1;
+%                 end
+%             end  
+%         end
+        
+        
+        %%%%% select random index %%%%%
+        lookup_values = lookup_table{p+1};
+        len = length(lookup_values);
+        r2 = randi([1, len],1,1);
+        %fprintf("Random num generated for length %d: %d\n", len, r2);
+        C = lookup_values(r2);
+        %fprintf("Iteration: %d: key:%d\n", index, f);
+        C = circularBitRotate(C,-mod(i,16),16);
+        C = bitxor(C,f);
+        %C = circularBitRotate(C,-mod(i,16),16);
+        %C = bitxor(C,f);
+        y = [y, C];
     end
 end

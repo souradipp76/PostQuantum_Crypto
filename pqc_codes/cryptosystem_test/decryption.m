@@ -6,7 +6,8 @@ function y = decryption(cipher_text_arr,key)
     delta = 1/fps;
     ivp = key;
     key_len = length(key(:,1)); 
-    if isfile("theta_norm.csv")
+    %if isfile("theta_norm.csv")
+    if exist("theta_norm.csv", 'file') == 2
         X = csvread('theta_norm.csv',0,0);
         disp(size(X));
     else
@@ -34,18 +35,19 @@ function y = decryption(cipher_text_arr,key)
     %for K=2:length(key)
     %    f = bitxor(f, halfprecision(key(K,1)));
     %end
-     
+
     for i = 1:length(cipher_text_arr)
         c = cipher_text_arr(i);
         f = halfprecision(key(mod(i-1, key_len)+1, 1));
         
         %%%% Operations %%%%%
-%         C = bitxor(c, f);
-%         C = circularBitRotate(C, mod(i,16), 16);
-%         C = bitxor(C, f);
-%         C = circularBitRotate(C, mod(i,16), 16);
-%         C = bitxor(C, f);
-%         C = circularBitRotate(C, mod(i,16), 16);
+        C = bitxor(c, f);
+        C = circularBitRotate(C, mod(i,16), 16);
+        %C = bitxor(C, f);
+        %C = circularBitRotate(C, mod(i,16), 16);
+        %C = bitxor(C, f);
+        %C = circularBitRotate(C, mod(i,16), 16);
+        
         
         y_val =  Y(C+1);
         d = floor((y_val - Ymin)/epsilon);

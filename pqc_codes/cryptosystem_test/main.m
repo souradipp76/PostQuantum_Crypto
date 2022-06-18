@@ -27,8 +27,20 @@ key = [iniCon;params'];
 %%%%%%%%%%%%%%%%%%Example Text%%%%%%%%%%%%%%%%%%%%%
 %test_text('data/text/sample.txt', key);
 
-%%%%%%%%%%%%%%%%%%Example image%%%%%%%%%%%%%%%%%%%%%
-%test_image('data/images/pexels-photo-2071882.jpeg', key);
+%%%%%%%%%%%%%%%%%% Example Image %%%%%%%%%%%%%%%%%%%%%
+%test_image('data/images/leena.tif', key);
 
-diffCrypt(key);
+
+%%%%%%%%%%%%%%%%% Image Analysis %%%%%%%%%%%%%%%%%%%%%%%%
+%graphic_corr('data/images/leena.tif', key);
+
+%calculate_entropy('data/images/leena.tif', key);
+
+%[NPCR, UACI] = calculate_NPCR_UACI('data/images/leena.tif', key);
+
+%test_occlusion('data/images/leena.tif', key);
+
+%diffCrypt(key);
+
+%cpa('data/images/leena.tif', key);
 
