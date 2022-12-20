@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "F:/Studies/Semester 8/EE499/verilog_codes/angle/angle_normalization.xst" -ofn "F:/Studies/Semester 8/EE499/verilog_codes/angle/angle_normalization.syr" 
