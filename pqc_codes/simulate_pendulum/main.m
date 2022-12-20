@@ -28,3 +28,4 @@ iniCon = [theta1; theta2; theta3; dtheta1; dtheta2; dtheta3];
 ivp = [iniCon;params'];
 
 triple_pendulum(ivp, duration, fps, movie);
+
