@@ -1,0 +1,137 @@
+Release 14.3 - xst P.40xd (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.69 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.71 secs
+ 
+--> Reading design: angle_normalization.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "angle_normalization.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "angle_normalization"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : angle_normalization
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" into library work
+Parsing module <angle_normalization>.
+ERROR:HDLCompiler:806 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 53: Syntax error near ";".
+ERROR:HDLCompiler:806 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 116: Syntax error near "begin".
+ERROR:HDLCompiler:806 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 120: Syntax error near "else".
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 38: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 38: <logic> is not declared.
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 39: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 39: <logic> is not declared.
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 40: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 40: <logic> is not declared.
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 41: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 41: <logic> is not declared.
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 43: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 43: <logic> is not declared.
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 44: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 44: <logic> is not declared.
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 46: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 46: <logic> is not declared.
+ERROR:HDLCompiler:1059 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 47: logic is an unknown type
+ERROR:HDLCompiler:69 - "F:\Studies\Semester 8\EE499\verilog_codes\angle\angle_normalization.v" Line 47: <logic> is not declared.
+Sorry, too many errors..
+--> 
+
+Total memory usage is 4531672 kilobytes
+
+Number of errors   :   19 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
