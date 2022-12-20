@@ -1,0 +1,46 @@
+\contentsline {chapter}{Abstract}{iii}
+\contentsline {chapter}{List of Figures}{vi}
+\contentsline {chapter}{Nomenclature}{vii}
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}
+\contentsline {section}{\numberline {1.2}Problem Definition}{2}
+\contentsline {chapter}{\numberline {2}Preliminaries}{3}
+\contentsline {section}{\numberline {2.1}Present-day Cryptography}{3}
+\contentsline {section}{\numberline {2.2}Shor's Algorithm}{3}
+\contentsline {section}{\numberline {2.3}Shor's Algorithm \& Present Encryption Methods}{4}
+\contentsline {section}{\numberline {2.4}Post-Quantum Cryptography}{4}
+\contentsline {section}{\numberline {2.5}Chaos based Cryptography}{5}
+\contentsline {section}{\numberline {2.6}Field Programmable Gate Array}{6}
+\contentsline {chapter}{\numberline {3}Literature Survey}{7}
+\contentsline {section}{\numberline {3.1}Chaos and Cryptography}{7}
+\contentsline {section}{\numberline {3.2}Discrete Chaos}{7}
+\contentsline {section}{\numberline {3.3}Chaos in Non-Linear Dynamic Systems}{8}
+\contentsline {section}{\numberline {3.4}Baptista-type Cryptosystem}{8}
+\contentsline {chapter}{\numberline {4}Proposed Approach}{9}
+\contentsline {chapter}{\numberline {5}Work Progress}{10}
+\contentsline {section}{\numberline {5.1}Verifying the Algorithm in MATLAB}{10}
+\contentsline {subsection}{\numberline {5.1.1}Model of Non-Linear Dynamic System}{10}
+\contentsline {subsection}{\numberline {5.1.2}Simulation of Compound Triple Pendulum}{10}
+\contentsline {subsubsection}{Simulation Results}{11}
+\contentsline {subsection}{\numberline {5.1.3}Encryption - Decryption}{12}
+\contentsline {section}{\numberline {5.2}Key Generation}{13}
+\contentsline {section}{\numberline {5.3}FPGA Implementation}{15}
+\contentsline {subsection}{\numberline {5.3.1}Arithmetic and Logic Unit (ALU)}{15}
+\contentsline {subsection}{\numberline {5.3.2}Control Unit}{16}
+\contentsline {subsubsection}{Top-Level State Machine}{17}
+\contentsline {subsubsection}{Evaluate State-Space Expression}{18}
+\contentsline {subsubsection}{Postfix Expression Evaluation}{19}
+\contentsline {section}{\numberline {5.4}Analysis}{19}
+\contentsline {subsection}{\numberline {5.4.1}General Properties of the Cryptosystem}{19}
+\contentsline {subsubsection}{Test for Chaos}{19}
+\contentsline {subsubsection}{Collision Test}{21}
+\contentsline {subsubsection}{Test for Randomness}{21}
+\contentsline {subsection}{\numberline {5.4.2}Complexity Analysis}{21}
+\contentsline {subsubsection}{Setup Complexity}{21}
+\contentsline {subsubsection}{Hardware Resource Utilization}{23}
+\contentsline {subsection}{\numberline {5.4.3}Reason for being Quantum-Safe}{23}
+\contentsline {chapter}{\numberline {6}Results \& Conclusion}{24}
+\contentsline {chapter}{\numberline {7}Future Work}{25}
+\contentsline {subsubsection}{Algorithmic Aspect}{25}
+\contentsline {subsubsection}{Hardware Implementation Aspect}{25}

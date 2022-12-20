@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Tue Apr 16 22:48:55 2019
+# Process ID: 30743
+# Current directory: /home/exbiks/BTP/Phase2/BTP/verilog_codes
+# Command line: vivado
+# Log file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.log
+# Journal file: /home/exbiks/BTP/Phase2/BTP/verilog_codes/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/exbiks/ProjectPunisher/ProjectPunisher.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2017.4/data/ip'.
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Tue Apr 16 23:34:59 2019] Launched synth_1...
+Run output will be captured here: /home/exbiks/ProjectPunisher/ProjectPunisher.runs/synth_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 16 23:38:27 2019...

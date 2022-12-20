@@ -1,0 +1,199 @@
+% thesis.tex
+%
+% This file is root file for an example thesis written using the
+% IIT Guwahati LaTeX Style file.
+
+% The IIT Guwahati LaTex Style is a modified
+% version of IIT Bombay LaTex Style created by
+% Dr. Amey Karkare (21 June 2007).
+%
+% Required permissions have been taken from Dr. Karkare in order to
+% create the IIT Guwahati LaTex Style using his original work.
+% Revision done by: Mandar Kulkarni, EEE Department, IIT Guwahati
+% Further revised by Dr. Sonali Chouhan, EEE Department, IIT Guwahati (16/04/2016)
+
+%=====================================================================
+% Read: README.txt for more information
+%=====================================================================
+
+%=====================================================================
+% DOCUMENT STYLE
+%=====================================================================
+% IITG Thesis format default settings are:
+%   12pt, one-sided printing on a4 size paper
+\documentclass{iitgthesis}
+% For two-sided printing, with Chapter starting on odd-numbered pages,
+% use the following line instead:
+%%\documentclass[openright,twoside]{iitgthesis}
+
+%=====================================================================
+% OPTIONAL PACKAGES
+%=====================================================================
+% To include optional packages, use the \usepackage command.
+% For e.g., The package epsfig is used to bring in the Encapsulated
+%    PostScript figures into the document.
+%    The package times is used to change the fonts to Times Roman;
+%=====================================================================
+\usepackage{epsfig}
+\usepackage{stackrel}
+\usepackage{epsf}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{mathrsfs}
+%\usepackage{fancyhdr}
+\usepackage{verbatim}
+\usepackage{amsmath,amssymb}
+
+\usepackage{cite}
+\usepackage{multirow,tabularx}
+\usepackage{ifthen}
+% Add these after the document class declaration
+\usepackage{times}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{subcaption}
+\usepackage{smartdiagram}
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\linespread{1.3}
+\usepackage{graphicx}
+\graphicspath{ {./fig2/} }
+\usepackage{float}
+\usepackage{pgf}
+\usetikzlibrary{arrows,automata}
+%\usepackage[latin1]{inputenc}
+\usepackage{verbatim}
+
+\usepackage{amssymb}
+%\usepackage{dsfont}
+%\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{scrextend}
+%=====================================================================
+%  Single counter for theorems and theorem-like environments:
+%=====================================================================
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}{{\bf Theorem}}
+\newtheorem{lemma}{{Lemma}}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}{{\bf Corollary}}
+\newtheorem{result}{{\bf Result}}
+
+%=====================================================================
+% NEW COMMANDS DEFINED FOR A EASY TO READ CODE
+% You are free to add your own set of new commands here
+%
+\newcommand{\brac}[1]{\left({#1}\right)}
+\newcommand{\sbrac}[1]{\left[{#1}\right]}
+\newcommand{\cbrac}[1]{\left\{{#1}\right\}}
+\newcommand{\expc}[2][]{E_{#1}\left[{#2}\right]}
+
+% End of Preamble, start of document
+%
+
+\begin{document}
+%\renewcommand{\rmdefault}{cmr}
+\renewcommand{\baselinestretch}{1.0}
+\fontfamily{lmr}
+%=====================================================================
+% Include the prelude for Title page, abstract, table of contents, etc
+% You need to modify it to contain your details
+\include{prelude}
+
+%=====================================================================
+% Include the technical part of the report
+\include{introduction}        % Chapter 1: Introduction
+\include{preliminaries}       % Chapter 2: Introduction
+\include{literature}          % Chapter 3: Literature survey
+\include{system}              % Chapter 4: System model and formulating the problem statement
+\include{progress}           % Chapter 4: Analysis
+\include{conclusion}        % Chapter 6: Finally the summary & conclusions
+\include{future}             % Chapter 5: Simulation and Results
+
+
+%=====================================================================
+% APPENDIX
+%  Appendices, if any, must precede the cited literatures.
+%  Appendices shall be numbered in Roman Capitals (e.g. Appendix IV)
+
+%% \appendix
+%% \include{appendix_something}
+
+%=====================================================================
+% BIBLIOGRAPHY
+%   This should follow the appendices, if any, otherwise summary and
+%   conclusions chapter.
+% Choose your bibliography style
+% plain is the basic style, others include ieeetr, siam, asm, etc
+%\bibliographystyle{plain}
+% Add the bib file
+%% \bibliography{bibfile}
+\begin{thebibliography}{11}
+\begin{small}
+
+\bibitem{ref:habutsu}
+Toshiki Habutsu, Yoshifumi Nishio, Iwao Sasase, Shinsaku Mori, ``A Secret Key Cryptosystem by Iterating a Chaotic Map'', {\em LNCS, vol 547}, EUROCRYPT 1991.
+
+\bibitem{ref:yang}
+T. Yang, ``A survey of chaotic secure communication systems'', {\em Int. J. Comput. Cogn. 2004}.
+
+\bibitem{ref:hasler}
+M. Hasler, ``Synchronization of chaotic systems and transmission of information'', {\em Int. J. Bifursc. Chaos, vol. 8, no. 4, Apr. 1998}.
+
+\bibitem{ref:kocarev}
+Ljupco Kocarev, ``Chaos-Based Cryptography: A Brief Overview'', {\em IEEE Circuits and Systems Magazine 1(3):6 - 21 , Sept 2002}.
+
+\bibitem{ref:schmitz}
+R. Schmitz, ``Symmetric ciphers based on two-dimensional chaotic maps'', {\em J. Franklin Inst., vol. 338, pp. 429-441, 2001}.
+
+\bibitem{ref:knuth}
+D. E. Knuth, ``The Art of Computer Programming.'', {\em MA: Addison-Wesley, 1998, vol. 2}.
+
+\bibitem{ref:amigo}
+L. Kocarev, J. Szczepanski, J. M. Amigo, and I. Tomosvski, ``Chaos-based Cryptography: an overview'', {\em International Symposium on Nonlinear Theory and its Applications (NOLTA2005), Bruges, Belgium, October 18-21, 2005.
+}
+
+\bibitem{ref:mathews}
+R. Matthews, D. Wheeler, ``Supercomputer investigations of a chaotic encryption algorithm'', {\em Cryptologia XV, (1991) 140-152}.
+
+\bibitem{ref:eyre}
+Zbigniew Kotulski, Janusz Szczepanski, ``Discrete chaotic cryptography'', {\em Ann. Physik 6 (1997) 381-394}
+
+\bibitem{ref:wichert}
+Sofia Wichert, Konstantinos Fokianos and Korbinian Strimmer, ``Identifying periodically expressed transcripts in microarray time series data'', {\em Bioinformatics. 20 1, (2004), 5-20}.
+
+\bibitem{ref:bernstein}
+Daniel J. Bernstein, Johannes Buchmann, Erik Dahmen, ``Post-Quantum Cryptography''{\em Springer, Berlin, 2009}.
+
+\bibitem{ref:lone}
+Peter W. Shor, ``Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer'', {\em SIAM J.Sci.Statist.Comput. 26 (1997) 1484}
+
+\bibitem{ref:botha}
+Andre E. Botha,Guoyuan Qi, ``Analysis of the Triple Pendulum as a
+Hyperchaotic System''{\em Chaotic Modeling and Simulation (CMSIM) 2: 297{304, 2013}.}
+
+\bibitem{ref:li}
+Shujun Li, Guanrong Chen, Kwok-Wo Wong, Xuanqin Mou, Yuanlong Cai, ``Baptista-type chaotic cryptosystems: Problems and countermeasures'', {\em Physics Letters A, 332(5-6):368-375, 2004}
+
+\bibitem{ref:lone}
+Auqib Hamid Lone, Prof. Moin Uddin, ``Common Attacks on RSA and its Variants with Possible Countermeasures'', {\em International Journal of
+Emerging Research in Management \& Technology
+ISSN: 2278-9359 (Volume-5, Issue-5), May 2016}
+
+
+\end{small}
+\end{thebibliography}
+%=====================================================================
+% PUBLICATIONS
+%  publications if any may be listed after the literature cited.
+%% \include{mypubs}
+
+%=====================================================================
+
+
+\end{document} 

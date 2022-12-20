@@ -1,0 +1,659 @@
+\documentclass[DIV=9, pagesize=auto]{scrartcl}
+
+\usepackage{fixltx2e}
+\usepackage{etex}
+\usepackage{xspace}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage[unicode=true]{hyperref}
+
+\newcommand*{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand*{\Mail}[1]{\href{mailto:#1}{\texttt{<#1>}}}
+\newcommand*{\pkg}[1]{\textsf{#1}}
+\newcommand*{\cs}[1]{\texttt{\textbackslash#1}}
+\makeatletter
+\newcommand*{\cmd}[1]{\cs{\expandafter\@gobble\string#1}}
+\makeatother
+\newcommand*{\env}[1]{\texttt{#1}}
+\newcommand*{\opt}[1]{\texttt{#1}}
+\newcommand*{\meta}[1]{\textlangle\textsl{#1}\textrangle}
+\newcommand*{\marg}[1]{\texttt{\{}\meta{#1}\texttt{\}}}
+\newcommand*{\Beebe}{Nelson H. F. Beebe \Mail{beebe@math.utah.edu}\xspace}
+
+\addtokomafont{title}{\rmfamily}
+
+\title{The \pkg{epsf} package\thanks{This manual corresponds to \pkg{epsf}~v2.7.3, dated~23 July 2005.}}
+\author{Tom Rokicki\\\mail{rokicki@cs.stanford.edu}}
+\date{23 July 2005}
+
+
+\begin{document}
+
+\maketitle
+
+\noindent
+This file contains \TeX\ macros to include an
+Encapsulated PostScript graphic.  It works
+by finding the bounding box comment,
+calculating the correct scale values, and
+inserting a vbox of the appropriate size at
+the current position in the \TeX\ document.
+
+To use, simply use
+%
+\begin{verbatim}
+\input epsf % somewhere early on in your TeX file
+
+% then where you want to insert a vbox for a figure:
+\epsfbox{filename.ps}
+\end{verbatim}
+
+Alternatively, you can supply your own
+bounding box by
+%
+\begin{verbatim}
+\epsfbox[0 0 30 50]{filename.ps}
+\end{verbatim}
+%
+This will not read in the file, and will
+instead use the bounding box you specify.
+
+The effect will be to typeset the figure as
+a \TeX\ box, at the point of your \cmd{\epsfbox}
+command. By default, the graphic will have
+its `natural' width (namely the width of
+its bounding box, as described in
+\texttt{filename.ps}). The \TeX\ box will have depth
+zero.
+
+You can enlarge or reduce the figure by
+using\\
+\cmd{\epsfxsize\ = }\meta{dimen} \cmd{\epsfbox}\marg{filename.ps}\\
+or\\
+\cmd{\epsfysize\ = }\meta{dimen} \cmd{\epsfbox}\marg{filename.ps}\\
+instead. Then the width of the \TeX\ box will
+be \cmd{\epsfxsize} and its height will be scaled
+proportionately (or the height will be
+\cmd{\epsfysize} and its width will be scaled
+proportionately).
+
+The width (and height) is restored to zero
+after each use, so \cmd{\epsfxsize} or \cmd{\epsfysize}
+must be specified before \emph{each} use of
+\cmd{\epsfbox}.
+
+A more general facility for sizing is
+available by defining the \cmd{\epsfsize} macro.
+Normally you can redefine this macro to do
+almost anything.  The first parameter is
+the natural $x$~size of the PostScript
+graphic, the second parameter is the
+natural $y$~size of the PostScript graphic.
+It must return the xsize to use, or 0 if
+natural scaling is to be used.  Common uses
+include:
+%
+\begin{verbatim}
+   \epsfxsize  % just leave the old value alone
+   0pt         % use the natural sizes
+   #1          % use the natural sizes
+   \hsize      % scale to full width
+   0.5#1       % scale to 50% of natural size
+   \ifnum #1 > \hsize \hsize \else #1\fi
+               % smaller of natural, hsize
+\end{verbatim}
+
+If you want \TeX\ to report the size of the
+figure (as a message on your terminal when
+it processes each figure), use
+`\cmd{\epsfverbosetrue'}.
+
+If you only want to get the bounding box
+extents, without producing any output boxes
+or \verb+\special{}+, then use \cmd{\epsfgetbb}\marg{filename}.
+The bounding box corner coordinates are saved
+in the macros \cmd{\epsfllx}, \cmd{\epsflly}, \cmd{\epsfurx},
+and \cmd{\epsfury} in PostScript units of big
+points.
+
+
+\section*{Revision history:}
+
+\begin{itemize}
+\item \texttt{epsf.tex} macro file:
+  Originally written by Tomas Rokicki of
+  Radical Eye Software, 29 Mar 1989.
+
+\item Revised by Don Knuth, 3 Jan 1990.
+
+\item Revised by Tomas Rokicki, 18 Jul 1990.
+  
+  Accept bounding boxes with no space after
+  the colon.
+
+\item Revised by \Beebe, 03 Dec 1991 [2.0].
+  
+  Add version number and date typeout.
+  
+  Use \verb+\immediate\write16+ instead of \cmd{\message}
+  to ensure output on new line.
+  
+  Handle nested EPS files.
+  
+  Handle \verb+%%BoundingBox: (atend)+ lines.
+  
+  Do not quit when blank lines are found.
+  
+  Add a few percents to remove generation of
+  spurious blank space.
+  
+  Move \cmd{\special} output to
+  \cmd{\epsfspecial}\marg{filename} so that other macro
+  packages can input this one, then change
+  the definition of \cmd{\epsfspecial} to match
+  another DVI driver.
+  
+  Move size computation to \cmd{\epsfsetsize} which
+  can be called by the user; the verbose
+  output of the bounding box and scaled width
+  and height happens here.
+
+\item Revised by \Beebe, 05 May 1992 [2.1].
+
+  \begin{sloppypar}
+    Wrap \verb+\leavevmode\hbox{}+ around \verb+\vbox{}+ with
+    the \cmd{\special} so that \verb+\epsffile{}+ can be
+    used inside \verb+\begin{center}...\end{center}+
+  \end{sloppypar}
+
+\item Revised by \Beebe, 09 Dec 1992 [2.2].
+  
+  Introduce \cmd{\epsfshow\{true,false\}} and
+  \cmd{\epsfframe\{true,false\}} macros; the latter
+  suppresses the insertion of the PostScript,
+  and instead just creates an empty box,
+  which may be handy for rapid prototyping.
+
+\item Revised by \Beebe, 14 Dec 1992 [2.3].
+  
+  Add \cmd{\epsfshowfilename\{true,false\}}.  When
+  \texttt{true}, and \cmd{\epsfshowfalse} is specified, the
+  PostScript file name will be displayed
+  centered in the figure box.
+
+\item Revised by \Beebe, 20 June 1993 [2.4].
+  
+  Remove non-zero debug setting of \cmd{\epsfframemargin},
+  and change margin handling to preserve EPS image
+  size and aspect ratio, so that the actual
+  box is $\cmd{\epsfxsize}+\cmd{\epsfframemargin}$ wide by
+  $\cmd{\epsfysize}+\cmd{\epsfframemargin}$ high.
+  Reduce output of \cmd{\epsfshowfilenametrue} to
+  just the bare file name.
+
+\item Revised by \Beebe, 13 July 1993 [2.5].
+  
+  Add \cmd{\epsfframethickness} for control of
+  \cmd{\epsfframe} frame lines.
+
+\item Revised by \Beebe, 02 July 1996 [2.6]
+  
+  Add missing initialization \cmd{\epsfatendfalse};
+  the lack of this resulted in the wrong
+  \texttt{BoundingBox} being picked up, mea culpa, sigh\ldots
+
+\item Revised by \Beebe, 25 October 1996 [2.7]
+  
+  Update to match changes in from dvips~5-600
+  distribution: new user-accessible macros:
+  \cmd{\epsfclipon}, \cmd{\epsfclipoff}, \cmd{\epsfdrafton},
+  \cmd{\epsfdraftoff}, change \cmd{\empty} to \cmd{\epsfempty}.
+
+\item Revised by \Beebe, 18 May 2002 [2.7.1]
+  
+  Add write statements to echo input file
+  names.  Prior to that change, an error in
+  such a file could be quite hard to track
+  down: a long list of \TeX\ page numbers could
+  suddenly be followed by ``\TeX\ buffer
+  capacity'' exceeded, without any indication
+  of the file that was responsible.
+
+\item Revised by \Beebe, 16 May 2003 [2.7.2]
+  
+  Supply two critical percent characters that
+  were mistakenly omitted in version~2.7.1,
+  and resulted in a small amount of spurious
+  horizontal space.
+
+\item Revised by \Beebe,\\ Karl Berry
+  \Mail{karl@freefriends.org},\\ and Robin Fairbairns
+  \Mail{Robin.Fairbairns@cl.cam.ac.uk},\\
+  23 July 2005 [2.7.3]
+
+  Add critical \verb+\hbox{}+ wrapper in \cmd{\epsfsetgraph}
+  so that \verb+\epsfbox{}+ does not conflict with
+  \LaTeX\ \env{center} environment when \verb+\epsfbox{}+ is
+  surrounded by other horizonal objects.
+  Improve macro readability by adding legal,
+  but invisible-in-typeset-output, spaces.
+  Ensure that verbose status reports come
+  inside \verb+(filename ...)+ list.
+
+\end{itemize}
+
+\end{document}
+
+
+
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+%%%  }
+%%% ====================================================================
+
+%\immediate \write16 {This is `epsf.tex' v2.0 <02 Dec 1991>}%
+%\immediate \write16 {This is `epsf.tex' v2.1 <05 May 1992>}%
+%\immediate \write16 {This is `epsf.tex' v2.2 <09 Dec 1992>}%
+%\immediate \write16 {This is `epsf.tex' v2.3 <14 Dec 1992>}%
+%\immediate \write16 {This is `epsf.tex' v2.4 <20 June 1993>}%
+%\immediate \write16 {This is `epsf.tex' v2.5 <13 July 1993>}%
+%\immediate \write16 {This is `epsf.tex' v2.6 <02 July 1996>}%
+%\immediate \write16 {This is `epsf.tex' v2.7 <25 October 1996>}%
+%\immediate \write16 {This is `epsf.tex' v2.7.1 <18 May 2002>}%
+%\immediate \write16 {This is `epsf.tex' v2.7.2 <16 May 2003>}%
+\immediate \write16 {This is `epsf.tex' v2.7.3 <23 July 2005>}%
+%
+\newread \epsffilein    % file to \read
+\newif \ifepsfatend     % need to scan to LAST %%BoundingBox comment?
+\newif \ifepsfbbfound   % success?
+\newif \ifepsfdraft     % use draft mode?
+\newif \ifepsffileok    % continue looking for the bounding box?
+\newif \ifepsfframe     % frame the bounding box?
+\newif \ifepsfshow      % show PostScript file, or just bounding box?
+\epsfshowtrue          % default is to display PostScript file
+\newif \ifepsfshowfilename % show the file name if \epsfshowfalse specified?
+\newif \ifepsfverbose   % report what you're making?
+\newdimen \epsfframemargin % margin between box and frame
+\newdimen \epsfframethickness % thickness of frame rules
+\newdimen \epsfrsize    % vertical size before scaling
+\newdimen \epsftmp      % register for arithmetic manipulation
+\newdimen \epsftsize    % horizontal size before scaling
+\newdimen \epsfxsize    % horizontal size after scaling
+\newdimen \epsfysize    % vertical size after scaling
+\newdimen \pspoints     % conversion factor
+%
+\pspoints = 1bp        % Adobe points are `big'
+\epsfxsize = 0pt       % default value, means `use natural size'
+\epsfysize = 0pt       % ditto
+\epsfframemargin = 0pt % default value: frame box flush around picture
+\epsfframethickness = 0.4pt % TeX's default rule thickness
+%
+\def \epsfbox #1{%
+    \global \def \epsfllx {72}%
+    \global \def \epsflly {72}%
+    \global \def \epsfurx {540}%
+    \global \def \epsfury {720}%
+    \def \lbracket {[}%
+    \def \testit {#1}%
+    \ifx \testit \lbracket
+        \let \next = \epsfgetlitbb
+    \else
+        \let \next = \epsfnormal
+    \fi
+    \next{#1}%
+}%
+%
+% We use \epsfgetlitbb if the user specified an explicit bounding box,
+% and \epsfnormal otherwise.  Because \epsfgetbb can be called
+% separately to retrieve the bounding box, we move the verbose
+% printing the bounding box extents and size on the terminal to
+% \epsfstatus.  Therefore, when the user provided the bounding box,
+% \epsfgetbb will not be called, so we must call \epsfsetsize and
+% \epsfstatus ourselves.
+%
+\def \epsfgetlitbb #1#2 #3 #4 #5]#6{%
+   \epsfgrab #2 #3 #4 #5 .\\%
+   \epsfsetsize
+   \epsfstatus{#6}%
+   \epsfsetgraph{#6}%
+}%
+%
+\def \epsfnormal #1{%
+    \epsfgetbb{#1}%
+    \epsfsetgraph{#1}%
+}%
+%
+\def \epsfgetbb #1{%
+%
+%   The first thing we need to do is to open the
+%   PostScript file, if possible.
+%
+    \openin\epsffilein=#1
+    \immediate \write16 {(#1}%
+    \ifeof \epsffilein
+        \errmessage{Could not open file #1, ignoring it}%
+    \else                       %process the file
+        {%                      %start a group to contain catcode changes
+            % Make all special characters, except space, to be of type
+            % `other' so we process the file in almost verbatim mode
+            % (TeXbook, p. 344).
+            \chardef \other = 12%
+            \def \do ##1{\catcode`##1=\other}%
+            \dospecials
+            \catcode `\ = 10%
+            \epsffileoktrue        %true while we are looping
+            \epsfatendfalse        %[02-Jul-1996]: add forgotten initialization
+            \loop                  %reading lines from the EPS file
+                \read \epsffilein to \epsffileline
+                \ifeof \epsffilein %then no more input
+                \epsffileokfalse   %so set completion flag
+            \else                  %otherwise process one line
+                \expandafter \epsfaux \epsffileline :. \\%
+            \fi
+            \ifepsffileok
+            \repeat
+            \ifepsfbbfound
+            \else
+                \ifepsfverbose
+                    \immediate \write16 {No BoundingBox comment found in %
+                                         file #1; using defaults}%
+                \fi
+            \fi
+        }%                      %end catcode changes
+        \closein\epsffilein
+    \fi                         %end of file processing
+    \epsfsetsize                %compute size parameters
+    \epsfstatus{#1}%
+    \immediate \write16 {)}%
+}%
+%
+% Clipping control:
+\def \epsfclipon  {\def \epsfclipstring { clip}}%
+\def \epsfclipoff {\def \epsfclipstring {\ifepsfdraft \space clip\fi}}%
+\epsfclipoff % default for dvips is OFF
+%
+% The special that is emitted by \epsfsetgraph comes from this macro.
+% It is defined separately to allow easy customization by other
+% packages that first \input epsf.tex, then redefine \epsfspecial.
+% This macro is invoked in the lower-left corner of a box of the
+% width and height determined from the arguments to \epsffile, or
+% from the %%BoundingBox in the EPS file itself.
+%
+% This version is for dvips:
+\def \epsfspecial #1{%
+     \epsftmp=10\epsfxsize
+     \divide \epsftmp by \pspoints
+     \ifnum \epsfrsize = 0%
+       \relax
+       \special{PSfile=\ifepsfdraft psdraft.ps\else#1\fi\space
+		llx=\epsfllx\space
+		lly=\epsflly\space
+		urx=\epsfurx\space
+		ury=\epsfury\space
+		rwi=\number\epsftmp
+		\epsfclipstring
+               }%
+     \else
+       \epsfrsize=10\epsfysize
+       \divide \epsfrsize by \pspoints
+       \special{PSfile=\ifepsfdraft psdraft.ps\else#1\fi\space
+		llx=\epsfllx\space
+		lly=\epsflly\space
+		urx=\epsfurx\space
+		ury=\epsfury\space
+		rwi=\number\epsftmp
+		rhi=\number\epsfrsize
+		\epsfclipstring
+               }%
+     \fi
+}%
+%
+% \epsfframe macro adapted from the TeXbook, exercise 21.3, p. 223, 331.
+% but modified to set the box width to the natural width, rather
+% than the line width, and to include space for margins and rules
+\def \epsfframe #1%
+{%
+ % method for detecting latex suggested by Robin Fairbairns, May 2005.
+  \ifx \documentstyle \epsfundefined
+    \relax
+  \else
+%    \leavevmode                   % so we can put this inside
+                                  % a latex centered environment
+    % The \leavevmode breaks under plain when this is inside a box,
+    % because it forces the figure to be the entire \hsize.  On the
+    % other hand, we need the \leavevmode for it to work in LaTeX,
+    % because the {center} environment works by adjusting TeX's
+    % paragraph parameters.
+    %
+    % Compare the LaTeX sequence
+    % \begin{center}
+    %   \epsfbox{tip.eps}q
+    % \end{center}
+    % (needs the \leavevmode to put the q right next to the image)
+    %
+    % with the plain TeX sequence:
+    % \leftline{\vbox{\epsfbox{tip.eps}}q}
+    % (had the q all the way over to the right, when \leavevmode was used)
+  \fi
+  %
+  \setbox0 = \hbox{#1}%
+  \dimen0 = \wd0                                % natural width of argument
+  \advance \dimen0 by 2\epsfframemargin         % plus width of 2 margins
+  \advance \dimen0 by 2\epsfframethickness      % plus width of 2 rule lines
+  \relax
+  \hbox{%
+    \vbox
+    {%
+      \hrule height \epsfframethickness depth 0pt
+      \hbox to \dimen0
+      {%
+	\hss
+	\vrule width \epsfframethickness
+	\kern \epsfframemargin
+	\vbox {\kern \epsfframemargin \box0 \kern \epsfframemargin }%
+	\kern \epsfframemargin
+	\vrule width \epsfframethickness
+	\hss
+      }% end hbox
+      \hrule height 0pt depth \epsfframethickness
+    }% end vbox
+  }% end hbox
+  \relax
+}%
+%
+\def \epsfsetgraph #1%
+{%
+   %
+   % Make the vbox and stick in a \special that the DVI driver can
+   % parse.  \vfil and \hfil are used to place the \special origin at
+   % the lower-left corner of the vbox.  \epsfspecial can be redefined
+   % to produce alternate \special syntaxes.
+   %
+   \ifvmode \leavevmode \fi
+   \relax
+   \hbox{% so we can put this in \begin{center}...\end{center}
+     \ifepsfframe \expandafter \epsfframe \fi
+     {\vbox to\epsfysize
+     {%
+        \ifepsfshow
+            % output \special{} at lower-left corner of figure box
+            \vfil
+            \hbox to \epsfxsize{\epsfspecial{#1}\hfil}%
+        \else
+            \vfil
+            \hbox to\epsfxsize{%
+               \hss
+               \ifepsfshowfilename
+               {%
+                  \epsfframemargin=3pt % local change of margin
+                  \epsfframe{{\tt #1}}%
+               }%
+               \fi
+               \hss
+            }%
+            \vfil
+        \fi
+     }%
+   }}%
+   \relax
+   %
+   % Reset \epsfxsize and \epsfysize, as documented above.
+   %
+   \global \epsfxsize = 0pt
+   \global \epsfysize = 0pt
+}%
+%
+%   Now we have to calculate the scale and offset values to use.
+%   First we compute the natural sizes.
+%
+\def \epsfsetsize
+{%
+   \epsfrsize = \epsfury \pspoints
+   \advance \epsfrsize by -\epsflly \pspoints
+   \epsftsize = \epsfurx \pspoints
+   \advance \epsftsize by -\epsfllx \pspoints
+%
+%   If `epsfxsize' is 0, we default to the natural size of the picture.
+%   Otherwise we scale the graph to be \epsfxsize wide.
+%
+   \epsfxsize = \epsfsize{\epsftsize}{\epsfrsize}%
+   \ifnum \epsfxsize = 0
+      \ifnum \epsfysize = 0
+	\epsfxsize = \epsftsize
+        \epsfysize = \epsfrsize
+	\epsfrsize = 0pt
+%
+%   We have a sticky problem here:  TeX doesn't do floating point arithmetic!
+%   Our goal is to compute y = rx/t. The following loop does this reasonably
+%   fast, with an error of at most about 16 sp (about 1/4000 pt).
+%
+      \else
+	\epsftmp = \epsftsize
+        \divide \epsftmp by \epsfrsize
+	\epsfxsize = \epsfysize
+        \multiply \epsfxsize by \epsftmp
+	\multiply \epsftmp by \epsfrsize
+        \advance \epsftsize by -\epsftmp
+	\epsftmp = \epsfysize
+	\loop
+        \advance \epsftsize by \epsftsize
+        \divide \epsftmp by 2
+	\ifnum \epsftmp > 0
+	   \ifnum \epsftsize < \epsfrsize
+           \else
+	      \advance \epsftsize -\epsfrsize
+              \advance \epsfxsize \epsftmp
+           \fi
+	\repeat
+	\epsfrsize = 0pt
+      \fi
+   \else
+     \ifnum \epsfysize = 0
+       \epsftmp = \epsfrsize
+       \divide \epsftmp by \epsftsize
+       \epsfysize = \epsfxsize
+       \multiply \epsfysize by \epsftmp
+       \multiply \epsftmp by \epsftsize
+       \advance \epsfrsize by -\epsftmp
+       \epsftmp = \epsfxsize
+       \loop
+	 \advance \epsfrsize by \epsfrsize
+	 \divide \epsftmp by 2
+       \ifnum \epsftmp > 0
+	  \ifnum \epsfrsize < \epsftsize
+          \else
+	     \advance \epsfrsize by -\epsftsize
+             \advance \epsfysize by \epsftmp
+          \fi
+       \repeat
+       \epsfrsize = 0pt
+     \else
+       \epsfrsize = \epsfysize
+     \fi
+   \fi
+}%
+%
+% Issue some status messages if the user requested them
+%
+\def \epsfstatus #1{% arg = filename
+   \ifepsfverbose
+     \immediate \write16 {#1: BoundingBox:
+			  llx = \epsfllx \space lly = \epsflly \space
+			  urx = \epsfurx \space ury = \epsfury \space}%
+     \immediate \write16 {#1: scaled width = \the\epsfxsize \space
+			  scaled height = \the\epsfysize}%
+   \fi
+}%
+%
+%   We still need to define the tricky \epsfaux macro. This requires
+%   a couple of magic constants for comparison purposes.
+%
+{\catcode`\%=12 \global \let \epsfpercent=%\global \def \epsfbblit {%BoundingBox}}%
+\global \def \epsfatend{(atend)}%
+%
+%   So we're ready to check for `%BoundingBox:' and to grab the
+%   values if they are found.
+%
+%   If we find a line
+%
+%   %%BoundingBox: (atend)
+%
+%   then we ignore it, but set a flag to force parsing all of the
+%   file, so the last %%BoundingBox parsed will be the one used.  This
+%   is necessary, because EPS files can themselves contain other EPS
+%   files with their own %%BoundingBox comments.
+%
+%   If we find a line
+%
+%   %%BoundingBox: llx lly urx ury
+%
+%   then we save the 4 values in \epsfllx, \epsflly, \epsfurx, \epsfury.
+%   Then, if we have not previously parsed an (atend), we flag completion
+%   and can stop reading the file.  Otherwise, we must keep on reading
+%   to end of file so that we find the values on the LAST %%BoundingBox.
+\long \def \epsfaux#1#2:#3\\%
+{%
+   \def \testit {#2}%           % save second character up to just before colon
+   \ifx#1\epsfpercent           % then first char is percent (quick test)
+       \ifx \testit \epsfbblit  % then (slow test) we have %%BoundingBox
+            \epsfgrab #3 . . . \\%
+            \ifx \epsfllx\epsfatend % then ignore %%BoundingBox: (atend)
+                \global \epsfatendtrue
+            \else               % else found %%BoundingBox: llx lly urx ury
+                \ifepsfatend    % then keep parsing ALL %%BoundingBox lines
+                \else           % else stop after first one parsed
+                    \epsffileokfalse
+                \fi
+                \global \epsfbbfoundtrue
+            \fi
+       \fi
+   \fi
+}%
+%
+%   Here we grab the values and stuff them in the appropriate definitions.
+%
+\def \epsfempty {}%
+\def \epsfgrab #1 #2 #3 #4 #5\\{%
+   \global \def \epsfllx {#1}\ifx \epsfllx\epsfempty
+      \epsfgrab #2 #3 #4 #5 .\\\else
+   \global \def \epsflly {#2}%
+   \global \def \epsfurx {#3}\global \def \epsfury {#4}\fi
+}%
+%
+%   We default the epsfsize macro.
+%
+\def \epsfsize #1#2{\epsfxsize}%
+%
+%   Finally, another definition for compatibility with older macros.
+%
+\let \epsffile = \epsfbox
+\endinput

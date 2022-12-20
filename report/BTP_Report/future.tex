@@ -1,0 +1,10 @@
+\chapter{Future Work}
+\label{chap:future}
+\setlength{\parskip}{1.5mm}
+%\setlength{\baselineskip}{1.4mm}
+This report so far discussed the methods for encryption-decryption based on non-linear chaotic map and its utility in post-quantum cryptography. Through a number of simulations, we can conclude that this cryptosystem can provide the desired level of chaos and security. Moreover, this cryptosystem also fulfills the basic requirements of a cryptosystem defined by Shannon including diffusion and confusion.
+\subsubsection{Algorithmic Aspect}
+The main improvement aspect of this work lies in the extension of this algorithm for asymmetric key cryptography. This can be easily done by introducing safe key manipulation techniques which would enable both parties to retrieve the key values. Once the key is obtained, one can proceed according to steps followed for the symmetric algorithm. Another improvement is introducing permutation map between characters and Baptista type partitioned intervals. Also instead of taking a single state variable value for chaotic map, all three state variable values can be combined through a one-one function to give a better level of encryption. For better validation of the cryptosystem in regards to the quantum-computing aspect, the cryptosystem must be tested against practical quantum computing algorithms for breaking cryptosystems which is beyond our current scope. However, this cryptosystem might serve well  practically in terms of both speed and cost.
+
+\subsubsection{Hardware Implementation Aspect}
+Although a complete implementation of the cryptographic algorithm has been presented, there remains a huge scope for improvement. This involves efficient caching of results of operations on constants. Implementation of such a cache can result in significant reduction in the number of clock cycles required. Furthermore, few modifications might be made to enable design scale easily according to the amount of resources at disposal.

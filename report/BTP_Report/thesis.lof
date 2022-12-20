@@ -1,0 +1,30 @@
+\babel@toc {english}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Timeline for Cryptography \& Quantum Processing\relax }}{5}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Chaos based Cryptography\relax }}{5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces FPGA CLB Structure\relax }}{6}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Implementation Steps\relax }}{9}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of Non-Linear Dynamic systems\relax }}{10}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Parameters \& Initial Conditions for the Initial Value Problem\relax }}{11}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Motion of Triple-Pendulum for t = 0 to t = 10 sec\relax }}{11}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Plot of Motion of Triple-Pendulum\relax }}{12}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Working Principle of a Symmetric Cryptosystem\relax }}{12}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Encryption-Decryption Strategy\relax }}{13}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Periodogram Plot for ${\theta }$\relax }}{13}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Periodic Properties of ${\theta _{1}}$\relax }}{14}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Periodic Properties of ${\theta _{3}}$\relax }}{14}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Overview of FPGA Implementation\relax }}{15}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Schematic of multiplier module\relax }}{16}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Simplified form of Top-Level FSM\relax }}{17}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Simplified FSM of State-Space solver\relax }}{18}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Simplified FSM for Postfix Evaluator\relax }}{19}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Plot showing Sensitivity to Parameter value ${m}$ with ${\Delta m = 10^{-6}}$\relax }}{20}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Plot showing Sensitivity to Intital condition of ${\theta _{1}}$with ${\Delta \theta _{1} = 10^{-6}}$\relax }}{20}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Table showing Resource Utilization\relax }}{23}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Simulation of hardware implementation in Xilinx Vivado\relax }}{24}
+\addvspace {10\p@ }
