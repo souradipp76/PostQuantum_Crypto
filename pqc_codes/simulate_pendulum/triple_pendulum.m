@@ -3,13 +3,27 @@ function triple_pendulum(ivp, duration, fps, movie)
 
 delta=1/fps;
 tspan=0:delta:duration;
-%sol=ode45(@triple_pendulum_ODE,tspan, ivp);
-sol = triple_pendulum_ODE(delta, duration, ivp);
 
-nframes=duration*fps;
-t = linspace(0,duration,nframes+1);
-y=sol(1:nframes+1,:)';
-Y=sol(1:nframes+1,1:3)';
+uo = [ivp(1,1) ivp(2,1) ivp(3,1) ivp(4,1) ivp(5,1) ivp(6,1)];
+disp(uo)
+tfinal=duration;
+tsp=[0 tfinal];
+% Calculation
+options=odeset('InitialStep',delta,'MaxStep',delta);
+[t,y]=ode45(@odefun,tsp,uo,options);
+disp(size(y))
+disp(size(t))
+% sol = triple_pendulum_ODE(delta, duration, ivp);
+
+
+
+% nframes=duration*fps;
+% t = linspace(0,duration,nframes+1);
+% y=sol(1:nframes+1,:)';
+% Y=sol(1:nframes+1,1:3)';
+t = t';
+y = y';
+Y = y;
 Y1=Y(1,:);
 Y2=Y(2,:);
 Y3=Y(3,:);
@@ -209,4 +223,3 @@ set(gca,'nextplot','replacechildren');
     end
        
 end
-
