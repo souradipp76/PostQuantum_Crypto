@@ -37,8 +37,6 @@ while(time < endT)
     x(5) = x(5) + (dtheta(2)*deltaT);
     x(6) = x(6) + (dtheta(3)*deltaT);
 
-    
-
     y = [y; x(1) x(2) x(3) x(4) x(5) x(6)];
     time = time + deltaT;
 end
